@@ -15,18 +15,18 @@ const Overview = () => {
   console.log(product);
   console.log(styles);
   console.log(related);
-    return (
-        <div>
+  return (
+    <div>
           =======================
-            <h3>Overview Component</h3>
-            <ImageGallery />
-            <ProductInfo />
-            <StyleSelector />
-            <AddToCart />
-            <ProductDesc />
+      <h3>Overview Component</h3>
+      <ImageGallery />
+      <ProductInfo />
+      <StyleSelector />
+      <AddToCart />
+      <ProductDesc />
           =======================
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Overview;

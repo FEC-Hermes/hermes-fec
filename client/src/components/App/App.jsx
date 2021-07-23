@@ -7,15 +7,15 @@ import Related_ItemsAndComparison from '../Related_Items&Comparison/Related_Item
 
 
 const App = () => {
-    return (
-        <div>
-            <nav>NAV BAR</nav>
-            <Overview/>
-            <QandA />
-            <RatingsAndReviews />
-            <Related_ItemsAndComparison />
-        </div>
-    );
+  return (
+    <div>
+      <nav>NAV BAR</nav>
+      <Overview/>
+      <QandA />
+      <RatingsAndReviews />
+      <Related_ItemsAndComparison />
+    </div>
+  );
 };
 
 export default App;

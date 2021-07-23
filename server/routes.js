@@ -15,7 +15,7 @@ router.get('/products', (req, res) => {
 });
 
 router.get('/products/:product_id', (req, res) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/:product_id', headers)
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/:product_id`, headers)
   .then(data => res.status(200).json(data.data))
   .catch(err => res.status(401).json(err))
 });

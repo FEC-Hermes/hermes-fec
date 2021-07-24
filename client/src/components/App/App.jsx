@@ -11,9 +11,9 @@ const App = () => {
     <div>
       <nav>NAV BAR</nav>
       <Overview/>
+      <Related_ItemsAndComparison />
       <QandA />
       <RatingsAndReviews />
-      <Related_ItemsAndComparison />
     </div>
   )
 };

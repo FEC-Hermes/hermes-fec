@@ -12,9 +12,6 @@ import { product, styles, related } from './dummyData';
 
 
 const Overview = () => {
-  console.log(product);
-  console.log(styles);
-  console.log(related);
   return (
     <div>
           =======================

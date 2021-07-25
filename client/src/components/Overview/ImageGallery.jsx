@@ -1,8 +1,12 @@
 import React from 'react';
+import VerticalThumbs from './VerticalThumbs.jsx';
 
 const ImageGallery = () => {
   return (
-    <div>ImageGallery</div>
+    <div>
+      <VerticalThumbs />
+      <div>ImageGallery</div>
+    </div>
   );
 };
 

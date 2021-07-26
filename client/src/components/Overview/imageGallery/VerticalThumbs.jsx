@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
 
-import { styles } from './dummyData.js';
+import { styles } from '../dummyData.js';
 
 const VerticalThumbs = () => {
 
-  let maxIdx = styles.results.length - 1;
+  let maxIdx = styles.results.length - 7;
   const [imageIdx, setImageIdx] = useState(0);
+  const [yAxis, setYAxis] = useState(0);
 
   useEffect(() => {
     arrowVisibility();
   }, []);
 
+  useEffect(() => {
+    slideThumbs();
+    arrowVisibility();
+  }, [imageIdx]);
 
 
   const arrowVisibility = () => {
@@ -27,14 +32,34 @@ const VerticalThumbs = () => {
     }
   };
 
+  const slideThumbs = () => {
+    const images = document.getElementsByClassName('vThumb-img-frame');
+
+    //comse back to this and adjust eas in and out
+
+    Array.from(images).forEach(img => {
+      img.style.transform = `translateY(${yAxis}px)`;
+    });
+  };
+
   const onArrowClick = (arrow) => {
+
     if (arrow === 'up' && imageIdx > 0) {
+      setYAxis(yAxis + 100);
       setImageIdx(imageIdx - 1);
     } else if (arrow === 'down' && imageIdx < maxIdx) {
+      setYAxis(yAxis - 100);
       setImageIdx(imageIdx + 1);
     }
-    console.log(imageIdx)
-    arrowVisibility();
+  };
+
+  const onImageClick = (id) => {
+    const images = document.getElementsByClassName('vThumb-img');
+    Array.from(images).forEach(img => {
+      img.classList.remove('vThumb-img-active');
+    });
+
+    document.getElementById(id).classList.add('vThumb-img-active');
   };
 
 
@@ -47,11 +72,16 @@ const VerticalThumbs = () => {
       >$$</div>
       <div className="vThumb-img-container">
         {styles.results.map(style => (
-          <img
-            src={ style.photos[0].thumbnail_url }
+          <div
             key={ style.style_id }
-            className="vThumb-img"
-          />
+            className="vThumb-img-frame" >
+            <img
+              src={ style.photos[0].thumbnail_url }
+              id={ style.style_id }
+              className="vThumb-img"
+              onClick={ () => onImageClick(style.style_id)}
+            />
+          </div>
         ))}
       </div>
       <div

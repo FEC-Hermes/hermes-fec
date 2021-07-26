@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import StyledComponents from 'styled-components';
 
-import ImageGallery from './ImageGallery.jsx';
+import ImageGallery from './imageGallery/ImageGallery.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';

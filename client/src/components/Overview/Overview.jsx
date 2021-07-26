@@ -10,10 +10,9 @@ import ProductDesc from './ProductDesc.jsx';
 
 import { product, styles, related } from './dummyData';
 
-
 const Overview = () => {
   return (
-    <div>
+    <div id="overview-container">
           =======================
       <h3>Overview Component</h3>
       <ImageGallery />

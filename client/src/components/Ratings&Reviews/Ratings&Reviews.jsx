@@ -1,16 +1,15 @@
 import React from 'react';
-import StarDisplay from '../Shared/StarDisplay.jsx';
-import Characteristics from './Characteristics.jsx';
+import Ratings from './Ratings.jsx';
+import Reviews from './Reviews.jsx';
 
-const RatingsAndReviews = () => {
+const RatingsAndReviews = (props) => {
   return (
     <div>
-      <StarDisplay rating={3.8} productId={1}/>
-      <StarDisplay rating={2.4} productId={2}/>
-      <StarDisplay rating={4.2} productId={3} />
-      <StarDisplay rating={0} productId={4} />
-      <StarDisplay rating={5} productId={5} />
-      <Characteristics />
+      <div>Ratings & Reviews</div>
+      <div id="ratings-and-reviews-container">
+        <Ratings />
+        <Reviews />
+      </div>
     </div>
   )
 }

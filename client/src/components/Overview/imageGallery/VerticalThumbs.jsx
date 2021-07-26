@@ -89,6 +89,7 @@ const VerticalThumbs = () => {
         className="vThumb-arrow"
         onClick={ () => onArrowClick('down') }
       >$$</div>
+      <i className="fas fa-chevron-down"></i>
     </div>
   );
 };

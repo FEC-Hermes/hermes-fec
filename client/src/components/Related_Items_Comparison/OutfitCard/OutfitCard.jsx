@@ -5,10 +5,8 @@ import {RelatedProducts, Image_container, Img, Card, CardText, ExitContainer, Ex
 const OutfitCard = () => {
     const [relatedProducts, setProduct] = useState([]);
     const category = 'Jackets';
-    // '/products/:product_id/styles'
     useEffect( () => {
         async function fetchData(){
-            // const {data} = await axios.get(`http://localhost:3000/products/${17067}/styles`);
             const {data} = await axios.get(`/products/${17067}/styles`);
             setProduct(data.results);
             return data;

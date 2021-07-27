@@ -25,15 +25,16 @@ const CardText = styled.p`
   color: ${props => props.color};
 `;
 
-const StarContainer = styled.div`
+const ExitContainer = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
-const Stars = styled.img`
-  margin : ${props => props.margin};
-  height: 1.8rem;
-  position:${props => props.pos};
 
+const ExitImg = styled.img`
+  position: absolute;
+  height: 2rem;
+  border-radius: 3rem;
 `;
 
-export  {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer};
+
+export  {RelatedProducts, Image_container, Img, Card, CardText, ExitContainer, ExitImg};

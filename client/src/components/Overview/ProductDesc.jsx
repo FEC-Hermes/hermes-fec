@@ -11,10 +11,22 @@ const Container = styled.main`
   border: 1px solid black;
 `;
 
-const Description = styled.article`
+const DescriptionContainer = styled.div`
   flex-grow: 5;
-  padding: 30px;
+  padding: 10px 30px 10px;
   max-width: 700px;
+
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Slogan = styled.div`
+
+`;
+
+const Description = styled.article`
+
 `;
 
 const Divider = styled.div`
@@ -31,10 +43,13 @@ const Social = styled.article`
   align-items: center;
 `;
 
-const ProductDesc = ({ description }) => {
+const ProductDesc = ({ description, slogan }) => {
   return (
     <Container>
-      <Description>{ description }</Description>
+      <DescriptionContainer>
+        <Slogan><h2>{ slogan }</h2></Slogan>
+        <Description>{ description }</Description>
+      </DescriptionContainer>
       <Divider></Divider>
       <Social>
         <icon>$$</icon>

@@ -9,7 +9,6 @@ const Ratings = (props) => {
         <div id="rating-display">3.5</div>
         <StarDisplay rating={3.8} productId={1} />
       </div>
-
       <StarDisplay rating={2.4} productId={2} />
       <StarDisplay rating={4.2} productId={3} />
       <StarDisplay rating={0} productId={4} />

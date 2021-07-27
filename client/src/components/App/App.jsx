@@ -19,10 +19,10 @@ const App = () => {
   return (
     <div>
       <nav>NAV BAR</nav>
-      <Overview product={ product }/>
+      <Overview/>
+      <Related_ItemsAndComparison />
       <QandA />
       <RatingsAndReviews />
-      <Related_ItemsAndComparison />
     </div>
   );
 };

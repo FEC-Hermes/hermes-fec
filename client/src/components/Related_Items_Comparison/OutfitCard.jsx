@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const Outfit = () => {
     return (
-    <div className="Related_Products">
+    <div className="Outfits">
       <div className="">
         <img src=''></img>
       </div>

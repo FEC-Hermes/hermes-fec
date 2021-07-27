@@ -19,7 +19,7 @@ const App = () => {
   return (
     <div>
       <nav>NAV BAR</nav>
-      <Overview/>
+      <Overview product={ product }/>
       <Related_ItemsAndComparison />
       <QandA />
       <RatingsAndReviews />

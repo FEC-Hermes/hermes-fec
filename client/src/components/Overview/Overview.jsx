@@ -5,16 +5,13 @@ import StyledComponents from 'styled-components';
 import ImageGallery from './ImageGallery.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import StyleSelector from './StyleSelector.jsx';
-import AddToCart from './AddToCart.jsx';
+import AddToCart from './addToCart/AddToCart.jsx';
 import ProductDesc from './ProductDesc.jsx';
 
 import { product, styles, related } from './dummyData';
 
 
 const Overview = () => {
-  console.log(product);
-  console.log(styles);
-  console.log(related);
   return (
     <div>
           =======================

@@ -19,7 +19,7 @@ const Overview = ({ product }) => {
       <ProductInfo />
       <StyleSelector />
       <AddToCart />
-      <ProductDesc />
+      <ProductDesc description={ product.description }/>
           =======================
     </div>
   );

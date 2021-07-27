@@ -1,12 +1,17 @@
 import React from 'react';
+import Ratings from './Ratings.jsx';
+import Reviews from './Reviews.jsx';
 
-
-const RatingsAndReviews = () => {
-    return (
+const RatingsAndReviews = (props) => {
+  return (
     <div>
-     RatingsAndReviews Component
+      <div>Ratings & Reviews</div>
+      <div id="ratings-and-reviews-container">
+        <Ratings />
+        <Reviews />
+      </div>
     </div>
   )
-};
+}
 
 export default RatingsAndReviews;

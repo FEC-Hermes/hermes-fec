@@ -4,7 +4,7 @@ import axios from 'axios';
 import Overview from '../Overview/Overview.jsx';
 import QandA from '../Q&A/Q&A.jsx';
 import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
-import Related_ItemsAndComparison from '../Related_Items&Comparison/Related_Items&Comparison.jsx';
+import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_Comparison.jsx';
 
 const App = () => {
 
@@ -22,7 +22,7 @@ const App = () => {
     <div>
       <nav>NAV BAR</nav>
       <Overview product={ product }/>
-      <Related_ItemsAndComparison />
+      <Related_Items_Comparison />
       <QandA />
       <RatingsAndReviews />
     </div>

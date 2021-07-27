@@ -1,8 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
+
 
 const ProductInfo = () => {
   return (
-    <div>ProductInfo</div>
+    <div className="container">ProductInfo</div>
   );
 };
 

@@ -6,14 +6,16 @@ import QandA from '../Q&A/Q&A.jsx';
 import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
 import Related_ItemsAndComparison from '../Related_Items&Comparison/Related_Items&Comparison.jsx';
 
-
 const App = () => {
 
   const [product, setProduct] = useState({});
 
   useEffect(() => {
-    axios.get('/products')
-      .then(results => setProduct(results.data[0]));
+    async function getProduct() {
+      const products = await axios.get('/products');
+      setProduct(products.data[0]);
+    }
+    getProduct();
   }, []);
 
   return (

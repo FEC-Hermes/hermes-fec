@@ -1,35 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import data from '../dummyData.js';
+
 const AddToCart = () => {
+
+  let currStyle = data.styles.results[0];
+  const currQty = 
 
   const [style, setStyle] = useState({});
 
   useEffect(() => {
-    getAllStyles();
+    getStyle();
   }, []);
 
-  const getAllStyles = async (product_id) => {
-    product_id = 17607;
-
-    await axios.get('/products/?product_id/styles', {params: {product_id: product_id}})
-      .then(data => setStyle(data));
+  const getStyle = (product_id) => {
+    if (product_id) {
+      axios.get(`/products/${product_id}/styles`)
+        .then(({ data }) => setStyles(data.results))
+        .catch(err => console.log(err));
+    }
   };
 
-  const setCurrentStyle = (style_id) => {
-
-  };
+  // const setCurrentStyle = (style_id) => (styles.filter(style =>
+  //   style.style_id === style_id)
+  // );
 
   return (
 
     <div className="cart-container">
       <select>
-        
+        {
+          Object.keys(currStyle.skus).map(sku => (
+            <option key="sku">{}</option>
+          ))
+        }
       </select>
-      <input type="option"></input>
-      <input type="option"></input>
-    </div>
 
+      <select>
+      </select>
+
+      <button>ADD TO BAG</button>
+    </div>
   );
 };
 

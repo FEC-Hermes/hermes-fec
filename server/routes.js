@@ -88,7 +88,7 @@ router.get('/qa/questions/:question_id/answers', (req, res) => {
         .catch(err => res.status(401).json(err));
 });
 
-router.post('qa/questions', (req, res) => {
+router.post('/qa/questions', (req, res) => {
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions', headers)
         .then(data => res.status(201).json(data.data))
         .catch(err => res.status(401).json(err));

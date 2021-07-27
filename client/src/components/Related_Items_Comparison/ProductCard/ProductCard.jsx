@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import Modal from '../Modal.jsx';
+import Modal from '../Modal/Modal.jsx';
 import {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer} from './styles.js';
 
 const ProductCard = () => {

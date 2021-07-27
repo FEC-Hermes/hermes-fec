@@ -20,10 +20,9 @@ const App = () => {
     <div>
       <nav>NAV BAR</nav>
       <Overview/>
-      <Related_ItemsAndComparison />
+      <Related_Items_Comparison />
       <QandA />
       <RatingsAndReviews />
-      <Related_Items_Comparison />
     </div>
   );
 };

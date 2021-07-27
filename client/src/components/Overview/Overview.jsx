@@ -22,23 +22,15 @@ const Overview = ({ product }) => {
     <div>
       { Object.keys(product).length ?
         <Container>
-              =======================
           <h3>Overview Component</h3>
-          <ImageGallery
-            product_id={ product.id }
-          />
+          <ImageGallery product_id={ product.id } />
           <ProductInfo />
           <StyleSelector />
           <AddToCart />
-          <ProductDesc
-            description={ product.description }
-            slogan={ product.slogan }
-          />
-              =======================
+          <ProductDesc product={ product } />
         </Container>
         : null
       }
-
     </div>
   );
 };

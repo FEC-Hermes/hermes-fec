@@ -22,11 +22,9 @@ const DescriptionContainer = styled.div`
 `;
 
 const Slogan = styled.div`
-
 `;
 
 const Description = styled.article`
-
 `;
 
 const Divider = styled.div`
@@ -43,12 +41,12 @@ const Social = styled.article`
   align-items: center;
 `;
 
-const ProductDesc = ({ description, slogan }) => {
+const ProductDesc = ({ product }) => {
   return (
     <Container>
       <DescriptionContainer>
-        <Slogan><h2>{ slogan }</h2></Slogan>
-        <Description>{ description }</Description>
+        <Slogan><h3>{ product.slogan }</h3></Slogan>
+        <Description>{ product.description }</Description>
       </DescriptionContainer>
       <Divider></Divider>
       <Social>

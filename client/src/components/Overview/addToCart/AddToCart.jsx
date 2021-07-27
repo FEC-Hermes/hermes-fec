@@ -6,7 +6,6 @@ import data from '../dummyData.js';
 const AddToCart = () => {
 
   let currStyle = data.styles.results[0];
-  const currQty = 
 
   const [style, setStyle] = useState({});
 

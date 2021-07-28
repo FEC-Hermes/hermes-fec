@@ -50,10 +50,10 @@ const ProductDesc = ({ product }) => {
       </DescriptionContainer>
       <Divider></Divider>
       <Social>
-        <div>$$</div>
-        <div>%%</div>
-        <div>&&</div>
-        <div>@@</div>
+        <div>Some information</div>
+        <div>More information</div>
+        <div>Again, more information</div>
+        <div>Last information</div>
       </Social>
     </Container>
   );

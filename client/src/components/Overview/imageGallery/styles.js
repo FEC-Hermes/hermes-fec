@@ -30,7 +30,7 @@ const ImgFrame = styled.div`
   border: 1px solid black;
   overflow: hidden;
   margin: 5px auto;
-  box-shadow: 0px 0px 5px black;
+  box-shadow: 0px 0px 3px black;
 `;
 
 const Img = styled.img`

@@ -22,9 +22,9 @@ const App = () => {
     <div>
       <nav>NAV BAR</nav>
       <Overview product={ product }/>
-      {/* <Related_Items_Comparison /> */}
-      {/* <QandA /> */}
-      {/* <RatingsAndReviews /> */}
+      <Related_Items_Comparison />
+      <QandA />
+      <RatingsAndReviews />
     </div>
   );
 };

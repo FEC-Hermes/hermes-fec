@@ -62,7 +62,6 @@ var state = {
     }]
 
 };
-console.log(state);
 
 const ContainerQA = styled.div`
   display: flex;
@@ -99,14 +98,14 @@ const QandA = () => {
     //     fetchQues();
     // });
 
-    console.log(questions);
+    // console.log(answers);
 
     return (
 
         <ContainerQA>
             <h3>Questions & Answers {}</h3>
             <Search />
-            <QuestionsList />
+            <QuestionsList questions={questions} answers={answers} />
             <Thumbnails />
             <p>LOAD MORE ANSWERERS</p>
             <Buttons>

@@ -10,42 +10,61 @@ const AnwrSection = styled.section`
     flex-flow: column;
 `;
 
+const Main = styled.main`
+    display: flex;
+    flex-flow: column;
+`;
+
 const P = styled.p`
+    flex: 1;
 
 `;
 
 const Aside = styled.aside`
-    margin-left: 61%;
+    display: flex;
+    width: 100%;
 `;
 
-const QuestionsList = () => {
+const QuestionsList = ({questions, answers}) => {
+    {console.log(answers.results)}
     return (
         <div>
             <ul>
                 <li>
-                    <main>
+                    <Main>
 
                         <QuesSection>
-                            <P>Q: kkkkkkkkkkdkfdjfdjfdjfdjfdjfj?</P>
-                            <Aside>
-                                <p>Helpful?
-                                    <span>
-                                        Yes (25)
-                                    </span>
-                                    {' | '}
-                                    <span>
-                                        Add Answer
-                                    </span>
-                                </p>
-                                <p></p>
-                            </Aside>
+                            {questions.results.map(ques => {
+                                return (
+                                    <Aside key={ques.question_id}>
+                                        <P>Q: {ques.question_body}</P>
+                                        <p>Helpful?
+                                            <span>
+                                                Yes ({ques.question_helpfulness}) |
+                                            </span>
+
+                                            <span>
+                                                Add Answer
+                                            </span>
+                                        </p>
+                                    </Aside>
+                                );
+                            })}
                         </QuesSection>
 
                         <AnwrSection>
-                            <p>A: nnnbbbbxssssssssssssssssssssss?</p>
-                            <p>user info | Helpful | Report</p>
+                            {answers.results.map(answr => {
+                                return (
+                                    <div key={answr.answer_id}>
+                                        <p>A: {answr.body}</p>
+                                        <p>{`by User ${answr.answerer_name}
+                                            ${new Date(answr.date).getMonth() + 1}/${new Date(answr.date).getUTCDate()}/${new Date(answr.date).getUTCFullYear()}
+                                             | Helpful  | Report`}</p>
+                                    </div>
+                                );
+                            })}
                         </AnwrSection>
-                    </main>
+                    </Main>
                 </li>
             </ul>
         </div>

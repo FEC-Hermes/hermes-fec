@@ -11,6 +11,7 @@ import ProductContext from '../contexts/ProductContext.js';
 const App = () => {
 
   const [product, setProduct] = useState({});
+  const [rating, setRating] = useState(0);
 
   useEffect(() => {
     async function getProduct() {

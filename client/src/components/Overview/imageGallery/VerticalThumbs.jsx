@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { MainContainer, Arrow, ImgContainer, ImgFrame, Img } from './styles.js'
+import { MainContainer, ImgContainer, ImgFrame, Img } from './styles.js'
 
-//HOW DO I HANDLE THE HIGHLIGHT ON CLICK
-  //CURRENTLY NOT WORKING
-    //LOOK AT vThumb-img-active
 
 const VerticalThumbs = ({ styles }) => {
 
@@ -59,16 +56,17 @@ const VerticalThumbs = ({ styles }) => {
     const images = document.getElementsByClassName('thumbImg');
     Array.from(images).forEach(img => {
       img.parentNode.style.boxShadow = '0px 0px 3px #000';
+      img.parentNode.style.border = '1px solid #000';
     });
 
-    document.getElementById(id).parentNode.style.boxShadow = '0px 0px 9px #fff';
+    document.getElementById(id).parentNode.style.boxShadow = '0px 0px 8px #fff';
+    document.getElementById(id).parentNode.style.border = '2px solid #fff';
   };
 
   return (
     <MainContainer>
       <svg
         id="vThumb-arrow-up"
-        // className="vThumb-arrow"
         onClick={ () => onArrowClick('up') }
         width="30"
         height="30"
@@ -93,7 +91,6 @@ const VerticalThumbs = ({ styles }) => {
       </ImgContainer>
       <svg
         id="vThumb-arrow-down"
-        // className="vThumb-arrow-arrow"
         onClick={ () => onArrowClick('down') }
         width="30"
         height="30"

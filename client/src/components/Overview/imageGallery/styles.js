@@ -9,10 +9,6 @@ const MainContainer = styled.div`
   height: 665px;
 `;
 
-const Arrow = styled.div`
-  height: 25px;
-`;
-
 const ImgContainer = styled.div`
   box-sizing: border-box;
   display: inline-block;
@@ -37,6 +33,6 @@ const Img = styled.img`
   width: 90px;
 `;
 
-export { MainContainer, Arrow, ImgContainer, ImgFrame, Img };
+export { MainContainer, ImgContainer, ImgFrame, Img };
 
 

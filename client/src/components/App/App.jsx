@@ -21,10 +21,10 @@ const App = () => {
   return (
     <div>
       <nav>NAV BAR</nav>
-      <Overview product={ product }/>
-      <Related_Items_Comparison />
+      {/* <Overview product={ product }/> */}
+      {/* <Related_Items_Comparison /> */}
       <QandA />
-      <RatingsAndReviews />
+      {/* <RatingsAndReviews /> */}
     </div>
   );
 };

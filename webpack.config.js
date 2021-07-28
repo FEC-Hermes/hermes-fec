@@ -8,23 +8,23 @@ module.exports = {
     filename: 'bundle.js',
     path: DIST_DIR
   },
-  devtool: "eval-source-map",
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {
         test: /\.(js|jsx|css)?/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
             presets: [
-              "@babel/preset-env",
-              "@babel/preset-react"
+              '@babel/preset-env',
+              '@babel/preset-react'
             ],
             plugins: [
-              ["@babel/plugin-transform-runtime",
+              ['@babel/plugin-transform-runtime',
                 {
-                  "regenerator": true
+                  'regenerator': true
                 }
               ]
             ]

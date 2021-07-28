@@ -25,7 +25,7 @@ const Overview = ({ product }) => {
           <h3>Overview Component</h3>
           <ImageGallery product_id={ product.id } />
           <ProductInfo />
-          <StyleSelector />
+          <StyleSelector product_id={ product.id } />
           <AddToCart />
           <ProductDesc product={ product } />
         </Container>

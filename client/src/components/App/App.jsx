@@ -13,7 +13,7 @@ const App = () => {
   useEffect(() => {
     async function getProduct() {
       const products = await axios.get('/products');
-      setProduct(products.data[0]);
+      setProduct(products.data[4]);
     }
     getProduct();
   }, []);
@@ -22,9 +22,9 @@ const App = () => {
     <div>
       <nav>NAV BAR</nav>
       <Overview product={ product }/>
-      <Related_Items_Comparison />
-      <QandA />
-      <RatingsAndReviews />
+      {/* <Related_Items_Comparison /> */}
+      {/* <QandA /> */}
+      {/* <RatingsAndReviews /> */}
     </div>
   );
 };

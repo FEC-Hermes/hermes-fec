@@ -37,7 +37,7 @@ const Social = styled.article`
   padding: 15px;
 
   display:flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 `;
 
@@ -50,9 +50,10 @@ const ProductDesc = ({ product }) => {
       </DescriptionContainer>
       <Divider></Divider>
       <Social>
-        <icon>$$</icon>
-        <icon>%%</icon>
-        <icon>&&</icon>
+        <div>$$</div>
+        <div>%%</div>
+        <div>&&</div>
+        <div>@@</div>
       </Social>
     </Container>
   );

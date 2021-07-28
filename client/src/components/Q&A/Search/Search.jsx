@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import searchIcon from './media/search_icon.png';
+// import searchIcon from './media/search_icon.png';
+const searchIcon = 'https://cdn.onlinewebfonts.com/svg/img_168154.png';
 
 const Input = styled.input`
   border: none;
@@ -45,18 +46,18 @@ const Image = styled.img`
 
 
 const Search = () => {
-    return (
-        <Form>
-            <Input
-                placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
-                type='text'
-            />
+  return (
+    <Form>
+      <Input
+        placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
+        type='text'
+      />
 
-            <SearchBtn>
-                <Image src={searchIcon} />
-            </SearchBtn>
-        </Form>
-    );
+      <SearchBtn>
+        <Image src={searchIcon} />
+      </SearchBtn>
+    </Form>
+  );
 };
 
 export default Search;

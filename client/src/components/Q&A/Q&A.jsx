@@ -6,6 +6,9 @@ import styled from 'styled-components';
 import Search from './Search/Search.jsx';
 import QuestionsList from './QuestionsList/QuestionsList.jsx';
 
+import AddQuestion from './AddQuestion/AddQuestion.jsx';
+import AddAnswer from './AddAnswer/AddAnswer.jsx';
+
 
 var state = {
   questions: [{
@@ -109,6 +112,13 @@ const QandA = () => {
         <Button>MORE ANSWERED QUESTIONS</Button>
         <Button>ADD A QUESTION  +</Button>
       </Buttons>
+
+      <AddAnswer />
+      <p>
+        ------------------------------------------------------------------------
+      </p>
+      <AddQuestion />
+
     </ContainerQA>
   );
 };

@@ -12,10 +12,6 @@ const VerticalThumbs = ({ styles }) => {
   const [yAxis, setYAxis] = useState(0);
 
   useEffect(() => {
-    arrowVisibility();
-  }, []);
-
-  useEffect(() => {
     slideThumbs();
     arrowVisibility();
   }, [imageIdx]);

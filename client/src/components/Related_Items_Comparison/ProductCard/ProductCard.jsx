@@ -37,9 +37,11 @@ const ProductCard = () => {
               <CardText font_size={'1.5rem'}>{name}</CardText>
               <CardText font_size={'1rem'} >${original_price}</CardText>
               <Stars margin={'0 0 0 0.5rem'}src="stars.png" />
+
             </Card>
           )}
         )}
+      <Modal />
     </RelatedProducts>
   );
 };

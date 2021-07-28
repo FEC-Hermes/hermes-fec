@@ -7,11 +7,8 @@ import QandA from '../Q&A/Q&A.jsx';
 import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
 import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_Comparison.jsx';
 
-<<<<<<< HEAD
-=======
 import ProductContext from '../contexts/ProductContext.js';
 
->>>>>>> 9620e0ee69c76b188c7d402362d85bc927e41161
 const App = () => {
 
   const [product, setProduct] = useState({});
@@ -19,13 +16,6 @@ const App = () => {
   const [reviewMeta, setReviewMeta] = useState({});
 
   useEffect(() => {
-<<<<<<< HEAD
-    async function getProduct() {
-      const products = await axios.get('/products');
-      setProduct(products.data[0]);
-    }
-    getProduct();
-=======
     axios.get('/products')
       .then(results => {
         setProduct(results.data[4]);
@@ -40,18 +30,11 @@ const App = () => {
       });
 
     // product id === 17071
->>>>>>> 9620e0ee69c76b188c7d402362d85bc927e41161
   }, []);
 
   return (
     <div>
       <nav>NAV BAR</nav>
-<<<<<<< HEAD
-      <Overview product={ product }/>
-      <Related_Items_Comparison />
-      <QandA />
-      <RatingsAndReviews />
-=======
       <ProductContext.Provider value={
         {
           product: [product, setProduct],
@@ -73,7 +56,6 @@ const App = () => {
             null
         }
       </ProductContext.Provider>
->>>>>>> 9620e0ee69c76b188c7d402362d85bc927e41161
     </div>
   );
 };

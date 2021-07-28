@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { MainContainer, ImgContainer, ImgFrame, Img } from './styles.js'
 
-<<<<<<< HEAD
-// import { styles } from '../dummyData.js';
-
-const VerticalThumbs = ({ styles }) => {
-  let maxIdx = styles.length - 7;
-
-=======
 
 const VerticalThumbs = ({ styles }) => {
 
   let maxIdx = styles[3].photos.length - 7;
->>>>>>> 9620e0ee69c76b188c7d402362d85bc927e41161
   const [imageIdx, setImageIdx] = useState(0);
   const [yAxis, setYAxis] = useState(0);
 
@@ -25,11 +17,7 @@ const VerticalThumbs = ({ styles }) => {
     const arrowUp = document.getElementById('vThumb-arrow-up');
     const arrowDown = document.getElementById('vThumb-arrow-down');
 
-<<<<<<< HEAD
-    if (maxIdx <= 7) {
-=======
     if (styles[0].photos.length <= 7) {
->>>>>>> 9620e0ee69c76b188c7d402362d85bc927e41161
       arrowUp.style.visibility = 'hidden';
       arrowDown.style.visibility = 'hidden';
     } else if (imageIdx === 0) {

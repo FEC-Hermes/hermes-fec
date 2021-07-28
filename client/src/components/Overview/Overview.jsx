@@ -8,28 +8,37 @@ import ProductInfo from './ProductInfo.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import ProductDesc from './ProductDesc.jsx';
 
-const Container = styled.main`
+const MainContainer = styled.main`
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   width: 1280px;
 
+  display: flex;
+  flex-wrap: wrap;
   background-color: grey;
+`;
+
+const InfoContainer = styled.main`
+  display: flex;
+  flex-direction: column;
 `;
 
 const Overview = ({ product }) => {
   return (
     <div>
-      { Object.keys(product).length ?
-        <Container>
-          <h3>Overview Component</h3>
-          <ImageGallery product_id={ product.id } />
-          <ProductInfo />
-          <StyleSelector product_id={ product.id } />
-          <AddToCart />
-          <ProductDesc product={ product } />
-        </Container>
-        : null
+      {
+        Object.keys(product).length ?
+          <MainContainer>
+            <ImageGallery product_id={ product.id } />
+            <InfoContainer>
+              <ProductInfo />
+              <StyleSelector product_id={ product.id } />
+              <AddToCart />
+            </InfoContainer>
+            <ProductDesc product={ product } />
+          </MainContainer>
+          : null
       }
     </div>
   );

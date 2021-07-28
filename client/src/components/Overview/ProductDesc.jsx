@@ -6,9 +6,9 @@ const Container = styled.main`
   height: 200px;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  padding-left: 130px;
 `;
 
 const DescriptionContainer = styled.div`
@@ -34,7 +34,7 @@ const Divider = styled.div`
 
 const Attributes = styled.article`
   flex-grow: 1;
-  padding: 15px;
+  padding-left: 20px;
   height: 135px;
   display:flex;
   flex-direction: column;

@@ -26,7 +26,7 @@ const ImgFrame = styled.div`
   justify-content: center;
   width: 80px;
   height: 80px;
-  border-radius: 3px;
+  border-radius: 4px;
   border: 1px solid black;
   overflow: hidden;
   margin: 5px auto;
@@ -39,10 +39,5 @@ const Img = styled.img`
 `;
 
 export { MainContainer, Arrow, ImgContainer, ImgFrame, Img };
-
-
-// .vThumb-img-active{
-//   border-bottom: 6px solid rgba(255, 255, 255, 0.637);
-// }
 
 

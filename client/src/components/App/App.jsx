@@ -9,13 +9,24 @@ import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_
 const App = () => {
 
   const [product, setProduct] = useState({});
+  const [reviews, setReviews] = useState([]);
+  const [reviewMeta, setReviewMeta] = useState({});
 
   useEffect(() => {
-    async function getProduct() {
-      const products = await axios.get('/products');
-      setProduct(products.data[0]);
-    }
-    getProduct();
+    axios.get('/products')
+      .then(results => {
+        setProduct(results.data[0]);
+        axios.get(`/reviews/${results.data[0].id}/relevant/1/10000`)
+          .then(results => {
+            setReviews(results.data);
+          });
+        axios.get(`/reviews/meta/${results.data[0].id}`)
+          .then(results => {
+            setReviewMeta(results.data);
+          });
+      });
+
+    //product id === 17067
   }, []);
 
   return (
@@ -24,7 +35,16 @@ const App = () => {
       <Overview product={ product }/>
       <Related_Items_Comparison />
       <QandA />
-      <RatingsAndReviews />
+      {
+        Object.keys(reviews).length > 0 && Object.keys(reviewMeta).length > 0
+          ?
+        <RatingsAndReviews
+          reviews={reviews}
+          reviewMeta={reviewMeta}
+        />
+          :
+        null
+      }
     </div>
   );
 };

@@ -1,4 +1,9 @@
 node_modules
 config.js
+<<<<<<< HEAD
 client/dist/bundle.js
 process.md
+=======
+client/dist
+client/dist/bundle.js
+>>>>>>> main

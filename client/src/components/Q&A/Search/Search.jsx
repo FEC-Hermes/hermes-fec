@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-// import searchIcon from './media/search_icon.png';
 const searchIcon = 'https://cdn.onlinewebfonts.com/svg/img_168154.png';
+
 
 const Input = styled.input`
   border: none;
@@ -61,3 +61,4 @@ const Search = () => {
 };
 
 export default Search;
+

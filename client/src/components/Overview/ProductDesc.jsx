@@ -1,14 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import ProductContext from '../contexts/ProductContext.js';
+
 const Container = styled.main`
   width: 1024px;
   height: 200px;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  padding-left: 130px;
 `;
 
 const DescriptionContainer = styled.div`
@@ -32,28 +34,34 @@ const Divider = styled.div`
   border-left: 3px solid black;
 `;
 
-const Social = styled.article`
+const Attributes = styled.article`
   flex-grow: 1;
-  padding: 15px;
-
+  padding-left: 20px;
+  height: 135px;
   display:flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-around;
 `;
 
-const ProductDesc = ({ product }) => {
+const ProductDesc = () => {
+
+  const { product } = React.useContext(ProductContext);
+  const [productObj] = product;
+
   return (
     <Container>
       <DescriptionContainer>
-        <Slogan><h3>{ product.slogan }</h3></Slogan>
-        <Description>{ product.description }</Description>
+        <Slogan><h3>{ productObj.slogan }</h3></Slogan>
+        <Description>{ productObj.description }</Description>
       </DescriptionContainer>
       <Divider></Divider>
-      <Social>
-        <icon>$$</icon>
-        <icon>%%</icon>
-        <icon>&&</icon>
-      </Social>
+      <Attributes>
+        <div>Some information</div>
+        <div>More information</div>
+        <div>Again, more information</div>
+        <div>Last information</div>
+      </Attributes>
     </Container>
   );
 };

@@ -56,9 +56,9 @@ const CharacteristicQuarters = (props) => {
         />
       </svg>
       <div className="descriptors">
-        <div className="low-descriptor">{props.characteristic.low}</div>
-        <div className="balanced-descriptor">{props.characteristic.balanced}</div>
-        <div className="high-descriptor">{props.characteristic.high}</div>
+        <div className="decriptor low-descriptor">{props.characteristic.low}</div>
+        <div className="decriptor balanced-descriptor">{props.characteristic.balanced}</div>
+        <div className="decriptor high-descriptor">{props.characteristic.high}</div>
       </div>
     </div>
   )

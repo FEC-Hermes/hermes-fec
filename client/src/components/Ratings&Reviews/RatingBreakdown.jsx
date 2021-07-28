@@ -1,37 +1,33 @@
 import React from 'react';
 import RatingCount from './RatingCount.jsx';
 
-const RatingBreakdown = (props)=> {
-  var totalRatings = 64;
-  var ratings = {
-    1: 3,
-    2: 6,
-    3: 7,
-    4: 32,
-    5: 16
-  };
+const RatingBreakdown = ({ratings})=> {
+  var totalRatings = 0;
+  for (var rating in ratings) {
+    totalRatings += Number(ratings[rating]);
+  }
 
   return (
     <div>
-      <RatingCount ratingCount={ratings[1]}
+      <RatingCount ratingCount={Number(ratings[5])}
         totalRatings={totalRatings}
-        count={1}
+        count={5}
       />
-      <RatingCount ratingCount={ratings[2]}
-        totalRatings={totalRatings}
-        count={2}
-      />
-      <RatingCount ratingCount={ratings[3]}
-        totalRatings={totalRatings}
-        count={3}
-      />
-      <RatingCount ratingCount={ratings[4]}
+      <RatingCount ratingCount={Number(ratings[4])}
         totalRatings={totalRatings}
         count={4}
       />
-      <RatingCount ratingCount={ratings[5]}
+      <RatingCount ratingCount={Number(ratings[3])}
         totalRatings={totalRatings}
-        count={5}
+        count={3}
+      />
+      <RatingCount ratingCount={Number(ratings[2])}
+        totalRatings={totalRatings}
+        count={2}
+      />
+      <RatingCount ratingCount={Number(ratings[1])}
+        totalRatings={totalRatings}
+        count={1}
       />
     </div>
   );

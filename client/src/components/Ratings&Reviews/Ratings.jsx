@@ -18,7 +18,7 @@ const Ratings = ({reviewMeta}) => {
         recommended={reviewMeta.recommended}
       />
       <RatingBreakdown ratings={reviewMeta.ratings}/>
-      <Characteristics />
+      <Characteristics characteristics={reviewMeta.characteristics}/>
     </div>
   );
 };

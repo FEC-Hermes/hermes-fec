@@ -12,9 +12,6 @@ const Characteristics = ({characteristics}) => {
     setWidth(width);
   });
 
-  console.log('Characteristics Display:');
-  console.log(characteristics);
-
   if (characteristics.Size) {
     var sizeCharacteristic = {
       id: 14,

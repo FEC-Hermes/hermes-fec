@@ -5,9 +5,6 @@ import RatingBreakdown from './RatingBreakdown.jsx';
 import Characteristics from './Characteristics.jsx';
 
 const Ratings = ({reviewMeta}) => {
-  console.log('Review Meta');
-  console.log(reviewMeta);
-
   return (
     <div id="ratings">
       <AverageDisplay

@@ -17,17 +17,12 @@ const App = () => {
     axios.get('/products')
       .then(results => {
         setProduct(results.data[0]);
-        console.log(results.data[0]);
         axios.get(`/reviews/${results.data[0].id}/relevant/1/10000`)
           .then(results => {
-            console.log('Reached Reviews fetch with data');
-            console.log(results.data);
             setReviews(results.data);
           });
         axios.get(`/reviews/meta/${results.data[0].id}`)
           .then(results => {
-            console.log('Reached Reviews meta fetch with data');
-            console.log(results.data);
             setReviewMeta(results.data);
           });
       });

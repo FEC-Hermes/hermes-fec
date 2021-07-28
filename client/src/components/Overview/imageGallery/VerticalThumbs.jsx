@@ -58,10 +58,10 @@ const VerticalThumbs = ({ styles }) => {
   const onImageClick = (id) => {
     const images = document.getElementsByClassName('thumbImg');
     Array.from(images).forEach(img => {
-      img.style.borderBottom = null;
+      img.parentNode.style.boxShadow = '0px 0px 3px #000';
     });
 
-    document.getElementById(id).style.borderBottom = '3px solid green';
+    document.getElementById(id).parentNode.style.boxShadow = '0px 0px 9px #fff';
   };
 
   return (
@@ -83,9 +83,9 @@ const VerticalThumbs = ({ styles }) => {
             <ImgFrame key={ style.style_id } className="imgFrame">
               <Img
                 src={ style.thumbnail_url }
-                id={ `vThumb${style.style_id}` }
+                id={ style.url }
                 className="thumbImg"
-                onClick={ () => onImageClick(style.style_id)}
+                onClick={ () => onImageClick(style.url)}
               />
             </ImgFrame>
           ))

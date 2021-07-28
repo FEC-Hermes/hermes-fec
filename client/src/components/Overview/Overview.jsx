@@ -14,7 +14,7 @@ const Container = styled.main`
   margin: 0;
   width: 1280px;
 
-  background-color: rgb(202, 224, 233);
+  background-color: grey;
 `;
 
 const Overview = ({ product }) => {

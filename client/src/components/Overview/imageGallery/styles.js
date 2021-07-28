@@ -35,7 +35,6 @@ const ImgFrame = styled.div`
 
 const Img = styled.img`
   width: 90px;
-
 `;
 
 export { MainContainer, Arrow, ImgContainer, ImgFrame, Img };

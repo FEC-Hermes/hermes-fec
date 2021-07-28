@@ -31,20 +31,12 @@ const VerticalThumbs = ({ styles }) => {
   };
 
   const slideThumbs = () => {
-<<<<<<< HEAD
-    const images = document.getElementsByClassName('vThumb-img-frame');
-=======
     const images = document.getElementsByClassName('imgFrame');
->>>>>>> 9620e0ee69c76b188c7d402362d85bc927e41161
 
     Array.from(images).forEach(img => {
       img.style.transform = `translateY(${yAxis}px)`;
       img.style.transitionTimingFunction = 'ease-in';
-<<<<<<< HEAD
-      img.style.transition = '.5s';
-=======
       img.style.transition = '.3s';
->>>>>>> 9620e0ee69c76b188c7d402362d85bc927e41161
     });
   };
 
@@ -71,11 +63,7 @@ const VerticalThumbs = ({ styles }) => {
   };
 
   return (
-<<<<<<< HEAD
-    <div className="vThumb-container">
-=======
     <MainContainer>
->>>>>>> 9620e0ee69c76b188c7d402362d85bc927e41161
       <svg
         id="vThumb-arrow-up"
         onClick={ () => onArrowClick('up') }
@@ -86,27 +74,6 @@ const VerticalThumbs = ({ styles }) => {
         focusable="false"
         data-icon="chevron-up"
         viewBox="0 0 448 512"><path fill="currentColor" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"></path></svg>
-<<<<<<< HEAD
-      <div className="vThumb-img-container">
-        {
-          styles.map(style => (
-            <div
-              key={ style.style_id }
-              className="vThumb-img-frame" >
-              <img
-                src={ style.photos[0].thumbnail_url }
-                id={ style.style_id }
-                className="vThumb-img"
-                onClick={ () => onImageClick(style.style_id)}
-              />
-            </div>
-          ))
-        }
-      </div>
-      <svg
-        id="vThumb-arrow-down"
-        className="vThumb-arrow-arrow"
-=======
       <ImgContainer>
         {
           styles[3].photos.map(style => (
@@ -123,7 +90,6 @@ const VerticalThumbs = ({ styles }) => {
       </ImgContainer>
       <svg
         id="vThumb-arrow-down"
->>>>>>> 9620e0ee69c76b188c7d402362d85bc927e41161
         onClick={ () => onArrowClick('down') }
         width="30"
         height="30"
@@ -132,11 +98,7 @@ const VerticalThumbs = ({ styles }) => {
         focusable="false"
         data-icon="chevron-down"
         viewBox="0 0 448 512"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg>
-<<<<<<< HEAD
-    </div>
-=======
     </MainContainer>
->>>>>>> 9620e0ee69c76b188c7d402362d85bc927e41161
   );
 };
 

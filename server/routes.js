@@ -40,7 +40,7 @@ router.get('/products/:product_id/related', (req, res) => {
 //      REVIEWS      /////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-router.get('/reviews', (req, res) => {
+router.get('/reviews/', (req, res) => {
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews', headers)
     .then(({ data }) => res.status(200).json(data))
     .catch(err => res.status(401).json(err));

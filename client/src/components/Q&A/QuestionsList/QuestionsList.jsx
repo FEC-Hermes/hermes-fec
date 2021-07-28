@@ -29,7 +29,7 @@ const Aside = styled.aside`
 `;
 
 const QuestionsList = ({questions, answers}) => {
-  {console.log(answers.results)}
+  // {console.log(answers.results)}
   return (
     <div>
       <ul>
@@ -56,7 +56,7 @@ const QuestionsList = ({questions, answers}) => {
             </QuesSection>
 
             <AnwrSection>
-              {console.log(answers.results)}
+              {/* {console.log(answers.results)} */}
               {answers.results.map(answr => {
                 return (
                   <div key={answr.answer_id}>

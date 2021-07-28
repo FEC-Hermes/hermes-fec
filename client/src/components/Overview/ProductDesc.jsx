@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import ProductContext from '../contexts/ProductContext.js';
+
 const Container = styled.main`
   width: 1024px;
   height: 200px;
@@ -42,12 +44,16 @@ const Attributes = styled.article`
   justify-content: space-around;
 `;
 
-const ProductDesc = ({ product }) => {
+const ProductDesc = () => {
+
+  const { product } = React.useContext(ProductContext);
+  const [productObj] = product;
+
   return (
     <Container>
       <DescriptionContainer>
-        <Slogan><h3>{ product.slogan }</h3></Slogan>
-        <Description>{ product.description }</Description>
+        <Slogan><h3>{ productObj.slogan }</h3></Slogan>
+        <Description>{ productObj.description }</Description>
       </DescriptionContainer>
       <Divider></Divider>
       <Attributes>

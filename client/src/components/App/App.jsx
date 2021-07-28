@@ -6,6 +6,7 @@ import Overview from '../Overview/Overview.jsx';
 import QandA from '../Q&A/Q&A.jsx';
 import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
 import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_Comparison.jsx';
+import ProductContext from '../contexts/ProductContext.js';
 
 const App = () => {
 
@@ -22,10 +23,14 @@ const App = () => {
   return (
     <div>
       <nav>NAV BAR</nav>
-      <Overview product={ product }/>
-      <Related_Items_Comparison />
-      <QandA />
-      <RatingsAndReviews />
+      <ProductContext.Provider value={ { product:[product, setProduct] } }>
+
+        <Overview product={ product }/>
+        <Related_Items_Comparison />
+        <QandA />
+        <RatingsAndReviews />
+
+      </ProductContext.Provider>
     </div>
   );
 };

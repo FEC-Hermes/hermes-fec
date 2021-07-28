@@ -12,7 +12,7 @@ const RatingsAndReviews = (props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default RatingsAndReviews;

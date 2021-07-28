@@ -11,7 +11,9 @@ const PercentRecommended = (props) => {
   }
 
   return (
-    <div className="percent-recommended">{percentRecommended}% of reviews recommend this product</div>
+    <div className="percent-recommended">
+      {percentRecommended}% of reviews recommend this product
+    </div>
   );
 };
 

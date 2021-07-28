@@ -7,6 +7,32 @@ import CharacteristicQuarters from './CharacteristicQuarters.jsx';
 
 const Characteristics = (props) => {
   const [width, setWidth] = useState(0);
+  const [characteristics, setCharacteristics] = useState({
+    "Size": {
+      "id": 14,
+      "value": "4.0000"
+    },
+    "Width": {
+      "id": 15,
+      "value": "3.5000"
+    },
+    "Comfort": {
+      "id": 16,
+      "value": "4.0000"
+    },
+    "Quality": {
+      "id": 17,
+      "value": "4.3500"
+    },
+    "Length": {
+      "id": 18,
+      "value": "3.5000"
+    },
+    "Fit": {
+      "id": 19,
+      "value": "3.0000"
+    }
+  });
 
   useEffect(() => {
     var width = document.getElementById('characteristics-container').offsetWidth;
@@ -15,7 +41,7 @@ const Characteristics = (props) => {
 
   var size = {
     name: 'Size',
-    value: 2.6,
+    value: Number(characteristics.Size.value),
     low: 'A Size Too Small',
     balanced: 'Perfect',
     high: 'A Size Too Wide'
@@ -23,7 +49,7 @@ const Characteristics = (props) => {
 
   var widthCharacteristic = {
     name: 'Width',
-    value: 3.6,
+    value: Number(characteristics.Width.value),
     low: 'Too Narrow',
     balanced: 'Perfect',
     high: 'Too Wide'
@@ -31,7 +57,7 @@ const Characteristics = (props) => {
 
   var comfort = {
     name: 'Comfort',
-    value: 1.75,
+    value: Number(characteristics.Comfort.value),
     low: 'Uncomfortable',
     balanced: 'Ok',
     high: 'Perfect'
@@ -39,7 +65,7 @@ const Characteristics = (props) => {
 
   var quality = {
     name: 'Quality',
-    value: 5,
+    value: Number(characteristics.Quality.value),
     low: 'Poor',
     balanced: 'What I Expected',
     high: 'Perfect'
@@ -47,7 +73,7 @@ const Characteristics = (props) => {
 
   var length = {
     name: 'Length',
-    value: 1,
+    value: Number(characteristics.Length.value),
     low: 'Runs Short',
     balanced: 'Perfect',
     high: 'Runs Long'
@@ -55,9 +81,9 @@ const Characteristics = (props) => {
 
   var fit = {
     name: 'Fit',
-    value: 3,
+    value: Number(characteristics.Fit.value),
     low: 'Runs Tight',
-    balanced: 'Perfectly Balanced, As All Things Should Be',
+    balanced: 'Perfect',
     high: 'Runs Long'
   };
 

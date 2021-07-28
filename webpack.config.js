@@ -11,6 +11,7 @@ module.exports = {
   devtool: 'eval-source-map',
   module: {
     rules: [
+      { test: /\.(png|jpe?g|gif)$/i, use: 'url-loader',},
       {
         test: /\.(js|jsx|css)?/,
         exclude: /node_modules/,
@@ -29,7 +30,7 @@ module.exports = {
               ]
             ]
           }
-        }
+        },
       }
     ]
   }

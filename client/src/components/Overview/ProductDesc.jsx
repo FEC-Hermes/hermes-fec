@@ -32,13 +32,14 @@ const Divider = styled.div`
   border-left: 3px solid black;
 `;
 
-const Social = styled.article`
+const Attributes = styled.article`
   flex-grow: 1;
   padding: 15px;
-
+  height: 135px;
   display:flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
 `;
 
 const ProductDesc = ({ product }) => {
@@ -49,12 +50,12 @@ const ProductDesc = ({ product }) => {
         <Description>{ product.description }</Description>
       </DescriptionContainer>
       <Divider></Divider>
-      <Social>
+      <Attributes>
         <div>Some information</div>
         <div>More information</div>
         <div>Again, more information</div>
         <div>Last information</div>
-      </Social>
+      </Attributes>
     </Container>
   );
 };

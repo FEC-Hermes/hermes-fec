@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
+import DisplayImage from './DisplayImage.jsx';
 import VerticalThumbs from './VerticalThumbs.jsx';
+
+const MainContainer = styled.main`
+  width: 900px;
+`;
 
 const ImageGallery = ({ product_id }) => {
 
@@ -20,10 +26,10 @@ const ImageGallery = ({ product_id }) => {
   };
 
   return (
-    <div>
+    <MainContainer>
+      <DisplayImage />
       { Object.keys(styles).length ? <VerticalThumbs styles={ styles } /> : null }
-      <div>ImageGallery</div>
-    </div>
+    </MainContainer>
   );
 };
 

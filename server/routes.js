@@ -163,14 +163,4 @@ router.post('/interactions', (req, res) => {
     .catch(err => res.status(401).json(err));
 });
 
-//////////////////////////////////////////////////////////////
-//      USER ??!      ////////////////////////////////////////////
-//////////////////////////////////////////////////////////////
-
-router.post('/user', (req, res) => {
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/user', headers)
-    .then(data => res.status(201).json(data.data))
-    .catch(err => res.status(401).json(err));
-});
-
 module.exports = router;

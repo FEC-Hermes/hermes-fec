@@ -1,7 +1,6 @@
 import React from 'react';
 
-const ReviewCount = (props) => {
-  var reviewCount = 64;
+const ReviewCount = ({reviewCount}) => {
   return (
     <div>
       {reviewCount} reviews, sorted by

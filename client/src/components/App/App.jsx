@@ -18,7 +18,7 @@ const App = () => {
       .then(results => {
         setProduct(results.data[0]);
         console.log(results.data[0]);
-        axios.get(`/reviews/${results.data[0].id}/relevant/1/2`)
+        axios.get(`/reviews/${results.data[0].id}/relevant/1/10000`)
           .then(results => {
             console.log('Reached Reviews fetch with data');
             console.log(results.data);

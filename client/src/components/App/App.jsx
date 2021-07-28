@@ -13,7 +13,6 @@ const App = () => {
   const [reviewMeta, setReviewMeta] = useState({});
 
   useEffect(() => {
-<<<<<<< HEAD
     axios.get('/products')
       .then(results => {
         setProduct(results.data[0]);
@@ -28,24 +27,13 @@ const App = () => {
       });
 
     //product id === 17067
-=======
-    async function getProduct() {
-      const products = await axios.get('/products');
-      setProduct(products.data[0]);
-    }
-    getProduct();
->>>>>>> main
   }, []);
 
   return (
     <div>
       <nav>NAV BAR</nav>
       <Overview product={ product }/>
-<<<<<<< HEAD
-      <Related_ItemsAndComparison />
-=======
       <Related_Items_Comparison />
->>>>>>> main
       <QandA />
       {
         Object.keys(reviews).length > 0 && Object.keys(reviewMeta).length > 0

@@ -19,11 +19,11 @@ const App = () => {
         setProduct(results.data[0]);
         console.log(results.data[0]);
         axios.get(`/reviews/${results.data[0].id}/relevant/1/2`)
-        .then(results => {
-          console.log('Reached Reviews fetch with data');
-          console.log(results.data);
-          setReviews(results.data);
-        });
+          .then(results => {
+            console.log('Reached Reviews fetch with data');
+            console.log(results.data);
+            setReviews(results.data);
+          });
         axios.get(`/reviews/meta/${results.data[0].id}`)
           .then(results => {
             console.log('Reached Reviews meta fetch with data');
@@ -32,7 +32,7 @@ const App = () => {
           });
       });
 
-      //product id === 17067
+    //product id === 17067
   }, []);
 
   return (

@@ -7,8 +7,8 @@ const RatingsAndReviews = (props) => {
     <div>
       <div id="ratings-and-reviews-title">Ratings & Reviews
         <div id="ratings-and-reviews-container">
-          <Ratings />
-          <Reviews />
+          <Ratings reviewMeta={props.reviewMeta}/>
+          <Reviews reviews={props.reviews}/>
         </div>
       </div>
     </div>

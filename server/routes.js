@@ -49,6 +49,14 @@ router.get('/reviews/:product_id/:sort/:page/:count', (req, res) => {
     .catch(err => res.status(401).json(err));
 });
 
+//test to sweep all reviews for info
+router.get('/reviews/:product_id', (req, res) => {
+  var product_id = req.params.product_id;
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${product_id}&count=500`, headers)
+    .then(data => res.status(200).json(data.data))
+    .catch(err => res.status(401).json(err));
+});
+
 router.get('/reviews/meta/:product_id', (req, res) => {
   var product_id = req.params.product_id
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta/?product_id=${product_id}`, headers)
@@ -150,6 +158,16 @@ router.post('/cart', (req, res) => {
 
 router.post('/interactions', (req, res) => {
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/interactions', headers)
+    .then(data => res.status(201).json(data.data))
+    .catch(err => res.status(401).json(err));
+});
+
+//////////////////////////////////////////////////////////////
+//      USER ??!      ////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+router.post('/user', (req, res) => {
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/user', headers)
     .then(data => res.status(201).json(data.data))
     .catch(err => res.status(401).json(err));
 });

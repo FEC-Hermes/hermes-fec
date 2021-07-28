@@ -13,7 +13,6 @@ const VerticalThumbs = ({ styles }) => {
     arrowVisibility();
   }, [imageIdx]);
 
-
   const arrowVisibility = () => {
     const arrowUp = document.getElementById('vThumb-arrow-up');
     const arrowDown = document.getElementById('vThumb-arrow-down');
@@ -37,17 +36,17 @@ const VerticalThumbs = ({ styles }) => {
     Array.from(images).forEach(img => {
       img.style.transform = `translateY(${yAxis}px)`;
       img.style.transitionTimingFunction = 'ease-in';
-      img.style.transition = '.5s';
+      img.style.transition = '.3s';
     });
   };
 
   const onArrowClick = (arrow) => {
 
     if (arrow === 'up' && imageIdx > 0) {
-      setYAxis(yAxis + 88);
+      setYAxis(yAxis + 89);
       setImageIdx(imageIdx - 1);
     } else if (arrow === 'down' && imageIdx < maxIdx) {
-      setYAxis(yAxis - 88);
+      setYAxis(yAxis - 89);
       setImageIdx(imageIdx + 1);
     }
   };
@@ -60,7 +59,7 @@ const VerticalThumbs = ({ styles }) => {
     });
 
     document.getElementById(id).parentNode.style.boxShadow = '0px 0px 8px #fff';
-    document.getElementById(id).parentNode.style.border = '2px solid #fff';
+    document.getElementById(id).parentNode.style.border = '3px solid #fff';
   };
 
   return (

@@ -1,8 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+<<<<<<< HEAD
 
 import VerticalThumbs from './VerticalThumbs.jsx';
 
+=======
+import styled from 'styled-components';
+
+import DisplayImage from './DisplayImage.jsx';
+import VerticalThumbs from './VerticalThumbs.jsx';
+
+const MainContainer = styled.main`
+  width: 900px;
+`;
+
+>>>>>>> 9620e0ee69c76b188c7d402362d85bc927e41161
 const ImageGallery = ({ product_id }) => {
 
   const [styles, setStyles] = useState([]);
@@ -20,10 +32,17 @@ const ImageGallery = ({ product_id }) => {
   };
 
   return (
+<<<<<<< HEAD
     <div>
       { Object.keys(styles).length ? <VerticalThumbs styles={ styles } /> : null }
       <div>ImageGallery</div>
     </div>
+=======
+    <MainContainer>
+      <DisplayImage />
+      { Object.keys(styles).length ? <VerticalThumbs styles={ styles } /> : null }
+    </MainContainer>
+>>>>>>> 9620e0ee69c76b188c7d402362d85bc927e41161
   );
 };
 

@@ -29,7 +29,11 @@ const Aside = styled.aside`
 `;
 
 const QuestionsList = ({questions, answers}) => {
+<<<<<<< HEAD
   {console.log(answers.results)}
+=======
+  // {console.log(answers.results)}
+>>>>>>> 9620e0ee69c76b188c7d402362d85bc927e41161
   return (
     <div>
       <ul>
@@ -56,7 +60,11 @@ const QuestionsList = ({questions, answers}) => {
             </QuesSection>
 
             <AnwrSection>
+<<<<<<< HEAD
               {console.log(answers.results)}
+=======
+              {/* {console.log(answers.results)} */}
+>>>>>>> 9620e0ee69c76b188c7d402362d85bc927e41161
               {answers.results.map(answr => {
                 return (
                   <div key={answr.answer_id}>

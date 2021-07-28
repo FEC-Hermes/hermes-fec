@@ -37,11 +37,17 @@ const ProductCard = () => {
               <CardText font_size={'1.5rem'}>{name}</CardText>
               <CardText font_size={'1rem'} >${original_price}</CardText>
               <Stars margin={'0 0 0 0.5rem'}src="stars.png" />
+<<<<<<< HEAD
 
             </Card>
           )}
         )}
       <Modal />
+=======
+            </Card>
+          )}
+        )}
+>>>>>>> 9620e0ee69c76b188c7d402362d85bc927e41161
     </RelatedProducts>
   );
 };

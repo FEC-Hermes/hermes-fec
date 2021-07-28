@@ -4,14 +4,20 @@ import PercentRecommended from './PercentRecommended.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import Characteristics from './Characteristics.jsx';
 
-const Ratings = (props) => {
-
+const Ratings = ({reviewMeta}) => {
+  console.log('Review Meta');
+  console.log(reviewMeta);
 
   return (
     <div id="ratings">
-      <AverageDisplay/>
-      <PercentRecommended />
-      <RatingBreakdown />
+      <AverageDisplay
+        productId={reviewMeta.product_id}
+        ratings={reviewMeta.ratings}
+      />
+      <PercentRecommended
+        recommended={reviewMeta.recommended}
+      />
+      <RatingBreakdown ratings={reviewMeta.ratings}/>
       <Characteristics />
     </div>
   );

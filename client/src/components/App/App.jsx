@@ -41,7 +41,16 @@ const App = () => {
       <Overview product={ product }/>
       <Related_ItemsAndComparison />
       <QandA />
-      <RatingsAndReviews reviews={reviews} reviewMeta={reviewMeta}/>
+      {
+        Object.keys(reviews).length > 0 && Object.keys(reviewMeta).length > 0
+          ?
+        <RatingsAndReviews
+          reviews={reviews}
+          reviewMeta={reviewMeta}
+        />
+          :
+        null
+      }
     </div>
   );
 };

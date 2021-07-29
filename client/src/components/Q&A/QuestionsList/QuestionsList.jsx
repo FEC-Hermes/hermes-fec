@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 import Thumbnails from '../Thumbnails/Thumbnails.jsx';
-
+import Accordion from '../Accordion/Accordion.jsx';
 
 const QuesSection = styled.section`
     display: flex;
@@ -19,7 +19,7 @@ const Main = styled.main`
     flex-flow: column;
 `;
 
-const P = styled.p`
+const Pd = styled.div`
     display: flex;
     flex: 1;
     max-width: 30%
@@ -50,22 +50,25 @@ const QuestionsList = ({questions, answers, openModal}) => {
           <Main>
 
             <QuesSection>
-              {questions.results.map(ques => {
+              {/* {questions.results.map(ques => {
                 return (
                   <Aside key={ques.question_id}>
-                    <P>Q: {ques.question_body}</P>
-                    <P>Helpful?
+                    <Pd>Q: {ques.question_body}</Pd>
+
+                    <Pd>Helpful?
                       <Span>
                         {`Yes (${ques.question_helpfulness})   `}
                       </Span>
                       <Pipe>|</Pipe>
-                      <Span onClick={openModal}>
+                      <div onClick={openModal}>
                             Add Answer
-                      </Span>
-                    </P>
+                      </div>
+                    </Pd>
                   </Aside>
                 );
-              })}
+              })} */}
+
+              <Accordion data={questions} openModal={openModal}/>
             </QuesSection>
 
             <AnwrSection>
@@ -75,12 +78,14 @@ const QuestionsList = ({questions, answers, openModal}) => {
                   <div key={answr.answer_id}>
                     <p>A: {answr.body}</p>
 
-                    <p>{`by User ${answr.answerer_name}, ${moment().format('MMM Do YY')}`} <Pipe>|</Pipe>  Helpful?
+                    <p>{`by User ${answr.answerer_name}, ${moment().format('MMM Do YY')}`}
+                      <Pipe>|</Pipe>  Helpful?
                       <Pipe>|</Pipe>
                       <Span>Report</Span>
                     </p>
 
                     <Thumbnails photos={answr.photos} />
+
                     <div>
                       <p>{`by User ${answr.answerer_name}, ${moment().format('MMM Do YY')}`} <Pipe>|</Pipe>  Helpful?
                         <Pipe>|</Pipe>

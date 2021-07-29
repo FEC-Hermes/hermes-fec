@@ -90,10 +90,25 @@ const QandA = () => {
   const [questions, setQues] = useState(state.questions[0]);
   const [answers, setAns] = useState(state.answers[0]);
 
-  const [isOpen, setIsOpen] = useState(false);
-  const openModal = () => {
-    setIsOpen(true);
+  const [isOpen, setIsOpen] = useState({open: false, form: {
+    addAns: false,
+  } });
+
+  const openAnsModal = () => {
+    const isOpen = {open: true, form: {
+      addAns: true,
+    }};
+
+    setIsOpen(isOpen);
   };
+
+  const openModal = () => {
+    const isOpen = {open: true, form: {
+      addAns: false,
+    }};
+    setIsOpen(isOpen);
+  };
+
   const closeModal = () => {
     setIsOpen(false);
   };
@@ -115,20 +130,22 @@ const QandA = () => {
     <ContainerQA>
       <h3>Questions & Answers {}</h3>
       <Search />
-      <QuestionsList questions={questions} answers={answers} openModal={openModal} />
+      <QuestionsList
+        questions={questions}
+        answers={answers}
+        openModal={openAnsModal}
+      />
       <p>LOAD MORE ANSWERERS</p>
       <Buttons>
         <Button>MORE ANSWERED QUESTIONS</Button>
         <Button onClick={openModal}>ADD A QUESTION  +</Button>
       </Buttons>
 
-      <AddAnswer />
-      <p>
-        ------------------------------------------------------------------------
-      </p>
-      <AddQuestion />
-
-      {isOpen && <Modal />}
+      {isOpen.open &&
+        <Modal closeModal={closeModal}>
+          {isOpen.form.addAns ?  <AddAnswer /> :  <AddQuestion />}
+        </Modal>
+      }
     </ContainerQA>
   );
 };

@@ -23,8 +23,11 @@ const ModalBox = styled.main`
 `;
 // left: 50%;
 
+const Close = styled.button`
+    font-size: 25%;
+`;
 
-const Modal = () => {
+const Modal = ({ children, closeModal }) => {
   return (
     <>
       <Overlay className='overlay'></Overlay>
@@ -35,7 +38,8 @@ const Modal = () => {
         </header>
 
         <ModalBox className='content'>
-          <p>Some content here!</p>
+          {children}
+          <Close onClick={closeModal}>X</Close>
         </ModalBox>
 
       </div>

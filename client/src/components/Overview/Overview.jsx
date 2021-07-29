@@ -65,12 +65,12 @@ const Overview = () => {
           }}>
             <MainContainer>
               <ImageGallery />
-              {/* <InfoContainer>
-                    <ProductInfo />
-                    <StyleSelector product_id={ product.id } />
-                    <AddToCart />
-                  </InfoContainer>
-                  <ProductDesc product={ product } /> */}
+              <InfoContainer>
+                {/* <ProductInfo /> */}
+                <StyleSelector />
+                {/* <AddToCart /> */}
+              </InfoContainer>
+              <ProductDesc />
             </MainContainer>
           </StylesContext.Provider>
           : null

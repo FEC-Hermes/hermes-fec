@@ -51,13 +51,13 @@ const Attributes = styled.article`
 const ProductDesc = () => {
 
   const { product } = React.useContext(ProductContext);
-  const [productObj] = product;
+  const [currProduct] = product;
 
   return (
     <Container>
       <DescriptionContainer>
-        <Slogan><h3>{ productObj.slogan }</h3></Slogan>
-        <Description>{ productObj.description }</Description>
+        <Slogan><h3>{ currProduct.slogan }</h3></Slogan>
+        <Description>{ currProduct.description }</Description>
       </DescriptionContainer>
       <Divider></Divider>
       <Attributes>

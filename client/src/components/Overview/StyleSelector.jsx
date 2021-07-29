@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
+import StylesContext from '../contexts/StylesContext';
 
+////    Styles    //////////////////////////////////
+////////////////////////////////////////////////////
 const Container = styled.main`
   display: flex;
   width: 325px;
@@ -29,30 +32,23 @@ const Img = styled.img`
   width: 120px;
 `;
 
-/////////////////////////////////////////////
+////    Component    ///////////////////////////////
+////////////////////////////////////////////////////
+const StyleSelector = () => {
 
-const StyleSelector = ({ product_id }) => {
-
-  const [styles, setStyles] = useState([]);
-
-  useEffect(() => {
-    getStyles(product_id);
-  }, []);
-
-  const getStyles = (product_id) => {
-    if (product_id) {
-      axios.get(`/products/${product_id}/styles`)
-        .then(({ data }) => setStyles(data.results))
-        .catch(err => console.log(err));
-    }
-  };
+  const { allStyles, currStyle } = React.useContext(StylesContext);
+  const [styles] = allStyles;
+  const [selectedStyle, setCurrStyle] = currStyle;
 
   return (
     <Container>
-      <Style>STYLE &gt; { /* LINK TO STYLE */ }</Style>
+      <Style>STYLE &gt; { selectedStyle.name }</Style>
       {styles.map(style => (
         <ImgFrame key={ style.style_id }>
-          <Img src={ style.photos[0].thumbnail_url } />
+          <Img
+            src={ style.photos[0].thumbnail_url }
+            onClick={ () => setCurrStyle(style) }
+          />
         </ImgFrame>
       ))}
     </Container>

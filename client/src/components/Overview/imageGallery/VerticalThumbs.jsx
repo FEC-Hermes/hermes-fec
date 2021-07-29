@@ -6,7 +6,7 @@ import StylesContext from '../../contexts/StylesContext.js';
 const VerticalThumbs = ({ setCurrImage }) => {
 
   const { currStyle } = React.useContext(StylesContext);
-  const [style, setStyle] = currStyle;
+  const [style] = currStyle;
 
   let maxIdx = style.photos.length - 7;
   const [imageIdx, setImageIdx] = useState(0);
@@ -55,7 +55,7 @@ const VerticalThumbs = ({ setCurrImage }) => {
     }
   };
 
-  const onImageClick = (id) => {
+  const onImageClick = (id) => { /* id is set to image url */
     const images = document.getElementsByClassName('thumbImg');
     Array.from(images).forEach(img => {
       img.parentNode.style.boxShadow = '0px 0px 3px #000';

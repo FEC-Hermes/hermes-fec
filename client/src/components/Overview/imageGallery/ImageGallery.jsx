@@ -9,8 +9,10 @@ import StylesContext from '../../contexts/StylesContext.js';
 ////    Styles    //////////////////////////////////
 ////////////////////////////////////////////////////
 const MainContainer = styled.main`
-  width: 900px;
+  width: 880px;
   position: relative;
+
+  ${'' /* border: 5px solid orange; */}
 `;
 
 ////    Component    ///////////////////////////////
@@ -23,7 +25,7 @@ const ImageGallery = () => {
   const [currImage, setCurrImage] = useState();
 
   useEffect(() => {
-    setCurrImage(style.photos[0].thumbnail_url);
+    setCurrImage(style.photos[0].url);
   }, [currStyle]);
 
   return (

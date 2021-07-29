@@ -18,12 +18,12 @@ const App = () => {
   useEffect(() => {
     axios.get('/products')
       .then(results => {
-        setProduct(results.data[0]);
-        axios.get(`/reviews/${results.data[0].id}/relevant/1/10000`)
+        setProduct(results.data[4]);
+        axios.get(`/reviews/${results.data[4].id}/relevant/1/10000`)
           .then(results => {
             setReviews(results.data);
           });
-        axios.get(`/reviews/meta/${results.data[0].id}`)
+        axios.get(`/reviews/meta/${results.data[4].id}`)
           .then(results => {
             setReviewMeta(results.data);
           });
@@ -43,7 +43,7 @@ const App = () => {
 
         {/* OVERVIEW WONT RENDER UNTiL PRODUCT IS SET */}
         {
-          Object.keys(product).length ? <Overview product={ product }/> : null
+          Object.keys(product).length ? <Overview /> : null
         }
         <Related_Items_Comparison />
         <QandA />

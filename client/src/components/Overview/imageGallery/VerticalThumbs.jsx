@@ -45,7 +45,6 @@ const VerticalThumbs = ({ setCurrImage }) => {
   };
 
   const onArrowClick = (arrow) => {
-
     if (arrow === 'up' && imageIdx > 0) {
       setYAxis(yAxis + 89);
       setImageIdx(imageIdx - 1);
@@ -57,6 +56,7 @@ const VerticalThumbs = ({ setCurrImage }) => {
 
   const onImageClick = (id) => { /* id is set to image url */
     const images = document.getElementsByClassName('thumbImg');
+
     Array.from(images).forEach(img => {
       img.parentNode.style.boxShadow = '0px 0px 3px #000';
       img.parentNode.style.border = '1px solid #000';

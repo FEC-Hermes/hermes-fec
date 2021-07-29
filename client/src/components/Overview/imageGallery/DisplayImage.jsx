@@ -4,12 +4,22 @@ import styled from 'styled-components';
 ////    Styles    //////////////////////////////////
 ////////////////////////////////////////////////////
 const ImageContainer = styled.div`
-  height: 700px;
+  height: 750px;
+  width: 850px;
   overflow: hidden;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+
+  ${'' /* border: 5px solid green; */}
+
 `;
 
 const Image = styled.img`
-  width: 875px;
+  ${'' /* width: 875px; */}
+  height: 100%;
+
+  ${'' /* border: 5px solid red; */}
 `;
 
 ////    Component    ///////////////////////////////

@@ -5,11 +5,11 @@ import {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContai
 
 const ProductCard = () => {
   const [relatedProducts, setProduct] = useState([]);
+  const [isToggled, setToggle] = useState(false);
   const category = 'Jackets';
-  // '/products/:product_id/styles'
+
   useEffect( () => {
     async function fetchData(){
-      // const {data} = await axios.get(`http://localhost:3000/products/${17067}/styles`);
       const {data} = await axios.get(`/products/${17067}/styles`);
       setProduct(data.results);
       return data;
@@ -26,6 +26,7 @@ const ProductCard = () => {
               <Image_container>
                 <StarContainer>
                   <Stars
+                    onClick={() => isToggled? setToggle(false): setToggle(true)}
                     pos={'absolute'}
                     bottom={'16.5rem'}
                     margin={'0.5rem 0rem 0 0'}
@@ -38,9 +39,11 @@ const ProductCard = () => {
               <CardText font_size={'1rem'} >${original_price}</CardText>
               <Stars margin={'0 0 0 0.5rem'}src="stars.png" />
             </Card>
-          )}
+          );
+        }
         )}
-      <Modal />
+      { isToggled? <Modal /> : null}
+
     </RelatedProducts>
   );
 };

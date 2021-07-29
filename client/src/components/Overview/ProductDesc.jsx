@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import ProductContext from '../contexts/ProductContext.js';
 
+////    Styles    //////////////////////////////////
+////////////////////////////////////////////////////
 const Container = styled.main`
   width: 1024px;
   height: 200px;
@@ -44,6 +46,8 @@ const Attributes = styled.article`
   justify-content: space-around;
 `;
 
+////    Component    ///////////////////////////////
+////////////////////////////////////////////////////
 const ProductDesc = () => {
 
   const { product } = React.useContext(ProductContext);

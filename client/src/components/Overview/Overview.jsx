@@ -33,48 +33,43 @@ const InfoContainer = styled.main`
 ////////////////////////////////////////////////////
 const Overview = () => {
 
-  const [allStyles, setAllStyles] = useState([]);
-  const [currStyle, setCurrStyles] = useState([]);
-
+  const [allStyles, setAllStyles] = useState({});
+  const [currStyle, setCurrStyle] = useState({});
 
   const { product } = React.useContext(ProductContext);
-  const [productObj] = product;
-
+  const [currProduct] = product;
 
   const getStyles = (product_id) => {
     if (product_id) {
       axios.get(`/products/${product_id}/styles`)
-        .then(({ data }) => setStyles(data.results))
+        .then(({ data }) => setAllStyles(data.results))
+        .then(() => setCurrStyle(allStyles[0]))
         .catch(err => console.log(err));
     }
   };
-  
-  useEffect(() => {
-    getStyles(productObj.product_id);
-  }, []);
 
+  useEffect(() => {
+    console.log(currProduct)
+    getStyles(currProduct.id);
+  }, [product]);
 
   return (
     <div>
-      {
-        Object.keys(product).length ?
-          <StylesContext.Provider value={
-            {
 
-            }
-          }>
-            <MainContainer>
-              <ImageGallery product_id={ product.id } />
-              <InfoContainer>
+      <StylesContext.Provider value={{
+        allStyles: [allStyles, setAllStyles],
+        currStyle: [currStyle, setCurrStyle]
+      }}>
+        <MainContainer>
+          <ImageGallery />
+          {/* <InfoContainer>
                 <ProductInfo />
                 <StyleSelector product_id={ product.id } />
                 <AddToCart />
-              </InfoContainer>
-              <ProductDesc product={ product } />
-            </MainContainer>
-          </StylesContext.Provider>
-          : null
-      }
+                </InfoContainer>
+                <ProductDesc product={ product } /> */}
+        </MainContainer>
+      </StylesContext.Provider>
     </div>
   );
 };

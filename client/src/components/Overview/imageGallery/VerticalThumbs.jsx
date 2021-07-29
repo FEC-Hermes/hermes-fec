@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { MainContainer, ImgContainer, ImgFrame, Img } from './styles.js'
+import { MainContainer, ImgContainer, ImgFrame, Img } from './styles.js';
 
+import StylesContext from '../../contexts/StylesContext.js';
 
-const VerticalThumbs = ({ styles }) => {
+const VerticalThumbs = () => {
 
-  let maxIdx = styles[3].photos.length - 7;
+  const { currStyle } = React.useContext(StylesContext);
+  const [style, setStyle] = currStyle;
+
+  let maxIdx = style.photos.length - 7;
   const [imageIdx, setImageIdx] = useState(0);
   const [yAxis, setYAxis] = useState(0);
 

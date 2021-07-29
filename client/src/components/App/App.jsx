@@ -35,14 +35,14 @@ const App = () => {
   return (
     <div>
       <nav>NAV BAR</nav>
-      <ProductContext.Provider value={
+      <ProductContext.Provider value={{
+        product:    [product, setProduct],
+        review:     [reviews, setReviews],
+        reviewMeta: [reviewMeta, setReviewMeta]
+      }}>
         {
-          product: [product, setProduct],
-          review: [reviews, setReviews],
-          reviewMeta: [reviewMeta, setReviewMeta]
+          Object.keys(product).length ? <Overview product={ product }/> : null
         }
-      }>
-        <Overview product={ product }/>
         <Related_Items_Comparison />
         <QandA />
         {

@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Star from '../Shared/StarAverageRating.jsx';
+
 import ProductContext from '../contexts/ProductContext';
 import StylesContext from '../contexts/StylesContext';
 
@@ -36,11 +38,14 @@ const ProductInfo = () => {
   const { currStyle } = React.useContext(StylesContext);
 
   const [currProduct] = product;
+  const [reviewScore] = reviewMeta;
   const [style] = currStyle;
 
   return (
     <MainContainer>
-      <StarRating></StarRating>
+      <StarRating>
+        <Star ratings={ reviewScore.ratings } />
+      </StarRating>
       <Category>{ currProduct.category }</Category>
       <ProductName>{ currProduct.name }</ProductName>
       { !style.sale_price ?

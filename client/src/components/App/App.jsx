@@ -18,12 +18,12 @@ const App = () => {
   useEffect(() => {
     axios.get('/products')
       .then(results => {
-        setProduct(results.data[0]);
-        axios.get(`/reviews/${results.data[4].id}/relevant/1/10000`)
+        setProduct(results.data[2]);
+        axios.get(`/reviews/${results.data[2].id}/relevant/1/10000`)
           .then(results => {
             setReviews(results.data);
           });
-        axios.get(`/reviews/meta/${results.data[4].id}`)
+        axios.get(`/reviews/meta/${results.data[2].id}`)
           .then(results => {
             setReviewMeta(results.data);
           });

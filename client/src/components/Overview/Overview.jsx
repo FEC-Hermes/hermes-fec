@@ -3,7 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 import ImageGallery from './imageGallery/ImageGallery.jsx';
-import AddToCart from './addToCart/AddToCart.jsx';
+import AddToCart from './AddToCart.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import ProductDesc from './ProductDesc.jsx';
@@ -68,7 +68,7 @@ const Overview = () => {
               <InfoContainer>
                 {/* <ProductInfo /> */}
                 <StyleSelector />
-                {/* <AddToCart /> */}
+                <AddToCart />
               </InfoContainer>
               <ProductDesc />
             </MainContainer>

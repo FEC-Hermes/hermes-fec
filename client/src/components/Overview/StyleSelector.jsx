@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import styled from 'styled-components';
 
 import StylesContext from '../contexts/StylesContext';
@@ -39,6 +38,7 @@ const StyleSelector = () => {
   const { allStyles, currStyle } = React.useContext(StylesContext);
   const [styles] = allStyles;
   const [selectedStyle, setCurrStyle] = currStyle;
+
 
   return (
     <Container>

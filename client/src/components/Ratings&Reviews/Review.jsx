@@ -16,7 +16,7 @@ const Review = ({review}) => {
       <PhotoGallery photos={review.photos} />
       <div>{review.recommend ? 'Check mark! I recommend this product!' : null}</div>
       <div>{review.response}</div>
-      <div>{review.helpfulness} people thought it was helpful. Maybe it'll be reported Anyways</div>
+      <div>{review.helpfulness} people thought it was helpful. Maybe it'll be reported Anyways. Maybe.</div>
     </div>
   );
 };

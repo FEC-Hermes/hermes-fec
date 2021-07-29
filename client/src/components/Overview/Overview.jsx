@@ -66,7 +66,7 @@ const Overview = () => {
             <MainContainer>
               <ImageGallery />
               <InfoContainer>
-                {/* <ProductInfo /> */}
+                <ProductInfo />
                 <StyleSelector />
                 <AddToCart />
               </InfoContainer>

@@ -18,7 +18,7 @@ const App = () => {
   useEffect(() => {
     axios.get('/products')
       .then(results => {
-        setProduct(results.data[4]);
+        setProduct(results.data[0]);
         axios.get(`/reviews/${results.data[4].id}/relevant/1/10000`)
           .then(results => {
             setReviews(results.data);

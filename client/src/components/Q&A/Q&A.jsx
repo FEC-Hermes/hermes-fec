@@ -8,6 +8,8 @@ import QuestionsList from './QuestionsList/QuestionsList.jsx';
 
 import AddQuestion from './AddQuestion/AddQuestion.jsx';
 import AddAnswer from './AddAnswer/AddAnswer.jsx';
+import Modal from './Modal/Modal.jsx';
+
 
 
 var state = {
@@ -83,22 +85,29 @@ const Button = styled.button`
 const Buttons = styled.div`
   display: flex;
 `;
+
 const QandA = () => {
   const [questions, setQues] = useState(state.questions[0]);
   const [answers, setAns] = useState(state.answers[0]);
 
+  const [isOpen, setIsOpen] = useState(false);
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+
 
   // const apis = {};
-
   // useEffect(() => {
   //     const fetchQues = async () => {
   //         const ques = await axios.get('/qa/questions');
   //         apis.push({ques: ques.data});
   //     };
-
   //     fetchQues();
   // });
-
   // console.log(answers);
 
   return (
@@ -106,11 +115,11 @@ const QandA = () => {
     <ContainerQA>
       <h3>Questions & Answers {}</h3>
       <Search />
-      <QuestionsList questions={questions} answers={answers} />
+      <QuestionsList questions={questions} answers={answers} openModal={openModal} />
       <p>LOAD MORE ANSWERERS</p>
       <Buttons>
         <Button>MORE ANSWERED QUESTIONS</Button>
-        <Button>ADD A QUESTION  +</Button>
+        <Button onClick={openModal}>ADD A QUESTION  +</Button>
       </Buttons>
 
       <AddAnswer />
@@ -119,6 +128,7 @@ const QandA = () => {
       </p>
       <AddQuestion />
 
+      {isOpen && <Modal />}
     </ContainerQA>
   );
 };

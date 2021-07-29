@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 import Thumbnails from '../Thumbnails/Thumbnails.jsx';
@@ -40,7 +40,8 @@ const Aside = styled.aside`
     width: 100%;
 `;
 
-const QuestionsList = ({questions, answers}) => {
+const QuestionsList = ({questions, answers, openModal}) => {
+
   // {console.log(answers.results)}
   return (
     <div>
@@ -58,7 +59,7 @@ const QuestionsList = ({questions, answers}) => {
                         {`Yes (${ques.question_helpfulness})   `}
                       </Span>
                       <Pipe>|</Pipe>
-                      <Span>
+                      <Span onClick={openModal}>
                             Add Answer
                       </Span>
                     </P>

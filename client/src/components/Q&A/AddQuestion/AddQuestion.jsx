@@ -1,16 +1,16 @@
-/* eslint-disable indent */
+
 import React, { useState, useEffect} from 'react';
 import styled from 'styled-components';
 
 
 const AddQuestion = () => {
-    const [question, setQuestion] = useState('');
-    const [nickname, setNickname] = useState('');
-    const [email, setEmail] = useState('');
+  const [question, setQuestion] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [email, setEmail] = useState('');
 
-    const handleSubmit = e => {
-        e.preventDefault();
-    };
+  const handleSubmit = e => {
+    e.preventDefault();
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -47,7 +47,7 @@ const AddQuestion = () => {
         <p>For authentication reasons, you will not be emailed” will appear.</p>
       </div>
 
-       <button type="submit">Submit</button>
+      <button type="submit">Submit</button>
     </form>
   );
 };

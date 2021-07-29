@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import DisplayImage from './DisplayImage.jsx';
 import VerticalThumbs from './VerticalThumbs.jsx';
 
-// import StylesContext from '../../contexts/StylesContext.js';
+import StylesContext from '../../contexts/StylesContext.js';
 
 ////    Styles    //////////////////////////////////
 ////////////////////////////////////////////////////
@@ -14,30 +14,23 @@ const MainContainer = styled.main`
 
 ////    Component    ///////////////////////////////
 ////////////////////////////////////////////////////
-const ImageGallery = ({ product_id }) => {
+const ImageGallery = () => {
+
+  const { currStyle } = React.useContext(StylesContext);
+  const [style] = currStyle;
+
+  const [currImage, setCurrImage] = useState();
+
+  useEffect(() => {
+    setCurrImage(style.photos[0].thumbnail_url);
+  }, [currStyle]);
 
   return (
     <MainContainer>
-      {/* <DisplayImage /> */}
-      <VerticalThumbs />
+      <DisplayImage currImage={ currImage } />
+      <VerticalThumbs setCurrImage={ setCurrImage }/>
     </MainContainer>
   );
 };
 
 export default ImageGallery;
-
-
-
-// const [styles, setStyles] = useState([]);
-
-// useEffect(() => {
-//   getStyles(product_id);
-// }, []);
-
-// const getStyles = (product_id) => {
-//   if (product_id) {
-//     axios.get(`/products/${product_id}/styles`)
-//       .then(({ data }) => setStyles(data.results))
-//       .catch(err => console.log(err));
-//   }
-// };

@@ -40,6 +40,8 @@ const App = () => {
         review:     [reviews, setReviews],
         reviewMeta: [reviewMeta, setReviewMeta]
       }}>
+
+        {/* OVERVIEW WONT RENDER UNTiL PRODUCT IS SET */}
         {
           Object.keys(product).length ? <Overview product={ product }/> : null
         }

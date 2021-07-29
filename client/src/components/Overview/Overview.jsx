@@ -33,43 +33,48 @@ const InfoContainer = styled.main`
 ////////////////////////////////////////////////////
 const Overview = () => {
 
-  const [allStyles, setAllStyles] = useState({});
-  const [currStyle, setCurrStyle] = useState({});
-
   const { product } = React.useContext(ProductContext);
   const [currProduct] = product;
 
+  const [allStyles, setAllStyles] = useState([]);
+  const [currStyle, setCurrStyle] = useState({});
+
+
   const getStyles = (product_id) => {
-    if (product_id) {
-      axios.get(`/products/${product_id}/styles`)
-        .then(({ data }) => setAllStyles(data.results))
-        .then(() => setCurrStyle(allStyles[0]))
-        .catch(err => console.log(err));
-    }
+    axios.get(`/products/${product_id}/styles`)
+      .then(({ data }) => {
+        setAllStyles(data.results);
+        setCurrStyle(data.results[0]);
+      })
+      .catch(err => console.log(err));
   };
 
   useEffect(() => {
-    console.log(currProduct)
     getStyles(currProduct.id);
   }, [product]);
 
   return (
     <div>
+      {/* NOTHING WILL RENDER UNTIL CURR STYLE IS SET */}
 
-      <StylesContext.Provider value={{
-        allStyles: [allStyles, setAllStyles],
-        currStyle: [currStyle, setCurrStyle]
-      }}>
-        <MainContainer>
-          <ImageGallery />
-          {/* <InfoContainer>
-                <ProductInfo />
-                <StyleSelector product_id={ product.id } />
-                <AddToCart />
-                </InfoContainer>
-                <ProductDesc product={ product } /> */}
-        </MainContainer>
-      </StylesContext.Provider>
+      {
+        Object.keys(currStyle).length ?
+          <StylesContext.Provider value={{
+            allStyles: [allStyles, setAllStyles],
+            currStyle: [currStyle, setCurrStyle]
+          }}>
+            <MainContainer>
+              <ImageGallery />
+              {/* <InfoContainer>
+                    <ProductInfo />
+                    <StyleSelector product_id={ product.id } />
+                    <AddToCart />
+                  </InfoContainer>
+                  <ProductDesc product={ product } /> */}
+            </MainContainer>
+          </StylesContext.Provider>
+          : null
+      }
     </div>
   );
 };

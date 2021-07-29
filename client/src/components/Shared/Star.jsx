@@ -1,8 +1,7 @@
 import React from 'react';
 
 // Do NOT use this component to display your ratings
-// This is a child of StarDisplay which is what should be used
-// <StarDisplay rating={3.8} productId={12345} />
+// Non-Ratings and Reviews Widgets should use <StarAverageRating/> !!!
 
 function Star(props) {
   var degToRad = (deg) => {

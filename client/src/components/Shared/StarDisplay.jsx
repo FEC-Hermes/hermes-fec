@@ -1,10 +1,8 @@
 import React from 'react';
 import Star from './Star.jsx';
 
-// Use this to render your star ratings!!
-// <StarDisplay rating={3.8} productId={12345} />
-// You will need to pass in the rating as a prop for obvious reasons
-// You will need to pass in the productId for the star's fill to display proper
+// Do NOT use this component to display your ratings
+// Non-Ratings and Reviews Widgets should use <StarAverageRating/> !!!
 
 function StarDisplay({rating}) {
   return (

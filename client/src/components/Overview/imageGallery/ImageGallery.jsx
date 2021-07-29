@@ -10,6 +10,7 @@ import StylesContext from '../../contexts/StylesContext.js';
 ////////////////////////////////////////////////////
 const MainContainer = styled.main`
   width: 900px;
+  position: relative;
 `;
 
 ////    Component    ///////////////////////////////

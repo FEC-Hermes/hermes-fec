@@ -38,8 +38,7 @@ const StyleSelector = () => {
   const { allStyles, currStyle } = React.useContext(StylesContext);
   const [styles] = allStyles;
   const [selectedStyle, setCurrStyle] = currStyle;
-
-
+  
   return (
     <Container>
       <Style>STYLE &gt; { selectedStyle.name }</Style>

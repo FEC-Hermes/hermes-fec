@@ -2,7 +2,7 @@ import React from 'react';
 import MoreReviewsButton from './MoreReviewsButton.jsx';
 import AddReviewButton from './AddReviewButton.jsx';
 
-const AdditionalReviewOptions = (props) => {
+const AdditionalReviewOptions = () => {
   return (
     <div>
       <MoreReviewsButton />

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import ImageGallery from './imageGallery/ImageGallery.jsx';
 import AddToCart from './addToCart/AddToCart.jsx';
 import ProductInfo from './ProductInfo.jsx';

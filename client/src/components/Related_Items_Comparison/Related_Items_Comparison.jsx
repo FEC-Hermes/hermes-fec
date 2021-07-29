@@ -1,15 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import React from 'react';
 import ProductCard from './ProductCard/ProductCard.jsx';
 import OutfitCard from './OutfitCard/OutfitCard.jsx';
-
+import styled from 'styled-components';
+const H1 = styled.h1`
+   margin: 2rem 0 1rem 1rem;
+`;
 
 const Related_Items_Comparison = () => {
   return (
     <div className="Related_Products">
-      <h1 Style='margin: 2rem 0 1rem 1rem;'>Related Products</h1>
+      <H1>Related Products</H1>
       <ProductCard />
-      <h1 Style='margin: 2rem 0 1rem 1rem;'>Your Outfit</h1>
+      <H1>Your Outfit</H1>
       <OutfitCard />
     </div>
   )

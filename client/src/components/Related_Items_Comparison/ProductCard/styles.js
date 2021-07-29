@@ -2,7 +2,10 @@ import styled from 'styled-components';
 
 const RelatedProducts = styled.div`
   display:flex;
+  justify-content: center;
+  align-items: center;
   color: ${props => props.color};
+  background-color: whitesmoke;
  `;
 
 const Image_container = styled.div`
@@ -17,6 +20,7 @@ const Img = styled.img`
 const Card = styled.div`
    margin: 1rem;
    border: 0.25rem solid gray;
+
 `;
 
 const CardText = styled.p`

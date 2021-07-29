@@ -1,12 +1,13 @@
 import React from 'react';
 import StarDisplay from '../Shared/StarDisplay.jsx';
+import StarAverageRating from '../Shared/StarAverageRating.jsx';
 
-const AverageDisplay = (props) => {
+const AverageDisplay = ({ratings, product_id}) => {
   var totalRatings = 0;
   var totalStars = 0;
-  for (var rating in props.ratings) {
-    totalRatings += Number(props.ratings[rating]);
-    totalStars += Number(props.ratings[rating]) * Number(rating);
+  for (var rating in ratings) {
+    totalRatings += Number(ratings[rating]);
+    totalStars += Number(ratings[rating]) * Number(rating);
   }
   var rating = totalStars / totalRatings;
   var ratingDisplay = rating;
@@ -17,7 +18,7 @@ const AverageDisplay = (props) => {
     <div id="average-display">
       <div id="rating-display">{ratingDisplay}</div>
       <div id="summary-star-display">
-        <StarDisplay rating={rating} productId={props.product_id} />
+        <StarDisplay rating={rating} productId={product_id} />
       </div>
     </div>
   );

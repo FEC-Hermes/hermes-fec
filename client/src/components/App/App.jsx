@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
-
 import Overview from '../Overview/Overview.jsx';
 import QandA from '../Q&A/Q&A.jsx';
 import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';

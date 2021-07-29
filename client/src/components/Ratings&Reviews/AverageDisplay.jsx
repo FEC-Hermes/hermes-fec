@@ -1,8 +1,7 @@
 import React from 'react';
 import StarDisplay from '../Shared/StarDisplay.jsx';
-import StarAverageRating from '../Shared/StarAverageRating.jsx';
 
-const AverageDisplay = ({ratings, product_id}) => {
+const AverageDisplay = ({ratings}) => {
   var totalRatings = 0;
   var totalStars = 0;
   for (var rating in ratings) {
@@ -18,7 +17,7 @@ const AverageDisplay = ({ratings, product_id}) => {
     <div id="average-display">
       <div id="rating-display">{ratingDisplay}</div>
       <div id="summary-star-display">
-        <StarDisplay rating={rating} productId={product_id} />
+        <StarDisplay rating={rating}/>
       </div>
     </div>
   );

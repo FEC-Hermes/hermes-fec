@@ -4,9 +4,6 @@ import moment from 'moment';
 import Thumbnails from '../Thumbnails/Thumbnails.jsx';
 import Accordion from '../Accordion/Accordion.jsx';
 
-const QuesSection = styled.section`
-    display: flex;
-`;
 
 const AnwrSection = styled.section`
     display: flex;
@@ -19,26 +16,6 @@ const Main = styled.main`
     flex-flow: column;
 `;
 
-const Pd = styled.div`
-    display: flex;
-    flex: 1;
-    max-width: 30%
-`;
-
-const Span = styled.span`
-    text-decoration: underline;
-`;
-
-const Pipe = styled.span`
-    margin-left: 1%;
-    margin-right: 1%;
-`;
-
-const Aside = styled.aside`
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-`;
 
 const QuestionsList = ({questions, answers, openModal}) => {
 
@@ -49,7 +26,7 @@ const QuestionsList = ({questions, answers, openModal}) => {
         <li>
           <Main>
 
-            <QuesSection>
+
               {/* {questions.results.map(ques => {
                 return (
                   <Aside key={ques.question_id}>
@@ -68,11 +45,9 @@ const QuestionsList = ({questions, answers, openModal}) => {
                 );
               })} */}
 
-              <Accordion data={questions} openModal={openModal}/>
-            </QuesSection>
-
+              <Accordion questions={questions} answers={answers} openModal={openModal}/>
+{/*
             <AnwrSection>
-              {/* {console.log(answers.results)} */}
               {answers.results.map(answr => {
                 return (
                   <div key={answr.answer_id}>
@@ -94,7 +69,8 @@ const QuestionsList = ({questions, answers, openModal}) => {
                   </div>
                 );
               })}
-            </AnwrSection>
+            </AnwrSection> */}
+
           </Main>
         </li>
       </ul>

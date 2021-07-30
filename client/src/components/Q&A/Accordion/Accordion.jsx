@@ -1,48 +1,43 @@
 import React, { useState ,useEffect } from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
+import Thumbnails from '../Thumbnails/Thumbnails.jsx';
+import  {
+  QuesSection,
+  AccordionSection,
+  Pd,
+  AnwrSection,
+  Aside,
+  Pipe,
+  Span
+} from './Accordion.js';
 
+const Accordion = ({ questions, answers, openModal }) => {
 
-const Span = styled.span`
-    text-decoration: underline;
-`;
+  const [clicked, setClicked] = useState(null);
 
-const Pipe = styled.span`
-    margin-left: 1%;
-    margin-right: 1%;
-`;
+  const toggle = id =>{
+    if (clicked === id) {
+      return setClicked(null);
+    }
+    setClicked(id);
+  };
 
-const Aside = styled.aside`
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-`;
-
-const Pd = styled.div`
-    display: flex;
-    flex: 1;
-    max-width: 30%
-`;
-
-const AccordionSection = styled.div`
-
-`;
-
-const Container = styled.div`
-
-`;
-
-const Accordion = ({data, openModal}) => {
   return (
     <AccordionSection>
-      <Container>
-        {data.results.map(ques => {
+      {console.log('xxx  ',clicked)}
+
+      <QuesSection>
+        {questions.results.map(ques => {
           return (
-            <Aside key={ques.question_id}>
-              <Pd>Q: {ques.question_body}</Pd>
+            <Aside key={ques.question_id} >
+              <Pd onClick={() =>toggle(ques.question_id)}>
+                Q: {ques.question_body}
+              </Pd>
 
               <Pd>Helpful?
                 <Span>
-                  {`Yes (${ques.question_helpfulness})   `}
+                  {`Yes (${ques.question_helpfulness})`}
                 </Span>
                 <Pipe>|</Pipe>
                 <div onClick={openModal}>
@@ -52,7 +47,38 @@ const Accordion = ({data, openModal}) => {
             </Aside>
           );
         })}
-      </Container>
+
+        { clicked ?
+          <AnwrSection>
+            {answers.results.map(answr => {
+              return (
+                <div key={answr.answer_id}>
+                  <p>A: {answr.body}</p>
+
+                  <p>
+                    {`by User ${answr.answerer_name}, ${moment().format('MMM Do YY')}`}
+                    <Pipe>|</Pipe>  Helpful?
+                    <Pipe>|</Pipe>
+                    <Span>Report</Span>
+                  </p>
+
+                  <Thumbnails photos={answr.photos} />
+
+                  <div>
+                    <p>
+                      {`by User ${answr.answerer_name}, ${moment().format('MMM Do YY')}`} <Pipe>|</Pipe>  Helpful?
+                      <Pipe>|</Pipe>
+                      <Span>Report</Span>
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </AnwrSection>
+          :
+          null
+        }
+      </QuesSection>
     </AccordionSection>
   );
 };

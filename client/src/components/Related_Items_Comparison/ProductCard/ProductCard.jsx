@@ -2,12 +2,14 @@ import React, {useEffect, useState, useContext} from 'react';
 import axios from 'axios';
 import Thumbnails from './Thumbnails.jsx';
 import Modal from '../Modal/Modal.jsx';
+import StarAverageRating from '../../Shared/StarAverageRating.jsx';
 import ProductContext from '../../contexts/ProductContext.js';
-import {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer} from './styles.js';
+import {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer, StarsContainer} from './styles.js';
 
 
 const ProductCard = () => {
   const {product:[product]} = useContext(ProductContext);
+  const {reviewMeta:[{ratings}]} = useContext(ProductContext);
   const [relatedProducts, setProduct] = useState([]);
   let [count, setCount] = useState(0);
   const [isToggled, setToggle] = useState(false);
@@ -22,7 +24,7 @@ const ProductCard = () => {
     relatedProducts.slice(count,count + 4).length < 4 ?
       relatedProducts.slice(count-1, count + 4):
       relatedProducts.slice(count, count + 4);
-  
+
   useEffect( () => {
     async function fetchData(){
       const {data} = await axios.get(`/products/${id}/styles`);
@@ -58,7 +60,8 @@ const ProductCard = () => {
                     pos={'absolute'}
                     bottom={'16.5rem'}
                     margin={'0.5rem 0rem 0 0'}
-                    src="star.png" />
+                    z_index={100}
+                    src="https://cdn.onlinewebfonts.com/svg/img_325911.png" />
                 </StarContainer>
                 <Img
                   onClick={(e) => console.log(e.target)}
@@ -72,7 +75,10 @@ const ProductCard = () => {
               <CardText font_size={'1.4rem'} color={'steelblue'}>{category}</CardText>
               <CardText font_size={'1.5rem'}>{name}</CardText>
               <CardText font_size={'1rem'} >${original_price}</CardText>
-              <Stars margin={'0 0 0 0.5rem'}src="stars.png" />
+              <StarsContainer>
+                <StarAverageRating Ratings ratings={ratings} />
+              </StarsContainer>
+
             </Card>
           ) ;
         }

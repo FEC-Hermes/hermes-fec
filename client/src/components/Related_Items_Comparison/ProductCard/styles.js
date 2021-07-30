@@ -35,11 +35,19 @@ const StarContainer = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
+
+const StarsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom:0.5rem;
+
+`;
+
 const Stars = styled.img`
   margin : ${props => props.margin};
   height: 1.8rem;
   position:${props => props.pos};
-
+  z-index:${props => props.z_index};
 `;
 
 // ThumbnailContainer
@@ -62,4 +70,4 @@ const Thumbnail_arrow = styled.div`
    margin-right:1.3rem;
 `;
 
-export  {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer, ThumbnailContainer,Thumbnail_Image_Container,Thumbnail_arrow};
+export  {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer, ThumbnailContainer,Thumbnail_Image_Container,Thumbnail_arrow, StarsContainer};

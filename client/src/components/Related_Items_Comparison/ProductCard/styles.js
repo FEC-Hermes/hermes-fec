@@ -9,12 +9,14 @@ const RelatedProducts = styled.div`
  `;
 
 const Image_container = styled.div`
-  height: 25rem;
+  height: 27rem;
 `;
 
 const Img = styled.img`
   height: ${props => props.height};
   width: ${props => props.width};
+  transition-duration:1s ease;
+  transform:scale(1)
 `;
 
 const Card = styled.div`
@@ -40,4 +42,24 @@ const Stars = styled.img`
 
 `;
 
-export  {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer};
+// ThumbnailContainer
+const ThumbnailContainer = styled.div`
+   display:flex;
+   justify-content: space-around;
+   align-items: center;
+   width: 16rem;
+   position: relative;
+   bottom: 3rem;
+
+`;
+
+const Thumbnail_Image_Container = styled.div`
+    // position: relative;
+    // bottom: 0.25rem;
+`;
+
+const Thumbnail_arrow = styled.div`
+   margin-right:1.3rem;
+`;
+
+export  {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer, ThumbnailContainer,Thumbnail_Image_Container,Thumbnail_arrow};

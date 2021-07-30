@@ -1,8 +1,13 @@
 import React from 'react';
+import MoreReviewsButton from './MoreReviewsButton.jsx';
+import AddReviewButton from './AddReviewButton.jsx';
 
-const AdditionalReviewOptions = (props) => {
+const AdditionalReviewOptions = () => {
   return (
-    <div>Buttons for people who don't trust the reviewers or feel that their opinion has diverged from reality</div>
+    <div>
+      <MoreReviewsButton />
+      <AddReviewButton />
+    </div>
   );
 };
 

@@ -4,19 +4,26 @@ import PercentRecommended from './PercentRecommended.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import Characteristics from './Characteristics.jsx';
 
-const Ratings = ({reviewMeta}) => {
+import ProductContext from '../contexts/ProductContext.js';
+
+const Ratings = (props) => {
   return (
-    <div id="ratings">
-      <AverageDisplay
-        productId={reviewMeta.product_id}
-        ratings={reviewMeta.ratings}
-      />
-      <PercentRecommended
-        recommended={reviewMeta.recommended}
-      />
-      <RatingBreakdown ratings={reviewMeta.ratings}/>
-      <Characteristics characteristics={reviewMeta.characteristics}/>
-    </div>
+    <ProductContext.Consumer>
+      {({reviewMeta}) => {
+        return (
+          <div id="ratings">
+            <AverageDisplay
+              ratings={reviewMeta.ratings}
+            />
+            <PercentRecommended
+              recommended={reviewMeta.recommended}
+            />
+            <RatingBreakdown ratings={reviewMeta.ratings}/>
+            <Characteristics characteristics={reviewMeta.characteristics}/>
+          </div>
+        )
+      }}
+    </ProductContext.Consumer>
   );
 };
 

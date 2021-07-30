@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import ProductContext from '../contexts/ProductContext.js';
 
+////    Styles    //////////////////////////////////
+////////////////////////////////////////////////////
 const Container = styled.main`
   width: 1024px;
   height: 200px;
@@ -44,16 +46,18 @@ const Attributes = styled.article`
   justify-content: space-around;
 `;
 
+////    Component    ///////////////////////////////
+////////////////////////////////////////////////////
 const ProductDesc = () => {
 
   const { product } = React.useContext(ProductContext);
-  const [productObj] = product;
+  const [currProduct] = product;
 
   return (
     <Container>
       <DescriptionContainer>
-        <Slogan><h3>{ productObj.slogan }</h3></Slogan>
-        <Description>{ productObj.description }</Description>
+        <Slogan><h3>{ currProduct.slogan }</h3></Slogan>
+        <Description>{ currProduct.description }</Description>
       </DescriptionContainer>
       <Divider></Divider>
       <Attributes>

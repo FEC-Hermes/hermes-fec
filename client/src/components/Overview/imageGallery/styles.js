@@ -7,6 +7,8 @@ const MainContainer = styled.div`
   align-items: center;
   width: 125px;
   height: 675px;
+  top: 2rem;
+  position: absolute;
 `;
 
 const ImgContainer = styled.div`

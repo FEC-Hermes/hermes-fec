@@ -1,11 +1,13 @@
 import React from 'react';
+import NewReviewModal from './NewReviewModal.jsx';
+
 
 const AddReviewButton = (props) => {
   const [modalShown, setModalShown] = React.useState(false);
 
   var handleClick = () => {
     setModalShown(!modalShown);
-  }
+  };
 
   return (
     <div>
@@ -15,7 +17,7 @@ const AddReviewButton = (props) => {
       {
         modalShown
           ?
-        <div className="add-review-modal">Party Haus of Pancakes</div>
+        <NewReviewModal/>
           :
         null
       }

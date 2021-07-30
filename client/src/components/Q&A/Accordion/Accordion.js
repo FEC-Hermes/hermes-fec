@@ -19,7 +19,7 @@ const Aside = styled.aside`
 `;
 
 const AnwrSection = styled.section`
-    isplay: flex;
+    display: flex;
     flex-flow: column;
 `;
 

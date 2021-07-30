@@ -1,34 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import styled from 'styled-components';
 
 import DisplayImage from './DisplayImage.jsx';
 import VerticalThumbs from './VerticalThumbs.jsx';
 
+import StylesContext from '../../contexts/StylesContext.js';
+
+////    Styles    //////////////////////////////////
+////////////////////////////////////////////////////
 const MainContainer = styled.main`
-  width: 900px;
+  width: 880px;
+  position: relative;
 `;
 
-const ImageGallery = ({ product_id }) => {
+////    Component    ///////////////////////////////
+////////////////////////////////////////////////////
+const ImageGallery = () => {
 
-  const [styles, setStyles] = useState([]);
+  const { currStyle, expanded } = React.useContext(StylesContext);
+  const [expand, setExpand] = expanded;
+  const [style]  = currStyle;
+
+  const [currImage, setCurrImage] = useState();
 
   useEffect(() => {
-    getStyles(product_id);
-  }, []);
+    setCurrImage(style.photos[0].url);
 
-  const getStyles = (product_id) => {
-    if (product_id) {
-      axios.get(`/products/${product_id}/styles`)
-        .then(({ data }) => setStyles(data.results))
-        .catch(err => console.log(err));
-    }
-  };
+  }, [currStyle]);
 
   return (
-    <MainContainer>
-      <DisplayImage />
-      { Object.keys(styles).length ? <VerticalThumbs styles={ styles } /> : null }
+    <MainContainer >
+      <DisplayImage currImage={ currImage } />
+      <VerticalThumbs setCurrImage={ setCurrImage } />
     </MainContainer>
   );
 };

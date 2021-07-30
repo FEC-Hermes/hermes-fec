@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 const ModalContainer = styled.div`
     background-color: ghostwhite;
-    border: 0.3rem solid gray;
+    border: 0.18rem solid gray;
     padding: 1rem;
     position: absolute;
-    top: 174rem;
+    top: 109rem;
     height: 25rem;
     width: 30rem;
     left: 33%;

@@ -1,7 +1,7 @@
 import React, { useState ,useEffect } from 'react';
-import styled from 'styled-components';
-
-// import axios from 'axios';
+import { Button, Buttons, ContainerQA } from './Q&A.js';
+import axios from 'axios';
+import ProductContext from '../contexts/ProductContext';
 
 import Search from './Search/Search.jsx';
 import QuestionsList from './QuestionsList/QuestionsList.jsx';
@@ -36,25 +36,25 @@ var state = {
           }
         }
       },
-      // {
-      //   'question_id': 39,
-      //   'question_body': 'Why is this product cheaper here than other sites?',
-      //   'question_date': '2018-10-18T00:00:00.000Z',
-      //   'asker_name': 'williamsmith',
-      //   'question_helpfulness': 4,
-      //   'reported': false,
-      //   'answers': {
-      //     69: {
-      //       'id': 69,
-      //       'body': 'We are selling it here without any markup from the middleman!',
-      //       'date': '2018-08-18T00:00:00.000Z',
-      //       'answerer_name': 'Seller',
-      //       'helpfulness': 4,
-      //       'photos': []
-      //       // ...
-      //     }
-      //   }
-      // }
+      {
+        'question_id': 39,
+        'question_body': 'Why is this product cheaper here than other sites?',
+        'question_date': '2018-10-18T00:00:00.000Z',
+        'asker_name': 'williamsmith',
+        'question_helpfulness': 4,
+        'reported': false,
+        'answers': {
+          69: {
+            'id': 69,
+            'body': 'We are selling it here without any markup from the middleman!',
+            'date': '2018-08-18T00:00:00.000Z',
+            'answerer_name': 'Seller',
+            'helpfulness': 4,
+            'photos': []
+            // ...
+          }
+        }
+      }
     ]
   }],
 
@@ -79,34 +79,21 @@ var state = {
             'url': 'urlplaceholder/answer_5_photo_number_2.jpg'
           }
         ]
-      }
-    ]
+      },
+
+
+    ],
+
   }]
 
 };
 
-const ContainerQA = styled.div`
-  display: flex;
-  flex-flow: column;
-  width: 70%;
-  margin: 0 auto;
-`;
-
-const Button = styled.button`
-  border: 1px solid;
-  padding: 2%;
-  margin: 1%;
-  font-size: 14px;
-  font-weight: bold;
-  background: transparent;
-`;
-
-const Buttons = styled.div`
-  display: flex;
-`;
-
 const QandA = () => {
-  const [questions, setQues] = useState(state.questions[0]);
+
+  const { product } = React.useContext(ProductContext);
+  const [currProduct] = product;
+
+  const [questions, setQues] = useState();
   const [answers, setAns] = useState(state.answers[0]);
 
   const [isOpen, setIsOpen] = useState({open: false, form: {
@@ -117,7 +104,6 @@ const QandA = () => {
     const isOpen = {open: true, form: {
       addAns: true,
     }};
-
     setIsOpen(isOpen);
   };
 
@@ -134,26 +120,32 @@ const QandA = () => {
 
 
 
-  // const apis = {};
-  // useEffect(() => {
-  //     const fetchQues = async () => {
-  //         const ques = await axios.get('/qa/questions');
-  //         apis.push({ques: ques.data});
-  //     };
-  //     fetchQues();
-  // });
-  // console.log(answers);
+  useEffect(() => {
+    const fetchQues = async () => {
+      try {
+
+        const ques = await axios.get(`/qa/questions/${currProduct.id}`);
+        console.log(';;; ',ques.data)
+
+        setQues([ques.data]);
+      } catch(err) {
+        console.error(err);
+      }
+    };
+    fetchQues();
+  }, []);
 
   return (
 
     <ContainerQA>
+      {console.log('questions State: ',questions)}
       <h3>Questions & Answers {}</h3>
       <Search />
-      <QuestionsList
+      {/* <QuestionsList
         questions={questions}
         answers={answers}
-        openModal={openAnsModal}
-      />
+        openModal={openAnsModal} */}
+      {/* /> */}
       <p>LOAD MORE ANSWERERS</p>
       <Buttons>
         <Button>MORE ANSWERED QUESTIONS</Button>

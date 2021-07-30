@@ -42,10 +42,13 @@ const App = () => {
           reviewMeta: [reviewMeta, setReviewMeta]
         }
       }>
-        <Overview product={ product }/>
-       <Related_Items_Comparison />
+        {/* <Overview product={ product }/> */}
+
+        {/* <Related_Items_Comparison /> */}
+
         <QandA />
-        {
+        
+        {/* {
           Object.keys(reviews).length > 0 && Object.keys(reviewMeta).length > 0
             ?
             <RatingsAndReviews
@@ -54,7 +57,7 @@ const App = () => {
             />
             :
             null
-        }
+        } */}
       </ProductContext.Provider>
     </div>
   );

@@ -89,8 +89,9 @@ router.put('/reviews/:review_id/report', (req, res) => {
 //      Q&A      /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-router.get('/qa/questions', (req, res) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions', headers)
+router.get('/qa/questions/:product_id', (req, res) => {
+  const product_id = req.params.product_id;
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/?product_id=${product_id}`, headers)
     .then(({ data }) => res.status(200).json(data))
     .catch(err => res.status(401).json(err));
 });

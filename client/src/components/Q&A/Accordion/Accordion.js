@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-
-
 const Span = styled.span`
     text-decoration: underline;
 `;
@@ -15,7 +13,6 @@ const Aside = styled.aside`
     display: flex;
     justify-content: space-between;
     width: 100%;
-    // max-height: 0
 `;
 
 const AnwrSection = styled.section`

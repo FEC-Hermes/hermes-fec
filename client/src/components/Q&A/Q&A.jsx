@@ -8,6 +8,8 @@ import QuestionsList from './QuestionsList/QuestionsList.jsx';
 
 import AddQuestion from './AddQuestion/AddQuestion.jsx';
 import AddAnswer from './AddAnswer/AddAnswer.jsx';
+import Modal from './Modal/Modal.jsx';
+
 
 
 var state = {
@@ -33,7 +35,26 @@ var state = {
             // ...
           }
         }
-      }
+      },
+      // {
+      //   'question_id': 39,
+      //   'question_body': 'Why is this product cheaper here than other sites?',
+      //   'question_date': '2018-10-18T00:00:00.000Z',
+      //   'asker_name': 'williamsmith',
+      //   'question_helpfulness': 4,
+      //   'reported': false,
+      //   'answers': {
+      //     69: {
+      //       'id': 69,
+      //       'body': 'We are selling it here without any markup from the middleman!',
+      //       'date': '2018-08-18T00:00:00.000Z',
+      //       'answerer_name': 'Seller',
+      //       'helpfulness': 4,
+      //       'photos': []
+      //       // ...
+      //     }
+      //   }
+      // }
     ]
   }],
 
@@ -83,22 +104,44 @@ const Button = styled.button`
 const Buttons = styled.div`
   display: flex;
 `;
+
 const QandA = () => {
   const [questions, setQues] = useState(state.questions[0]);
   const [answers, setAns] = useState(state.answers[0]);
 
+  const [isOpen, setIsOpen] = useState({open: false, form: {
+    addAns: false,
+  } });
+
+  const openAnsModal = () => {
+    const isOpen = {open: true, form: {
+      addAns: true,
+    }};
+
+    setIsOpen(isOpen);
+  };
+
+  const openModal = () => {
+    const isOpen = {open: true, form: {
+      addAns: false,
+    }};
+    setIsOpen(isOpen);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+
 
   // const apis = {};
-
   // useEffect(() => {
   //     const fetchQues = async () => {
   //         const ques = await axios.get('/qa/questions');
   //         apis.push({ques: ques.data});
   //     };
-
   //     fetchQues();
   // });
-
   // console.log(answers);
 
   return (
@@ -106,19 +149,22 @@ const QandA = () => {
     <ContainerQA>
       <h3>Questions & Answers {}</h3>
       <Search />
-      <QuestionsList questions={questions} answers={answers} />
+      <QuestionsList
+        questions={questions}
+        answers={answers}
+        openModal={openAnsModal}
+      />
       <p>LOAD MORE ANSWERERS</p>
       <Buttons>
         <Button>MORE ANSWERED QUESTIONS</Button>
-        <Button>ADD A QUESTION  +</Button>
+        <Button onClick={openModal}>ADD A QUESTION  +</Button>
       </Buttons>
 
-      <AddAnswer />
-      <p>
-        ------------------------------------------------------------------------
-      </p>
-      <AddQuestion />
-
+      {isOpen.open &&
+        <Modal closeModal={closeModal}>
+          {isOpen.form.addAns ?  <AddAnswer /> :  <AddQuestion />}
+        </Modal>
+      }
     </ContainerQA>
   );
 };

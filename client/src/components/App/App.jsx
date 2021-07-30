@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
-
 import Overview from '../Overview/Overview.jsx';
 import QandA from '../Q&A/Q&A.jsx';
 import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
@@ -16,35 +14,34 @@ const App = () => {
   const [reviewMeta, setReviewMeta] = useState({});
 
   useEffect(() => {
-    axios.get('/products/17069')
-      .then(({ data }) => {
-        setProduct(data);
-        axios.get(`/reviews/${data.id}/relevant/1/10000`)
-          .then(({ data }) => {
-            setReviews(data);
+    axios.get('/products/')
+      .then(results => {
+        console.log(results);
+        setProduct(results.data[4]);
+        axios.get(`/reviews/${results.data[4].id}/relevant/1/2`)
+          .then(results => {
+            setReviews(results.data);
           });
         axios.get(`/reviews/meta/${data.id}`)
           .then(({ data }) => {
             setReviewMeta(data);
           });
       });
-
-    // product id === 17071
   }, []);
 
   return (
     <div>
       <nav>NAV BAR</nav>
+      {/* OVERVIEW WONT RENDER UNTiL PRODUCT IS SET */}
+
       <ProductContext.Provider value={{
-        product:    [product, setProduct],
-        review:     [reviews, setReviews],
-        reviewMeta: [reviewMeta, setReviewMeta]
+        product: [product, setProduct],
+        reviews: reviews,
+        setReviews: setReviews,
+        reviewMeta: reviewMeta,
+        setReviewMeta: setReviewMeta
       }}>
 
-        {/* OVERVIEW WONT RENDER UNTiL PRODUCT IS SET */}
-        {
-          Object.keys(product).length ? <Overview /> : null
-        }
         <Related_Items_Comparison />
         <QandA />
         {
@@ -52,7 +49,6 @@ const App = () => {
             ?
             <RatingsAndReviews
               reviews={reviews}
-              reviewMeta={reviewMeta}
             />
             :
             null

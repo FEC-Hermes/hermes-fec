@@ -2,21 +2,27 @@ import styled from 'styled-components';
 
 const RelatedProducts = styled.div`
   display:flex;
+  justify-content: center;
+  align-items: center;
   color: ${props => props.color};
+  background-color: whitesmoke;
  `;
 
 const Image_container = styled.div`
-  height: 25rem;
+  height: 27rem;
 `;
 
 const Img = styled.img`
   height: ${props => props.height};
   width: ${props => props.width};
+  transition-duration:1s ease;
+  transform:scale(1)
 `;
 
 const Card = styled.div`
    margin: 1rem;
    border: 0.25rem solid gray;
+
 `;
 
 const CardText = styled.p`
@@ -28,12 +34,41 @@ const CardText = styled.p`
 const StarContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  margin-right: 0.5rem;
 `;
+
+const StarsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom:0.5rem;
+
+`;
+
 const Stars = styled.img`
   margin : ${props => props.margin};
   height: 1.8rem;
   position:${props => props.pos};
+  z-index:${props => props.z_index};
+`;
+
+// ThumbnailContainer
+const ThumbnailContainer = styled.div`
+   display:flex;
+   justify-content: space-around;
+   align-items: center;
+   width: 16rem;
+   position: relative;
+   bottom: 3rem;
 
 `;
 
-export  {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer};
+const Thumbnail_Image_Container = styled.div`
+    // position: relative;
+    // bottom: 0.25rem;
+`;
+
+const Thumbnail_arrow = styled.div`
+   margin-right:1.3rem;
+`;
+
+export  {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer, ThumbnailContainer,Thumbnail_Image_Container,Thumbnail_arrow, StarsContainer};

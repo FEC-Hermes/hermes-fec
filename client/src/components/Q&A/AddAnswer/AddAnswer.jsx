@@ -14,6 +14,7 @@ const AddAnswer = () => {
 
   return (
     <div>
+      <h1>Submit your Answer</h1>
       <form onSubmit={handleSubmit}>
 
         <div>

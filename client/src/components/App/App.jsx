@@ -14,12 +14,12 @@ const App = () => {
   const [reviewMeta, setReviewMeta] = useState({});
 
   useEffect(() => {
-    axios.get('/products/')
-      .then(results => {
-        setProduct(results.data[4]);
-        axios.get(`/reviews/${results.data[4].id}/relevant/1/2`)
-          .then(results => {
-            setReviews(results.data);
+    axios.get('/products/17069')
+      .then(({ data }) => {
+        setProduct(data);
+        axios.get(`/reviews/${data.id}/relevant/1/2`)
+          .then(({ data }) => {
+            setReviews(data);
           });
         axios.get(`/reviews/meta/${data.id}`)
           .then(({ data }) => {

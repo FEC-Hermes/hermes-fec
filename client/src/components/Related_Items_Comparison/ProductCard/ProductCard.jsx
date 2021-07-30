@@ -27,7 +27,7 @@ const ProductCard = () => {
 
   useEffect( () => {
     async function fetchData(){
-      const {data} = await axios.get(`/products/${id}/styles`);
+      const {data} = await axios.get(`/products/${17069}/styles`);
       setProduct(data.results);
       return data;
     }

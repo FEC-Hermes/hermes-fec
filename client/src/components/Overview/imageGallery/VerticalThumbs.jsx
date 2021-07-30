@@ -5,9 +5,9 @@ import StylesContext from '../../contexts/StylesContext.js';
 
 const VerticalThumbs = ({ setCurrImage }) => {
 
-  const { expanded, currStyle } = React.useContext(StylesContext);
+  const { currStyle } = React.useContext(StylesContext);
   const [style] = currStyle;
-  const [expand] = expanded;
+
 
   let maxIdx = style.photos.length - 7;
   const [imageIdx, setImageIdx] = useState(0);
@@ -70,7 +70,7 @@ const VerticalThumbs = ({ setCurrImage }) => {
   };
 
   return (
-    <MainContainer id="vThumb-container">
+    <MainContainer>
       <svg
         id="vThumb-arrow-up"
         onClick={ () => onArrowClick('up') }

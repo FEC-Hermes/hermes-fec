@@ -12,20 +12,14 @@ const ImageContainer = styled.div`
   display: flex;
   align-content: center;
   justify-content: center;
-
-  ${'' /* border: 5px solid green; */}
-
 `;
 
 const Image = styled.img`
-  ${'' /* width: 875px; */}
   height: 100%;
 
     :hover{
       cursor: pointer;
     }
-
-  ${'' /* border: 5px solid red; */}
 `;
 
 ////    Component    ///////////////////////////////

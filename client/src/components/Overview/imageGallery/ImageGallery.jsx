@@ -11,27 +11,27 @@ import StylesContext from '../../contexts/StylesContext.js';
 const MainContainer = styled.main`
   width: 880px;
   position: relative;
-
-  ${'' /* border: 5px solid orange; */}
 `;
 
 ////    Component    ///////////////////////////////
 ////////////////////////////////////////////////////
 const ImageGallery = () => {
 
-  const { currStyle } = React.useContext(StylesContext);
+  const { currStyle, expanded } = React.useContext(StylesContext);
   const [style] = currStyle;
+  const [expand] = expanded;
 
   const [currImage, setCurrImage] = useState();
 
   useEffect(() => {
     setCurrImage(style.photos[0].url);
+
   }, [currStyle]);
 
   return (
-    <MainContainer>
+    <MainContainer >
       <DisplayImage currImage={ currImage } />
-      <VerticalThumbs setCurrImage={ setCurrImage }/>
+      { expand ?  <VerticalThumbs setCurrImage={ setCurrImage }/> : ''}
     </MainContainer>
   );
 };

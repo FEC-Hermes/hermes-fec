@@ -8,7 +8,7 @@ const headers = { headers: {'Authorization': config.TOKEN} };
 //      PRODUCTS      ////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-router.get('/products', (req, res) => {
+router.get('/products/', (req, res) => {
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products', headers)
     .then(({ data }) => res.status(200).json(data))
     .catch(err => res.status(401).json(err));

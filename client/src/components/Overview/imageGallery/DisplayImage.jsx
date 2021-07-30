@@ -19,12 +19,19 @@ const Image = styled.img`
   ${'' /* width: 875px; */}
   height: 100%;
 
+    :hover{
+      cursor: pointer;
+    }
+
   ${'' /* border: 5px solid red; */}
 `;
 
 ////    Component    ///////////////////////////////
 ////////////////////////////////////////////////////
 const DisplayImage = ({ currImage }) => {
+
+
+
   return (
     <ImageContainer>
       <Image src={ currImage } />

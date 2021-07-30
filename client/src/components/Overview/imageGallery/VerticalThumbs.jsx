@@ -69,7 +69,7 @@ const VerticalThumbs = ({ setCurrImage }) => {
   };
 
   return (
-    <MainContainer>
+    <MainContainer id="vThumb-container">
       <svg
         id="vThumb-arrow-up"
         onClick={ () => onArrowClick('up') }

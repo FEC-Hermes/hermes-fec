@@ -34,6 +34,7 @@ const CardText = styled.p`
 const StarContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  margin-right: 0.5rem;
 `;
 
 const StarsContainer = styled.div`

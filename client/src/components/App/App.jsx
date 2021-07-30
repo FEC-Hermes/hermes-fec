@@ -16,10 +16,11 @@ const App = () => {
   const [reviewMeta, setReviewMeta] = useState({});
 
   useEffect(() => {
-    axios.get('/products')
+    axios.get('/products/')
       .then(results => {
+        console.log(results);
         setProduct(results.data[4]);
-        axios.get(`/reviews/${results.data[4].id}/relevant/1/10000`)
+        axios.get(`/reviews/${results.data[4].id}/relevant/1/2`)
           .then(results => {
             setReviews(results.data);
           });
@@ -28,8 +29,6 @@ const App = () => {
             setReviewMeta(results.data);
           });
       });
-
-    // product id === 17071
   }, []);
 
   return (
@@ -38,8 +37,10 @@ const App = () => {
       <ProductContext.Provider value={
         {
           product: [product, setProduct],
-          review: [reviews, setReviews],
-          reviewMeta: [reviewMeta, setReviewMeta]
+          reviews: reviews,
+          setReviews: setReviews,
+          reviewMeta: reviewMeta,
+          setReviewMeta: setReviewMeta
         }
       }>
         <Overview product={ product }/>
@@ -48,12 +49,11 @@ const App = () => {
         {
           Object.keys(reviews).length > 0 && Object.keys(reviewMeta).length > 0
             ?
-            <RatingsAndReviews
-              reviews={reviews}
-              reviewMeta={reviewMeta}
-            />
+          <RatingsAndReviews
+            reviews={reviews}
+          />
             :
-            null
+          null
         }
       </ProductContext.Provider>
     </div>

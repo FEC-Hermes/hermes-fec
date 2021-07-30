@@ -38,6 +38,7 @@ const Overview = () => {
 
   const [allStyles, setAllStyles] = useState([]);
   const [currStyle, setCurrStyle] = useState({});
+  const [expanded, setExpanded] = useState('false');
 
 
   const getStyles = (product_id) => {
@@ -61,7 +62,8 @@ const Overview = () => {
         Object.keys(currStyle).length ?
           <StylesContext.Provider value={{
             allStyles: [allStyles, setAllStyles],
-            currStyle: [currStyle, setCurrStyle]
+            currStyle: [currStyle, setCurrStyle],
+            expanded:  [expanded, setExpanded]
           }}>
             <MainContainer>
               <ImageGallery />

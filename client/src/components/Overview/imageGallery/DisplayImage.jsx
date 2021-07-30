@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import StylesContext from '../../contexts/StylesContext.js';
+
 ////    Styles    //////////////////////////////////
 ////////////////////////////////////////////////////
 const ImageContainer = styled.div`
@@ -30,11 +32,12 @@ const Image = styled.img`
 ////////////////////////////////////////////////////
 const DisplayImage = ({ currImage }) => {
 
-
+  const { expanded } = React.useContext(StylesContext);
+  const [expand, setExpand] = expanded;
 
   return (
     <ImageContainer>
-      <Image src={ currImage } />
+      <Image src={ currImage } onClick={ () => setExpand(!expand) }/>
     </ImageContainer>
   );
 };

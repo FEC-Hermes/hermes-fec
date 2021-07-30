@@ -5,8 +5,8 @@ import StylesContext from '../../contexts/StylesContext.js';
 
 const VerticalThumbs = ({ setCurrImage }) => {
 
-  const { currStyle } = React.useContext(StylesContext);
-  const [style] = currStyle;
+  const { expanded } = React.useContext(StylesContext);
+  const [expand] = expanded;
 
   let maxIdx = style.photos.length - 7;
   const [imageIdx, setImageIdx] = useState(0);

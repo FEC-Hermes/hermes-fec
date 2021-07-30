@@ -43,7 +43,7 @@ const App = () => {
         }
       }>
         <Overview product={ product }/>
-        <Related_Items_Comparison />
+       <Related_Items_Comparison />
         <QandA />
         {
           Object.keys(reviews).length > 0 && Object.keys(reviewMeta).length > 0

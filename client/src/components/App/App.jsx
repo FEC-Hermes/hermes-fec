@@ -32,8 +32,6 @@ const App = () => {
   return (
     <div>
       <nav>NAV BAR</nav>
-      {/* OVERVIEW WONT RENDER UNTiL PRODUCT IS SET */}
-
       <ProductContext.Provider value={{
         product: [product, setProduct],
         reviews: reviews,
@@ -41,7 +39,8 @@ const App = () => {
         reviewMeta: reviewMeta,
         setReviewMeta: setReviewMeta
       }}>
-
+        {/* OVERVIEW WONT RENDER UNTiL PRODUCT IS SET */}
+        
         <Related_Items_Comparison />
         <QandA />
         {

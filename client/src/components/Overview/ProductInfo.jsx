@@ -84,17 +84,17 @@ const ProductInfo = () => {
 
   //THIS IS NOT GOING TO WORK ONCE MERGED WITH MAIN
   //REFACTOR TO USE APP LEVEL DESTRUCT
-  const { product, reviewMeta } = React.useContext(ProductContext);
+  const { product, reviewMeta:{ratings} } = React.useContext(ProductContext);
   const { currStyle } = React.useContext(StylesContext);
 
   const [currProduct] = product;
-  const [reviewScore] = reviewMeta;
+  // const [reviewScore] = reviewMeta;
   const [style] = currStyle;
 
   return (
     <MainContainer>
       <StarRating>
-        <Stars ratings={ reviewScore.ratings } />
+        <Stars ratings={ ratings } />
         <ReviewLink href="#rating-review" Read all reviews>Read all reviews</ReviewLink>
       </StarRating>
       <Category>{ currProduct.category }</Category>

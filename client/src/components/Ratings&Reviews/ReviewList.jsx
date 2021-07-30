@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Review from './Review.jsx';
 
 const ReviewList = ({reviews}) => {
-  const [reviewsShown, updateReviewsShown] = useState([reviews[0], reviews[1]]);
+  const [reviewsShown, updateReviewsShown] = useState(reviews);
 
 
   var updateReviews = (reviewsShownCount) => {

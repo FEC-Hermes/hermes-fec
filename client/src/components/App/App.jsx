@@ -16,7 +16,6 @@ const App = () => {
   useEffect(() => {
     axios.get('/products/')
       .then(results => {
-        console.log(results);
         setProduct(results.data[4]);
         axios.get(`/reviews/${results.data[4].id}/relevant/1/2`)
           .then(results => {
@@ -40,7 +39,9 @@ const App = () => {
         setReviewMeta: setReviewMeta
       }}>
         {/* OVERVIEW WONT RENDER UNTiL PRODUCT IS SET */}
-        
+        {
+          Object.keys(product).length ? <Overview /> : null
+        }
         <Related_Items_Comparison />
         <QandA />
         {

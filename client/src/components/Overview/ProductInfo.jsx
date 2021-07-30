@@ -84,11 +84,10 @@ const ProductInfo = () => {
 
   //THIS IS NOT GOING TO WORK ONCE MERGED WITH MAIN
   //REFACTOR TO USE APP LEVEL DESTRUCT
-  const { product, reviewMeta:{ratings} } = React.useContext(ProductContext);
+  const { product, reviewMeta:{ ratings } } = React.useContext(ProductContext);
   const { currStyle } = React.useContext(StylesContext);
 
   const [currProduct] = product;
-  // const [reviewScore] = reviewMeta;
   const [style] = currStyle;
 
   return (

@@ -47,11 +47,11 @@ const App = () => {
         {
           Object.keys(reviews).length > 0 && Object.keys(reviewMeta).length > 0
             ?
-          <RatingsAndReviews
-            reviews={reviews}
-          />
+            <RatingsAndReviews
+              reviews={reviews}
+            />
             :
-          null
+            null
         }
       </ProductContext.Provider>
     </div>

@@ -9,14 +9,14 @@ import {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContai
 
 const ProductCard = () => {
   const {product:[product]} = useContext(ProductContext);
-  const {reviewMeta:[{ratings}]} = useContext(ProductContext);
+  const {reviewMeta:{ratings}} = useContext(ProductContext);
   const [relatedProducts, setProduct] = useState([]);
   let [count, setCount] = useState(0);
   const [isToggled, setToggle] = useState(false);
   const [isShown, setIsShown] = useState(false);
 
-  const onHover = () => {
-  };
+  // const onHover = () => {
+  // };
 
   const {id, category} = product;
   let carouselProducts = relatedProducts.length === 4 ?
@@ -56,7 +56,7 @@ const ProductCard = () => {
               <Image_container>
                 <StarContainer>
                   <Stars
-                    onClick={() => isToggled? setToggle(false): setToggle(true)}
+                    onClick={() => setToggle(!isToggled)}
                     pos={'absolute'}
                     bottom={'16.5rem'}
                     margin={'0.5rem 0rem 0 0'}
@@ -76,7 +76,7 @@ const ProductCard = () => {
               <CardText font_size={'1.5rem'}>{name}</CardText>
               <CardText font_size={'1rem'} >${original_price}</CardText>
               <StarsContainer>
-                <StarAverageRating Ratings ratings={ratings} />
+                <StarAverageRating ratings={ratings} />
               </StarsContainer>
 
             </Card>
@@ -90,10 +90,7 @@ const ProductCard = () => {
           height={'4rem'}
           width={'3rem'}
           src='https://cdn4.iconfinder.com/data/icons/arrows-249/24/small_chevron_arrow_right-512.png'/> : null
-
       }
-
-
     </RelatedProducts>
   );
 };

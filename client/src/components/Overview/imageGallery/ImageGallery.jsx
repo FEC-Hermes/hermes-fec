@@ -18,8 +18,8 @@ const MainContainer = styled.main`
 const ImageGallery = () => {
 
   const { currStyle, expanded } = React.useContext(StylesContext);
-  const [style] = currStyle;
-  const [expand] = expanded;
+  const [expand, setExpand] = expanded;
+  const [style]  = currStyle;
 
   const [currImage, setCurrImage] = useState();
 
@@ -31,7 +31,7 @@ const ImageGallery = () => {
   return (
     <MainContainer >
       <DisplayImage currImage={ currImage } />
-      { expand ?  <VerticalThumbs setCurrImage={ setCurrImage }/> : ''}
+      <VerticalThumbs setCurrImage={ setCurrImage } />
     </MainContainer>
   );
 };

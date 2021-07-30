@@ -31,7 +31,7 @@ const DisplayImage = ({ currImage }) => {
 
   return (
     <ImageContainer>
-      <Image src={ currImage } onClick={ () => setExpand(!expand) }/>
+      <Image src={ currImage } />
     </ImageContainer>
   );
 };

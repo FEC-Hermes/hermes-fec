@@ -27,6 +27,11 @@ const MainContainer = styled.main`
 const InfoContainer = styled.main`
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 340px;
+  max-height: 750px;
+  margin-left: 20px;
 `;
 
 ////    Component    ///////////////////////////////
@@ -38,7 +43,7 @@ const Overview = () => {
 
   const [allStyles, setAllStyles] = useState([]);
   const [currStyle, setCurrStyle] = useState({});
-  const [expanded, setExpanded] = useState('false');
+  const [expanded, setExpanded] = useState(false);
 
 
   const getStyles = (product_id) => {
@@ -67,15 +72,11 @@ const Overview = () => {
           }}>
             <MainContainer>
               <ImageGallery />
-              {
-                expanded ?
-                  <InfoContainer>
-                    <ProductInfo />
-                    <StyleSelector />
-                    <AddToCart />
-                  </InfoContainer>
-                  : ''
-              }
+              <InfoContainer>
+                <ProductInfo />
+                <StyleSelector />
+                <AddToCart />
+              </InfoContainer>
               <ProductDesc />
             </MainContainer>
           </StylesContext.Provider>

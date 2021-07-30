@@ -4,7 +4,7 @@ import Reviews from './Reviews.jsx';
 
 const RatingsAndReviews = ({reviews, reviewMeta}) => {
   return (
-    <div>
+    <div id='rating-review'>
       <div id="ratings-and-reviews-title">Ratings & Reviews
         <div id="ratings-and-reviews-container">
           <Ratings reviewMeta={reviewMeta}/>

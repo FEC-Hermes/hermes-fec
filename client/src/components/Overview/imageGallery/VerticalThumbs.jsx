@@ -7,22 +7,19 @@ import StylesContext from '../../contexts/StylesContext.js';
 ////////////////////////////////////////////////////
 const VerticalThumbs = () => {
 
-  const { currStyle, imgIndex, expanded } = React.useContext(StylesContext);
+  const { currStyle, imgIndex, minIndex, expanded } = React.useContext(StylesContext);
   const [style] = currStyle;
-  const [currImgIdx, setCurrImgIdx] = imgIndex;
+  let [currImgIdx, setCurrImgIdx] = imgIndex;
+  let [minIdx, setMinIdx] = minIndex;
   const [expand] = expanded;
 
   let maxIdx = style.photos.length - 7;
-  const [yAxis, setYAxis] = useState(0);
+  let [yAxis, setYAxis] = useState(0);
 
   useEffect(() => {
-    onImageClick('vThumb0', 0);
-  }, [style]);
-
-  useEffect(() => {
-    slideThumbs();
+    onImageClick(0);
     arrowVisibility();
-  }, [currImgIdx]);
+  }, []);
 
   useEffect(() => {
     const container = document.getElementById('vThumb-container');
@@ -36,9 +33,9 @@ const VerticalThumbs = () => {
     if (style.photos.length <= 7) {
       arrowUp.style.visibility = 'hidden';
       arrowDown.style.visibility = 'hidden';
-    } else if (currImgIdx === 0) {
+    } else if (minIdx === 0) {
       arrowUp.style.visibility = 'hidden';
-    } else if (currImgIdx === maxIdx) {
+    } else if (minIdx === maxIdx) {
       arrowDown.style.visibility = 'hidden';
     } else {
       arrowUp.style.visibility = 'visible';
@@ -57,17 +54,31 @@ const VerticalThumbs = () => {
   };
 
   const onArrowClick = (arrow) => {
-    if (arrow === 'up' && currImgIdx > 0) {
-      setYAxis(yAxis + 89);
-      setCurrImgIdx(currImgIdx - 1);
-    } else if (arrow === 'down' && currImgIdx < maxIdx) {
-      setYAxis(yAxis - 89);
-      setCurrImgIdx(currImgIdx + 1);
+
+    arrowVisibility();
+
+    if (arrow === 'up') {
+      setYAxis((yAxis + 89));
+
+      setMinIdx(minIdx - 1);
+      if (currImgIdx === maxIdx) {
+        setCurrImgIdx(--currImgIdx);
+      }
+    } else if (arrow === 'down') {
+
+      setYAxis((yAxis - 89));
+      setMinIdx(minIdx + 1);
+
+      if (currImgIdx === minIdx) {
+        setCurrImgIdx(++currImgIdx);
+      }
     }
+
+    slideThumbs();
+    onImageClick(currImgIdx);
   };
 
-  const onImageClick = (id, index) => {
-
+  const onImageClick = (index) => {
     const images = document.getElementsByClassName('thumbImg');
 
     Array.from(images).forEach(img => {
@@ -75,8 +86,8 @@ const VerticalThumbs = () => {
       img.parentNode.style.border = '1px solid #000';
     });
 
-    document.getElementById(id).parentNode.style.boxShadow = '0px 0px 8px #fff';
-    document.getElementById(id).parentNode.style.border = '3px solid #fff';
+    document.getElementById(`vThumb${index}`).parentNode.style.boxShadow = '0px 0px 8px #fff';
+    document.getElementById(`vThumb${index}`).parentNode.style.border = '1px solid #fff';
 
     setCurrImgIdx(index);
   };
@@ -101,7 +112,7 @@ const VerticalThumbs = () => {
                 src={ photo.thumbnail_url }
                 id={ `vThumb${i}` }
                 className="thumbImg"
-                onClick={ () => onImageClick(`vThumb${i}`, `${i}`)}
+                onClick={ () => onImageClick(i)}
               />
             </ImgFrame>
           ))
@@ -122,3 +133,56 @@ const VerticalThumbs = () => {
 };
 
 export default VerticalThumbs;
+
+
+
+
+
+
+
+
+
+/*
+
+[0, 1, 2, 3, 4, 5, 6], 7, 8, 9, 10, 11]
+maxIndex       :5
+minIndex       :0
+currImageIndex :0
+
+0, [1, 2, 3, 4, 5, 6, 7], 8, 9, 10, 11]
+maxIndex       :5
+minIndex       :1
+currImageIndex :1
+
+0, 1, [2, 3, 4, 5, 6, 7, 8], 9, 10, 11]
+maxIndex       :5
+minIndex       :2
+currImageIndex :2
+
+0, 1, 2, [3, 4, 5, 6, 7, 8, 9], 10, 11]
+maxIndex       :5
+minIndex       :3
+currImageIndex :3
+
+0, 1, 2, 3, [4, 5, 6, 7, 8, 9, 10], 11]
+maxIndex       :5
+minIndex       :4
+currImageIndex :4
+
+0, 1, 2, 3, 4, [5, 6, 7, 8, 9, 10, 11]]
+maxIndex       :5
+minIndex       :5
+currImageIndex :5
+
+
+
+
+
+
+
+
+
+
+
+
+*/

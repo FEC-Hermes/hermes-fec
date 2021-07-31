@@ -14,6 +14,8 @@ const ImageContainer = styled.div`
   justify-content: center;
   z-index: 10;
   background-color: grey;
+  transition-timing-function: ease-in;
+  transition: .3s;
 `;
 
 const Image = styled.img`
@@ -37,13 +39,9 @@ const DisplayImage = () => {
     const container = document.getElementById('display-img-container');
 
     if (expand) {
-      container.style.transitionTimingFunction = 'ease-in';
-      container.style.transition = '.3s';
       container.style.width = '1280px';
       container.style.height = '800px';
     } else {
-      container.style.transitionTimingFunction = 'ease-in';
-      container.style.transition = '.3s';
       container.style.width = '850px';
       container.style.height = '750px';
     }
@@ -53,7 +51,7 @@ const DisplayImage = () => {
     <ImageContainer id='display-img-container'>
       <Image
         id='display-img'
-        src={ style.photos[currIdx].url }
+        src={ style.photos[currIdx].url}
         onClick={ () => setExpand(!expand) }
       />
     </ImageContainer>

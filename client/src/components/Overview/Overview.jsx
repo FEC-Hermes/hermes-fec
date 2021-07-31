@@ -17,7 +17,6 @@ const MainContainer = styled.main`
   padding: 0;
   margin: 0;
   width: 1280px;
-
   display: flex;
   flex-wrap: wrap;
 
@@ -44,6 +43,7 @@ const Overview = () => {
   const [allStyles, setAllStyles] = useState([]);
   const [currStyle, setCurrStyle] = useState({});
   const [currImgIdx, setCurrImgIdx] = useState(0);
+  const [minImgIdx, setMinIndex] = useState(0);
   const [expanded, setExpanded] = useState(false);
 
 
@@ -76,6 +76,7 @@ const Overview = () => {
             allStyles: [allStyles, setAllStyles],
             currStyle: [currStyle, setCurrStyle],
             imgIndex:  [currImgIdx, setCurrImgIdx],
+            minIndex:  [minImgIdx, setMinIndex],
             expanded:  [expanded, setExpanded]
           }}>
             <MainContainer>

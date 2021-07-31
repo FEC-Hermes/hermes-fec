@@ -39,16 +39,6 @@ const AddToCart = () => {
   const [style] = currStyle;
 
   const [skuSelected, setSkuSelected] = useState();
-
-  // const getOptions = (qty) => {
-  //   const options = [];
-  //   for (let i = 1; i <= qty; i++) {
-  //     options.push(<option key=`${i}`>`${i}`</option>);
-  //   }
-
-  //   return options;
-  // };
-
   const addToCart = () => {
 
   };

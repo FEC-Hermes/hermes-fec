@@ -11,6 +11,8 @@ import StylesContext from '../../contexts/StylesContext';
 const MainContainer = styled.main`
   width: 880px;
   position: relative;
+  transition-timing-function: 'ease-in';
+  transition: '.3s';
 `;
 
 ////    Component    ///////////////////////////////

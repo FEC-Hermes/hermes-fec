@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import ImageGallery from './imageGallery/ImageGallery.jsx';
 import AddToCart from './AddToCart.jsx';
@@ -7,7 +6,6 @@ import ProductInfo from './ProductInfo.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import ProductDesc from './ProductDesc.jsx';
 
-import ProductContext from '../contexts/ProductContext';
 import StylesContext from '../contexts/StylesContext';
 
 ////    Styles    //////////////////////////////////
@@ -37,60 +35,28 @@ const InfoContainer = styled.main`
 ////////////////////////////////////////////////////
 const Overview = () => {
 
-  const { product } = React.useContext(ProductContext);
-  const [currProduct] = product;
-
-  const [allStyles, setAllStyles] = useState([]);
-  const [currStyle, setCurrStyle] = useState({});
-  const [currImgIdx, setCurrImgIdx] = useState(0);
-  const [minImgIdx, setMinIndex] = useState(0);
-  const [expanded, setExpanded] = useState(false);
-
-
-  const getStyles = (product_id) => {
-    axios.get(`/products/${product_id}/styles`)
-      .then(({ data }) => {
-        setAllStyles(data.results);
-        setCurrStyle(data.results[0]);
-      })
-      .catch(err => console.log(err));
-  };
-
-  useEffect(() => {
-    getStyles(currProduct.id);
-  }, [product]);
+  const { expanded } = React.useContext(StylesContext);
+  const [expand] = expanded;
 
   useEffect(() => {
     const container = document.getElementById('info-container');
 
     if (container) {
-      expanded ? container.style.display ='none' : container.style.display = 'flex';
+      expand ? container.style.display ='none' : container.style.display = 'flex';
     }
-  }, [expanded]);
+  }, [expand]);
 
   return (
     <div>
-      {
-        Object.keys(currStyle).length ?
-          <StylesContext.Provider value={{
-            allStyles: [allStyles, setAllStyles],
-            currStyle: [currStyle, setCurrStyle],
-            imgIndex:  [currImgIdx, setCurrImgIdx],
-            minIndex:  [minImgIdx, setMinIndex],
-            expanded:  [expanded, setExpanded]
-          }}>
-            <MainContainer>
-              <ImageGallery />
-              <InfoContainer id='info-container'>
-                <ProductInfo />
-                <StyleSelector />
-                <AddToCart />
-              </InfoContainer>
-              <ProductDesc />
-            </MainContainer>
-          </StylesContext.Provider>
-          : null
-      }
+      <MainContainer>
+        <ImageGallery />
+        <InfoContainer id='info-container'>
+          <ProductInfo />
+          <StyleSelector />
+          <AddToCart />
+        </InfoContainer>
+        <ProductDesc />
+      </MainContainer>
     </div>
   );
 };

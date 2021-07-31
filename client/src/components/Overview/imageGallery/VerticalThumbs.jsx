@@ -62,7 +62,7 @@ const VerticalThumbs = () => {
 
       setMinIdx(minIdx - 1);
       if (currImgIdx === maxIdx) {
-        setCurrImgIdx(--currImgIdx);
+        setCurrImgIdx(currImgIdx--);
       }
     } else if (arrow === 'down') {
 
@@ -70,7 +70,7 @@ const VerticalThumbs = () => {
       setMinIdx(minIdx + 1);
 
       if (currImgIdx === minIdx) {
-        setCurrImgIdx(++currImgIdx);
+        setCurrImgIdx(currImgIdx++);
       }
     }
 

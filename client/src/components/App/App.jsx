@@ -6,6 +6,7 @@ import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
 import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_Comparison.jsx';
 
 import ProductContext from '../contexts/ProductContext.js';
+import StylesContext from '../contexts/StylesContext';
 
 const App = () => {
 
@@ -31,6 +32,37 @@ const App = () => {
       });
   }, []);
 
+
+
+
+  
+  /* REFACTOR INTO CONTEXT FILE ========= */
+
+  const [allStyles, setAllStyles] = useState([]);
+  const [currStyle, setCurrStyle] = useState({});
+  const [currImgIdx, setCurrImgIdx] = useState(0);
+  const [minImgIdx, setMinIndex] = useState(0);
+  const [expanded, setExpanded] = useState(false);
+
+
+  const getStyles = (product_id) => {
+    axios.get(`/products/${product_id}/styles`)
+      .then(({ data }) => {
+        setAllStyles(data.results);
+        setCurrStyle(data.results[0]);
+      })
+      .catch(err => console.log(err));
+  };
+
+  useEffect(() => {
+    getStyles(product.id);
+  }, [product]);
+
+  /* REFACTOR INTO CONTEXT FILE ========= */
+
+
+
+
   return (
     <div>
       {
@@ -45,8 +77,28 @@ const App = () => {
               reviewMeta: reviewMeta,
               setReviewMeta: setReviewMeta
             }}>
-              <Overview />
-              <Related_Items_Comparison />
+
+              {/* NEED TO REFACTOR INTO CONTEXT FILE */}
+
+
+              {
+                Object.keys(currStyle).length ?
+                  <StylesContext.Provider value={{
+                    allStyles: [allStyles, setAllStyles],
+                    currStyle: [currStyle, setCurrStyle],
+                    imgIndex:  [currImgIdx, setCurrImgIdx],
+                    minIndex:  [minImgIdx, setMinIndex],
+                    expanded:  [expanded, setExpanded]
+                  }}>
+                    <Overview />
+                    <Related_Items_Comparison />
+                  </StylesContext.Provider>
+                  : null
+              }
+
+              {/*                                    */}
+
+
               <QandA />
               <RatingsAndReviews />
             </ProductContext.Provider>

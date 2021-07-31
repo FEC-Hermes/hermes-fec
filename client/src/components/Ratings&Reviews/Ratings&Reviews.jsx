@@ -8,7 +8,7 @@ const RatingsAndReviews = ({reviews, reviewMeta}) => {
       <div id="ratings-and-reviews-title">Ratings & Reviews</div>
       <div id="ratings-and-reviews-container">
         <Ratings />
-        <Reviews reviews={reviews}/>
+        <Reviews />
       </div>
     </div>
   );

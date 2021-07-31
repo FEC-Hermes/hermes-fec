@@ -20,7 +20,9 @@ const App = () => {
       .then(results => {
         console.log(results);
         setProduct(results.data[4]);
-        axios.get(`/reviews/${results.data[4].id}/relevant/1/2`)
+        // HELFPUL FAILS AT 17
+        // NEWEST FAILS AT
+        axios.get(`/reviews/${results.data[4].id}/newest/1/100`)
           .then(results => {
             setReviews(results.data);
           });
@@ -49,9 +51,7 @@ const App = () => {
         {
           Object.keys(reviews).length > 0 && Object.keys(reviewMeta).length > 0
             ?
-          <RatingsAndReviews
-            reviews={reviews}
-          />
+          <RatingsAndReviews/>
             :
           null
         }

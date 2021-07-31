@@ -3,7 +3,7 @@ import NewReviewStarDisplay from '../Shared/NewReviewStarDisplay.jsx';
 import axios from 'axios';
 
 // Hela's Combat Garb: https://i.imgur.com/Q5kWc7n.jpg
-// Samus' Power Suit: https://i.imgur.com/a/3ra6fpy.jpg
+// Samus' Power Suit: https://i.imgur.com/dtjVxno.jpg
 // Dragonborn's Iron Helmet: https://i.imgur.com/j3uT1ND.jpg
 // Marty McFly's Vest: https://i.imgur.com/VDC9duU.jpg
 // Superman's Outfit: https://i.imgur.com/B5kTEPt.jpg

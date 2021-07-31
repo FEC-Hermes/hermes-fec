@@ -60,10 +60,16 @@ const Overview = () => {
     getStyles(currProduct.id);
   }, [product]);
 
+  useEffect(() => {
+    const container = document.getElementById('info-container');
+
+    if (container) {
+      expanded ? container.style.display ='none' : container.style.display = 'flex';
+    }
+  }, [expanded]);
+
   return (
     <div>
-      {/* NOTHING WILL RENDER UNTIL CURR STYLE IS SET */}
-
       {
         Object.keys(currStyle).length ?
           <StylesContext.Provider value={{
@@ -74,7 +80,7 @@ const Overview = () => {
           }}>
             <MainContainer>
               <ImageGallery />
-              <InfoContainer>
+              <InfoContainer id='info-container'>
                 <ProductInfo />
                 <StyleSelector />
                 <AddToCart />

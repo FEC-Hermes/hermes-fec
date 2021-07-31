@@ -25,7 +25,7 @@ const VerticalThumbs = () => {
   useEffect(() => {
     const container = document.getElementById('vThumb-container');
     expand ? container.style.display ='none' : container.style.display = 'flex';
-  });
+  }, [expand]);
 
   const arrowVisibility = () => {
     const arrowUp = document.getElementById('vThumb-arrow-up');

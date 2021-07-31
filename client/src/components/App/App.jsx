@@ -14,15 +14,15 @@ const App = () => {
   const [reviewMeta, setReviewMeta] = useState({});
 
   useEffect(() => {
-    axios.get('/products/')
-      .then(results => {
-        console.log(results);
-        setProduct(results.data[4]);
+    axios.get('/products/17069')
+      .then(({data}) => {
+        setProduct(data);
         // HELFPUL FAILS AT 17
         // NEWEST FAILS AT
-        axios.get(`/reviews/${results.data[4].id}/newest/1/100`)
-          .then(results => {
-            setReviews(results.data);
+        console.log(data);
+        axios.get(`/reviews/${data.id}/newest/1/2`)
+          .then(({data}) => {
+            setReviews(data);
           });
         axios.get(`/reviews/meta/${data.id}`)
           .then(({ data }) => {

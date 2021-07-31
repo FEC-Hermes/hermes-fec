@@ -17,7 +17,7 @@ const App = () => {
     axios.get('/products/17069')
       .then(({ data }) => {
         setProduct(data);
-        axios.get(`/reviews/${data.id}/relevant/1/2`)
+        axios.get(`/reviews/${data.id}/newest/1/2`)
           .then(({ data }) => {
             setReviews(data);
           });
@@ -47,9 +47,7 @@ const App = () => {
         {
           Object.keys(reviews).length > 0 && Object.keys(reviewMeta).length > 0
             ?
-            <RatingsAndReviews
-              reviews={reviews}
-            />
+            <RatingsAndReviews/>
             :
             null
         }

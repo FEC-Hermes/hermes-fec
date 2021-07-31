@@ -17,8 +17,11 @@ const App = () => {
     axios.get('/products/17071')
       .then(({ data }) => {
         setProduct(data);
-        axios.get(`/reviews/${data.id}/relevant/1/2`)
-          .then(({ data }) => {
+        // HELFPUL FAILS AT 17
+        // NEWEST FAILS AT
+        console.log(data);
+        axios.get(`/reviews/${data.id}/newest/1/2`)
+          .then(({data}) => {
             setReviews(data);
           });
         axios.get(`/reviews/meta/${data.id}`)
@@ -43,9 +46,9 @@ const App = () => {
               setReviewMeta: setReviewMeta
             }}>
               <Overview />
-              {/* <Related_Items_Comparison />
+              <Related_Items_Comparison />
               <QandA />
-              <RatingsAndReviews /> */}
+              <RatingsAndReviews />
             </ProductContext.Provider>
           </div>
           :

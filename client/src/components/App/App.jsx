@@ -14,7 +14,7 @@ const App = () => {
   const [reviewMeta, setReviewMeta] = useState({});
 
   useEffect(() => {
-    axios.get('/products/17069')
+    axios.get('/products/17067')
       .then(({ data }) => {
         setProduct(data);
         axios.get(`/reviews/${data.id}/relevant/1/2`)

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import DisplayImage from './DisplayImage.jsx';
 import VerticalThumbs from './VerticalThumbs.jsx';
+
+import StylesContext from '../../contexts/StylesContext';
 
 ////    Styles    //////////////////////////////////
 ////////////////////////////////////////////////////
@@ -15,8 +17,23 @@ const MainContainer = styled.main`
 ////////////////////////////////////////////////////
 const ImageGallery = () => {
 
+  const { expanded } = React.useContext(StylesContext);
+  const [expand] = expanded;
+
+  useEffect(() => {
+    const container = document.getElementById('image-gal-container');
+    if (expand) {
+      container.style.width = '1280px';
+      container.style.height = '800px';
+    } else {
+      container.style.width = '880px';
+      container.style.height = '';
+    }
+
+  }, [expand]);
+
   return (
-    <MainContainer >
+    <MainContainer id="image-gal-container" >
       <DisplayImage />
       <VerticalThumbs />
     </MainContainer>

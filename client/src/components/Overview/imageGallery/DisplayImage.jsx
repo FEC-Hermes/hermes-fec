@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import StylesContext from '../../contexts/StylesContext.js';
@@ -33,9 +33,29 @@ const DisplayImage = () => {
   const [currIdx] = imgIndex;
   const [expand, setExpand] = expanded;
 
+  useEffect(() => {
+    const container = document.getElementById('display-img-container');
+
+    if (expand) {
+      container.style.transitionTimingFunction = 'ease-in';
+      container.style.transition = '.3s';
+      container.style.width = '1280px';
+      container.style.height = '800px';
+    } else {
+      container.style.transitionTimingFunction = 'ease-in';
+      container.style.transition = '.3s';
+      container.style.width = '850px';
+      container.style.height = '750px';
+    }
+  }, [expand]);
+
   return (
-    <ImageContainer>
-      <Image src={ style.photos[currIdx].url } onClick={ () => setExpand(!expand) }/>
+    <ImageContainer id='display-img-container'>
+      <Image
+        id='display-img'
+        src={ style.photos[currIdx].url }
+        onClick={ () => setExpand(!expand) }
+      />
     </ImageContainer>
   );
 };

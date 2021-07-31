@@ -15,7 +15,9 @@ const VerticalThumbs = () => {
   let maxIdx = style.photos.length - 7;
   const [yAxis, setYAxis] = useState(0);
 
-  useEffect(() => { onImageClick('vThumb0', 0); }, [style]);
+  useEffect(() => {
+    onImageClick('vThumb0', 0);
+  }, [style]);
 
   useEffect(() => {
     slideThumbs();

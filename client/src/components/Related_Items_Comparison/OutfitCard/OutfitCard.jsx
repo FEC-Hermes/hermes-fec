@@ -9,15 +9,21 @@ import {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContai
 
 const OutFitCard = ({count:idx}) => {
   const {product:[product],reviewMeta:{ratings}} = useContext(ProductContext);
-  const [relatedProducts, setProduct] = useState([]);
+  let [relatedProducts, setProduct] = useState([]);
   let [count, setCount] = useState(0);
   const [isToggled, setToggle] = useState(false);
   const [isShown, setIsShown] = useState(false);
   const {category} = product;
+  console.log(relatedProducts.slice(0,idx));
+  relatedProducts = relatedProducts.slice(0,idx);
+  let carouselProducts = relatedProducts.length === 2 ?
+    relatedProducts :
+    relatedProducts.slice(count,count + 3).length < 3 ?
+      relatedProducts.slice(count-1, count + 3):
+      relatedProducts.slice(count, count + 3);
 
   const remove = element => {
-    console.log(element.parentNode.parentNode.parentNode);
-    const selectEl = element.parentNode.parentNode.parentNode
+    const selectEl = element.parentNode.parentNode.parentNode;
     selectEl.remove();
   };
 
@@ -42,7 +48,7 @@ const OutFitCard = ({count:idx}) => {
       }
       {
 
-        relatedProducts.slice(0,idx).map( ({style_id,name,original_price,photos},idx) => {
+        carouselProducts.map( ({style_id,name,original_price,photos},idx) => {
           let url = photos[0].url;
           return  (
             <Card

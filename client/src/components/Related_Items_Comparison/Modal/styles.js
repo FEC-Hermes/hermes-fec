@@ -4,10 +4,10 @@ const ModalContainer = styled.div`
     border: 0.18rem solid gray;
     padding: 1rem;
     position: absolute;
-    top: 109rem;
+    // top: 109rem;
     height: 25rem;
     width: 30rem;
-    left: 33%;
+    // left: 33%;
 `;
 
 const NameBar = styled.div`

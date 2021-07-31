@@ -5,20 +5,21 @@ import StylesContext from '../../contexts/StylesContext.js';
 
 ////    Component    ///////////////////////////////
 ////////////////////////////////////////////////////
-const VerticalThumbs = ({ setCurrImage }) => {
+const VerticalThumbs = () => {
 
-  const { currStyle } = React.useContext(StylesContext);
+  const { currStyle, imgIndex } = React.useContext(StylesContext);
   const [style] = currStyle;
-
+  const [currImgIdx, setCurrImgIdx] = imgIndex;
 
   let maxIdx = style.photos.length - 7;
-  const [imageIdx, setImageIdx] = useState(0);
   const [yAxis, setYAxis] = useState(0);
+
+  useEffect(() => { onImageClick('vThumb0', 0); }, [style]);
 
   useEffect(() => {
     slideThumbs();
     arrowVisibility();
-  }, [imageIdx]);
+  }, [currImgIdx]);
 
   const arrowVisibility = () => {
     const arrowUp = document.getElementById('vThumb-arrow-up');
@@ -27,9 +28,9 @@ const VerticalThumbs = ({ setCurrImage }) => {
     if (style.photos.length <= 7) {
       arrowUp.style.visibility = 'hidden';
       arrowDown.style.visibility = 'hidden';
-    } else if (imageIdx === 0) {
+    } else if (currImgIdx === 0) {
       arrowUp.style.visibility = 'hidden';
-    } else if (imageIdx === maxIdx) {
+    } else if (currImgIdx === maxIdx) {
       arrowDown.style.visibility = 'hidden';
     } else {
       arrowUp.style.visibility = 'visible';
@@ -48,16 +49,17 @@ const VerticalThumbs = ({ setCurrImage }) => {
   };
 
   const onArrowClick = (arrow) => {
-    if (arrow === 'up' && imageIdx > 0) {
+    if (arrow === 'up' && currImgIdx > 0) {
       setYAxis(yAxis + 89);
-      setImageIdx(imageIdx - 1);
-    } else if (arrow === 'down' && imageIdx < maxIdx) {
+      setCurrImgIdx(currImgIdx - 1);
+    } else if (arrow === 'down' && currImgIdx < maxIdx) {
       setYAxis(yAxis - 89);
-      setImageIdx(imageIdx + 1);
+      setCurrImgIdx(currImgIdx + 1);
     }
   };
 
-  const onImageClick = (id) => { /* id is set to image url */
+  const onImageClick = (id, index) => {
+
     const images = document.getElementsByClassName('thumbImg');
 
     Array.from(images).forEach(img => {
@@ -68,7 +70,7 @@ const VerticalThumbs = ({ setCurrImage }) => {
     document.getElementById(id).parentNode.style.boxShadow = '0px 0px 8px #fff';
     document.getElementById(id).parentNode.style.border = '3px solid #fff';
 
-    setCurrImage(id);
+    setCurrImgIdx(index);
   };
 
   return (
@@ -85,13 +87,13 @@ const VerticalThumbs = ({ setCurrImage }) => {
         viewBox="0 0 448 512"><path fill="currentColor" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"></path></svg>
       <ImgContainer>
         {
-          style.photos.map(photo => (
-            <ImgFrame key={ photo.url } className="imgFrame">
+          style.photos.map((photo, i) => (
+            <ImgFrame key={ i } className="imgFrame">
               <Img
                 src={ photo.thumbnail_url }
-                id={ photo.url }
+                id={ `vThumb${i}` }
                 className="thumbImg"
-                onClick={ () => onImageClick(photo.url)}
+                onClick={ () => onImageClick(`vThumb${i}`, `${i}`)}
               />
             </ImgFrame>
           ))

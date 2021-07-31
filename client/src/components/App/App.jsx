@@ -43,9 +43,9 @@ const App = () => {
               setReviewMeta: setReviewMeta
             }}>
               <Overview />
-              <Related_Items_Comparison />
+              {/* <Related_Items_Comparison />
               <QandA />
-              <RatingsAndReviews />
+              <RatingsAndReviews /> */}
             </ProductContext.Provider>
           </div>
           :

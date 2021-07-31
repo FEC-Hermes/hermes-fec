@@ -61,10 +61,11 @@ const ProductDesc = () => {
       </DescriptionContainer>
       <Divider></Divider>
       <Attributes>
-        <div>Some information</div>
-        <div>More information</div>
-        <div>Again, more information</div>
-        <div>Last information</div>
+        {
+          currProduct.features.map((attr, i) => (
+            <div key={ i }>{ `${attr.value} ${attr.feature}` }</div>
+          ))
+        }
       </Attributes>
     </Container>
   );

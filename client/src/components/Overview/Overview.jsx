@@ -20,7 +20,8 @@ const MainContainer = styled.main`
 
   display: flex;
   flex-wrap: wrap;
-  background-color: grey;
+
+  border: 1px solid red;
 `;
 
 const InfoContainer = styled.main`
@@ -28,7 +29,7 @@ const InfoContainer = styled.main`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  max-width: 340px;
+  max-width: 370px;
   max-height: 750px;
   margin-left: 20px;
 `;
@@ -42,6 +43,7 @@ const Overview = () => {
 
   const [allStyles, setAllStyles] = useState([]);
   const [currStyle, setCurrStyle] = useState({});
+  const [currImgIdx, setCurrImgIdx] = useState(0);
   const [expanded, setExpanded] = useState(false);
 
 
@@ -67,6 +69,7 @@ const Overview = () => {
           <StylesContext.Provider value={{
             allStyles: [allStyles, setAllStyles],
             currStyle: [currStyle, setCurrStyle],
+            imgIndex:  [currImgIdx, setCurrImgIdx],
             expanded:  [expanded, setExpanded]
           }}>
             <MainContainer>

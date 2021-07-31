@@ -17,21 +17,12 @@ const MainContainer = styled.main`
 ////////////////////////////////////////////////////
 const ImageGallery = () => {
 
-  const { currStyle, expanded } = React.useContext(StylesContext);
-  const [expand, setExpand] = expanded;
-  const [style]  = currStyle;
-
-  const [currImage, setCurrImage] = useState();
-
-  useEffect(() => {
-    setCurrImage(style.photos[0].url);
-
-  }, [currStyle]);
+  // const { currStyle, expanded } = React.useContext(StylesContext);
 
   return (
     <MainContainer >
-      <DisplayImage currImage={ currImage } />
-      <VerticalThumbs setCurrImage={ setCurrImage } />
+      <DisplayImage />
+      <VerticalThumbs />
     </MainContainer>
   );
 };

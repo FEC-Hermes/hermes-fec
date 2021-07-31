@@ -12,6 +12,8 @@ const ImageContainer = styled.div`
   display: flex;
   align-content: center;
   justify-content: center;
+  z-index: 10;
+  background-color: grey;
 `;
 
 const Image = styled.img`
@@ -24,14 +26,16 @@ const Image = styled.img`
 
 ////    Component    ///////////////////////////////
 ////////////////////////////////////////////////////
-const DisplayImage = ({ currImage }) => {
+const DisplayImage = () => {
 
-  const { expanded } = React.useContext(StylesContext);
+  const { currStyle, imgIndex, expanded } = React.useContext(StylesContext);
+  const [style]  = currStyle;
+  const [currIdx] = imgIndex;
   const [expand, setExpand] = expanded;
 
   return (
     <ImageContainer>
-      <Image src={ currImage } />
+      <Image src={ style.photos[currIdx].url } onClick={ () => setExpand(!expand) }/>
     </ImageContainer>
   );
 };

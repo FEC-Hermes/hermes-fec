@@ -7,9 +7,10 @@ import StylesContext from '../../contexts/StylesContext.js';
 ////////////////////////////////////////////////////
 const VerticalThumbs = () => {
 
-  const { currStyle, imgIndex } = React.useContext(StylesContext);
+  const { currStyle, imgIndex, expanded } = React.useContext(StylesContext);
   const [style] = currStyle;
   const [currImgIdx, setCurrImgIdx] = imgIndex;
+  const [expand] = expanded;
 
   let maxIdx = style.photos.length - 7;
   const [yAxis, setYAxis] = useState(0);
@@ -20,6 +21,11 @@ const VerticalThumbs = () => {
     slideThumbs();
     arrowVisibility();
   }, [currImgIdx]);
+
+  useEffect(() => {
+    const container = document.getElementById('vThumb-container');
+    expand ? container.style.display ='none' : container.style.display = 'flex';
+  });
 
   const arrowVisibility = () => {
     const arrowUp = document.getElementById('vThumb-arrow-up');
@@ -74,7 +80,7 @@ const VerticalThumbs = () => {
   };
 
   return (
-    <MainContainer>
+    <MainContainer id="vThumb-container">
       <svg
         id="vThumb-arrow-up"
         onClick={ () => onArrowClick('up') }

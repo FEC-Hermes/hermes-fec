@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import DisplayImage from './DisplayImage.jsx';
@@ -17,7 +17,7 @@ const MainContainer = styled.main`
 ////////////////////////////////////////////////////
 const ImageGallery = () => {
 
-  // const { currStyle, expanded } = React.useContext(StylesContext);
+  const { currStyle, expanded } = React.useContext(StylesContext);
 
   return (
     <MainContainer >

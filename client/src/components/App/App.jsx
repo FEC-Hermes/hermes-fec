@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
-
 import Overview from '../Overview/Overview.jsx';
 import QandA from '../Q&A/Q&A.jsx';
 import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
@@ -16,6 +14,7 @@ const App = () => {
   const [reviewMeta, setReviewMeta] = useState({});
 
   useEffect(() => {
+<<<<<<< HEAD
     axios.get('/products/')
       .then(results => {
         console.log(results);
@@ -25,10 +24,18 @@ const App = () => {
         axios.get(`/reviews/${results.data[4].id}/newest/1/100`)
           .then(results => {
             setReviews(results.data);
+=======
+    axios.get('/products/17069')
+      .then(({ data }) => {
+        setProduct(data);
+        axios.get(`/reviews/${data.id}/relevant/1/2`)
+          .then(({ data }) => {
+            setReviews(data);
+>>>>>>> main
           });
-        axios.get(`/reviews/meta/${results.data[4].id}`)
-          .then(results => {
-            setReviewMeta(results.data);
+        axios.get(`/reviews/meta/${data.id}`)
+          .then(({ data }) => {
+            setReviewMeta(data);
           });
       });
   }, []);
@@ -36,24 +43,31 @@ const App = () => {
   return (
     <div>
       <nav>NAV BAR</nav>
-      <ProductContext.Provider value={
+      <ProductContext.Provider value={{
+        product: [product, setProduct],
+        reviews: reviews,
+        setReviews: setReviews,
+        reviewMeta: reviewMeta,
+        setReviewMeta: setReviewMeta
+      }}>
+        {/* OVERVIEW WONT RENDER UNTiL PRODUCT IS SET */}
         {
-          product: [product, setProduct],
-          reviews: reviews,
-          setReviews: setReviews,
-          reviewMeta: reviewMeta,
-          setReviewMeta: setReviewMeta
+          Object.keys(product).length ? <Overview /> : null
         }
-      }>
-        <Overview product={ product }/>
-       <Related_Items_Comparison />
+        <Related_Items_Comparison />
         <QandA />
         {
           Object.keys(reviews).length > 0 && Object.keys(reviewMeta).length > 0
             ?
+<<<<<<< HEAD
           <RatingsAndReviews/>
+=======
+            <RatingsAndReviews
+              reviews={reviews}
+            />
+>>>>>>> main
             :
-          null
+            null
         }
       </ProductContext.Provider>
     </div>

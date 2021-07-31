@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import styled from 'styled-components';
 
+import StylesContext from '../contexts/StylesContext';
 
+////    Styles    //////////////////////////////////
+////////////////////////////////////////////////////
 const Container = styled.main`
   display: flex;
-  width: 325px;
+  width: 340px;
   flex-wrap: wrap;
-
-  border: 1px solid red;
 `;
 
 const ImgFrame = styled.div`
@@ -19,6 +19,9 @@ const ImgFrame = styled.div`
   overflow: hidden;
   display: flex;
   align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 4px #000;
+  border: 2px solid #000;
 `;
 
 const Style = styled.div`
@@ -29,30 +32,42 @@ const Img = styled.img`
   width: 120px;
 `;
 
-/////////////////////////////////////////////
+const SelectedIcon = styled.div`
+  
+`;
 
-const StyleSelector = ({ product_id }) => {
+////    Component    ///////////////////////////////
+////////////////////////////////////////////////////
+const StyleSelector = () => {
 
-  const [styles, setStyles] = useState([]);
+  const { allStyles, currStyle } = React.useContext(StylesContext);
+  const [styles] = allStyles;
+  const [selectedStyle, setCurrStyle] = currStyle;
 
-  useEffect(() => {
-    getStyles(product_id);
-  }, []);
+  const onThumbClick = (style, id) => {
 
-  const getStyles = (product_id) => {
-    if (product_id) {
-      axios.get(`/products/${product_id}/styles`)
-        .then(({ data }) => setStyles(data.results))
-        .catch(err => console.log(err));
-    }
+    const images = document.getElementsByClassName('styleThumb');
+    Array.from(images).forEach(img => {
+      img.parentNode.style.boxShadow = '0px 0px 4px #000';
+      img.parentNode.style.border = '1px solid #000';
+    });
+
+    document.getElementById(id).parentNode.style.boxShadow = '0px 0px 6px #fff';
+    document.getElementById(id).parentNode.style.border = '3px solid #fff';
+    setCurrStyle(style);
   };
 
   return (
     <Container>
-      <Style>STYLE &gt; { /* LINK TO STYLE */ }</Style>
+      <Style><b>STYLE &gt;</b>{ selectedStyle.name }</Style>
       {styles.map(style => (
         <ImgFrame key={ style.style_id }>
-          <Img src={ style.photos[0].thumbnail_url } />
+          <Img
+            id={ style.style_id }
+            className={ 'styleThumb' }
+            src={ style.photos[0].thumbnail_url }
+            onClick={ () => onThumbClick(style, style.style_id) }
+          />
         </ImgFrame>
       ))}
     </Container>

@@ -5,10 +5,9 @@ import NewReviewForm from './NewReviewForm.jsx';
 const NewReviewModal = (props) => {
   return (
     <ProductContext.Consumer>
-      {({product}) => {
-        var product_id = product[0].id;
+      {({reviewMeta}) => {
         return (
-          <NewReviewForm productId={product_id} />
+          <NewReviewForm reviewMeta={reviewMeta}/>
         )
       }}
     </ProductContext.Consumer>

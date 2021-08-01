@@ -66,9 +66,17 @@ router.get('/reviews/meta/:product_id', (req, res) => {
 });
 
 router.post('/reviews', (req, res) => {
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews', headers)
-    .then(({ data }) => res.status(201).json(data))
-    .catch(err => res.status(401).json(err));
+  var data = req.body;
+  headers.headers.contentType = 'application/json';
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews', data, headers)
+    .then(({ data }) => {
+      console.log('No error server side');
+      res.status(201).json(data);
+    })
+    .catch(err => {
+      console.log('An error is triggered server side');
+      res.status(401).json(err);
+    });
 });
 
 router.put('/reviews/:review_id/helpful', (req, res) => {
@@ -164,3 +172,13 @@ router.post('/interactions', (req, res) => {
 });
 
 module.exports = router;
+
+//////////////////////////////////////////////////////////////
+//      TEST CHARACTERISTICS      ////////////////////////////
+//////////////////////////////////////////////////////////////
+
+router.get('/characteristics', (req, res) => {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/characteristics', headers)
+    .then(({ data }) => res.status(200).json(data))
+    .catch(err => res.status(401).json(err));
+});

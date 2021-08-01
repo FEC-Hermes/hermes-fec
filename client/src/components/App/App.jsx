@@ -4,6 +4,7 @@ import Overview from '../Overview/Overview.jsx';
 import QandA from '../Q&A/Q&A.jsx';
 import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
 import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_Comparison.jsx';
+import MainContainer from './styles.js';
 
 import ProductContext from '../contexts/ProductContext.js';
 
@@ -29,7 +30,7 @@ const App = () => {
   }, []);
 
   return (
-    <div>
+    <MainContainer>
       <nav>NAV BAR</nav>
       <ProductContext.Provider value={{
         product: [product, setProduct],
@@ -54,7 +55,7 @@ const App = () => {
             null
         }
       </ProductContext.Provider>
-    </div>
+    </MainContainer>
   );
 };
 

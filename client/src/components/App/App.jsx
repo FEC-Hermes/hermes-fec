@@ -4,16 +4,11 @@ import Overview from '../Overview/Overview.jsx';
 import QandA from '../Q&A/Q&A.jsx';
 import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
 import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_Comparison.jsx';
-import styled from 'styled-components';
-
+import MainContainer from './styles.js';
 import ProductContext from '../contexts/ProductContext.js';
-import StylesContext from '../contexts/StylesContext';
 
-const MainContainer = styled.div`
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-`;
+
+
 
 const App = () => {
 
@@ -72,47 +67,30 @@ const App = () => {
 
   return (
     <MainContainer>
-      {
-        Object.keys(reviewMeta).length > 0
-          ?
-          <div>
-            <nav>NAV BAR</nav>
-            <ProductContext.Provider value={{
-              product: [product, setProduct],
-              reviews: reviews,
-              setReviews: setReviews,
-              reviewMeta: reviewMeta,
-              setReviewMeta: setReviewMeta
-            }}>
-
-              {/* NEED TO REFACTOR INTO CONTEXT FILE */}
-
-
-              {
-                Object.keys(currStyle).length ?
-                  <StylesContext.Provider value={{
-                    allStyles: [allStyles, setAllStyles],
-                    currStyle: [currStyle, setCurrStyle],
-                    imgIndex:  [currImgIdx, setCurrImgIdx],
-                    minIndex:  [minImgIdx, setMinIndex],
-                    expanded:  [expanded, setExpanded]
-                  }}>
-                    <Overview />
-                    <Related_Items_Comparison />
-                  </StylesContext.Provider>
-                  : null
-              }
-
-              {/*                                    */}
-
-
-              <QandA />
-              <RatingsAndReviews />
-            </ProductContext.Provider>
-          </div>
-          :
-          null
-      }
+      <nav>NAV BAR</nav>
+      <ProductContext.Provider value={{
+        product: [product, setProduct],
+        reviews: reviews,
+        setReviews: setReviews,
+        reviewMeta: reviewMeta,
+        setReviewMeta: setReviewMeta
+      }}>
+        {/* OVERVIEW WONT RENDER UNTiL PRODUCT IS SET */}
+        {
+          Object.keys(product).length ? <Overview /> : null
+        }
+        <Related_Items_Comparison />
+        <QandA />
+        {
+          Object.keys(reviews).length > 0 && Object.keys(reviewMeta).length > 0
+            ?
+            <RatingsAndReviews
+              reviews={reviews}
+            />
+            :
+            null
+        }
+      </ProductContext.Provider>
     </MainContainer>
   );
 };

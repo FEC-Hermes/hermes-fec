@@ -77,7 +77,6 @@ const ProductCard = () => {
               <StarsContainer>
                 <StarAverageRating ratings={ratings} />
               </StarsContainer>
-
             </Card>
           ) ;
         }

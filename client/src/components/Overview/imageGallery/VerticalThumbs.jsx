@@ -5,20 +5,26 @@ import StylesContext from '../../contexts/StylesContext.js';
 
 ////    Component    ///////////////////////////////
 ////////////////////////////////////////////////////
-const VerticalThumbs = ({ setCurrImage }) => {
+const VerticalThumbs = () => {
 
-  const { currStyle } = React.useContext(StylesContext);
+  const { currStyle, imgIndex, minIndex, expanded } = React.useContext(StylesContext);
   const [style] = currStyle;
-
+  let [currImgIdx, setCurrImgIdx] = imgIndex;
+  let [minIdx, setMinIdx] = minIndex;
+  const [expand] = expanded;
 
   let maxIdx = style.photos.length - 7;
-  const [imageIdx, setImageIdx] = useState(0);
-  const [yAxis, setYAxis] = useState(0);
+  let [yAxis, setYAxis] = useState(0);
 
   useEffect(() => {
-    slideThumbs();
+    onImageClick(0);
     arrowVisibility();
-  }, [imageIdx]);
+  }, []);
+
+  useEffect(() => {
+    const container = document.getElementById('vThumb-container');
+    expand ? container.style.display ='none' : container.style.display = 'flex';
+  }, [expand]);
 
   const arrowVisibility = () => {
     const arrowUp = document.getElementById('vThumb-arrow-up');
@@ -27,9 +33,9 @@ const VerticalThumbs = ({ setCurrImage }) => {
     if (style.photos.length <= 7) {
       arrowUp.style.visibility = 'hidden';
       arrowDown.style.visibility = 'hidden';
-    } else if (imageIdx === 0) {
+    } else if (minIdx === 0) {
       arrowUp.style.visibility = 'hidden';
-    } else if (imageIdx === maxIdx) {
+    } else if (minIdx === maxIdx) {
       arrowDown.style.visibility = 'hidden';
     } else {
       arrowUp.style.visibility = 'visible';
@@ -48,16 +54,31 @@ const VerticalThumbs = ({ setCurrImage }) => {
   };
 
   const onArrowClick = (arrow) => {
-    if (arrow === 'up' && imageIdx > 0) {
-      setYAxis(yAxis + 89);
-      setImageIdx(imageIdx - 1);
-    } else if (arrow === 'down' && imageIdx < maxIdx) {
-      setYAxis(yAxis - 89);
-      setImageIdx(imageIdx + 1);
+
+    arrowVisibility();
+
+    if (arrow === 'up') {
+      setYAxis((yAxis + 89));
+
+      setMinIdx(minIdx - 1);
+      if (currImgIdx === maxIdx) {
+        setCurrImgIdx(currImgIdx--);
+      }
+    } else if (arrow === 'down') {
+
+      setYAxis((yAxis - 89));
+      setMinIdx(minIdx + 1);
+
+      if (currImgIdx === minIdx) {
+        setCurrImgIdx(currImgIdx++);
+      }
     }
+
+    slideThumbs();
+    onImageClick(currImgIdx);
   };
 
-  const onImageClick = (id) => { /* id is set to image url */
+  const onImageClick = (index) => {
     const images = document.getElementsByClassName('thumbImg');
 
     Array.from(images).forEach(img => {
@@ -65,14 +86,14 @@ const VerticalThumbs = ({ setCurrImage }) => {
       img.parentNode.style.border = '1px solid #000';
     });
 
-    document.getElementById(id).parentNode.style.boxShadow = '0px 0px 8px #fff';
-    document.getElementById(id).parentNode.style.border = '3px solid #fff';
+    document.getElementById(`vThumb${index}`).parentNode.style.boxShadow = '0px 0px 8px #fff';
+    document.getElementById(`vThumb${index}`).parentNode.style.border = '1px solid #fff';
 
-    setCurrImage(id);
+    setCurrImgIdx(index);
   };
 
   return (
-    <MainContainer>
+    <MainContainer id="vThumb-container">
       <svg
         id="vThumb-arrow-up"
         onClick={ () => onArrowClick('up') }
@@ -85,13 +106,13 @@ const VerticalThumbs = ({ setCurrImage }) => {
         viewBox="0 0 448 512"><path fill="currentColor" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"></path></svg>
       <ImgContainer>
         {
-          style.photos.map(photo => (
-            <ImgFrame key={ photo.url } className="imgFrame">
+          style.photos.map((photo, i) => (
+            <ImgFrame key={ i } className="imgFrame">
               <Img
                 src={ photo.thumbnail_url }
-                id={ photo.url }
+                id={ `vThumb${i}` }
                 className="thumbImg"
-                onClick={ () => onImageClick(photo.url)}
+                onClick={ () => onImageClick(i)}
               />
             </ImgFrame>
           ))
@@ -112,3 +133,56 @@ const VerticalThumbs = ({ setCurrImage }) => {
 };
 
 export default VerticalThumbs;
+
+
+
+
+
+
+
+
+
+/*
+
+[0, 1, 2, 3, 4, 5, 6], 7, 8, 9, 10, 11]
+maxIndex       :5
+minIndex       :0
+currImageIndex :0
+
+0, [1, 2, 3, 4, 5, 6, 7], 8, 9, 10, 11]
+maxIndex       :5
+minIndex       :1
+currImageIndex :1
+
+0, 1, [2, 3, 4, 5, 6, 7, 8], 9, 10, 11]
+maxIndex       :5
+minIndex       :2
+currImageIndex :2
+
+0, 1, 2, [3, 4, 5, 6, 7, 8, 9], 10, 11]
+maxIndex       :5
+minIndex       :3
+currImageIndex :3
+
+0, 1, 2, 3, [4, 5, 6, 7, 8, 9, 10], 11]
+maxIndex       :5
+minIndex       :4
+currImageIndex :4
+
+0, 1, 2, 3, 4, [5, 6, 7, 8, 9, 10, 11]]
+maxIndex       :5
+minIndex       :5
+currImageIndex :5
+
+
+
+
+
+
+
+
+
+
+
+
+*/

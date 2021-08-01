@@ -4,9 +4,16 @@ import Overview from '../Overview/Overview.jsx';
 import QandA from '../Q&A/Q&A.jsx';
 import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
 import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_Comparison.jsx';
+import styled from 'styled-components';
 
 import ProductContext from '../contexts/ProductContext.js';
 import StylesContext from '../contexts/StylesContext';
+
+const MainContainer = styled.div`
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const App = () => {
 
@@ -35,7 +42,7 @@ const App = () => {
 
 
 
-  
+
   /* REFACTOR INTO CONTEXT FILE ========= */
 
   const [allStyles, setAllStyles] = useState([]);
@@ -64,7 +71,7 @@ const App = () => {
 
 
   return (
-    <div>
+    <MainContainer>
       {
         Object.keys(reviewMeta).length > 0
           ?
@@ -106,7 +113,7 @@ const App = () => {
           :
           null
       }
-    </div>
+    </MainContainer>
   );
 };
 

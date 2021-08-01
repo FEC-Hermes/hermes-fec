@@ -146,7 +146,7 @@ const QandA = () => {
 
   return (
 
-    <ContainerQA>
+    <ContainerQA >
       <h3>Questions & Answers {}</h3>
       <Search />
       <QuestionsList

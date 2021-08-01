@@ -1,10 +1,21 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Descriptors = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+`;
+const Characteristic_Quarters_Container = styled.div`
+  margin: 1.5rem 0;
+`;
+
 
 const CharacteristicQuarters = (props) => {
   var gap = 2.5;
   var position = (props.characteristic.value - 1) * props.width / 4;
   return (
-    <div>
+    <Characteristic_Quarters_Container>
       <div>
         {props.characteristic.name}
       </div>
@@ -55,12 +66,12 @@ const CharacteristicQuarters = (props) => {
           fill="green"
         />
       </svg>
-      <div className="descriptors">
+      <Descriptors>
         <div className="decriptor low-descriptor">{props.characteristic.low}</div>
         <div className="decriptor balanced-descriptor">{props.characteristic.balanced}</div>
         <div className="decriptor high-descriptor">{props.characteristic.high}</div>
-      </div>
-    </div>
+      </Descriptors>
+    </Characteristic_Quarters_Container>
   )
 }
 

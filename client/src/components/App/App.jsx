@@ -34,7 +34,6 @@ const App = () => {
   const [allStyles, setAllStyles] = useState([]);
   const [currStyle, setCurrStyle] = useState({});
   const [currImgIdx, setCurrImgIdx] = useState(0);
-  const [minImgIdx, setMinIndex] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const getStyles = (product_id) => {
     axios.get(`/products/${product_id}/styles`)
@@ -69,7 +68,6 @@ const App = () => {
                     allStyles: [allStyles, setAllStyles],
                     currStyle: [currStyle, setCurrStyle],
                     imgIndex:  [currImgIdx, setCurrImgIdx],
-                    minIndex:  [minImgIdx, setMinIndex],
                     expanded:  [expanded, setExpanded]
                   }}>
                     <Overview />

@@ -19,7 +19,7 @@ const DescriptionContainer = styled.div`
   flex-grow: 5;
   padding: 10px 30px 10px;
   max-width: 700px;
-
+  margin-right: 70px;
   display:flex;
   flex-direction: column;
   align-items: center;
@@ -38,11 +38,11 @@ const Divider = styled.div`
 
 const Attributes = styled.article`
   flex-grow: 1;
-  padding-left: 20px;
+  margin-left: 75px;
   height: 135px;
   display:flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
 `;
 

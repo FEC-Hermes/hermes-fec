@@ -19,7 +19,6 @@ const App = () => {
         setProduct(data);
         // HELFPUL FAILS AT 17
         // NEWEST FAILS AT
-        console.log(data);
         axios.get(`/reviews/${data.id}/newest/1/2`)
           .then(({data}) => {
             setReviews(data);

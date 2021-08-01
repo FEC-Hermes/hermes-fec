@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Stars from '../Shared/StarAverageRating.jsx';
-
 import ProductContext from '../contexts/ProductContext';
 import StylesContext from '../contexts/StylesContext';
 

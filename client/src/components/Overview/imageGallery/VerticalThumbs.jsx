@@ -22,24 +22,19 @@ const VerticalThumbs = () => {
   useEffect(() => {
     toggleThumb(0);
     arrowVisibility();
-
-    console.log('highONE: ', highIndex)
-    console.log('maxONE: ', maxIndex)
   }, []);
 
   useEffect(() => {
     slideThumbs();
     toggleThumb(imageIndex);
     arrowVisibility();
-  }, [yAxis]);
+  }, [yAxis, expand]);
 
   useEffect(() => {
     const images = document.getElementById('vThumb-container');
-
-    expand ?
-      images.style.display ='none'
-      : images.style.display = 'flex';
+    expand ? images.style.display ='none' : images.style.display = 'flex';
   }, [expand]);
+
 
   const arrowVisibility = () => {
     const arrowUp = document.getElementById('vThumb-arrow-up');

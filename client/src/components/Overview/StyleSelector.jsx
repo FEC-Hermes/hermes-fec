@@ -31,8 +31,6 @@ const ThumbContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-
   height: 80px;
   width: 80px;
   border-radius: 50%;

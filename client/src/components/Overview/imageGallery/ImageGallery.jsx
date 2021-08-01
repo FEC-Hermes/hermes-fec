@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import DisplayImage from './DisplayImage.jsx';
 import VerticalThumbs from './VerticalThumbs.jsx';
+import ExpandIcons from './ExpandIcons';
 
 import StylesContext from '../../contexts/StylesContext';
 
@@ -38,6 +39,7 @@ const ImageGallery = () => {
     <MainContainer id="image-gal-container" >
       <DisplayImage />
       <VerticalThumbs />
+      <ExpandIcons />
     </MainContainer>
   );
 };

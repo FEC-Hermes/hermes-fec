@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Characteristics_Container = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 1rem 0 1rem 2rem;
+    margin: 0 0 1rem 2rem;
 `;
 
 // Given the radial buttons and law of averages, must between 1 and 5

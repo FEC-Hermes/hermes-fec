@@ -5,6 +5,7 @@ const RelatedProducts = styled.div`
   color: ${props => props.color};
   background-color: whitesmoke;
   justify-content: center;
+  align-items: center;
  `;
 
 const Image_container = styled.div`
@@ -43,10 +44,55 @@ const PlusSign = styled.p`
   justify-content: center;
   align-items: center;
   font-size: 3rem;
-  height: 20rem;
+  height: 31rem;
   width: 16rem;
  `;
 
 
+ // OutFitCards
 
-export  {RelatedProducts, Image_container, Img, Card, CardText, ExitContainer, ExitImg, PlusSign};
+ const StarContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 0.5rem;
+`;
+
+ const StarsContainer = styled.div`
+ display: flex;
+ justify-content: center;
+ margin-bottom:0.5rem;
+
+`;
+
+const Stars = styled.img`
+ margin : ${props => props.margin};
+ height: 1.3rem;
+ position:${props => props.pos};
+ z-index:${props => props.z_index};
+ background-color: white;
+ border-radius: 1rem;
+`;
+
+
+const ThumbnailContainer = styled.div`
+   display:flex;
+   justify-content: space-around;
+   align-items: center;
+   width: 16rem;
+   position: relative;
+   bottom: 3rem;
+`;
+
+const Thumbnail_Image_Container = styled.div`
+    // position: relative;
+    // bottom: 0.25rem;
+`;
+
+const Thumbnail_arrow = styled.div`
+   margin-right:1.3rem;
+`;
+
+export  {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer, ThumbnailContainer,Thumbnail_Image_Container,Thumbnail_arrow, StarsContainer,ExitContainer, ExitImg, PlusSign};
+
+
+// export  {RelatedProducts, Image_container, Img, Card, CardText, };

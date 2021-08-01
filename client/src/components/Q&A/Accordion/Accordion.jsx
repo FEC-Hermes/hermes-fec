@@ -25,8 +25,6 @@ const Accordion = ({ questions, answers, openModal }) => {
 
   return (
     <AccordionSection>
-      {console.log('xxx  ',clicked)}
-
       <QuesSection>
         {questions.results.map(ques => {
           return (

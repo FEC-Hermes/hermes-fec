@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import StylesContext from '../../contexts/StylesContext.js';
@@ -12,6 +12,10 @@ const ImageContainer = styled.div`
   display: flex;
   align-content: center;
   justify-content: center;
+  z-index: 10;
+  background-color: grey;
+  transition-timing-function: ease-in;
+  transition: .3s;
 `;
 
 const Image = styled.img`
@@ -24,14 +28,32 @@ const Image = styled.img`
 
 ////    Component    ///////////////////////////////
 ////////////////////////////////////////////////////
-const DisplayImage = ({ currImage }) => {
+const DisplayImage = () => {
 
-  const { expanded } = React.useContext(StylesContext);
+  const { currStyle, imgIndex, expanded } = React.useContext(StylesContext);
+  const [style]  = currStyle;
+  const [currIdx] = imgIndex;
   const [expand, setExpand] = expanded;
 
+  useEffect(() => {
+    const container = document.getElementById('display-img-container');
+
+    if (expand) {
+      container.style.width = '1280px';
+      container.style.height = '800px';
+    } else {
+      container.style.width = '850px';
+      container.style.height = '750px';
+    }
+  }, [expand]);
+
   return (
-    <ImageContainer>
-      <Image src={ currImage } />
+    <ImageContainer id='display-img-container'>
+      <Image
+        id='display-img'
+        src={ style.photos[currIdx].url}
+        onClick={ () => setExpand(!expand) }
+      />
     </ImageContainer>
   );
 };

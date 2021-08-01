@@ -5,7 +5,6 @@ import AddToCart from './AddToCart.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import ProductDesc from './ProductDesc.jsx';
-
 import StylesContext from '../contexts/StylesContext';
 
 ////    Styles    //////////////////////////////////
@@ -34,13 +33,9 @@ const InfoContainer = styled.main`
 ////    Component    ///////////////////////////////
 ////////////////////////////////////////////////////
 const Overview = () => {
-
-  const { expanded } = React.useContext(StylesContext);
-  const [expand] = expanded;
-
+  const { expanded:[expand] } = React.useContext(StylesContext);
   useEffect(() => {
     const container = document.getElementById('info-container');
-
     if (container) {
       expand ? container.style.display ='none' : container.style.display = 'flex';
     }

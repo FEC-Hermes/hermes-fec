@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 
 import StylesContext from '../contexts/StylesContext';
@@ -49,7 +50,6 @@ const AddToCart = () => {
 
   const [skuSelected, setSkuSelected] = useState();
   const [qtySelected, setQtySelected] = useState(0);
-
   const [qtyAvailable, setQtyAvailable] = useState([]);
   const [sizesAvailable, setSizesAvailable] = useState([]);
   const [qtyVisible, setQtyVisible] = useState(false);
@@ -66,6 +66,15 @@ const AddToCart = () => {
   useEffect(() => {
     getQty();
   }, [skuSelected]);
+
+  const getSizes = () => {
+    const sizes = {};
+
+    Object.keys(style.skus).forEach(sku =>
+      style.skus[sku].quantity > 0 ? sizes[sku] = style.skus[sku].size : null
+    );
+    setSizesAvailable(sizes);
+  };
 
   const setSku = () => {
     const selectBox = document.getElementById('select-size');
@@ -90,14 +99,6 @@ const AddToCart = () => {
     value === 'Select Quantity' ? setQtySelected(undefined) : setQtySelected(value);
   };
 
-  const getSizes = () => {
-    const sizes = {};
-
-    Object.keys(style.skus).forEach(sku =>
-      style.skus[sku].quantity > 0 ? sizes[sku] = style.skus[sku].size : null
-    );
-    setSizesAvailable(sizes);
-  };
 
   const getQty = () => {
     const numbers = [];
@@ -135,10 +136,14 @@ const AddToCart = () => {
     } else if ( !qtySelected || qtySelected === 'Select Qty') {
       setCartError('PLEASE SELECT QUANTITY FIRST');
       showError();
+    } else if (skuSelected && qtySelected) {
+      // axios.post('/cart', {
+      //   params: {sku_id: skuSelected}
+      // });
+
+      console.log(skuSelected);
+      console.log(qtySelected);
     }
-
-
-
   };
 
   return (

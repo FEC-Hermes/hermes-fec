@@ -156,7 +156,8 @@ router.get('/cart', (req, res) => {
 
 
 router.post('/cart', (req, res) => {
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/cart', headers)
+  const { sku_id } = req.params;
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/cart', sku_id, headers)
     .then(({ data }) => res.status(201).json(data))
     .catch(err => res.status(401).json(err));
 });

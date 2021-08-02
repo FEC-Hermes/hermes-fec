@@ -26,8 +26,6 @@ const IconFrame = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  border: 1px solid green;
 `;
 
 const Icon = styled.img`
@@ -54,26 +52,28 @@ const ExpandIcons = () => {
   }, [expand]);
 
   const toggleIcon = () => {
-    const icons = document.getElementsByClassName('iconFrame');
+    const icons = document.getElementsByClassName('icon-img');
 
     Array.from(icons).forEach(icon => {
-      icon.style.boxShadow = '0px 0px 3px #000';
-      icon.style.border = '1px solid #000';
+      icon.parentNode.style.boxShadow = '0px 0px 3px #000';
+      icon.parentNode.style.border = '1px solid #000';
+      icon.style.filter = 'grayscale(100%)';
     });
 
     document.getElementById(`vIcon${imageIndex}`).parentNode.style.boxShadow = '0px 0px 8px #fff';
     document.getElementById(`vIcon${imageIndex}`).parentNode.style.border = '1px solid #fff';
+    document.getElementById(`vIcon${imageIndex}`).style.filter = 'grayscale(0%)';
   };
 
   return (
     <IconContainer id='icon-container'>
       {
         style.photos.map((photo, i) => (
-          <IconFrame key={ i } className="iconFrame">
+          <IconFrame key={ i } className="icon-frame">
             <Icon
               src={ photo.thumbnail_url }
               id={ `vIcon${i}` }
-              className="IconImg"
+              className="icon-img"
               onClick={ () => setImageIndex(i)}
             />
           </IconFrame>

@@ -3,8 +3,6 @@ const searchIcon = 'https://cdn.onlinewebfonts.com/svg/img_168154.png';
 import {Img, SearchBarContainer,InputBar, SearchBarWrapper } from './styles.js';
 
 
-
-
 const NavBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const handleInput = text => {

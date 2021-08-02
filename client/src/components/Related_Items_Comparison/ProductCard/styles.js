@@ -46,9 +46,11 @@ const StarsContainer = styled.div`
 
 const Stars = styled.img`
   margin : ${props => props.margin};
-  height: 1.8rem;
+  height: 1.3rem;
   position:${props => props.pos};
   z-index:${props => props.z_index};
+  background-color: white;
+  border-radius: 1rem;
 `;
 
 // ThumbnailContainer

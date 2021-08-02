@@ -31,13 +31,13 @@ const Input = styled.input`
 const Form = styled.form`
     display: flex;
     border: 1px solid;
+    padding-left: 1rem;
 `;
 
 const SearchBtn = styled.button`
-  width: 12%;
+  width: 10%;
   background: transparent;
   border: none;
-  margin: 0% -2% 0% 1%;
 `;
 
 const Image = styled.img`

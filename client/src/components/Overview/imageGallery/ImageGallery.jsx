@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import DisplayImage from './DisplayImage.jsx';
 import VerticalThumbs from './VerticalThumbs.jsx';
-import ExpandIcons from './ExpandIcons';
+import ExpandIcons from './ExpandIcons.jsx';
 
 import StylesContext from '../../contexts/StylesContext';
 

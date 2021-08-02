@@ -63,11 +63,10 @@ const StyleSelector = () => {
   const onThumbClick = (style, imgIndex) => {
 
     const checkMarks = document.getElementsByClassName('check-marks');
-
+    
     Array.from(checkMarks).forEach(icon => {
       icon.style.visibility = 'hidden';
     });
-
     document.getElementById(`check-mark${imgIndex}`).style.visibility = 'visible';
     setCurrStyle(style);
   };

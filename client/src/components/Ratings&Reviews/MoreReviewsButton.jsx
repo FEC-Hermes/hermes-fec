@@ -4,6 +4,7 @@ const Button = styled.button`
   width: 11rem;
   background-color: white;
   height: 3.5rem;
+  border: 1px solid black;
  `;
 
 const MoreReviewsButton = () => {

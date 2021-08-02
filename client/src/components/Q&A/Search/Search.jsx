@@ -44,19 +44,25 @@ const Image = styled.img`
   width: 37%;
 `;
 
+const Search_Container = styled.div`
+  margin: 2rem;
+`;
+
 
 const Search = () => {
   return (
-    <Form>
-      <Input
-        placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
-        type='text'
-      />
+    <Search_Container>
+      <Form>
+        <Input
+          placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
+          type='text'
+        />
+        <SearchBtn>
+          <Image src={searchIcon} />
+        </SearchBtn>
+      </Form>
+    </Search_Container>
 
-      <SearchBtn>
-        <Image src={searchIcon} />
-      </SearchBtn>
-    </Form>
   );
 };
 

@@ -28,9 +28,11 @@ const Pd = styled.div`
     display: flex;
     flex: 1;
     max-width: 30%
+    
 `;
 
 const AccordionSection = styled.div`
+
 
 `;
 

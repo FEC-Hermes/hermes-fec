@@ -4,6 +4,7 @@ import ReviewList from './ReviewList.jsx';
 import AdditionalReviewOptions from './AdditionalReviewOptions.jsx';
 import ProductContext from '../contexts/ProductContext.js';
 import axios from 'axios';
+import styled from 'styled-components';
 
 const Reviews = ({reviewFilter}) => {
   const [sortType, setSortType] = useState('relevant');

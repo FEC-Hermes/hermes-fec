@@ -7,7 +7,7 @@ import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_
 import styled from 'styled-components';
 import ProductContext from '../contexts/ProductContext.js';
 import StylesContext from '../contexts/StylesContext';
-import MainContainer from './styles.js'
+import MainContainer from './styles.js';
 
 const App = () => {
   const [product, setProduct] = useState({});

@@ -43,6 +43,7 @@ const ThumbContainer = styled.div`
 
 const Img = styled.img`
   width: 200px;
+  height: auto;
 `;
 
 const SelectedIcon = styled.svg`

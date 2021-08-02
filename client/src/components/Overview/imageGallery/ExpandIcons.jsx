@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import StylesContext from '../../contexts/StylesContext';
 
+////    Styles    //////////////////////////////////
+////////////////////////////////////////////////////
 const IconContainer = styled.div`
   height: auto;
   width: 60px;
@@ -34,7 +36,8 @@ const Icon = styled.img`
   filter: grayscale(100%);
 `;
 
-
+////    Component    ///////////////////////////////
+////////////////////////////////////////////////////
 const ExpandIcons = () => {
 
   const { currStyle, imgIndex, expanded } = React.useContext(StylesContext);

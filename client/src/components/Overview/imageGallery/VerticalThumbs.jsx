@@ -173,15 +173,4 @@ maxIndex       :5
 minIndex       :5
 currImageIndex :5
 
-
-
-
-
-
-
-
-
-
-
-
 */

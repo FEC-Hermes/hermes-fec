@@ -24,7 +24,8 @@ const AnwrSection = styled.section`
 const Pd = styled.div`
     display: flex;
     flex: 1;
-    max-width: 30%
+    max-width: 30%;
+    margin: 1%;
 `;
 
 const AccordionSection = styled.div`
@@ -32,6 +33,7 @@ const AccordionSection = styled.div`
 `;
 
 const QuesSection = styled.section`
+
     display: flex;
     flex-flow: column;
 `;

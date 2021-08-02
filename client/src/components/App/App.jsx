@@ -30,31 +30,27 @@ const App = () => {
 
   return (
     <div>
-      <nav>NAV BAR</nav>
-      <ProductContext.Provider value={{
-        product: [product, setProduct],
-        reviews: reviews,
-        setReviews: setReviews,
-        reviewMeta: reviewMeta,
-        setReviewMeta: setReviewMeta
-      }}>
-        {/* OVERVIEW WONT RENDER UNTiL PRODUCT IS SET */}
-        {
-          Object.keys(product).length ? <Overview /> : null
-        }
-        <Related_Items_Comparison />
-        <QandA />
-
-        {/* {
-          Object.keys(reviews).length > 0 && Object.keys(reviewMeta).length > 0
-            ?
-            <RatingsAndReviews
-              reviews={reviews}
-            />
-            :
-            null
-        } */}
-      </ProductContext.Provider>
+      {
+        Object.keys(reviewMeta).length > 0
+          ?
+          <div>
+            <nav>NAV BAR</nav>
+            <ProductContext.Provider value={{
+              product: [product, setProduct],
+              reviews: reviews,
+              setReviews: setReviews,
+              reviewMeta: reviewMeta,
+              setReviewMeta: setReviewMeta
+            }}>
+              {/* <Overview /> */}
+              {/* <Related_Items_Comparison /> */}
+              <QandA />
+              {/* <RatingsAndReviews /> */}
+            </ProductContext.Provider>
+          </div>
+          :
+          null
+      }
     </div>
   );
 };

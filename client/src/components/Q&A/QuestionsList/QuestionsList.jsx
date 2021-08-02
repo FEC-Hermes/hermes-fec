@@ -1,14 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import moment from 'moment';
-import Thumbnails from '../Thumbnails/Thumbnails.jsx';
 import Accordion from '../Accordion/Accordion.jsx';
-
-
-const AnwrSection = styled.section`
-    display: flex;
-    flex-flow: column;
-`;
 
 const Main = styled.main`
     font-family: Fira Sans;
@@ -16,18 +8,14 @@ const Main = styled.main`
     flex-flow: column;
 `;
 
-
-const QuestionsList = ({questions, answers, openModal}) => {
-
-  // {console.log(answers.results)}
+const QuestionsList = ({questions, openModal}) => {
   return (
     <div>
       <ul>
         <li>
           <Main>
 
-
-              {/* {questions.results.map(ques => {
+            {/* {questions.results.map(ques => {
                 return (
                   <Aside key={ques.question_id}>
                     <Pd>Q: {ques.question_body}</Pd>
@@ -45,8 +33,9 @@ const QuestionsList = ({questions, answers, openModal}) => {
                 );
               })} */}
 
-              <Accordion questions={questions} answers={answers} openModal={openModal}/>
-{/*
+            <Accordion questions={questions} openModal={openModal}/>
+
+            {/*
             <AnwrSection>
               {answers.results.map(answr => {
                 return (

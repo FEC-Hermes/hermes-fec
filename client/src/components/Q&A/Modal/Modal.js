@@ -18,12 +18,19 @@ const ModalBox = styled.main`
     width: 70%;
     margin: auto 40%;
     top: 50%;
+    text-align: center;
     transform: translateX(-50%) translateY(-50%);
 `;
-// left: 50%;
 
 const Close = styled.button`
-    font-size: 25%;
+    font-size: 20px;
+    margin: 2%;
+    color: #00daff;
+    font-size: 20px;
 `;
 
-export { Overlay, ModalBox, Close };
+const ProduntName = styled.h2`
+    color: red;
+`;
+
+export { Overlay, ModalBox, Close, ProduntName };

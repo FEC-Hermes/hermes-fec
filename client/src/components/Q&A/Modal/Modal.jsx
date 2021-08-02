@@ -1,7 +1,7 @@
 import React from 'react';
-import { Overlay, ModalBox, Close } from './Modal.js';
+import { Overlay, ModalBox, Close, ProduntName } from './Modal.js';
 
-const Modal = ({ children, closeModal }) => {
+const Modal = ({ children, closeModal, product }) => {
   return (
     <>
       <Overlay className='overlay'></Overlay>
@@ -9,12 +9,11 @@ const Modal = ({ children, closeModal }) => {
 
         <ModalBox className='content'>
           <header>
-            <h2>"[Product Name]: [Question Body]”</h2>
+            <ProduntName>"{product.name}"</ProduntName>
           </header>
           {children}
           <Close onClick={closeModal}>X</Close>
         </ModalBox>
-
       </div>
     </>
   );

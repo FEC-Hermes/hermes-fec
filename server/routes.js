@@ -89,9 +89,10 @@ router.put('/reviews/:review_id/report', (req, res) => {
 //      Q&A      /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-router.get('/qa/questions/:product_id', (req, res) => {
-  const product_id = req.params.product_id;
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/?product_id=${product_id}`, headers)
+router.get('/qa/questions/:product_id/:page/:count', (req, res) => {
+  const { product_id, page, count } = req.params;
+
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/?product_id=${product_id}&page=${page}&count=${count}`, headers)
     .then(({ data }) => res.status(200).json(data))
     .catch(err => res.status(401).json(err));
 });
@@ -111,14 +112,14 @@ router.post('/qa/questions', (req, res) => {
 
 router.put('/qa/questions/:question_id/helpful', (req, res) => {
   const { question_id } = req.params;
-  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/helpful`, headers)
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/helpful`, {question_id: question_id}, headers)
     .then(({ data }) => res.status(204).json(data))
     .catch(err => res.status(401).json(err));
 });
 
 router.put('/qa/questions/:question_id/report', (req, res) => {
   const { question_id } = req.params;
-  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/report`, headers)
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/report`, {question_id: question_id} ,headers)
     .then(({ data }) => res.status(204).json(data))
     .catch(err => res.status(401).json(err));
 });

@@ -8,8 +8,7 @@ import {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContai
 
 
 const ProductCard = () => {
-  const {product:[product]} = useContext(ProductContext);
-  const {reviewMeta:{ratings}} = useContext(ProductContext);
+  const {product:[product],reviewMeta:{ratings}} = useContext(ProductContext);
   const [relatedProducts, setProduct] = useState([]);
   let [count, setCount] = useState(0);
   const [isToggled, setToggle] = useState(false);
@@ -78,7 +77,6 @@ const ProductCard = () => {
               <StarsContainer>
                 <StarAverageRating ratings={ratings} />
               </StarsContainer>
-
             </Card>
           ) ;
         }

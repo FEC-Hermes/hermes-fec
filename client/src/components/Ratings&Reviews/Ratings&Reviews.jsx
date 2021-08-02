@@ -7,7 +7,7 @@ const Ratings_and_reviews_container = styled.div`
   display: flex;
   background-color: whitesmoke;
   padding-bottom: 4rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
  `;
 
 const RatingsAndReviews = ({reviews, reviewMeta}) => {

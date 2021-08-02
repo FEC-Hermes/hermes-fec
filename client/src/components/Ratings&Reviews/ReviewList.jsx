@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import Review from './Review.jsx';
 
-const ReviewList = ({reviews}) => {
-  const [reviewsShown, updateReviewsShown] = useState(reviews);
+const ReviewList = ({reviews, reviewFilter}) => {
+  const [reviewsShown, setReviewsShown] = useState(reviews);
 
-
-  var updateReviews = (reviewsShownCount) => {
-    reviewsShown = [];
-    var reviewToAdd = 0;
-    while (reviewsShown.length < reviewsShownCount) {
-      reviewsShown.push(reviews[reviewToAdd]);
-    }
-  };
+  // useEffect(() => {
+  //   var filteredReviews = [];
+  //   reviews.forEach(review => {
+  //     if (!reviewFilter.active) {
+  //       filteredReviews.push(review);
+  //     } else {
+  //       if (reviewFilter.stars[review.rating]) {
+  //         filteredReviews.push(review);
+  //       }
+  //     }
+  //   });
+  //   setReviewsShown(filteredReviews);
+  // }, []);
 
   return (
     <div>

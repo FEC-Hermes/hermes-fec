@@ -1,6 +1,8 @@
 import React from 'react';
 import ReviewHeader from './ReviewHeader.jsx';
 import PhotoGallery from './PhotoGallery.jsx';
+import ProductRecommendedRow from './ProductRecommendedRow.jsx';
+import Helpfulness from './Helpfulness.jsx';
 
 const Review = ({review}) => {
   return (
@@ -14,9 +16,9 @@ const Review = ({review}) => {
       <div>{review.summary.slice(60)}</div>
       <div>{review.body}</div>
       <PhotoGallery photos={review.photos} />
-      <div>{review.recommend ? 'Check mark! I recommend this product!' : null}</div>
+      <div>{review.recommend ? <ProductRecommendedRow/> : null}</div>
       <div>{review.response}</div>
-      <div>{review.helpfulness} people thought it was helpful. Maybe it'll be reported Anyways. Maybe.</div>
+      <Helpfulness helpfulness={review.helpfulness} reviewId={review.review_id}/>
     </div>
   );
 };

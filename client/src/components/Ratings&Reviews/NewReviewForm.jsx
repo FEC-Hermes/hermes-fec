@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import NewReviewStarDisplay from '../Shared/NewReviewStarDisplay.jsx';
+
 import axios from 'axios';
 
 // Hela's Combat Garb: https://i.imgur.com/Q5kWc7n.jpg
@@ -8,7 +9,7 @@ import axios from 'axios';
 // Marty McFly's Vest: https://i.imgur.com/VDC9duU.jpg
 // Superman's Outfit: https://i.imgur.com/B5kTEPt.jpg
 
-const NewReviewForm = ({reviewMeta}) => {
+const NewReviewForm = ({reviewMeta, productName}) => {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const [summary, setSummary] = useState('');
@@ -89,6 +90,8 @@ const NewReviewForm = ({reviewMeta}) => {
 
   return (
     <form >
+      <h3>Write Your Review</h3>
+      <h4>About the {productName}</h4>
       <NewReviewStarDisplay rating={rating} hoverRating={hoverRating}
         setRating={setRating} setHoverRating={setHoverRating}/>
       <label>Summary</label>

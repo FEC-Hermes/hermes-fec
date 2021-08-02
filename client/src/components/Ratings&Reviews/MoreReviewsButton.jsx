@@ -1,12 +1,15 @@
 import React from 'react';
 
-const MoreReviewsButton = () => {
+const MoreReviewsButton = ({getNextReviewPage}) => {
+  const handleClick = () => {
+    getNextReviewPage();
+  };
+
   return (
-    <button submit="nothing"
-      >
-      This will eventually show more pictures but right now it does nothing and you're just going to have to deal
+    <button submit="nothing" onClick={() => handleClick()}>
+      MORE REVIEWS
     </button>
-  )
-}
+  );
+};
 
 export default MoreReviewsButton;

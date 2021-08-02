@@ -65,7 +65,8 @@ function Star(props) {
         ${points[9][0]} ${points[9][1]}
         ${points[10][0]} ${points[10][1]}
         ${points[11][0]} ${points[11][1]}
-        `} stroke="black" strokeWidth={strokeWidth}
+        `}
+        stroke="black" strokeWidth={strokeWidth}
         fill="lightgrey"
       />
 

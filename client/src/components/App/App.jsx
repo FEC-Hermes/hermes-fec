@@ -14,7 +14,7 @@ const App = () => {
   const [reviewMeta, setReviewMeta] = useState({});
 
   useEffect(() => {
-    axios.get('/products/17069')
+    axios.get('/products/17070')
       .then(({data}) => {
         setProduct(data);
         // HELFPUL FAILS AT 17
@@ -22,6 +22,8 @@ const App = () => {
         console.log(data);
         axios.get(`/reviews/${data.id}/newest/1/2`)
           .then(({data}) => {
+            console.log('On Load Reviews');
+            console.log(data);
             setReviews(data);
           });
         axios.get(`/reviews/meta/${data.id}`)

@@ -2,10 +2,10 @@ import React from 'react';
 import MoreReviewsButton from './MoreReviewsButton.jsx';
 import AddReviewButton from './AddReviewButton.jsx';
 
-const AdditionalReviewOptions = () => {
+const AdditionalReviewOptions = ({getNextReviewPage}) => {
   return (
     <div>
-      <MoreReviewsButton />
+      <MoreReviewsButton getNextReviewPage={getNextReviewPage}/>
       <AddReviewButton />
     </div>
   );

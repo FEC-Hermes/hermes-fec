@@ -12,7 +12,7 @@ const AddReviewButton = (props) => {
   return (
     <div>
       <button submit="nothing" onClick={() => {handleClick()}}>
-        Add Review
+        ADD A REVIEW +
       </button>
       {
         modalShown

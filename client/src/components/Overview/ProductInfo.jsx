@@ -21,13 +21,21 @@ const StarRating = styled.div`
 `;
 
 const ReviewLink = styled.a`
+  font-family: 'Josefin Slab', serif;
+  font-size: 16px;
+
   margin-left: 20px;
 `;
 
 const Category = styled.div`
+  font-family: 'Josefin Slab', serif;
+  font-size: 25px;
 `;
 
 const ProductName = styled.div`
+  font-family: 'Josefin Slab', serif;
+  font-size: 40px;
+  font-weight: bolder;
   margin-bottom: 40px;
 `;
 
@@ -68,14 +76,21 @@ const PriceContainer = styled.div`
 `;
 
 const Price = styled.div`
+  font-family: 'Josefin Slab', serif;
+  font-size: 16px;
   ${'' /* margin-top: 35px; */}
 `;
 
 const PriceSlash = styled.div`
+  font-family: 'Josefin Slab', serif;
+  font-size: 16px;
   text-decoration: line-through;
 `;
 
 const SalePrice = styled.div`
+  font-family: 'Josefin Slab', serif;
+  font-size: 16px;
+  font-weight: bold;
   color: red;
 `;
 
@@ -131,10 +146,10 @@ const ProductInfo = () => {
         </Twitter>
       </Social>
       { !style.sale_price ?
-        <Price>{ currProduct.default_price }</Price> :
+        <Price>${ currProduct.default_price }</Price> :
         <PriceContainer>
-          <PriceSlash>{ currProduct.default_price }</PriceSlash>
-          <SalePrice>{ style.sale_price }</SalePrice>
+          <PriceSlash>${ currProduct.default_price }</PriceSlash>
+          <SalePrice>${ style.sale_price }</SalePrice>
         </PriceContainer>
       }
     </MainContainer>

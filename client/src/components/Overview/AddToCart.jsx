@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import styled from 'styled-components';
 
 import StylesContext from '../contexts/StylesContext';
@@ -11,18 +11,28 @@ const MainContainer = styled.div`
 `;
 
 const SelectSize = styled.select`
+  font-family: 'Josefin Slab', serif;
+  font-size: 18px;
+
   margin: 8px;
   height: 50px;
   width: 150px
 `;
 
 const SelectQty = styled.select`
+  font-family: 'Josefin Slab', serif;
+  font-size: 18px;
+
+
   margin: 8px;
   height: 50px;
   width: 150px;
 `;
 
 const AddButton = styled.button`
+  font-family: 'Josefin Slab', serif;
+  font-size: 20px;
+
   margin: 8px;
   height: 50px;
   width: 250px;
@@ -35,6 +45,9 @@ const LikeButton = styled.button`
 `;
 
 const TextResponse = styled.div`
+  font-family: 'Josefin Slab', serif;
+  font-size: 18px;
+
   color: red;
   position: absolute;
   top: 570px;

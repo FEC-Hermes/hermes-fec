@@ -23,6 +23,8 @@ const OuterThumbContainer = styled.div`
 `;
 
 const Style = styled.div`
+  font-family: 'Josefin Slab', serif;
+  font-size: 16px;
   width: 350px;
   margin-bottom: 5px;
 `;
@@ -63,7 +65,7 @@ const StyleSelector = () => {
   const onThumbClick = (style, imgIndex) => {
 
     const checkMarks = document.getElementsByClassName('check-marks');
-    
+
     Array.from(checkMarks).forEach(icon => {
       icon.style.visibility = 'hidden';
     });

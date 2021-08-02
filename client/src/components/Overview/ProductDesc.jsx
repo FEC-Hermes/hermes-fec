@@ -26,9 +26,14 @@ const DescriptionContainer = styled.div`
 `;
 
 const Slogan = styled.div`
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 30px;
+
 `;
 
 const Description = styled.article`
+  font-family: 'Josefin Slab', serif;
+  font-size: 18px;
 `;
 
 const Divider = styled.div`
@@ -37,9 +42,13 @@ const Divider = styled.div`
 `;
 
 const Attributes = styled.article`
+  font-family: 'Josefin Slab', serif;
+  font-size: 16px;
   flex-grow: 1;
+  ${'' /* CHANGE TO 100px to center line on image end */}
   margin-left: 75px;
   height: 135px;
+  width: 550px;
   display:flex;
   flex-direction: column;
   align-items: flex-start;

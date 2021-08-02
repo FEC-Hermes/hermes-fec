@@ -16,8 +16,6 @@ const MainContainer = styled.main`
   width: 1280px;
   display: flex;
   flex-wrap: wrap;
-
-  border: 1px solid red;
 `;
 
 const InfoContainer = styled.main`

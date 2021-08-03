@@ -144,33 +144,40 @@ export default VerticalThumbs;
 /*
 
 [0, 1, 2, 3, 4, 5, 6], 7, 8, 9, 10, 11]
+lowIndex       :0
+highIndex      :6
 maxIndex       :5
-minIndex       :0
 currImageIndex :0
 
 0, [1, 2, 3, 4, 5, 6, 7], 8, 9, 10, 11]
+lowIndex       :1
+highIndex      :7
 maxIndex       :5
-minIndex       :1
 currImageIndex :1
 
 0, 1, [2, 3, 4, 5, 6, 7, 8], 9, 10, 11]
+lowIndex       :2
+highIndex      :8
 maxIndex       :5
-minIndex       :2
 currImageIndex :2
 
 0, 1, 2, [3, 4, 5, 6, 7, 8, 9], 10, 11]
+lowIndex       :3
+highIndex      :9
 maxIndex       :5
-minIndex       :3
 currImageIndex :3
 
 0, 1, 2, 3, [4, 5, 6, 7, 8, 9, 10], 11]
+lowIndex       :4
+highIndex      :10
 maxIndex       :5
-minIndex       :4
 currImageIndex :4
 
 0, 1, 2, 3, 4, [5, 6, 7, 8, 9, 10, 11]]
+lowIndex       :5
+highIndex      :11
 maxIndex       :5
-minIndex       :5
 currImageIndex :5
 
 */
+

@@ -16,7 +16,7 @@ const ImgContainer = styled.div`
   display: inline-block;
   overflow: hidden;
   width: 100px;
-  margin: 7px auto;
+  margin: 6px auto;
 `;
 
 const ImgFrame = styled.div`

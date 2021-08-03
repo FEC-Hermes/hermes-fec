@@ -66,14 +66,14 @@ const VerticalThumbs = () => {
   const onArrowClick = (arrow) => {
 
     if (arrow === 'up') {
-      setYAxis((yAxis + 89));
+      setYAxis((yAxis + 91));
       setLowIndex((lowIndex - 1));
       setHighIndex(highIndex - 1);
       if (maxIndex === highIndex || imageIndex === highIndex) {
         setImageIndex(imageIndex - 1);
       }
     } else if (arrow === 'down') {
-      setYAxis((yAxis - 89));
+      setYAxis((yAxis - 91));
       setLowIndex(lowIndex + 1);
       setHighIndex(highIndex + 1);
       if (maxIndex === lowIndex || imageIndex === lowIndex) {

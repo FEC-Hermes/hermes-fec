@@ -6,7 +6,7 @@ const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 125px;
-  height: 675px;
+  height: 677px;
   top: 2rem;
   position: absolute;
 `;
@@ -16,7 +16,7 @@ const ImgContainer = styled.div`
   display: inline-block;
   overflow: hidden;
   width: 100px;
-  margin: 6px auto;
+  margin: 7px auto;
 `;
 
 const ImgFrame = styled.div`
@@ -27,7 +27,7 @@ const ImgFrame = styled.div`
   border-radius: 4px;
   border: 1px solid black;
   overflow: hidden;
-  margin: 6px auto;
+  margin: 7px auto;
   box-shadow: 0px 0px 3px black;
 `;
 

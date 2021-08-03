@@ -37,7 +37,7 @@ const Description = styled.article`
 `;
 
 const Divider = styled.div`
-  height: 150px;
+  height: 175px;
   border-left: 3px solid black;
 `;
 
@@ -45,7 +45,6 @@ const Attributes = styled.article`
   font-family: 'Josefin Slab', serif;
   font-size: 16px;
   flex-grow: 1;
-  ${'' /* CHANGE TO 100px to center line on image end */}
   margin-left: 75px;
   height: 135px;
   width: 550px;

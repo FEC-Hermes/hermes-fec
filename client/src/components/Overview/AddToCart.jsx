@@ -46,6 +46,7 @@ const LikeButton = styled.button`
 const TextResponse = styled.div`
   font-family: 'Josefin Slab', serif;
   font-size: 18px;
+  margin-left: 10px;
 
   width:300px;
   color: red;
@@ -54,9 +55,9 @@ const TextResponse = styled.div`
   visibility: hidden;
 `;
 
-const OOS = styled.div`
+// const OOS = styled.div`
 
-`;
+// `;
 
 const AddToCart = () => {
 
@@ -173,7 +174,7 @@ const AddToCart = () => {
 
   return (
     <React.Fragment>
-      <OOS id='oos'>OUT OF STOCK</OOS>
+      {/* <OOS id='oos'>OUT OF STOCK</OOS> */}
       <MainContainer>
         <TextResponse id='cart-message'>{ cartMessage }</TextResponse>
         <SelectSize id='select-size' onChange={ setSku  }>

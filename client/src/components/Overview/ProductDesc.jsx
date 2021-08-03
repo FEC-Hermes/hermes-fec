@@ -72,7 +72,7 @@ const ProductDesc = () => {
       <Attributes>
         {
           currProduct.features.map((attr, i) => (
-            <div key={ i }>{ `${attr.value} ${attr.feature}` }</div>
+            <div key={ i }>{ `> ${attr.value} ${attr.feature}` }</div>
           ))
         }
       </Attributes>

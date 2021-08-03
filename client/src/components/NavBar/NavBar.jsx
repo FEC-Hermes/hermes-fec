@@ -8,7 +8,7 @@ const NavBar = () => {
   const handleInput = text => {
     setSearchQuery(text);
   };
-  console.log('searchQuery:: ',searchQuery);
+  
 
   return (
     <SearchBarContainer>

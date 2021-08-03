@@ -7,7 +7,7 @@ import ProductContext from '../../contexts/ProductContext.js';
 import {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer, StarsContainer, Arrow_space_filler} from './styles.js';
 
 
-const ProductCard = () => {
+const ProductCard = ({relatedProductClicked}) => {
   const {product:[product],reviewMeta:{ratings}} = useContext(ProductContext);
   const [relatedProducts, setProduct] = useState([]);
   let [count, setCount] = useState(0);
@@ -21,13 +21,28 @@ const ProductCard = () => {
     relatedProducts.slice(count,count + 4).length < 4 ?
       relatedProducts.slice(count-1, count + 4):
       relatedProducts.slice(count, count + 4);
-  // id = 17069;
+
+  const getProductStyles = async (id) => {
+    const {data} = await axios.get(`/products/${id}/styles`);
+    return data;
+  };
 
   useEffect( () => {
     async function fetchData(){
-      const {data} = await axios.get(`/products/${id}/styles`);
-      setProduct(data.results);
-      return data;
+      try {
+        const {data} = await axios.get(`/products/${id}/related`);
+        let newData = [...new Set(data)];
+        let productStylesArr = [];
+        for(let i = 0; i < newData.length;i++){
+          const products = await getProductStyles(newData[i]);
+          console.log('products:: ',products);
+          productStylesArr.push(products);
+        }
+        setProduct(productStylesArr);
+      }
+      catch(err){
+        console.log(err);
+      }
     }
     fetchData();
   },[product]);
@@ -42,11 +57,11 @@ const ProductCard = () => {
         /> : <Arrow_space_filler mr={'3rem'} />
       }
       {
-        carouselProducts.map( ({style_id,name,original_price,photos},idx) => {
-          let url = photos[0].url;
+        carouselProducts.map( ({results:[{name,photos,original_price,style_id}]},idx) => {
+          console.log('photos:: ',photos);
           return  (
             <Card
-              key={style_id}
+              key={idx}
               onMouseEnter={() => setIsShown(true)}
               onMouseLeave={() => setIsShown(false)}
               // onMouseEnter={() => onHover()}
@@ -62,11 +77,11 @@ const ProductCard = () => {
                     src="https://cdn.onlinewebfonts.com/svg/img_325911.png" />
                 </StarContainer>
                 <Img
-                  onClick={(e) => console.log(e.target)}
+                  onClick={() => relatedProductClicked(style_id)}
                   id={idx}
                   height={'25rem'}
                   width={'16rem'}
-                  src={url}
+                  src={photos[0].url}
                 />
                 <Thumbnails photos={photos} isShown={isShown}/>
               </Image_container>

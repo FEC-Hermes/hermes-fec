@@ -15,21 +15,16 @@ const App = () => {
   const [product, setProduct] = useState({});
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
-  const [productId, setProductId] = useState(null);
+  const [productId, setProductId] = useState(17071);
 
   const relatedProductClicked = id => {
     setProductId(id);
-    console.log("ProductId;:: ",productId);
-
   };
 
   useEffect(() => {
-    axios.get('/products/17071')
+    axios.get(`/products/${productId}`)
       .then(({ data }) => {
         setProduct(data);
-        // HELFPUL FAILS AT 17
-        // NEWEST FAILS AT
-        // console.log(data);
         axios.get(`/reviews/${data.id}/newest/1/2`)
           .then(({data}) => {
             setReviews(data);
@@ -39,7 +34,7 @@ const App = () => {
             setReviewMeta(data);
           });
       });
-  }, []);
+  }, [productId]);
   /* REFACTOR INTO CONTEXT FILE ========= */
   const [allStyles, setAllStyles] = useState([]);
   const [currStyle, setCurrStyle] = useState({});
@@ -47,7 +42,7 @@ const App = () => {
   const [minImgIdx, setMinIndex] = useState(0);
   const [expanded, setExpanded] = useState(false);
 
-  
+
   const getStyles = (product_id) => {
     axios.get(`/products/${product_id}/styles`)
       .then(({ data }) => {
@@ -57,9 +52,7 @@ const App = () => {
       .catch(err => console.log(err));
   };
   useEffect(() => {
-
-    console.log('what is id:', productId);
-    getStyles(productId||product.id);
+    getStyles(product.id);
   }, [product]);
   /* REFACTOR INTO CONTEXT FILE ========= */
   return (

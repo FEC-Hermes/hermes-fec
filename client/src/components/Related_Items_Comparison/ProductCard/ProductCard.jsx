@@ -35,7 +35,6 @@ const ProductCard = ({relatedProductClicked}) => {
         let productStylesArr = [];
         for(let i = 0; i < newData.length;i++){
           const products = await getProductStyles(newData[i]);
-          console.log('products:: ',products);
           productStylesArr.push(products);
         }
         setProduct(productStylesArr);
@@ -57,9 +56,10 @@ const ProductCard = ({relatedProductClicked}) => {
         /> : <Arrow_space_filler mr={'3rem'} />
       }
       {
-        carouselProducts.map( ({results:[{name,photos,original_price,style_id}]},idx) => {
-          console.log('photos:: ',photos);
-          return  (
+        carouselProducts.map(({product_id,results:[{name,photos,original_price,}]},idx) =>
+        {
+          
+          return (
             <Card
               key={idx}
               onMouseEnter={() => setIsShown(true)}
@@ -77,7 +77,7 @@ const ProductCard = ({relatedProductClicked}) => {
                     src="https://cdn.onlinewebfonts.com/svg/img_325911.png" />
                 </StarContainer>
                 <Img
-                  onClick={() => relatedProductClicked(style_id)}
+                  onClick={() => relatedProductClicked(product_id)}
                   id={idx}
                   height={'25rem'}
                   width={'16rem'}

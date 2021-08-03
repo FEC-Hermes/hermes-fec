@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+// import styled from 'styled-components';
+
 import Overview from '../Overview/Overview.jsx';
-import QandA from '../Q&A/Q&A.jsx';
-import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
 import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_Comparison.jsx';
-import styled from 'styled-components';
+import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
+import QandA from '../Q&A/Q&A.jsx';
 import ProductContext from '../contexts/ProductContext.js';
 import StylesContext from '../contexts/StylesContext';
-import MainContainer from './styles.js'
+import MainContainer from './styles.js';
 
 const App = () => {
   const [product, setProduct] = useState({});
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
   useEffect(() => {
-    axios.get('/products/17071')
+    axios.get('/products/17069')
       .then(({ data }) => {
         setProduct(data);
-        // HELFPUL FAILS AT 17
-        // NEWEST FAILS AT
         axios.get(`/reviews/${data.id}/newest/1/2`)
           .then(({data}) => {
             setReviews(data);

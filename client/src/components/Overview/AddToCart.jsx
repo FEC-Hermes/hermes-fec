@@ -55,9 +55,9 @@ const TextResponse = styled.div`
   visibility: hidden;
 `;
 
-// const OOS = styled.div`
+const OOS = styled.div`
 
-// `;
+`;
 
 const AddToCart = () => {
 
@@ -169,12 +169,12 @@ const AddToCart = () => {
 
   const toggleCart = () => {
     const oos = document.getElementById('oos').style;
-    cartVisible ? oos.visibility = 'visible' : 'hidden';
+    !cartVisible ? oos.visibility = 'visible' : oos.visibility = 'hidden';
   };
 
   return (
     <React.Fragment>
-      {/* <OOS id='oos'>OUT OF STOCK</OOS> */}
+      <OOS id='oos'>OUT OF STOCK</OOS>
       <MainContainer>
         <TextResponse id='cart-message'>{ cartMessage }</TextResponse>
         <SelectSize id='select-size' onChange={ setSku  }>

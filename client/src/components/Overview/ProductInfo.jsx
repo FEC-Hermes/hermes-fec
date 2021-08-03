@@ -42,7 +42,7 @@ const ProductName = styled.div`
 const Social = styled.div`
   height: 60px;
   width: 340px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 
   display: flex;
   justify-content: space-around;
@@ -51,47 +51,20 @@ const Social = styled.div`
 
 const Pinterest = styled.div`
   :hover{
-    color: green;
     cursor: pointer;
   }
 `;
 
 const Insta = styled.div`
   :hover{
-    color: green;
     cursor: pointer;
   }
 `;
 
 const Twitter = styled.div`
   :hover{
-    color: green;
     cursor: pointer;
   }
-`;
-
-const PriceContainer = styled.div`
-  display: flex;
-  ${'' /* margin-top: 35px; */}
-`;
-
-const Price = styled.div`
-  font-family: 'Josefin Slab', serif;
-  font-size: 16px;
-  ${'' /* margin-top: 35px; */}
-`;
-
-const PriceSlash = styled.div`
-  font-family: 'Josefin Slab', serif;
-  font-size: 16px;
-  text-decoration: line-through;
-`;
-
-const SalePrice = styled.div`
-  font-family: 'Josefin Slab', serif;
-  font-size: 16px;
-  font-weight: bold;
-  color: red;
 `;
 
 const ProductInfo = () => {
@@ -145,13 +118,6 @@ const ProductInfo = () => {
           </svg>
         </Twitter>
       </Social>
-      { !style.sale_price ?
-        <Price>${ currProduct.default_price }</Price> :
-        <PriceContainer>
-          <PriceSlash>${ currProduct.default_price }</PriceSlash>
-          <SalePrice>${ style.sale_price }</SalePrice>
-        </PriceContainer>
-      }
     </MainContainer>
   );
 };

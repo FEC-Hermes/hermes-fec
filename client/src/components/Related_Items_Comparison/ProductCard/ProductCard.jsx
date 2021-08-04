@@ -10,11 +10,10 @@ import {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContai
 const ProductCard = ({relatedProductClicked}) => {
   const {product:[product],reviewMeta:{ratings}} = useContext(ProductContext);
   const [relatedProducts, setProduct] = useState([]);
-  let [count, setCount] = useState(0);
   const [isToggled, setToggle] = useState(false);
   const [isShown, setIsShown] = useState(false);
-
-
+  const [photoUrl,setPhotos] = useState(false);
+  let [count, setCount] = useState(0);
   let {id, category} = product;
   let carouselProducts = relatedProducts.length === 4 ?
     relatedProducts :
@@ -25,6 +24,12 @@ const ProductCard = ({relatedProductClicked}) => {
   const getProductStyles = async (id) => {
     const {data} = await axios.get(`/products/${id}/styles`);
     return data;
+  };
+
+  let photosArr = carouselProducts.map(({results:[{photos:[photos]}]}) => photos);
+  const thumbnailClicked = (url,idx) => {
+    photosArr[idx].url = url;
+    setPhotos(photosArr);
   };
 
   useEffect( () => {
@@ -56,8 +61,10 @@ const ProductCard = ({relatedProductClicked}) => {
         /> : <Arrow_space_filler mr={'3rem'} />
       }
       {
-        carouselProducts.map(({product_id,results:[{name,photos,original_price,}]},idx) =>
+
+        carouselProducts.map(({product_id,results},idx) =>
         {
+          const [{name,original_price,}] = results;
           return (
             <Card
               key={idx}
@@ -80,9 +87,13 @@ const ProductCard = ({relatedProductClicked}) => {
                   id={idx}
                   height={'25rem'}
                   width={'16rem'}
-                  src={photos[0].url}
+                  src={photoUrl?photoUrl[idx].url:photosArr[idx].url}
                 />
-                <Thumbnails photos={photos} isShown={isShown}/>
+                <Thumbnails
+                  photos={photosArr}
+                  isShown={isShown}
+                  thumbnailClicked={thumbnailClicked}
+                />
               </Image_container>
               <CardText font_size={'1.4rem'} color={'steelblue'}>{category}</CardText>
               <CardText font_size={'1.5rem'}>{name}</CardText>

@@ -18,43 +18,34 @@ const App = () => {
   const [reviewMeta, setReviewMeta] = useState({});
   const [productId, setProductId] = useState(17071);
 
-  const relatedProductClicked = id => {
-    setProductId(id);
-  };
-
-  useEffect(() => {
-    axios.get(`/products/${productId}`) //only product id that has scrolling thumbnails
-      .then(({ data }) => {
-        setProduct(data);
-        axios.get(`/reviews/${data.id}/relevent/1/1000`)
-          .then(({ data }) => {
-            setReviews(data);
-          });
-        axios.get(`/reviews/meta/${data.id}`)
-          .then(({ data }) => {
-            setReviewMeta(data);
-          });
-      });
-  }, [productId]);
   /* REFACTOR INTO CONTEXT FILE ========= */
   const [allStyles, setAllStyles] = useState([]);
   const [currStyle, setCurrStyle] = useState({});
   const [currImgIdx, setCurrImgIdx] = useState(0);
   const [expanded, setExpanded] = useState(false);
 
-
-  const getStyles = (product_id) => {
-    axios.get(`/products/${product_id}/styles`)
-      .then(({ data }) => {
-        setAllStyles(data.results);
-        setCurrStyle(data.results[0]);
-      })
-      .catch(err => console.log(err));
-  };
-  useEffect(() => {
-    getStyles(product.id);
-  }, [product]);
   /* REFACTOR INTO CONTEXT FILE ========= */
+
+  const relatedProductClicked = id => {
+    setProductId(id);
+  };
+
+  useEffect(() => {
+    axios.get(`/products/${productId}`)
+      .then(({ data }) => {
+        setProduct(data);
+        axios.get(`/reviews/${data.id}/relevent/1/1000`)
+          .then(({ data }) => setReviews(data));
+        axios.get(`/reviews/meta/${data.id}`)
+          .then(({ data }) => setReviewMeta(data));
+        axios.get(`/products/${productId}/styles`)
+          .then(({ data }) => {
+            setAllStyles(data.results);
+            setCurrStyle(data.results[0]);
+          })
+          .catch(err => console.log(err));
+      });
+  }, [productId]);
   return (
     <MainContainer>
       {

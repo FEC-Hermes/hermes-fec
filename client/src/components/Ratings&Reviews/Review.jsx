@@ -34,7 +34,7 @@ const Review = ({review}) => {
         reviewer_name={review.reviewer_name}
         date={review.date}
       />
-      <p>{review.summary.slice(0, 60)}</p>
+      <p className="review-summary-primary">{review.summary.slice(0, 60)}</p>
       <p>{review.summary.slice(60)}</p>
       <p>{review.body}</p>
       <PhotoGallery photos={review.photos} />

@@ -8,6 +8,7 @@ import styled from 'styled-components';
 
 const Reviews_Container = styled.div`
    margin: 3rem 0 0 8rem;
+   max-width: 672px;
 `;
 
 const Reviews = ({reviewFilter, filterSignature}) => {

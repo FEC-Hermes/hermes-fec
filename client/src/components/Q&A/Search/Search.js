@@ -41,4 +41,8 @@ const Image = styled.img`
 width: 37%;
 `;
 
-export { Input, Form, SearchBtn, Image };
+const Search_Container = styled.div`
+  margin: 2rem;
+`;
+
+export { Input, Form, SearchBtn, Image, Search_Container  };

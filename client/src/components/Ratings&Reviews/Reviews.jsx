@@ -1,13 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ReviewCountAndSort from './ReviewCountAndSort.jsx';
 import ReviewList from './ReviewList.jsx';
 import AdditionalReviewOptions from './AdditionalReviewOptions.jsx';
 import ProductContext from '../contexts/ProductContext.js';
 import axios from 'axios';
 
-const Reviews = ({reviewFilter}) => {
+const Reviews = ({reviewFilter, filterSignature}) => {
   const [sortType, setSortType] = useState('relevant');
-  const [pageNumber, setPageNumber] = useState(1);
+  const [displayCount, setDisplayCount] = useState(2);
+  const [filter, setReviewFilter] = useState({});
+
+  useEffect(() => {
+    console.log('Change detected');
+  }, [filter, reviewFilter]);
 
   return (
     <ProductContext.Consumer>
@@ -17,31 +22,33 @@ const Reviews = ({reviewFilter}) => {
           reviewCount += Number(reviewMeta.ratings[rating]);
         }
 
-        var changeSortType = (sortType) => {
-          var pageNumber = 1;
 
+
+        var getNextReviewPage = () => {
+          var newDisplayLimit = displayCount + 2;
+          setDisplayCount(newDisplayLimit);
+          // var nextPage = pageNumber + 1;
+          // axios.get(`/reviews/${reviews.product}/${sortType}/${nextPage}/2`)
+          //   .then(({ data }) => {
+          //     var updatedReviews = reviews;
+          //     data.results.forEach(review => {
+          //       updatedReviews.results.push(review);
+          //     });
+          //     setReviews(updatedReviews);
+          //     setDisplayCount(nextPage);
+          //   });
+        };
+
+        var changeSortType = (sortType) => {
           var updatedReviews = reviews;
           updatedReviews.results = [];
 
-          axios.get(`/reviews/${reviews.product}/${sortType}/${pageNumber}/2`)
+          axios.get(`/reviews/${reviews.product}/${sortType}/1/${reviewCount}`)
           .then(({ data }) => {
             setReviews(data);
+            setSortType(sortType);
+            setDisplayCount(2);
           });
-          setSortType(sortType);
-          setPageNumber(1);
-        };
-
-        var getNextReviewPage = () => {
-          var nextPage = pageNumber + 1;
-          axios.get(`/reviews/${reviews.product}/${sortType}/${nextPage}/2`)
-            .then(({ data }) => {
-              var updatedReviews = reviews;
-              data.results.forEach(review => {
-                updatedReviews.results.push(review);
-              });
-              setReviews(updatedReviews);
-              setPageNumber(nextPage);
-            });
         };
 
         return (
@@ -49,7 +56,12 @@ const Reviews = ({reviewFilter}) => {
             <ReviewCountAndSort reviewCount={reviewCount}
               changeSortType={changeSortType}
             />
-            <ReviewList reviews={reviews.results} reviewFilter={reviewFilter}/>
+            <ReviewList reviews={reviews.results}
+              reviewFilter={reviewFilter}
+              filterSignature={filterSignature}
+              sortType={sortType}
+              displayCount={displayCount}
+            />
             <AdditionalReviewOptions getNextReviewPage={getNextReviewPage}/>
           </div>
         );

@@ -91,7 +91,6 @@ router.put('/reviews/:review_id/report', (req, res) => {
 
 router.get('/qa/questions/:product_id/:page/:count', (req, res) => {
   const { product_id, page, count } = req.params;
-
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/?product_id=${product_id}&page=${page}&count=${count}`, headers)
     .then(({ data }) => res.status(200).json(data))
     .catch(err => res.status(401).json(err));
@@ -104,8 +103,17 @@ router.get('/qa/questions/:question_id/answers', (req, res) => {
     .catch(err => res.status(401).json(err));
 });
 
+router.post('/qa/questions/:question_id/answers', (req, res) => {
+  const { question_id } = req.params;
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/answers`, headers)
+    .then(({ data }) => res.status(201).json(data))
+    .catch(err => res.status(401).json(err));
+});
+
 router.post('/qa/questions', (req, res) => {
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions', headers)
+  let data = req.body;
+  console.log(data)
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions', data, headers)
     .then(data => res.status(201).json(data.data))
     .catch(err => res.status(401).json(err));
 });
@@ -126,14 +134,14 @@ router.put('/qa/questions/:question_id/report', (req, res) => {
 
 router.put('/qa/answers/:answer_id/helpful', (req, res) => {
   const { answer_id } = req.params;
-  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${answer_id}/helpful`, headers)
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${answer_id}/helpful`, {question_id:  answer_id },headers)
     .then(({ data }) => res.status(204).json(data))
     .catch(err => res.status(401).json(err));
 });
 
 router.put('/qa/answers/:answer_id/report', (req, res) => {
   const { answer_id } = req.params;
-  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${answer_id}/report`, headers)
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${answer_id}/report`, {question_id: answer_id}, headers)
     .then(({ data }) => res.status(204).json(data))
     .catch(err => res.status(401).json(err));
 });

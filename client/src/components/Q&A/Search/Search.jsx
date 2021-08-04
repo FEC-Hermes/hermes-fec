@@ -4,7 +4,7 @@ const searchIcon = 'https://cdn.onlinewebfonts.com/svg/img_168154.png';
 
 const Search = ({ questions, setQues, fetchQues }) => {
 
-  console.log(questions);
+  // console.log(questions);
 
   const [searchInput, setSearch] = useState('');
 

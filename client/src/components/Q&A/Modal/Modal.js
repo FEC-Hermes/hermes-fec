@@ -23,10 +23,12 @@ const ModalBox = styled.main`
 `;
 
 const Close = styled.button`
+    border-radius: 50%;
+    border: dotted;
+    color: #1ad24b;
     font-size: 20px;
-    margin: 2%;
-    color: #00daff;
-    font-size: 20px;
+    text-shadow: 2 0 4 black;
+    text-shadow: 2px 2px 2px #1f1313;
 `;
 
 const ProduntName = styled.h2`

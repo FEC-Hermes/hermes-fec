@@ -11,6 +11,7 @@ const Pipe = styled.span`
 
 const Aside = styled.aside`
     display: flex;
+    flex-flow: column;
     justify-content: space-between;
     width: 100%;
 `;

@@ -12,52 +12,61 @@ import  {
   Pipe,
   Span
 } from './Accordion.js';
-import { Button, Buttons} from '../Q&A';
+import { Button, Buttons } from '../Q&A';
 
 
-const Accordion = ({ questions, openModal }) => {
+const Accordion = ({ questions, answers, openAnsModal,  openQuesModal, helpful, reporter, setQuesId}) => {
 
+  const [report, setReported] = useState(false);
+  const [questionsList, setQuestionsList] = useState(questions);
+  const [helped, setHelped] = useState(false);
   const [clicked, setClicked] = useState(false);
-  const [answ, setAns] = useState([]);
-  const [helpfulness, setHelpfulness] = useState(0);
 
-  const getAns = async (question_id) => {
-    try {
-      let ans = await axios.get(`/qa/questions/${question_id}/answers`);
-      return ans.data;
-    } catch(err) {
-      console.error(err);
+  console.log('question ', questions)
+  console.log('answers ', answers)
+
+  const makeQA = () => {
+
+    const qaObj = questions.map(q => {
+      const a = getA(q.question_id);
+
+      return {
+        'q': q,
+        'a': a
+      };
+    });
+
+    return qaObj;
+  };
+
+  const getA = (aID) => {
+    console.log(aID)
+    return Object.keys(answers).filter(a => a.aID === aID);
+  };
+
+
+  useEffect(() => {
+    makeQA();
+  });
+
+  const handleHelpful = (id) => {
+    if (!helped) {
+      helpful(id);
+      setHelped(true);
+    }
+    else {
+      console.log('you touched me already');
     }
   };
 
-  useEffect( () => {
-    if (answ.length === 0) {
-      let getAnswers = questions.forEach(async (ques) => {
-        let a = await getAns(ques.question_id);
-        setAns(answ => [...answ, a]);
-      });
+
+  const handleReported = (id) => {
+    if (!report) {
+      reporter(id);
+      setReported(true);
     }
-  },[]);
-
-
-  // useEffect( () => {
-  //   const helpfulness = async (question_id) => {
-  //     try {
-  //       let help = await axios.get(`/qa/questions/${question_id}/helpful`);
-  //       return help.data;
-  //     } catch(err) {
-  //       console.error(err);
-  //     }
-  //   };
-  //   helpfulness();
-  // },[helpfulness]);
-
-  const helpful = async (question_id) => {
-    try {
-      let help = await axios.put(`/qa/questions/${question_id}/helpful`);
-      console.log(help)
-    } catch(err) {
-      console.error(err);
+    else {
+      console.log('You reported me already.');
     }
   };
 
@@ -68,62 +77,81 @@ const Accordion = ({ questions, openModal }) => {
 
       <AccordionSection>
 
-        {questions.map(ques => {
+        {questions && questions.map(ques => {
           return (
             <Aside key={ques.question_id}>
+              <Pd>Q: {ques.question_body}</Pd>
               <Pd>
-                Q: {ques.question_body}
-              </Pd>
-
-              <Pd>
-                <span onClick={() => helpful(ques.question_id)}>Helpful?</span>
-                <Span>
-                  {`Yes (${ques.question_helpfulness})`}
-                </Span>
-
+                <span onClick={() => handleHelpful(ques.question_id)}>Helpful?</span>
+                <Span>{` Yes (${ques.question_helpfulness }) `}</Span>
                 <Pipe>|</Pipe>
-
-                <div onClick={openModal}>
+                <div
+                  onClick={() => {
+                    openAnsModal();
+                    setQuesId(ques.question_id);
+                  }}>
                   Add Answer
                 </div>
 
+
               </Pd>
+              <br/>
+
+
+              <AnwrSection>
+                {answers[ques.question_id]?.map( answr => (
+                  <div key={answr.answer_id}>
+                    <p>A: {answr.body}</p>
+                    <p>
+                      {`by User ${answr.answerer_name}, ${moment().format('MMM Do YY')}`}
+                      <Pipe>|</Pipe>
+                      <span>Helpful?</span>
+                      <Pipe>|</Pipe>
+                      <Span>Report</Span>
+                    </p>
+                    <Thumbnails photos={answr.photos} />
+                    <div>
+                      <p>
+                        {`by User ${answr.answerer_name}, ${moment().format('MMM Do YY')}`} <Pipe>|</Pipe>  Helpful?
+                        <Pipe>|</Pipe>
+                        <Span onClick={handleReported(answr.answer_id)}>Report</Span>
+                      </p>
+                    </div>
+                  </div>
+                )
+                )}
+              </AnwrSection>
             </Aside>
           );
         })}
 
-        <AnwrSection>
-        {console.log('Anw ', answ)}
-          {answ.results && answ.results.map(answr => {
-            return (
-              <div key={answr.answer_id}>
-                {console.log(answr)}
-                {/* <p>A: {answr.body}</p>
 
-                <p>
-                  {`by User ${answr.answerer_name}, ${moment().format('MMM Do YY')}`}
-                  <Pipe>|</Pipe>
-                  <span>Helpful?</span>
-                  <Pipe>|</Pipe>
-                  <Span>Report</Span>
-                </p>
+        {
+          answers &&
+          <div>
+            <p>LOAD MORE ANSWERERS</p>
+            <Buttons>
+              <Button onClick={() => setClicked(!clicked)}>MORE ANSWERED QUESTIONS</Button>
+            </Buttons>
+          </div>
+        }
 
-                <Thumbnails photos={answr.photos} />
+        <Button onClick={openQuesModal}>ADD A QUESTION  +</Button>
 
-                <div>
-                  <p>
-                    {`by User ${answr.answerer_name}, ${moment().format('MMM Do YY')}`} <Pipe>|</Pipe>  Helpful?
-                    <Pipe>|</Pipe>
-                    <Span>Report</Span>
-                  </p>
-                </div> */}
-              </div>
-            );
-          })}
-        </AnwrSection>
+      </AccordionSection>
+    </QuesSection>
+
+  );
+};
+
+export default Accordion;
+
+{/* <Buttons>
+          <Button onClick={() => setClicked(!clicked)}>MORE ANSWERED QUESTIONS</Button>
+        </Buttons> */}
 
 
-        { clicked &&
+{/* { clicked &&
 
           <AnwrSection>
             {answ.slice(2).map(answr => {
@@ -152,27 +180,5 @@ const Accordion = ({ questions, openModal }) => {
               );
             })}
           </AnwrSection>
-        }
+          } */}
 
-        {/* <Buttons>
-          <Button onClick={() => setClicked(!clicked)}>MORE ANSWERED QUESTIONS</Button>
-        </Buttons> */}
-
-        {
-          answ.length > 2 &&
-          <div>
-            <p>LOAD MORE ANSWERERS</p>
-            <Buttons>
-              <Button onClick={() => setClicked(!clicked)}>MORE ANSWERED QUESTIONS</Button>
-            </Buttons>
-          </div>
-        }
-
-        <Button onClick={openModal}>ADD A QUESTION  +</Button>
-      </AccordionSection>
-    </QuesSection>
-
-  );
-};
-
-export default Accordion;

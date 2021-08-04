@@ -69,8 +69,9 @@ const Thumbnail_Image_Container = styled.div`
     // bottom: 0.25rem;
 `;
 
-const Thumbnail_arrow = styled.div`
-   margin-right:1.3rem;
+const Arrow_space_filler = styled.div`
+   margin-right:${props => props.mr};
+
 `;
 
-export  {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer, ThumbnailContainer,Thumbnail_Image_Container,Thumbnail_arrow, StarsContainer};
+export  {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer, ThumbnailContainer,Thumbnail_Image_Container,Arrow_space_filler, StarsContainer};

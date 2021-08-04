@@ -1,6 +1,6 @@
 import React, {useState,useContext} from 'react';
 import {RelatedProducts, Card, PlusSign} from './styles.js';
-import OutFitCard from './OutFitCard.jsx';
+import OutfitCard from './OutfitCard.jsx';
 
 const OutFitContainer = () => {
   let [count, setCount] = useState(0);
@@ -17,7 +17,7 @@ const OutFitContainer = () => {
             <Card>
               <PlusSign onClick={() => clickOutFit() }>+</PlusSign>
             </Card>
-            <OutFitCard count={count}/>
+            <OutfitCard count={count}/>
           </RelatedProducts>
           :
           <RelatedProducts>

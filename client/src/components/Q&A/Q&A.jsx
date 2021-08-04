@@ -88,14 +88,14 @@ var state = {
 const ContainerQA = styled.div`
   display: flex;
   flex-flow: column;
-  width: 70%;
   margin: 0 auto;
+  background-color: whitesmoke;
 `;
 
 const Button = styled.button`
   border: 1px solid;
   padding: 2%;
-  margin: 1%;
+  margin: 1% 1% 0 0;
   font-size: 14px;
   font-weight: bold;
   background: transparent;
@@ -103,7 +103,13 @@ const Button = styled.button`
 
 const Buttons = styled.div`
   display: flex;
+  margin: 0 0 2rem 2rem;
 `;
+
+const Ptag = styled.div`
+ margin:${props => props.m};
+`;
+
 
 const QandA = () => {
   const [questions, setQues] = useState(state.questions[0]);
@@ -145,27 +151,28 @@ const QandA = () => {
   // console.log(answers);
 
   return (
+    <div>
+      <h1>Questions & Answers {}</h1>
+      <ContainerQA >
+        <Search />
+        <QuestionsList
+          questions={questions}
+          answers={answers}
+          openModal={openAnsModal}
+        />
+        <Ptag m={'0 0 0 2rem'}>LOAD MORE ANSWERERS</Ptag>
+        <Buttons>
+          <Button>MORE ANSWERED QUESTIONS</Button>
+          <Button onClick={openModal}>ADD A QUESTION  +</Button>
+        </Buttons>
 
-    <ContainerQA>
-      <h3>Questions & Answers {}</h3>
-      <Search />
-      <QuestionsList
-        questions={questions}
-        answers={answers}
-        openModal={openAnsModal}
-      />
-      <p>LOAD MORE ANSWERERS</p>
-      <Buttons>
-        <Button>MORE ANSWERED QUESTIONS</Button>
-        <Button onClick={openModal}>ADD A QUESTION  +</Button>
-      </Buttons>
-
-      {isOpen.open &&
-        <Modal closeModal={closeModal}>
-          {isOpen.form.addAns ?  <AddAnswer /> :  <AddQuestion />}
-        </Modal>
-      }
-    </ContainerQA>
+        {isOpen.open &&
+          <Modal closeModal={closeModal}>
+            {isOpen.form.addAns ?  <AddAnswer /> :  <AddQuestion />}
+          </Modal>
+        }
+      </ContainerQA>
+    </div>
   );
 };
 

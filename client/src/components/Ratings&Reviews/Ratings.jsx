@@ -2,11 +2,12 @@ import React from 'react';
 import AverageDisplay from './AverageDisplay.jsx';
 import PercentRecommended from './PercentRecommended.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
+import BreakdownFilterDisplay from './BreakdownFilterDisplay.jsx';
 import Characteristics from './Characteristics.jsx';
 
 import ProductContext from '../contexts/ProductContext.js';
 
-const Ratings = (props) => {
+const Ratings = ({reviewFilter, updateReviewFilter, clearReviewFilter}) => {
   return (
     <ProductContext.Consumer>
       {({reviewMeta}) => {
@@ -18,7 +19,10 @@ const Ratings = (props) => {
             <PercentRecommended
               recommended={reviewMeta.recommended}
             />
-            <RatingBreakdown ratings={reviewMeta.ratings}/>
+            <RatingBreakdown ratings={reviewMeta.ratings} updateReviewFilter={updateReviewFilter}/>
+            <BreakdownFilterDisplay reviewFilter={reviewFilter}
+              clearReviewFilter={clearReviewFilter}
+             />
             <Characteristics characteristics={reviewMeta.characteristics}/>
           </div>
         )

@@ -16,12 +16,16 @@ const Main = styled.main`
     flex-flow: column;
 `;
 
+const QuestionsListContainer = styled.div`
+  margin-left:1rem;
+`;
+
 
 const QuestionsList = ({questions, answers, openModal}) => {
 
   // {console.log(answers.results)}
   return (
-    <div>
+    <QuestionsListContainer>
       <ul>
         <li>
           <Main>
@@ -74,7 +78,7 @@ const QuestionsList = ({questions, answers, openModal}) => {
           </Main>
         </li>
       </ul>
-    </div>
+    </QuestionsListContainer>
   );
 };
 

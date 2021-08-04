@@ -1,5 +1,10 @@
 import React from 'react';
 import RatingCount from './RatingCount.jsx';
+import styled from 'styled-components';
+
+const RatingCountContainer = styled.div`
+   margin: 1rem 0 0 2rem;
+`;
 
 const RatingBreakdown = ({ratings})=> {
   var totalRatings = 0;
@@ -8,7 +13,7 @@ const RatingBreakdown = ({ratings})=> {
   }
 
   return (
-    <div>
+    <RatingCountContainer>
       <RatingCount ratingCount={Number(ratings[5])}
         totalRatings={totalRatings}
         count={5}
@@ -29,7 +34,7 @@ const RatingBreakdown = ({ratings})=> {
         totalRatings={totalRatings}
         count={1}
       />
-    </div>
+    </RatingCountContainer>
   );
 };
 

@@ -29,6 +29,13 @@ const InfoContainer = styled.main`
   max-height: 750px;
   margin-left: 20px;
 `;
+const OverviewContainer = styled.div`
+  background-color: whitesmoke;
+  display:flex;
+  justify-content:center;
+  padding-bottom:1rem;
+
+`;
 
 ////    Component    ///////////////////////////////
 ////////////////////////////////////////////////////
@@ -42,7 +49,7 @@ const Overview = () => {
   }, [expand]);
 
   return (
-    <div>
+    <OverviewContainer>
       <MainContainer>
         <ImageGallery />
         <InfoContainer id='info-container'>
@@ -52,7 +59,7 @@ const Overview = () => {
         </InfoContainer>
         <ProductDesc />
       </MainContainer>
-    </div>
+    </OverviewContainer>
   );
 };
 

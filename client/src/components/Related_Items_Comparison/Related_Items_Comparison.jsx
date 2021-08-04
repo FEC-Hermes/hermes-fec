@@ -6,15 +6,15 @@ const H1 = styled.h1`
    margin: 2rem 0 1rem 1rem;
 `;
 
-const Related_Items_Comparison = () => {
+const Related_Items_Comparison = ({relatedProductClicked}) => {
   return (
     <div className="Related_Products">
       <H1>Related Products</H1>
-      <ProductCard />
+      <ProductCard relatedProductClicked={relatedProductClicked}/>
       <H1>Your Outfit</H1>
       <OutFitContainer />
     </div>
-  )
+  );
 };
 
 export default Related_Items_Comparison;

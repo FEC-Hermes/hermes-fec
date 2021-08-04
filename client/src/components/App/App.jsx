@@ -8,6 +8,8 @@ import styled from 'styled-components';
 import ProductContext from '../contexts/ProductContext.js';
 import StylesContext from '../contexts/StylesContext';
 import MainContainer from './styles.js';
+import NavBar from '../NavBar/NavBar.jsx';
+
 
 const App = () => {
   const [product, setProduct] = useState({});
@@ -51,7 +53,7 @@ const App = () => {
         Object.keys(reviewMeta).length > 0
           ?
           <div>
-            <nav>NAV BAR</nav>
+            <NavBar />
             <ProductContext.Provider value={{
               product: [product, setProduct],
               reviews: reviews,

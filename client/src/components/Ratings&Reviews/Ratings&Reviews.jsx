@@ -1,6 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import Ratings from './Ratings.jsx';
 import Reviews from './Reviews.jsx';
+import styled from 'styled-components';
+
+const Ratings_and_reviews_container = styled.div`
+  display: flex;
+  background-color: whitesmoke;
+  padding-bottom: 4rem;
+  margin-bottom: 2rem;
+ `;
 
 const RatingsAndReviews = () => {
   const [reviewFilter, setReviewFilter] = useState({
@@ -48,12 +56,12 @@ const RatingsAndReviews = () => {
 
   return (
     <div id="rating-review">
-      <div id="ratings-and-reviews-title">Ratings & Reviews</div>
-      <div id="ratings-and-reviews-container">
-        <Ratings reviewFilter={reviewFilter} updateReviewFilter={updateReviewFilter}
+      <h1 id="ratings-and-reviews-title">Ratings & Reviews</h1>
+      <Ratings_and_reviews_container>
+        <Ratings  reviewFilter={reviewFilter} updateReviewFilter={updateReviewFilter}
           clearReviewFilter={clearReviewFilter}/>
-        <Reviews reviewFilter={reviewFilter} filterSignature={filterSignature}/>
-      </div>
+        <Reviews reviewFilter={reviewFilter} filterSignature={filterSignature} />
+      </Ratings_and_reviews_container>
     </div>
   );
 };

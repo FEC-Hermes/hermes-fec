@@ -8,9 +8,9 @@ const ReviewHeader = (props) => {
       <div className="header-star-display">
         <StarDisplay rating={props.rating} productId={props.productId}/>
       </div>
-      <div className="review-user-and-timestamp">
+      <h2 className="review-user-and-timestamp">
         {`${props.reviewer_name}, ${moment(props.date).format('LL')}`}
-      </div>
+      </h2>
     </div>
   );
 };

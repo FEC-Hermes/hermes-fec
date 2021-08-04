@@ -2,8 +2,13 @@ import React, {useState, useEffect} from 'react';
 import ReviewCountAndSort from './ReviewCountAndSort.jsx';
 import ReviewList from './ReviewList.jsx';
 import AdditionalReviewOptions from './AdditionalReviewOptions.jsx';
-import ProductContext from '../contexts/ProductContext.js';
+import ProductContext, { reviews, reviewMeta } from '../contexts/ProductContext.js';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const Reviews_Container = styled.div`
+   margin: 3rem 0 0 8rem;
+`;
 
 const Reviews = ({reviewFilter, filterSignature}) => {
   const [sortType, setSortType] = useState('relevant');
@@ -52,7 +57,7 @@ const Reviews = ({reviewFilter, filterSignature}) => {
         };
 
         return (
-          <div id="reviews">
+          <Reviews_Container >
             <ReviewCountAndSort reviewCount={reviewCount}
               changeSortType={changeSortType}
             />
@@ -63,7 +68,7 @@ const Reviews = ({reviewFilter, filterSignature}) => {
               displayCount={displayCount}
             />
             <AdditionalReviewOptions getNextReviewPage={getNextReviewPage}/>
-          </div>
+          </Reviews_Container>
         );
       }}
     </ProductContext.Consumer>

@@ -1,4 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Rating_count_row = styled.div`
+  display:flex;
+  align-items: center;
+`;
+
+const Rating_value = styled.p`
+   margin-right:1rem;
+`;
 
 const RatingCount = (props) => {
   var handleClick = () => {
@@ -7,11 +17,11 @@ const RatingCount = (props) => {
   };
 
   return (
-    <div className="rating-count-row" onClick={() => {handleClick()}}>
-      <div className="rating-value">{props.count} stars</div>
+    <Rating_count_row onClick={() => {handleClick()}}>
+      <Rating_value>{props.count} stars</Rating_value>
       <progress className="rating-count-bar" value={props.ratingCount} max={props.totalRatings} />
       <div className="rating-count">{props.ratingCount}</div>
-    </div>
+    </Rating_count_row>
   );
 };
 

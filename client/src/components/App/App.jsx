@@ -15,7 +15,7 @@ const App = () => {
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
   useEffect(() => {
-    axios.get('/products/17071')
+    axios.get('/products/17071') //only product id that has scrolling thumbnails
       .then(({ data }) => {
         setProduct(data);
         axios.get(`/reviews/${data.id}/newest/1/2`)

@@ -1,5 +1,5 @@
 import React from 'react';
-import ShallowRenderer from 'react-test-renderrer/shallow';
+import ShallowRenderer from 'react-test-renderer/shallow';
 
 import ProductDesc from './client/src/components/overview/ProductDesc.jsx';
 

@@ -56,7 +56,6 @@ const TextResponse = styled.div`
 `;
 
 const OOS = styled.div`
-
 `;
 
 const AddToCart = () => {
@@ -75,11 +74,13 @@ const AddToCart = () => {
 
   useEffect(() => {
     getSizes();
-    setQtyVisible(false);
+    setSkuSelected('Select Size');
+    document.getElementById('select-size').value = 'Select Size';
   }, [style]);
 
   useEffect(() => {
     getQty();
+    setSku();
   }, [skuSelected]);
 
   useEffect(() => {
@@ -157,6 +158,8 @@ const AddToCart = () => {
         i++;
       }
       setCartMessage('ADDED TO CART');
+      setSkuSelected('Select Size');
+      document.getElementById('select-size').value = 'Select Size';
     }
     showCartMessage();
   };

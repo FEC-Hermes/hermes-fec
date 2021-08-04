@@ -1,6 +1,28 @@
 import React, { useState } from 'react';
 import NewReviewStarDisplay from '../Shared/NewReviewStarDisplay.jsx';
+
 import axios from 'axios';
+import styled from 'styled-components';
+
+const ReviewForm = styled.div`
+  display:grid;
+  grid-row-gap: 0.1rem;
+  padding: 1rem;
+`;
+
+const Recommend_Container = styled.div`
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 22rem;
+`;
+
+const UploadPictureContianer = styled.div`
+   display: flex;
+   flex-direction: column;
+}
+`;
+
 
 // Hela's Combat Garb: https://i.imgur.com/Q5kWc7n.jpg
 // Samus' Power Suit: https://i.imgur.com/dtjVxno.jpg
@@ -8,7 +30,7 @@ import axios from 'axios';
 // Marty McFly's Vest: https://i.imgur.com/VDC9duU.jpg
 // Superman's Outfit: https://i.imgur.com/B5kTEPt.jpg
 
-const NewReviewForm = ({reviewMeta}) => {
+const NewReviewForm = ({reviewMeta, productName}) => {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const [summary, setSummary] = useState('');
@@ -88,7 +110,9 @@ const NewReviewForm = ({reviewMeta}) => {
   };
 
   return (
-    <form >
+    <ReviewForm >
+      <h3>Write Your Review</h3>
+      <h4>About the {productName}</h4>
       <NewReviewStarDisplay rating={rating} hoverRating={hoverRating}
         setRating={setRating} setHoverRating={setHoverRating}/>
       <label>Summary</label>
@@ -97,8 +121,8 @@ const NewReviewForm = ({reviewMeta}) => {
       <label>Body</label>
       <input type="text" onChange={(e) => { handleBodyChange(e) }} />
       <br />
-      <div>
-        <div>Do you recommend this product?</div>
+      <Recommend_Container>
+        <p>Do you recommend this product?</p>
         <input type="radio" id="recommend-true" name="recommend" value="true"
           onChange={(e) => {
             handleRecommendedChange(e);
@@ -111,9 +135,9 @@ const NewReviewForm = ({reviewMeta}) => {
             handleRecommendedChange(e);
           }}/>
         <label htmlFor="recommend-false">No</label>
-      </div>
+      </Recommend_Container>
       <br />
-      <div>
+      <UploadPictureContianer>
         <div>Upload Up To 5 Pictures of the Product!</div>
         <label>Picture 1</label>
         <input type="text" onChange={(e) => handlePictureChange(0, e.target.value)}/>
@@ -157,7 +181,7 @@ const NewReviewForm = ({reviewMeta}) => {
             :
             null
         }
-      </div>
+      </UploadPictureContianer>
       <label>Name</label>
       <input type="text" onChange={(e) => { handleUsernameChange(e) }} />
       <br />
@@ -385,7 +409,7 @@ const NewReviewForm = ({reviewMeta}) => {
       <button type="button" onClick={() => {
         submitNewReview();
       }} >Submit Review!!</button>
-    </form>
+    </ReviewForm>
   );
 };
 

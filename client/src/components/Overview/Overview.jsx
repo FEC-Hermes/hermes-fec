@@ -16,8 +16,6 @@ const MainContainer = styled.main`
   width: 1280px;
   display: flex;
   flex-wrap: wrap;
-
-  border: 1px solid red;
 `;
 
 const InfoContainer = styled.main`
@@ -28,6 +26,13 @@ const InfoContainer = styled.main`
   max-width: 370px;
   max-height: 750px;
   margin-left: 20px;
+`;
+const OverviewContainer = styled.div`
+  background-color: whitesmoke;
+  display:flex;
+  justify-content:center;
+  padding-bottom:1rem;
+
 `;
 
 ////    Component    ///////////////////////////////
@@ -42,7 +47,7 @@ const Overview = () => {
   }, [expand]);
 
   return (
-    <div>
+    <OverviewContainer>
       <MainContainer>
         <ImageGallery />
         <InfoContainer id='info-container'>
@@ -52,7 +57,7 @@ const Overview = () => {
         </InfoContainer>
         <ProductDesc />
       </MainContainer>
-    </div>
+    </OverviewContainer>
   );
 };
 

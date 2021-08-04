@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+// import styled from 'styled-components';
+
 import Overview from '../Overview/Overview.jsx';
-import QandA from '../Q&A/Q&A.jsx';
-import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
 import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_Comparison.jsx';
-import styled from 'styled-components';
+import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
+import QandA from '../Q&A/Q&A.jsx';
 import ProductContext from '../contexts/ProductContext.js';
 import StylesContext from '../contexts/StylesContext';
-import MainContainer from './styles.js'
+import MainContainer from './styles.js';
+import NavBar from '../NavBar/NavBar.jsx';
+
 
 const App = () => {
   const [product, setProduct] = useState({});
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
   useEffect(() => {
-    axios.get('/products/17071')
+    axios.get('/products/17071') //only product id that has scrolling thumbnails
       .then(({ data }) => {
         setProduct(data);
-        // HELFPUL FAILS AT 17
-        // NEWEST FAILS AT
-        console.log(data);
-        axios.get(`/reviews/${data.id}/newest/1/2`)
-          .then(({data}) => {
+        axios.get(`/reviews/${data.id}/relevent/1/1000`)
+          .then(({ data }) => {
             setReviews(data);
           });
         axios.get(`/reviews/meta/${data.id}`)
@@ -34,7 +34,6 @@ const App = () => {
   const [allStyles, setAllStyles] = useState([]);
   const [currStyle, setCurrStyle] = useState({});
   const [currImgIdx, setCurrImgIdx] = useState(0);
-  const [minImgIdx, setMinIndex] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const getStyles = (product_id) => {
     axios.get(`/products/${product_id}/styles`)
@@ -54,7 +53,7 @@ const App = () => {
         Object.keys(reviewMeta).length > 0
           ?
           <div>
-            <nav>NAV BAR</nav>
+            <NavBar />
             <ProductContext.Provider value={{
               product: [product, setProduct],
               reviews: reviews,
@@ -69,7 +68,6 @@ const App = () => {
                     allStyles: [allStyles, setAllStyles],
                     currStyle: [currStyle, setCurrStyle],
                     imgIndex:  [currImgIdx, setCurrImgIdx],
-                    minIndex:  [minImgIdx, setMinIndex],
                     expanded:  [expanded, setExpanded]
                   }}>
                     <Overview />
@@ -79,7 +77,13 @@ const App = () => {
               }
               {/*                                    */}
               <QandA />
-              <RatingsAndReviews />
+              {
+                Object.keys(reviews).length > 0
+                  ?
+                  <RatingsAndReviews />
+                  :
+                  null
+              }
             </ProductContext.Provider>
           </div>
           :

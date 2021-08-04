@@ -1,6 +1,6 @@
 
 import React,{useState} from 'react';
-import {RelatedProducts, Image_container, Img, Card, StarContainer,ThumbnailContainer,Thumbnail_Image_Container,Thumbnail_arrow} from './styles.js';
+import {RelatedProducts, Image_container, Img, Card, StarContainer,ThumbnailContainer,Thumbnail_Image_Container,Arrow_space_filler} from './styles.js';
 
 
 const Thumbnails = ({photos,isShown}) => {
@@ -8,7 +8,7 @@ const Thumbnails = ({photos,isShown}) => {
   let carouselProducts = photos.slice(count,count + 4).length < 4?
     photos.slice(count-1,count + 4):
     photos.slice(count,count + 4);
-  
+
 
   return isShown? (
     <ThumbnailContainer>
@@ -19,7 +19,7 @@ const Thumbnails = ({photos,isShown}) => {
           height={'2rem'}
           width={'2rem'}
           src='https://cdn4.iconfinder.com/data/icons/arrows-249/24/small_chevron_arrow_left-512.png'
-        /> : <Thumbnail_arrow />
+        /> : <Arrow_space_filler mr={'1.5rem'}/>
 
       }
       {
@@ -38,7 +38,7 @@ const Thumbnails = ({photos,isShown}) => {
           onClick={() => count < 3? setCount(count+=1): setCount(3)}
           height={'2rem'}
           width={'2rem'}
-          src='https://cdn4.iconfinder.com/data/icons/arrows-249/24/small_chevron_arrow_right-512.png'/> : <Thumbnail_arrow />
+          src='https://cdn4.iconfinder.com/data/icons/arrows-249/24/small_chevron_arrow_right-512.png'/> : <Arrow_space_filler mr={'1.5rem'}/>
 
       }
     </ThumbnailContainer>

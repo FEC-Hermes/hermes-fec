@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Stars from '../Shared/StarAverageRating.jsx';
-
 import ProductContext from '../contexts/ProductContext';
 import StylesContext from '../contexts/StylesContext';
 
@@ -22,20 +21,28 @@ const StarRating = styled.div`
 `;
 
 const ReviewLink = styled.a`
+  font-family: 'Josefin Slab', serif;
+  font-size: 16px;
+
   margin-left: 20px;
 `;
 
 const Category = styled.div`
+  font-family: 'Josefin Slab', serif;
+  font-size: 25px;
 `;
 
 const ProductName = styled.div`
+  font-family: 'Josefin Slab', serif;
+  font-size: 40px;
+  font-weight: bolder;
   margin-bottom: 40px;
 `;
 
 const Social = styled.div`
   height: 60px;
   width: 340px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 
   display: flex;
   justify-content: space-around;
@@ -44,40 +51,20 @@ const Social = styled.div`
 
 const Pinterest = styled.div`
   :hover{
-    color: green;
     cursor: pointer;
   }
 `;
 
 const Insta = styled.div`
   :hover{
-    color: green;
     cursor: pointer;
   }
 `;
 
 const Twitter = styled.div`
   :hover{
-    color: green;
     cursor: pointer;
   }
-`;
-
-const PriceContainer = styled.div`
-  display: flex;
-  ${'' /* margin-top: 35px; */}
-`;
-
-const Price = styled.div`
-  ${'' /* margin-top: 35px; */}
-`;
-
-const PriceSlash = styled.div`
-  text-decoration: line-through;
-`;
-
-const SalePrice = styled.div`
-  color: red;
 `;
 
 const ProductInfo = () => {
@@ -131,13 +118,6 @@ const ProductInfo = () => {
           </svg>
         </Twitter>
       </Social>
-      { !style.sale_price ?
-        <Price>{ currProduct.default_price }</Price> :
-        <PriceContainer>
-          <PriceSlash>{ currProduct.default_price }</PriceSlash>
-          <SalePrice>{ style.sale_price }</SalePrice>
-        </PriceContainer>
-      }
     </MainContainer>
   );
 };

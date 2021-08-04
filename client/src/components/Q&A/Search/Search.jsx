@@ -1,64 +1,42 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
+import { Input, Form, SearchBtn, Image } from './Search.js';
 const searchIcon = 'https://cdn.onlinewebfonts.com/svg/img_168154.png';
 
 
-const Input = styled.input`
-  border: none;
-  height: 50px;
-  font-size: 20px;
-  width: 90%;
-  margin: 8px 0;
-  outline: none;
-  padding: 8px;
-  box-sizing: border-box;
-  transition: 0.3s;
-  padding-left: 50px;
-  cursor: pointer;
+const Search = ({ questions, setQues, fetchQues }) => {
 
-  &:focus {
-    border-color: dodgerBlue;
-    box-shadow: 0 0 8px 0 dodgerBlue;
-  }
+  // console.log(questions);
 
-  :focus + .left-icon{
-    svg{
-      fill: dodgerBlue;
+  const [searchInput, setSearch] = useState('');
+
+  useEffect(() => {
+
+    if (searchInput.length >= 3) {
+
+      let list = questions.filter(ques =>
+        ques.question_body.toLowerCase().includes(searchInput.toLowerCase())
+      );
+      setQues(list);
     }
-  }
-`;
+    else if(searchInput.length < 3) {
+      // console.log(prevState);
+      // setQues(questions);
+      fetchQues();
+    }
 
-const Form = styled.form`
-    display: flex;
-    border: 1px solid;
-`;
-
-const SearchBtn = styled.button`
-  width: 12%;
-  background: transparent;
-  border: none;
-  margin: 0% -2% 0% 1%;
-`;
-
-const Image = styled.img`
-  width: 37%;
-`;
+  }, [searchInput]);
 
 
-const Search = () => {
+
   return (
     <Form>
       <Input
         placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
+        onChange={e => setSearch(e.target.value)}
         type='text'
       />
-
-      <SearchBtn>
-        <Image src={searchIcon} />
-      </SearchBtn>
     </Form>
   );
 };
 
 export default Search;
-

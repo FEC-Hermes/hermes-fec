@@ -23,7 +23,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    axios.get('/products/17071') //only product id that has scrolling thumbnails
+    axios.get(`/products/${productId}`) //only product id that has scrolling thumbnails
       .then(({ data }) => {
         setProduct(data);
         axios.get(`/reviews/${data.id}/relevent/1/1000`)

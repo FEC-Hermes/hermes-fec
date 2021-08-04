@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import ImageGallery from './imageGallery/ImageGallery.jsx';
 import AddToCart from './AddToCart.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import ProductDesc from './ProductDesc.jsx';
-
-import ProductContext from '../contexts/ProductContext';
 import StylesContext from '../contexts/StylesContext';
 
 ////    Styles    //////////////////////////////////
@@ -17,10 +14,10 @@ const MainContainer = styled.main`
   padding: 0;
   margin: 0;
   width: 1280px;
-
   display: flex;
   flex-wrap: wrap;
-  background-color: grey;
+
+  border: 1px solid red;
 `;
 
 const InfoContainer = styled.main`
@@ -28,60 +25,41 @@ const InfoContainer = styled.main`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  max-width: 340px;
+  max-width: 370px;
   max-height: 750px;
   margin-left: 20px;
+`;
+const OverviewContainer = styled.div`
+  background-color: whitesmoke;
+  display:flex;
+  justify-content:center;
+  padding-bottom:1rem;
+
 `;
 
 ////    Component    ///////////////////////////////
 ////////////////////////////////////////////////////
 const Overview = () => {
-
-  const { product } = React.useContext(ProductContext);
-  const [currProduct] = product;
-
-  const [allStyles, setAllStyles] = useState([]);
-  const [currStyle, setCurrStyle] = useState({});
-  const [expanded, setExpanded] = useState(false);
-
-
-  const getStyles = (product_id) => {
-    axios.get(`/products/${product_id}/styles`)
-      .then(({ data }) => {
-        setAllStyles(data.results);
-        setCurrStyle(data.results[0]);
-      })
-      .catch(err => console.log(err));
-  };
-
+  const { expanded:[expand] } = React.useContext(StylesContext);
   useEffect(() => {
-    getStyles(currProduct.id);
-  }, [product]);
+    const container = document.getElementById('info-container');
+    if (container) {
+      expand ? container.style.display ='none' : container.style.display = 'flex';
+    }
+  }, [expand]);
 
   return (
-    <div>
-      {/* NOTHING WILL RENDER UNTIL CURR STYLE IS SET */}
-
-      {
-        Object.keys(currStyle).length ?
-          <StylesContext.Provider value={{
-            allStyles: [allStyles, setAllStyles],
-            currStyle: [currStyle, setCurrStyle],
-            expanded:  [expanded, setExpanded]
-          }}>
-            <MainContainer>
-              <ImageGallery />
-              <InfoContainer>
-                <ProductInfo />
-                <StyleSelector />
-                <AddToCart />
-              </InfoContainer>
-              <ProductDesc />
-            </MainContainer>
-          </StylesContext.Provider>
-          : null
-      }
-    </div>
+    <OverviewContainer>
+      <MainContainer>
+        <ImageGallery />
+        <InfoContainer id='info-container'>
+          <ProductInfo />
+          <StyleSelector />
+          <AddToCart />
+        </InfoContainer>
+        <ProductDesc />
+      </MainContainer>
+    </OverviewContainer>
   );
 };
 

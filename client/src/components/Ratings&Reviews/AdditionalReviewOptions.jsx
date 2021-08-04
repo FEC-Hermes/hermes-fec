@@ -1,13 +1,19 @@
 import React from 'react';
 import MoreReviewsButton from './MoreReviewsButton.jsx';
 import AddReviewButton from './AddReviewButton.jsx';
+import styled from 'styled-components';
 
-const AdditionalReviewOptions = () => {
+const ReviewButton_Container = styled.div`
+   display:flex;
+   justify-content: space-between;
+`;
+
+const AdditionalReviewOptions = ({getNextReviewPage}) => {
   return (
-    <div>
-      <MoreReviewsButton />
+    <ReviewButton_Container>
+      <MoreReviewsButton getNextReviewPage={getNextReviewPage}/>
       <AddReviewButton />
-    </div>
+    </ReviewButton_Container>
   );
 };
 

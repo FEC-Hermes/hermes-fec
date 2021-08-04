@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Input, Form, SearchBtn, Image } from './Search.js';
 const searchIcon = 'https://cdn.onlinewebfonts.com/svg/img_168154.png';
 
+const Search_Container = styled.div`
+  margin: 2rem;
+`;
+
 const Search = ({ questions, setQues, fetchQues }) => {
 
   // console.log(questions);
@@ -26,6 +30,7 @@ const Search = ({ questions, setQues, fetchQues }) => {
   }, [searchInput]);
 
 
+
   return (
     <Form>
       <Input
@@ -33,10 +38,6 @@ const Search = ({ questions, setQues, fetchQues }) => {
         onChange={e => setSearch(e.target.value)}
         type='text'
       />
-
-      <SearchBtn>
-        <Image src={searchIcon} />
-      </SearchBtn>
     </Form>
   );
 };

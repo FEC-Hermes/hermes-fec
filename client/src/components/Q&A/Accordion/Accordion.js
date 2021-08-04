@@ -25,11 +25,17 @@ const AnwrSection = styled.section`
 const Pd = styled.div`
     display: flex;
     flex: 1;
+<<<<<<< HEAD
     max-width: 30%;
     margin: 1%;
+=======
+    max-width: 30%
+    
+>>>>>>> 350031ffebf6d05c6b4c67575ddcd4d7a35f90ce
 `;
 
 const AccordionSection = styled.div`
+
 
 `;
 

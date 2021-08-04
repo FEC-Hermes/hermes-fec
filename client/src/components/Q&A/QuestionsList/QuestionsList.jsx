@@ -10,23 +10,23 @@ const Main = styled.main`
 
 const QuestionsList = ({questions, answers, openAnsModal, openQuesModal, helpful, reporter, setQuesId }) => {
   return (
-    <div>
-      <ul>
-        <li>
-          <Main>
-            <Accordion
-              questions={questions}
-              answers={answers}
-              openQuesModal={openQuesModal}
-              openAnsModal={openAnsModal}
-              reporter={reporter}
-              setQuesId={setQuesId}
-              helpful={helpful}
-            />
-          </Main>
-        </li>
-      </ul>
-    </div>
+
+    <ul>
+      <li>
+        <Main>
+          <Accordion
+            questions={questions}
+            answers={answers}
+            openQuesModal={openQuesModal}
+            openAnsModal={openAnsModal}
+            reporter={reporter}
+            setQuesId={setQuesId}
+            helpful={helpful}
+          />
+        </Main>
+      </li>
+    </ul>
+  
   );
 };
 

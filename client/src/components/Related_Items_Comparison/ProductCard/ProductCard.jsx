@@ -4,30 +4,28 @@ import Thumbnails from './Thumbnails.jsx';
 import Modal from '../Modal/Modal.jsx';
 import StarAverageRating from '../../Shared/StarAverageRating.jsx';
 import ProductContext from '../../contexts/ProductContext.js';
-import {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer, StarsContainer} from './styles.js';
+import {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer, StarsContainer, Arrow_space_filler} from './styles.js';
 
 
 const ProductCard = () => {
-  const {product:[product]} = useContext(ProductContext);
-  const {reviewMeta:{ratings}} = useContext(ProductContext);
+  const {product:[product],reviewMeta:{ratings}} = useContext(ProductContext);
   const [relatedProducts, setProduct] = useState([]);
   let [count, setCount] = useState(0);
   const [isToggled, setToggle] = useState(false);
   const [isShown, setIsShown] = useState(false);
 
-  // const onHover = () => {
-  // };
 
-  const {id, category} = product;
+  let {id, category} = product;
   let carouselProducts = relatedProducts.length === 4 ?
     relatedProducts :
     relatedProducts.slice(count,count + 4).length < 4 ?
       relatedProducts.slice(count-1, count + 4):
       relatedProducts.slice(count, count + 4);
+  // id = 17069;
 
   useEffect( () => {
     async function fetchData(){
-      const {data} = await axios.get(`/products/${17069}/styles`);
+      const {data} = await axios.get(`/products/${id}/styles`);
       setProduct(data.results);
       return data;
     }
@@ -41,7 +39,7 @@ const ProductCard = () => {
           height={'4rem'}
           width={'3rem'}
           src='https://cdn4.iconfinder.com/data/icons/arrows-249/24/small_chevron_arrow_left-512.png'
-        /> : null
+        /> : <Arrow_space_filler mr={'3rem'} />
       }
       {
         carouselProducts.map( ({style_id,name,original_price,photos},idx) => {
@@ -78,7 +76,6 @@ const ProductCard = () => {
               <StarsContainer>
                 <StarAverageRating ratings={ratings} />
               </StarsContainer>
-
             </Card>
           ) ;
         }
@@ -89,7 +86,7 @@ const ProductCard = () => {
           onClick={() => count < 3? setCount(count+=1): setCount(3)}
           height={'4rem'}
           width={'3rem'}
-          src='https://cdn4.iconfinder.com/data/icons/arrows-249/24/small_chevron_arrow_right-512.png'/> : null
+          src='https://cdn4.iconfinder.com/data/icons/arrows-249/24/small_chevron_arrow_right-512.png'/> : <Arrow_space_filler mr={'3rem'} />
       }
     </RelatedProducts>
   );

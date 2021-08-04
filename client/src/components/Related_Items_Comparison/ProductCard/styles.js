@@ -46,9 +46,11 @@ const StarsContainer = styled.div`
 
 const Stars = styled.img`
   margin : ${props => props.margin};
-  height: 1.8rem;
+  height: 1.3rem;
   position:${props => props.pos};
   z-index:${props => props.z_index};
+  background-color: white;
+  border-radius: 1rem;
 `;
 
 // ThumbnailContainer
@@ -67,8 +69,9 @@ const Thumbnail_Image_Container = styled.div`
     // bottom: 0.25rem;
 `;
 
-const Thumbnail_arrow = styled.div`
-   margin-right:1.3rem;
+const Arrow_space_filler = styled.div`
+   margin-right:${props => props.mr};
+
 `;
 
-export  {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer, ThumbnailContainer,Thumbnail_Image_Container,Thumbnail_arrow, StarsContainer};
+export  {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer, ThumbnailContainer,Thumbnail_Image_Container,Arrow_space_filler, StarsContainer};

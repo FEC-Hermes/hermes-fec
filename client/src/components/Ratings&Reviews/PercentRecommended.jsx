@@ -1,4 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Percent_recommended = styled.h3`
+   margin-left: 2rem;
+   font-weight: 400;
+`;
 
 const PercentRecommended = ({recommended}) => {
   var recommendedCount = Number(recommended.true);
@@ -11,9 +17,9 @@ const PercentRecommended = ({recommended}) => {
   }
 
   return (
-    <div className="percent-recommended">
+    <Percent_recommended>
       {percentRecommended}% of reviews recommend this product
-    </div>
+    </Percent_recommended>
   );
 };
 

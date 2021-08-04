@@ -58,7 +58,6 @@ const ProductCard = ({relatedProductClicked}) => {
       {
         carouselProducts.map(({product_id,results:[{name,photos,original_price,}]},idx) =>
         {
-          
           return (
             <Card
               key={idx}

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import StylesContext from '../contexts/StylesContext';
+import ProductContext from '../contexts/ProductContext';
 
 ////    Styles    //////////////////////////////////
 ////////////////////////////////////////////////////
@@ -9,6 +10,28 @@ const Container = styled.main`
   display: flex;
   width: 370px;
   flex-wrap: wrap;
+`;
+
+const PriceContainer = styled.div`
+  display: flex;
+`;
+
+const Price = styled.div`
+  font-family: 'Josefin Slab', serif;
+  font-size: 16px;
+`;
+
+const PriceSlash = styled.div`
+  font-family: 'Josefin Slab', serif;
+  font-size: 16px;
+  text-decoration: line-through;
+`;
+
+const SalePrice = styled.div`
+  font-family: 'Josefin Slab', serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: red;
 `;
 
 const OuterThumbContainer = styled.div`
@@ -23,6 +46,8 @@ const OuterThumbContainer = styled.div`
 `;
 
 const Style = styled.div`
+  font-family: 'Josefin Slab', serif;
+  font-size: 16px;
   width: 350px;
   margin-bottom: 5px;
 `;
@@ -31,8 +56,6 @@ const ThumbContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-
   height: 80px;
   width: 80px;
   border-radius: 50%;
@@ -43,6 +66,7 @@ const ThumbContainer = styled.div`
 
 const Img = styled.img`
   width: 200px;
+  height: auto;
 `;
 
 const SelectedIcon = styled.svg`
@@ -58,6 +82,8 @@ const SelectedIcon = styled.svg`
 const StyleSelector = () => {
 
   const { allStyles, currStyle } = React.useContext(StylesContext);
+  const { product } = React.useContext(ProductContext);
+  const [currProduct] = product;
   const [styles] = allStyles;
   const [selectedStyle, setCurrStyle] = currStyle;
 
@@ -69,7 +95,6 @@ const StyleSelector = () => {
     Array.from(checkMarks).forEach(icon => {
       icon.style.visibility = 'hidden';
     });
-
     document.getElementById(`check-mark${imgIndex}`).style.visibility = 'visible';
     setCurrStyle(style);
   };
@@ -80,6 +105,13 @@ const StyleSelector = () => {
 
   return (
     <Container>
+      { !selectedStyle.sale_price ?
+        <Price>${ currProduct.default_price }</Price> :
+        <PriceContainer>
+          <PriceSlash>${ currProduct.default_price }</PriceSlash>
+          <SalePrice>${ selectedStyle.sale_price }</SalePrice>
+        </PriceContainer>
+      }
       <Style><b>STYLE &gt;</b>{ selectedStyle.name }</Style>
       {styles.map((style, i) => (
         <OuterThumbContainer key={ style.style_id }>

@@ -7,24 +7,34 @@ import StylesContext from '../../contexts/StylesContext.js';
 ////////////////////////////////////////////////////
 const VerticalThumbs = () => {
 
-  const { currStyle, imgIndex, minIndex, expanded } = React.useContext(StylesContext);
+  const { currStyle, imgIndex, expanded } = React.useContext(StylesContext);
   const [style] = currStyle;
-  let [currImgIdx, setCurrImgIdx] = imgIndex;
-  let [minIdx, setMinIdx] = minIndex;
+  const [imageIndex, setImageIndex] = imgIndex;
   const [expand] = expanded;
 
-  let maxIdx = style.photos.length - 7;
-  let [yAxis, setYAxis] = useState(0);
+  const [lowIndex, setLowIndex] = useState(0);
+  const [highIndex, setHighIndex] = useState(6);
+  const [yAxis, setYAxis] = useState(0);
+
+  const maxIndex = style.photos.length - 7;
+
 
   useEffect(() => {
-    onImageClick(0);
+    toggleThumb(0);
     arrowVisibility();
   }, []);
 
   useEffect(() => {
-    const container = document.getElementById('vThumb-container');
-    expand ? container.style.display ='none' : container.style.display = 'flex';
+    slideThumbs();
+    toggleThumb(imageIndex);
+    arrowVisibility();
+  }, [yAxis, expand]);
+
+  useEffect(() => {
+    const images = document.getElementById('vThumb-container');
+    expand ? images.style.display ='none' : images.style.display = 'flex';
   }, [expand]);
+
 
   const arrowVisibility = () => {
     const arrowUp = document.getElementById('vThumb-arrow-up');
@@ -33,9 +43,9 @@ const VerticalThumbs = () => {
     if (style.photos.length <= 7) {
       arrowUp.style.visibility = 'hidden';
       arrowDown.style.visibility = 'hidden';
-    } else if (minIdx === 0) {
+    } else if (lowIndex === 0) {
       arrowUp.style.visibility = 'hidden';
-    } else if (minIdx === maxIdx) {
+    } else if (lowIndex === maxIndex) {
       arrowDown.style.visibility = 'hidden';
     } else {
       arrowUp.style.visibility = 'visible';
@@ -55,30 +65,24 @@ const VerticalThumbs = () => {
 
   const onArrowClick = (arrow) => {
 
-    arrowVisibility();
-
     if (arrow === 'up') {
-      setYAxis((yAxis + 89));
-
-      setMinIdx(minIdx - 1);
-      if (currImgIdx === maxIdx) {
-        setCurrImgIdx(currImgIdx--);
+      setYAxis((yAxis + 91));
+      setLowIndex((lowIndex - 1));
+      setHighIndex(highIndex - 1);
+      if (maxIndex === highIndex || imageIndex === highIndex) {
+        setImageIndex(imageIndex - 1);
       }
     } else if (arrow === 'down') {
-
-      setYAxis((yAxis - 89));
-      setMinIdx(minIdx + 1);
-
-      if (currImgIdx === minIdx) {
-        setCurrImgIdx(currImgIdx++);
+      setYAxis((yAxis - 91));
+      setLowIndex(lowIndex + 1);
+      setHighIndex(highIndex + 1);
+      if (maxIndex === lowIndex || imageIndex === lowIndex) {
+        setImageIndex(imageIndex + 1);
       }
     }
-
-    slideThumbs();
-    onImageClick(currImgIdx);
   };
 
-  const onImageClick = (index) => {
+  const toggleThumb = (index) => {
     const images = document.getElementsByClassName('thumbImg');
 
     Array.from(images).forEach(img => {
@@ -89,7 +93,7 @@ const VerticalThumbs = () => {
     document.getElementById(`vThumb${index}`).parentNode.style.boxShadow = '0px 0px 8px #fff';
     document.getElementById(`vThumb${index}`).parentNode.style.border = '1px solid #fff';
 
-    setCurrImgIdx(index);
+    setImageIndex(index);
   };
 
   return (
@@ -112,7 +116,7 @@ const VerticalThumbs = () => {
                 src={ photo.thumbnail_url }
                 id={ `vThumb${i}` }
                 className="thumbImg"
-                onClick={ () => onImageClick(i)}
+                onClick={ () => toggleThumb(i)}
               />
             </ImgFrame>
           ))
@@ -137,52 +141,43 @@ export default VerticalThumbs;
 
 
 
-
-
-
-
-
 /*
 
 [0, 1, 2, 3, 4, 5, 6], 7, 8, 9, 10, 11]
+lowIndex       :0
+highIndex      :6
 maxIndex       :5
-minIndex       :0
 currImageIndex :0
 
 0, [1, 2, 3, 4, 5, 6, 7], 8, 9, 10, 11]
+lowIndex       :1
+highIndex      :7
 maxIndex       :5
-minIndex       :1
 currImageIndex :1
 
 0, 1, [2, 3, 4, 5, 6, 7, 8], 9, 10, 11]
+lowIndex       :2
+highIndex      :8
 maxIndex       :5
-minIndex       :2
 currImageIndex :2
 
 0, 1, 2, [3, 4, 5, 6, 7, 8, 9], 10, 11]
+lowIndex       :3
+highIndex      :9
 maxIndex       :5
-minIndex       :3
 currImageIndex :3
 
 0, 1, 2, 3, [4, 5, 6, 7, 8, 9, 10], 11]
+lowIndex       :4
+highIndex      :10
 maxIndex       :5
-minIndex       :4
 currImageIndex :4
 
 0, 1, 2, 3, 4, [5, 6, 7, 8, 9, 10, 11]]
+lowIndex       :5
+highIndex      :11
 maxIndex       :5
-minIndex       :5
 currImageIndex :5
 
-
-
-
-
-
-
-
-
-
-
-
 */
+

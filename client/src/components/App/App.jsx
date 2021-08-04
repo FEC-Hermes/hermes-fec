@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+// import styled from 'styled-components';
+
 import Overview from '../Overview/Overview.jsx';
-import QandA from '../Q&A/Q&A.jsx';
-import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
 import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_Comparison.jsx';
-import styled from 'styled-components';
+import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
+import QandA from '../Q&A/Q&A.jsx';
 import ProductContext from '../contexts/ProductContext.js';
 import StylesContext from '../contexts/StylesContext';
 import MainContainer from './styles.js';
@@ -16,10 +17,10 @@ const App = () => {
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
   useEffect(() => {
-    axios.get('/products/17071')
+    axios.get('/products/17071') //only product id that has scrolling thumbnails
       .then(({ data }) => {
         setProduct(data);
-        axios.get(`/reviews/${data.id}/helpful/1/1000`)
+        axios.get(`/reviews/${data.id}/relevent/1/1000`)
           .then(({ data }) => {
             setReviews(data);
           });
@@ -33,7 +34,6 @@ const App = () => {
   const [allStyles, setAllStyles] = useState([]);
   const [currStyle, setCurrStyle] = useState({});
   const [currImgIdx, setCurrImgIdx] = useState(0);
-  const [minImgIdx, setMinIndex] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const getStyles = (product_id) => {
     axios.get(`/products/${product_id}/styles`)
@@ -68,7 +68,6 @@ const App = () => {
                     allStyles: [allStyles, setAllStyles],
                     currStyle: [currStyle, setCurrStyle],
                     imgIndex:  [currImgIdx, setCurrImgIdx],
-                    minIndex:  [minImgIdx, setMinIndex],
                     expanded:  [expanded, setExpanded]
                   }}>
                     <Overview />
@@ -81,9 +80,9 @@ const App = () => {
               {
                 Object.keys(reviews).length > 0
                   ?
-                <RatingsAndReviews />
+                  <RatingsAndReviews />
                   :
-                null
+                  null
               }
             </ProductContext.Provider>
           </div>

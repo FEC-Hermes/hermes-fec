@@ -111,7 +111,9 @@ router.get('/qa/questions/:question_id/answers', (req, res) => {
 });
 
 router.post('/qa/questions', (req, res) => {
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions', headers)
+  const data = req.body;
+  console.log(data)
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions', data, headers)
     .then(data => res.status(201).json(data.data))
     .catch(err => res.status(401).json(err));
 });
@@ -156,13 +158,14 @@ router.get('/cart', (req, res) => {
 
 
 router.post('/cart', (req, res) => {
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/cart', headers)
+  const { sku_id } = Number(req.body.params.sku_id);
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/cart', sku_id , headers)
     .then(({ data }) => res.status(201).json(data))
     .catch(err => res.status(401).json(err));
 });
 
 //////////////////////////////////////////////////////////////
-//      POST      ////////////////////////////////////////////
+//      INTERACTIONS      ////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
 router.post('/interactions', (req, res) => {

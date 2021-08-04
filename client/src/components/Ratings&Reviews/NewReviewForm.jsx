@@ -20,8 +20,19 @@ const Recommend_Container = styled.div`
 const UploadPictureContianer = styled.div`
    display: flex;
    flex-direction: column;
-}
 `;
+
+const Rate_Characteristics_Container = styled.div`
+    display: grid;
+    grid-row-gap: 0.7rem;
+    margin-bottom:1rem;
+`;
+
+const Button = styled.button`
+  background-color: white;
+  height: 2rem;
+  border: 1px solid black;
+ `;
 
 
 // Hela's Combat Garb: https://i.imgur.com/Q5kWc7n.jpg
@@ -187,7 +198,7 @@ const NewReviewForm = ({reviewMeta, productName}) => {
       <br />
       <label>Email</label>
       <input type="text" onChange={(e) => { handleEmailChange(e) }} />
-      <div>
+      <Rate_Characteristics_Container>
         <div>Rate These Characteristics</div>
         {
           reviewMeta.characteristics.Size
@@ -405,10 +416,10 @@ const NewReviewForm = ({reviewMeta, productName}) => {
             :
             null
         }
-      </div>
-      <button type="button" onClick={() => {
+      </Rate_Characteristics_Container>
+      <Button type="button" onClick={() => {
         submitNewReview();
-      }} >Submit Review!!</button>
+      }} >Submit Review!!</Button>
     </ReviewForm>
   );
 };

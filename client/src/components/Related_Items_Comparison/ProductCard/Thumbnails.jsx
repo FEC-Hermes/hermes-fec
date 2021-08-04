@@ -3,13 +3,11 @@ import React,{useState} from 'react';
 import {RelatedProducts, Image_container, Img, Card, StarContainer,ThumbnailContainer,Thumbnail_Image_Container,Arrow_space_filler} from './styles.js';
 
 
-const Thumbnails = ({photos,isShown}) => {
+const Thumbnails = ({photos,isShown,thumbnailClicked }) => {
   let [count, setCount] = useState(0);
   let carouselProducts = photos.slice(count,count + 4).length < 4?
     photos.slice(count-1,count + 4):
     photos.slice(count,count + 4);
-
-
   return isShown? (
     <ThumbnailContainer>
 
@@ -27,7 +25,12 @@ const Thumbnails = ({photos,isShown}) => {
           return  (
             <Thumbnail_Image_Container key={idx}>
 
-              <Img height={'2rem'} width={'2rem'} src={thumbnail_url} />
+              <Img
+               onClick={() => thumbnailClicked(thumbnail_url,idx) }
+               height={'2rem'}
+               width={'2rem'}
+               src={thumbnail_url}
+               />
 
             </Thumbnail_Image_Container>
           ) ;

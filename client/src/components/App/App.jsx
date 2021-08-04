@@ -16,6 +16,12 @@ const App = () => {
   const [product, setProduct] = useState({});
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
+  const [productId, setProductId] = useState(17071);
+
+  const relatedProductClicked = id => {
+    setProductId(id);
+  };
+
   useEffect(() => {
     axios.get('/products/17071') //only product id that has scrolling thumbnails
       .then(({ data }) => {
@@ -29,12 +35,14 @@ const App = () => {
             setReviewMeta(data);
           });
       });
-  }, []);
+  }, [productId]);
   /* REFACTOR INTO CONTEXT FILE ========= */
   const [allStyles, setAllStyles] = useState([]);
   const [currStyle, setCurrStyle] = useState({});
   const [currImgIdx, setCurrImgIdx] = useState(0);
   const [expanded, setExpanded] = useState(false);
+
+
   const getStyles = (product_id) => {
     axios.get(`/products/${product_id}/styles`)
       .then(({ data }) => {
@@ -71,7 +79,9 @@ const App = () => {
                     expanded:  [expanded, setExpanded]
                   }}>
                     <Overview />
-                    <Related_Items_Comparison />
+                    <Related_Items_Comparison
+                      relatedProductClicked={relatedProductClicked}
+                    />
                   </StylesContext.Provider>
                   : null
               }

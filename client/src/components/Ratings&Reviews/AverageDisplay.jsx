@@ -1,5 +1,17 @@
 import React from 'react';
 import StarDisplay from '../Shared/StarDisplay.jsx';
+import styled from 'styled-components';
+
+const Average_display = styled.div`
+    display: flex;
+    align-items: center;
+    margin-left:2rem;
+ `;
+const H1 = styled.h1`
+    font-size:${props => props.font_size};
+    font-family:${props => props.font};
+
+ `;
 
 const AverageDisplay = ({ratings}) => {
   var totalRatings = 0;
@@ -14,12 +26,12 @@ const AverageDisplay = ({ratings}) => {
     ratingDisplay = rating.toFixed(1);
   }
   return (
-    <div id="average-display">
-      <div id="rating-display">{ratingDisplay}</div>
+    <Average_display>
+      <H1 font_size={'3.5rem'} font={ 'system-ui'}>{ratingDisplay}</H1>
       <div id="summary-star-display">
         <StarDisplay rating={rating}/>
       </div>
-    </div>
+    </Average_display>
   );
 };
 

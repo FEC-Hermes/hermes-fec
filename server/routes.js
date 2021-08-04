@@ -80,16 +80,16 @@ router.post('/reviews', (req, res) => {
 });
 
 router.put('/reviews/:review_id/helpful', (req, res) => {
-  const { review_id } = req.params;
-  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${review_id}/helpful`, headers)
+  const review_id = Number(req.params.review_id);
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${review_id}/helpful`, {review_id: review_id}, headers)
     .then(({ data }) => res.status(204).json(data))
     .catch(err => res.status(401).json(err));
 });
 
 router.put('/reviews/:review_id/report', (req, res) => {
-  const { review_id } = req.params;
-  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${review_id}/report`, headers)
-    .then(data => res.status(204).json(data))
+  const review_id = Number(req.params.review_id);
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${review_id}/report`, {review_id: review_id}, headers)
+    .then(({data}) => res.status(204).json(data))
     .catch(err => res.status(401).json(err));
 });
 

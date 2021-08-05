@@ -46,51 +46,41 @@ const App = () => {
           .catch(err => console.log(err));
       });
   }, [productId]);
-  
+
   return (
     <MainContainer>
-      {
-        Object.keys(reviewMeta).length > 0
-          ?
-          <div>
-            <NavBar />
-            <ProductContext.Provider value={{
-              product: [product, setProduct],
-              reviews: reviews,
-              setReviews: setReviews,
-              reviewMeta: reviewMeta,
-              setReviewMeta: setReviewMeta
-            }}>
-              {/* NEED TO REFACTOR INTO CONTEXT FILE */}
-              {
-                Object.keys(currStyle).length ?
-                  <StylesContext.Provider value={{
-                    allStyles: [allStyles, setAllStyles],
-                    currStyle: [currStyle, setCurrStyle],
-                    imgIndex:  [currImgIdx, setCurrImgIdx],
-                    expanded:  [expanded, setExpanded]
-                  }}>
-                    <Overview />
-                    <Related_Items_Comparison
-                      relatedProductClicked={relatedProductClicked}
-                    />
-                  </StylesContext.Provider>
-                  : null
-              }
-              {/*                                    */}
+      <NavBar />
+      <ProductContext.Provider value={{
+        product: [product, setProduct],
+        reviews: reviews,
+        setReviews: setReviews,
+        reviewMeta: reviewMeta,
+        setReviewMeta: setReviewMeta
+      }}>
+        <StylesContext.Provider value={{
+          allStyles: [allStyles, setAllStyles],
+          currStyle: [currStyle, setCurrStyle],
+          imgIndex:  [currImgIdx, setCurrImgIdx],
+          expanded:  [expanded, setExpanded]
+        }}>
+          {
+            Object.keys(currStyle).length ?
+              <React.Fragment>
+                <Overview />
+                <Related_Items_Comparison relatedProductClicked={relatedProductClicked} />
+              </React.Fragment>
+              : null
+          }
+        </StylesContext.Provider>
+        {
+          Object.keys(reviews).length ?
+            <React.Fragment>
+              <RatingsAndReviews />
               <QandA />
-              {
-                Object.keys(reviews).length > 0
-                  ?
-                  <RatingsAndReviews />
-                  :
-                  null
-              }
-            </ProductContext.Provider>
-          </div>
-          :
-          null
-      }
+            </React.Fragment>
+            : null
+        }
+      </ProductContext.Provider>
     </MainContainer>
   );
 };

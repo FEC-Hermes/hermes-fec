@@ -8,7 +8,7 @@ import AddQuestion from './AddQuestion/AddQuestion.jsx';
 import AddAnswer from './AddAnswer/AddAnswer.jsx';
 import Modal from './Modal/Modal.jsx';
 
-import { ContainerQA } from './Q&A.js';
+import { ContainerQA, H3 } from './Q&A.js';
 
 const QandA = () => {
 
@@ -43,7 +43,7 @@ const QandA = () => {
 
   const fetchQues = async () => {
     try {
-      const ques = await axios.get(`/qa/questions/${currProduct.id}/${1}/${11}`);
+      const ques = await axios.get(`/qa/questions/${currProduct.id}/${5}/${11}`);
       setQues(ques.data.results);
     } catch(err) {
       console.error(err);
@@ -69,12 +69,12 @@ const QandA = () => {
     if (questions.length > 0) {
       let getAnswers = questions.forEach(async (ques) => {
         let a = await getAns(ques.question_id);
+        console.log(ques)
         obj[ques.question_id] = a.results;
       });
     }
     setAnswers([obj]);
   }, [questions]);
-
 
   const helpful = async (id) => {
     try {
@@ -99,7 +99,7 @@ const QandA = () => {
     <>
       { questions ?
         <ContainerQA>
-          <h3>Questions & Answers</h3>
+          <H3>Questions & Answers</H3>
 
           <Search questions={questions} setQues={setQues} fetchQues={fetchQues}/>
 

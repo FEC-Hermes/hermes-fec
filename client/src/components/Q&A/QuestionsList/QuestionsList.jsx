@@ -26,7 +26,7 @@ const QuestionsList = ({questions, answers, openAnsModal, openQuesModal, helpful
         </Main>
       </li>
     </ul>
-  
+
   );
 };
 

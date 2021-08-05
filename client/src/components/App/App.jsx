@@ -78,10 +78,10 @@ const App = () => {
                     imgIndex:  [currImgIdx, setCurrImgIdx],
                     expanded:  [expanded, setExpanded]
                   }}>
-                    <Overview />
-                    <Related_Items_Comparison
+                    {/* <Overview /> */}
+                    {/* <Related_Items_Comparison
                       relatedProductClicked={relatedProductClicked}
-                    />
+                    /> */}
                   </StylesContext.Provider>
                   : null
               }

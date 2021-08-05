@@ -22,8 +22,8 @@ const Accordion = ({ questions, answers, openAnsModal,  openQuesModal, helpful, 
   const [helped, setHelped] = useState(false);
   const [clicked, setClicked] = useState(false);
 
-  console.log('question ', questions)
-  console.log('answers ', answers)
+  // console.log('question ', questions)
+  // console.log('answers ', answers)
 
   const makeQA = () => {
 
@@ -40,7 +40,7 @@ const Accordion = ({ questions, answers, openAnsModal,  openQuesModal, helpful, 
   };
 
   const getA = (aID) => {
-    console.log(aID)
+    // console.log(aID)
     return Object.keys(answers).filter(a => a.aID === aID);
   };
 

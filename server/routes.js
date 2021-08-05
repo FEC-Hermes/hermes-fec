@@ -106,7 +106,7 @@ router.get('/qa/questions/:product_id/:page/:count', (req, res) => {
 
 router.get('/qa/questions/:question_id/answers', (req, res) => {
   const { question_id } = req.params;
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/answers`, headers)
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/answers`, {question_id: question_id} ,headers)
     .then(({ data }) => res.status(200).json(data))
     .catch(err => res.status(401).json(err));
 });

@@ -67,10 +67,10 @@ const NewReviewForm = ({reviewMeta, productName}) => {
   const handlePictureChange = (photoIndex, value) => {
     var photoArray = photos.slice();
     photoArray[photoIndex] = value;
-    console.log('Photo array:');
-    console.log(photoArray);
+    // console.log('Photo array:');
+    // console.log(photoArray);
     setPhotos(photoArray);
-    console.log(photos);
+    // console.log(photos);
   }
 
   const handleUsernameChange = (e) => {
@@ -106,8 +106,8 @@ const NewReviewForm = ({reviewMeta, productName}) => {
       characteristics: characteristics
     };
 
-    console.log(`You are submitting the data:`);
-    console.log(reviewData);
+    // console.log(`You are submitting the data:`);
+    // console.log(reviewData);
 
     axios.post(`/reviews/`, reviewData)
       .then(response => {

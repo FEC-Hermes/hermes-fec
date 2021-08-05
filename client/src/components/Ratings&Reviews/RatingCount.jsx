@@ -12,7 +12,7 @@ const Rating_value = styled.p`
 
 const RatingCount = (props) => {
   var handleClick = () => {
-    console.log(`Triggered star breakdown for ${props.count}`)
+    // console.log(`Triggered star breakdown for ${props.count}`)
     props.updateReviewFilter(props.count);
   };
 

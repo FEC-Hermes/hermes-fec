@@ -75,8 +75,8 @@ const App = () => {
         {
           Object.keys(reviews).length ?
             <React.Fragment>
-              <RatingsAndReviews />
               <QandA />
+              <RatingsAndReviews />
             </React.Fragment>
             : null
         }

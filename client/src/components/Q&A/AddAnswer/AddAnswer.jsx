@@ -17,7 +17,7 @@ const P = styled.p`
 
 const AddAnswer = ({quesId}) => {
 
-  console.log(quesId);
+  // console.log(quesId);
 
   const [uploadFile, setUploadFile] = useState(null);
 

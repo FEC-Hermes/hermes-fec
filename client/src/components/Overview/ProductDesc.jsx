@@ -21,7 +21,7 @@ const ProductDesc = () => {
         <Slogan><h3>{ currProduct.slogan }</h3></Slogan>
         <Description>{ currProduct.description }</Description>
       </DescriptionContainer>
-      <Divider></Divider>
+      <Divider />
       <Attributes>
         {
           currProduct.features.map((attr, i) => (

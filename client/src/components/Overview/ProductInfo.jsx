@@ -18,8 +18,10 @@ import {
 
 const ProductInfo = () => {
 
-  const { product: [currProduct], reviewMeta:{ ratings } } = React.useContext(ProductContext);
-  const { currStyle: [style] } = React.useContext(StylesContext);
+  const {
+    product: [currProduct],
+    reviewMeta:{ ratings }
+  } = React.useContext(ProductContext);
 
   return (
     <MainContainer>

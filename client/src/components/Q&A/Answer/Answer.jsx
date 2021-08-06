@@ -3,11 +3,8 @@ import axios from 'axios';
 import moment from 'moment';
 import Thumbnails from '../Thumbnails/Thumbnails.jsx';
 
-import  {
-  Pd,
-  Pipe,
-  Span
-} from '../Accordion/Accordion.js';
+import  { Pipe, Span } from '../Accordion/Accordion.js';
+
 const Answer = ({ quesId }) => {
   const [helped, setHelped] = useState(false);
   const [report, setReported] = useState(false);
@@ -23,14 +20,51 @@ const Answer = ({ quesId }) => {
     }
   };
 
+  const handleReported = (id) => {
+    if (!report) {
+      reporter(id);
+      setReported(true);
+    }
+    else {
+      console.log('You reported me already.');
+    }
+  };
+
+
+  const handleHelpful = (id) => {
+    if (!helped) {
+      helpful(id);
+      setHelped(true);
+    }
+    else {
+      console.log('you touched me already');
+    }
+  };
+
+  const helpful = async (id) => {
+    try {
+      let help = await axios.put(`/qa/questions/${id}/helpful`);
+    } catch(err) {
+      console.error(err);
+    }
+  };
+
+  const reporter = async (id) => {
+    try {
+      let reporter = await axios.put(`/qa/answers/${id}/report`);
+    } catch(err) {
+      console.error(err);
+    }
+  };
+
   useEffect( () => {
     getAns(quesId);
   }, []);
 
-  console.log('answers  ',answers)
+
   return (
     <div>
-      {answers && answers.map(ans => {
+      {answers && answers.slice(0, 3).map(ans => {
         return (
           <div key={ans.answer_id}>
             <p>
@@ -39,35 +73,17 @@ const Answer = ({ quesId }) => {
             <p>
               {`by User ${ans.answerer_name}, ${moment().format('MMM Do YY')}`}
               <Pipe>|</Pipe>
-              <span>Helpful?</span>
+              <span onClick={() => handleHelpful(ans.answer_id)}>{`Helpful? Yes (${ans.helpfulness})`}</span>
               <Pipe>|</Pipe>
-              <Span>Report</Span>
+              <Span onClick={() => handleReported(ans.answer_id)}>Report</Span>
             </p>
 
             <Thumbnails photos={ans.photos} />
-
-            {/*    <div key={answr.answer_id}>
-
-           <div>
-             <p>
-               {`by User ${answr.answerer_name}, ${moment().format('MMM Do YY')}`} <Pipe>|</Pipe>  Helpful?
-               <Pipe>|</Pipe>
-               <Span onClick={handleReported(answr.answer_id)}>Report</Span>
-             </p>
-           </div>
-         </div> */}
           </div>
         );
       })}
     </div>
   );
 };
-
-
-// answerer_name: "Shania_Adams"
-// body: "Eum maiores ipsam sed quas harum."
-// date: "2020-09-29T00:00:00.000Z"
-// helpfulness: 2
-// photos: []
 
 export default Answer;

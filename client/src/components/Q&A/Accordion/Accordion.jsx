@@ -3,57 +3,21 @@ import axios from 'axios';
 import Question from '../Question/Question.jsx';
 
 import  {QuesSection} from './Accordion.js';
-import { Button, Buttons } from '../Q&A';
 
 
-const Accordion = ({ questions, openAnsModal,  openQuesModal, helpful, reporter, setQuesId}) => {
+const Accordion = ({ questions, openAnsModal,  openQuesModal, setQuesId}) => {
 
-  const [questionsList, setQuestionsList] = useState(questions);
-  const [clicked, setClicked] = useState(false);
-
-
-  const handleHelpful = (id) => {
-    if (!helped) {
-      helpful(id);
-      setHelped(true);
-    }
-    else {
-      console.log('you touched me already');
-    }
-  };
-
-
-  const handleReported = (id) => {
-    if (!report) {
-      reporter(id);
-      setReported(true);
-    }
-    else {
-      console.log('You reported me already.');
-    }
-  };
-
-  let firstTwo = questions.slice(0, 2);
+  // const [questionsList, setQuestionsList] = useState(questions);
+  // const [clicked, setClicked] = useState(false);
 
   return (
     <QuesSection>
-      <Question questions={questions} />
+      <Question
+        questions={questions}
+        openQuesModal={openQuesModal}
+        openAnsModal={openAnsModal}
+      />
     </QuesSection>
-
-
-
-  // {
-  //   answers &&
-  //   <div>
-  //     <p>LOAD MORE ANSWERERS</p>
-  //     <Buttons>
-  //       <Button onClick={() => setClicked(!clicked)}>MORE ANSWERED QUESTIONS</Button>
-  //     </Buttons>
-  //   </div>
-  // }
-
-  // <Button onClick={openQuesModal}>ADD A QUESTION  +</Button>
-
   );
 };
 

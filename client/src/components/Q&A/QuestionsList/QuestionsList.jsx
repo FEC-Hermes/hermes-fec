@@ -8,17 +8,14 @@ const Main = styled.main`
     flex-flow: column;
 `;
 
-const QuestionsList = ({questions, answers, openAnsModal, openQuesModal, helpful, reporter, setQuesId }) => {
+const QuestionsList = ({questions, openAnsModal, openQuesModal, setQuesId }) => {
   return (
     <Main>
       <Accordion
         questions={questions}
-        answers={answers}
         openQuesModal={openQuesModal}
         openAnsModal={openAnsModal}
-        reporter={reporter}
         setQuesId={setQuesId}
-        helpful={helpful}
       />
     </Main>
   );

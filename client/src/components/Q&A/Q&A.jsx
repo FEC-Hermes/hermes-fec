@@ -16,7 +16,6 @@ const QandA = () => {
   const [currProduct] = product;
 
   const [questions, setQues] = useState([]);
-  const [answers, setAnswers] = useState([]);
   const [quesId, setQuesId] = useState(0);
 
   const [isOpen, setIsOpen] = useState({open: false, form: {
@@ -55,45 +54,6 @@ const QandA = () => {
   }, [product]);
 
 
-  const getAns = async (question_id) => {
-    try {
-      let ans = await axios.get(`/qa/questions/${question_id}/answers`);
-      return ans.data;
-    } catch(err) {
-      console.error(err);
-    }
-  };
-
-  useEffect( () => {
-    let obj = {};
-    if (questions.length > 0) {
-      let getAnswers = questions.forEach(async (ques) => {
-        let a = await getAns(ques.question_id);
-        obj[ques.question_id] = a.results;
-      });
-    }
-    setAnswers([obj]);
-  }, [questions]);
-
-  const helpful = async (id) => {
-    try {
-      let help = await axios.put(`/qa/questions/${id}/helpful`);
-      // fetchQues();
-      console.log(help);
-    } catch(err) {
-      console.error(err);
-    }
-  };
-
-  const report = async (id) => {
-    try {
-      let reporter = await axios.put(`/qa/answers/${id}/report`);
-    } catch(err) {
-      console.error(err);
-    }
-  };
-
-
   return (
     <>
       { questions ?
@@ -104,12 +64,9 @@ const QandA = () => {
 
           <QuestionsList
             questions={questions}
-            answers={answers[0]}
             openAnsModal={openAnsModal}
             openQuesModal={openQuesModal}
-            helpful={helpful}
             setQuesId={setQuesId}
-            reporter={report}
           />
 
           {isOpen.open &&

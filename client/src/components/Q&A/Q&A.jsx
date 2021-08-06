@@ -43,7 +43,7 @@ const QandA = () => {
 
   const fetchQues = async () => {
     try {
-      const ques = await axios.get(`/qa/questions/${currProduct.id}/${5}/${11}`);
+      const ques = await axios.get(`/qa/questions/${currProduct.id}/${1}/${30}`);
       setQues(ques.data.results);
     } catch(err) {
       console.error(err);
@@ -69,7 +69,6 @@ const QandA = () => {
     if (questions.length > 0) {
       let getAnswers = questions.forEach(async (ques) => {
         let a = await getAns(ques.question_id);
-        console.log(ques)
         obj[ques.question_id] = a.results;
       });
     }

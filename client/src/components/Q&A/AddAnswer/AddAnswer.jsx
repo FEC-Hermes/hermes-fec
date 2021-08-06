@@ -15,7 +15,7 @@ const P = styled.p`
   letter-spacing: 0.3px;
 `;
 
-const AddAnswer = ({quesId}) => {
+const AddAnswer = ({ quesId }) => {
 
   console.log(quesId);
 
@@ -34,13 +34,16 @@ const AddAnswer = ({quesId}) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
     const postData = async (data) => {
-      try {
-        let newAns = await axios.post(`/qa/questions/${quesId}/answers`, data);
-      } catch(err) {
-        console.error(err);
-      }
+    //   try {
+    //     let newAns = await axios.post(`/qa/questions/${quesId}/answers`, data);
+    //   } catch(err) {
+    //     console.error(err);
+    //   }
     };
+
+    console.log('data ',data);
 
     postData(formValues);
   };
@@ -55,6 +58,7 @@ const AddAnswer = ({quesId}) => {
             type='text'
             value={formValues.answer}
             name={formValues.answer}
+            maxLength='1000'
             placeholder='Your Answer...'
             onChange={handleChange('answer')}
             required
@@ -67,6 +71,7 @@ const AddAnswer = ({quesId}) => {
             type='text'
             value={formValues.nickname}
             name={formValues.nickname}
+            maxLength='60'
             placeholder='Example: jack543!'
             onChange={handleChange('nickname')}
             required
@@ -76,9 +81,10 @@ const AddAnswer = ({quesId}) => {
 
         <div>
           <Input
-            type='text'
+            type='email'
             value={formValues.email}
             name={formValues.email}
+            maxLength='60'
             placeholder='Example: jack@email.com'
             onChange={handleChange('email')}
             required

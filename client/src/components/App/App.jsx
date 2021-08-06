@@ -16,7 +16,7 @@ const App = () => {
   const [product, setProduct] = useState({});
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
-  const [productId, setProductId] = useState(17071);
+  const [productId, setProductId] = useState(17131);
 
   const relatedProductClicked = id => {
     setProductId(id);

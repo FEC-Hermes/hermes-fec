@@ -25,29 +25,29 @@ const Accordion = ({ questions, answers, openAnsModal,  openQuesModal, helpful, 
   // console.log('question ', questions)
   // console.log('answers ', answers)
 
-  const makeQA = () => {
+  // const makeQA = () => {
 
-    const qaObj = questions.map(q => {
-      const a = getA(q.question_id);
+  //   const qaObj = questions.map(q => {
+  //     const a = getA(q.question_id);
 
-      return {
-        'q': q,
-        'a': a
-      };
-    });
+  //     return {
+  //       'q': q,
+  //       'a': a
+  //     };
+  //   });
 
-    return qaObj;
-  };
+  //   return qaObj;
+  // };
 
-  const getA = (aID) => {
-    // console.log(aID)
-    return Object.keys(answers).filter(a => a.aID === aID);
-  };
+  // const getA = (aID) => {
+  //   // console.log(aID)
+  //   return Object.keys(answers).filter(a => a.aID === aID);
+  // };
 
 
-  useEffect(() => {
-    makeQA();
-  });
+  // useEffect(() => {
+  //   makeQA();
+  // });
 
   const handleHelpful = (id) => {
     if (!helped) {

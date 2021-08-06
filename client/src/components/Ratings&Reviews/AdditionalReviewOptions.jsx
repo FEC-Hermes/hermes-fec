@@ -8,10 +8,10 @@ const ReviewButton_Container = styled.div`
    justify-content: space-between;
 `;
 
-const AdditionalReviewOptions = () => {
+const AdditionalReviewOptions = ({getNextReviewPage}) => {
   return (
     <ReviewButton_Container>
-      <MoreReviewsButton />
+      <MoreReviewsButton getNextReviewPage={getNextReviewPage}/>
       <AddReviewButton />
     </ReviewButton_Container>
   );

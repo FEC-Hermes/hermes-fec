@@ -11,8 +11,13 @@ const Rating_value = styled.p`
 `;
 
 const RatingCount = (props) => {
+  var handleClick = () => {
+    // console.log(`Triggered star breakdown for ${props.count}`)
+    props.updateReviewFilter(props.count);
+  };
+
   return (
-    <Rating_count_row>
+    <Rating_count_row onClick={() => {handleClick()}}>
       <Rating_value>{props.count} stars</Rating_value>
       <progress className="rating-count-bar" value={props.ratingCount} max={props.totalRatings} />
       <div className="rating-count">{props.ratingCount}</div>

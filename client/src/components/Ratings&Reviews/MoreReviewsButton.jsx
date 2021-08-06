@@ -7,9 +7,13 @@ const Button = styled.button`
   border: 1px solid black;
  `;
 
-const MoreReviewsButton = () => {
+const MoreReviewsButton = ({getNextReviewPage}) => {
+  const handleClick = () => {
+    getNextReviewPage();
+  };
+
   return (
-    <Button submit="nothing">
+    <Button submit="nothing" onClick={() => handleClick()}>
        More Reviews
     </Button>
   )

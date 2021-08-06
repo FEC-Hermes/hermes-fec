@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import NewReviewStarDisplay from '../Shared/NewReviewStarDisplay.jsx';
+
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -40,7 +41,7 @@ const Button = styled.button`
 // Marty McFly's Vest: https://i.imgur.com/VDC9duU.jpg
 // Superman's Outfit: https://i.imgur.com/B5kTEPt.jpg
 
-const NewReviewForm = ({reviewMeta}) => {
+const NewReviewForm = ({reviewMeta, productName}) => {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const [summary, setSummary] = useState('');
@@ -66,10 +67,10 @@ const NewReviewForm = ({reviewMeta}) => {
   const handlePictureChange = (photoIndex, value) => {
     var photoArray = photos.slice();
     photoArray[photoIndex] = value;
-    console.log('Photo array:');
-    console.log(photoArray);
+    // console.log('Photo array:');
+    // console.log(photoArray);
     setPhotos(photoArray);
-    console.log(photos);
+    // console.log(photos);
   }
 
   const handleUsernameChange = (e) => {
@@ -105,8 +106,8 @@ const NewReviewForm = ({reviewMeta}) => {
       characteristics: characteristics
     };
 
-    console.log(`You are submitting the data:`);
-    console.log(reviewData);
+    // console.log(`You are submitting the data:`);
+    // console.log(reviewData);
 
     axios.post(`/reviews/`, reviewData)
       .then(response => {
@@ -121,6 +122,8 @@ const NewReviewForm = ({reviewMeta}) => {
 
   return (
     <ReviewForm >
+      <h3>Write Your Review</h3>
+      <h4>About the {productName}</h4>
       <NewReviewStarDisplay rating={rating} hoverRating={hoverRating}
         setRating={setRating} setHoverRating={setHoverRating}/>
       <label>Summary</label>

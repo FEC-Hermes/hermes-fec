@@ -14,6 +14,7 @@ const OutFitCard = ({count:idx}) => {
   const [isToggled, setToggle] = useState(false);
   const [isShown, setIsShown] = useState(false);
   const {category} = product;
+  // console.log(relatedProducts.slice(0,idx));
   relatedProducts = relatedProducts.slice(0,idx);
   let carouselProducts = relatedProducts.length === 2 ?
     relatedProducts :
@@ -68,7 +69,7 @@ const OutFitCard = ({count:idx}) => {
                 <Img
                   onClick={(e) => console.log(e.target)}
                   id={idx}
-                  height={'25rem'} 
+                  height={'25rem'}
                   width={'16rem'}
                   src={url}
                 />

@@ -4,7 +4,6 @@ import Overview from '../Overview/Overview.jsx';
 import QandA from '../Q&A/Q&A.jsx';
 import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
 import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_Comparison.jsx';
-import styled from 'styled-components';
 import ProductContext from '../contexts/ProductContext.js';
 import StylesContext from '../contexts/StylesContext';
 import MainContainer from './styles.js';
@@ -16,7 +15,6 @@ const App = () => {
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
   const [productId, setProductId] = useState(17071);
-
   const relatedProductClicked = id => {
     setProductId(id);
   };

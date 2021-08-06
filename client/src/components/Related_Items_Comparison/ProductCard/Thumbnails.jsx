@@ -26,11 +26,11 @@ const Thumbnails = ({photos,isShown,thumbnailClicked }) => {
             <Thumbnail_Image_Container key={idx}>
 
               <Img
-               onClick={() => thumbnailClicked(thumbnail_url,idx) }
-               height={'2rem'}
-               width={'2rem'}
-               src={thumbnail_url}
-               />
+                onClick={() => thumbnailClicked(thumbnail_url,idx) }
+                height={'2rem'}
+                width={'2rem'}
+                src={thumbnail_url}
+              />
 
             </Thumbnail_Image_Container>
           ) ;

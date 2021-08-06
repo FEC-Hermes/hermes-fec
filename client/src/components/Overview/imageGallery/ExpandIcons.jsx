@@ -34,6 +34,7 @@ const Icon = styled.img`
   width: 70px;
   object-fit: cover;
   filter: grayscale(100%);
+  cursor: pointer;
 `;
 
 ////    Component    ///////////////////////////////

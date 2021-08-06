@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import styled from 'styled-components';
 
 import Overview from '../Overview/Overview.jsx';
 import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_Comparison.jsx';
@@ -34,10 +33,6 @@ const App = () => {
     axios.get(`/products/${productId}`)
       .then(({ data }) => {
         setProduct(data);
-        axios.get(`/reviews/${data.id}/relevent/1/1000`)
-          .then(({ data }) => setReviews(data));
-        axios.get(`/reviews/meta/${data.id}`)
-          .then(({ data }) => setReviewMeta(data));
         axios.get(`/products/${productId}/styles`)
           .then(({ data }) => {
             setAllStyles(data.results);
@@ -46,6 +41,15 @@ const App = () => {
           .catch(err => console.log(err));
       });
   }, [productId]);
+
+  useEffect(() => {
+    if (Object.keys(product).length) {
+      axios.get(`/reviews/${product.id}/relevent/1/1000`)
+        .then(({ data }) => setReviews(data));
+      axios.get(`/reviews/meta/${product.id}`)
+        .then(({ data }) => setReviewMeta(data));
+    }
+  }, [product]);
 
   return (
     <MainContainer>

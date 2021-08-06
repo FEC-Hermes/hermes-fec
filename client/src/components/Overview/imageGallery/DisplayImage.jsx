@@ -22,7 +22,7 @@ const Image = styled.img`
   height: 100%;
 
     :hover{
-      cursor: pointer;
+      cursor: ${ prop => prop.expand ? 'zoom-out' : 'zoom-in' };
     }
 `;
 
@@ -51,6 +51,7 @@ const DisplayImage = () => {
     <ImageContainer id='display-img-container'>
       <Image
         id='display-img'
+        expand={ expand }
         src={ style.photos[currIdx].url}
         onClick={ () => setExpand(!expand) }
       />

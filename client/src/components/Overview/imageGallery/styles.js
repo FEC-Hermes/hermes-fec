@@ -34,6 +34,7 @@ const ImgFrame = styled.div`
 const Img = styled.img`
   object-fit: cover;
   width: 90px;
+  cursor: pointer;
 `;
 
 export { MainContainer, ImgContainer, ImgFrame, Img };

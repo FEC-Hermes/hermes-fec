@@ -4,7 +4,7 @@ const InputBar = styled.input`
   width: 90%;
   border: none;
   margin: 0.8rem;
-  cursor: pointer;
+  cursor: text;
   padding: 0.5rem;
   font-size: 2rem;
   &:focus {
@@ -16,13 +16,13 @@ const InputBar = styled.input`
 const SearchBarContainer = styled.div`
   padding: 2rem;
   background-color: whitesmoke;
-
 `;
 
 const Img = styled.img`
   height: 2rem;
   border:none;
   padding: 1rem;
+  cursor: pointer;
 `;
 
 const SearchBarWrapper = styled.div`

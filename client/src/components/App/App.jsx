@@ -19,7 +19,7 @@ const App = () => {
     axios.get('/products/17071')
       .then(({ data }) => {
         setProduct(data);
-        axios.get(`/reviews/${data.id}/helpful/1/1000`)
+        axios.get(`/reviews/${data.id}/relevant/1/1000`)
           .then(({ data }) => {
             setReviews(data);
           });

@@ -7,11 +7,11 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 const Reviews_Container = styled.div`
-   margin: 3rem 0 0 8rem;
-   max-width: 672px;
+  margin: 3rem 0 0 0rem;
+  width: 920px;
 `;
 
-const Reviews = ({reviewFilter, filterSignature}) => {
+const Reviews = ({ reviewFilter, filterSignature, toggleModalShown, setReviewImgUrl}) => {
   const [sortType, setSortType] = useState('relevant');
   const [displayCount, setDisplayCount] = useState(2);
   const [filter, setReviewFilter] = useState({});
@@ -28,21 +28,9 @@ const Reviews = ({reviewFilter, filterSignature}) => {
           reviewCount += Number(reviewMeta.ratings[rating]);
         }
 
-
-
         var getNextReviewPage = () => {
           var newDisplayLimit = displayCount + 2;
           setDisplayCount(newDisplayLimit);
-          // var nextPage = pageNumber + 1;
-          // axios.get(`/reviews/${reviews.product}/${sortType}/${nextPage}/2`)
-          //   .then(({ data }) => {
-          //     var updatedReviews = reviews;
-          //     data.results.forEach(review => {
-          //       updatedReviews.results.push(review);
-          //     });
-          //     setReviews(updatedReviews);
-          //     setDisplayCount(nextPage);
-          //   });
         };
 
         var changeSortType = (sortType) => {
@@ -58,7 +46,7 @@ const Reviews = ({reviewFilter, filterSignature}) => {
         };
 
         return (
-          <Reviews_Container >
+          <Reviews_Container>
             <ReviewCountAndSort reviewCount={reviewCount}
               changeSortType={changeSortType}
             />
@@ -67,8 +55,11 @@ const Reviews = ({reviewFilter, filterSignature}) => {
               filterSignature={filterSignature}
               sortType={sortType}
               displayCount={displayCount}
+              setReviewImgUrl={setReviewImgUrl}
             />
-            <AdditionalReviewOptions getNextReviewPage={getNextReviewPage}/>
+            <AdditionalReviewOptions getNextReviewPage={getNextReviewPage}
+              toggleModalShown={toggleModalShown}
+            />
           </Reviews_Container>
         );
       }}

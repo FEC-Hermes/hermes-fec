@@ -1,16 +1,26 @@
 import React, {useState, useEffect} from 'react';
 import Ratings from './Ratings.jsx';
 import Reviews from './Reviews.jsx';
+import NewReviewModal from './NewReviewModal.jsx';
+import ImageModal from './ImageModal.jsx';
 import styled from 'styled-components';
 
 const Ratings_and_reviews_container = styled.div`
   display: flex;
   background-color: whitesmoke;
-  padding-bottom: 4rem;
-  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 0;
+  max-height: 100vh;
+  justify-content: space-between;
+  padding: 0 2rem;
  `;
 
 const RatingsAndReviews = () => {
+  const [modalShown, setModalShown] = React.useState(false);
+  const toggleModalShown = () => {
+    setModalShown(!modalShown);
+  };
+
   const [reviewFilter, setReviewFilter] = useState({
     active: false,
     stars: {
@@ -52,7 +62,10 @@ const RatingsAndReviews = () => {
     };
     setReviewFilter(newFilterSettings);
     setFilterSignature(JSON.stringify(reviewFilter));
+
   };
+
+  const [reviewImgUrl, setReviewImgUrl] = useState('');
 
   return (
     <div id="rating-review">
@@ -60,7 +73,27 @@ const RatingsAndReviews = () => {
       <Ratings_and_reviews_container>
         <Ratings  reviewFilter={reviewFilter} updateReviewFilter={updateReviewFilter}
           clearReviewFilter={clearReviewFilter}/>
-        <Reviews reviewFilter={reviewFilter} filterSignature={filterSignature} />
+        <Reviews reviewFilter={reviewFilter}
+          filterSignature={filterSignature}
+          toggleModalShown={toggleModalShown}
+          setReviewImgUrl={setReviewImgUrl}
+        />
+        {
+          modalShown
+            ?
+          <NewReviewModal toggleModalShown={toggleModalShown}/>
+            :
+          null
+        }
+        {
+          reviewImgUrl.length > 0
+            ?
+          <ImageModal reviewImgUrl={reviewImgUrl}
+            setReviewImgUrl={setReviewImgUrl}
+          />
+            :
+          null
+        }
       </Ratings_and_reviews_container>
     </div>
   );

@@ -25,11 +25,16 @@ const Img = styled.img`
   padding: 1rem;
 `;
 
+const Logo = styled.img`
+  height: 2.5rem;
+  border:none;
+  padding-left: 16px;
+`;
+
 const SearchBarWrapper = styled.div`
   display: flex;
   border:1px solid black;
   align-items: center;
 `;
 
-
-export {InputBar, SearchBarContainer, Img, SearchBarWrapper};
+export {InputBar, SearchBarContainer, Img, Logo, SearchBarWrapper};

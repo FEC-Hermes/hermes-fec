@@ -97,7 +97,7 @@ const Characteristics = ({characteristics}) => {
       {
         widthCharacteristic
           ?
-          <CharacteristicQuarters width={width} characteristic={widthCharacteristic} />
+        <CharacteristicQuarters width={width} characteristic={widthCharacteristic} />
           :
         null
       }

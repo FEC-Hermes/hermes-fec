@@ -19,7 +19,10 @@ const Ratings = ({reviewFilter, updateReviewFilter, clearReviewFilter}) => {
             <PercentRecommended
               recommended={reviewMeta.recommended}
             />
-            <RatingBreakdown ratings={reviewMeta.ratings} updateReviewFilter={updateReviewFilter}/>
+            <RatingBreakdown ratings={reviewMeta.ratings}
+              reviewFilter={reviewFilter}
+              updateReviewFilter={updateReviewFilter}
+            />
             <BreakdownFilterDisplay reviewFilter={reviewFilter}
               clearReviewFilter={clearReviewFilter}
              />

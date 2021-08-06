@@ -14,7 +14,7 @@ const OutFitCard = ({count:idx}) => {
   const [isToggled, setToggle] = useState(false);
   const [isShown, setIsShown] = useState(false);
   const {category} = product;
-  console.log(relatedProducts.slice(0,idx));
+  // console.log(relatedProducts.slice(0,idx));
   relatedProducts = relatedProducts.slice(0,idx);
   let carouselProducts = relatedProducts.length === 2 ?
     relatedProducts :
@@ -29,7 +29,7 @@ const OutFitCard = ({count:idx}) => {
 
   useEffect( () => {
     async function fetchData(){
-      const {data} = await axios.get(`/products/${17069}/styles`);
+      const {data} = await axios.get(`/products/${product.id}/styles`);
       setProduct(data.results);
       return data;
     }

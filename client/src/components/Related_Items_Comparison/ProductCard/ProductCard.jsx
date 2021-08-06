@@ -7,27 +7,52 @@ import ProductContext from '../../contexts/ProductContext.js';
 import {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer, StarsContainer, Arrow_space_filler} from './styles.js';
 
 
-const ProductCard = () => {
+const ProductCard = ({relatedProductClicked}) => {
   const {product:[product],reviewMeta:{ratings}} = useContext(ProductContext);
   const [relatedProducts, setProduct] = useState([]);
-  let [count, setCount] = useState(0);
   const [isToggled, setToggle] = useState(false);
   const [isShown, setIsShown] = useState(false);
-
-
+  const [photoUrl,setPhotos] = useState(false);
+  const [productCardId,setProductCardId] = useState(false);
+  let [count, setCount] = useState(0);
   let {id, category} = product;
   let carouselProducts = relatedProducts.length === 4 ?
     relatedProducts :
     relatedProducts.slice(count,count + 4).length < 4 ?
       relatedProducts.slice(count-1, count + 4):
       relatedProducts.slice(count, count + 4);
-  // id = 17069;
+
+  const getProductStyles = async (id) => {
+    const {data} = await axios.get(`/products/${id}/styles`);
+    return data;
+  };
+
+  let photosArr = carouselProducts.map(({results:[{photos:[photos]}]}) => photos);
+  const thumbnailClicked = (url,idx) => {
+    photosArr[idx].url = url;
+    setPhotos(photosArr);
+  };
+
+  const clickStar = id => {
+    setToggle(!isToggled);
+    setProductCardId(id);
+  };
 
   useEffect( () => {
     async function fetchData(){
-      const {data} = await axios.get(`/products/${id}/styles`);
-      setProduct(data.results);
-      return data;
+      try {
+        const {data} = await axios.get(`/products/${id}/related`);
+        let newData = [...new Set(data)];
+        let productStylesArr = [];
+        for(let i = 0; i < newData.length;i++){
+          const products = await getProductStyles(newData[i]);
+          productStylesArr.push(products);
+        }
+        setProduct(productStylesArr);
+      }
+      catch(err){
+        console.log(err);
+      }
     }
     fetchData();
   },[product]);
@@ -42,11 +67,13 @@ const ProductCard = () => {
         /> : <Arrow_space_filler mr={'3rem'} />
       }
       {
-        carouselProducts.map( ({style_id,name,original_price,photos},idx) => {
-          let url = photos[0].url;
-          return  (
+
+        carouselProducts.map(({product_id,results},idx) =>
+        {
+          const [{name,original_price,}] = results;
+          return (
             <Card
-              key={style_id}
+              key={idx}
               onMouseEnter={() => setIsShown(true)}
               onMouseLeave={() => setIsShown(false)}
               // onMouseEnter={() => onHover()}
@@ -54,7 +81,7 @@ const ProductCard = () => {
               <Image_container>
                 <StarContainer>
                   <Stars
-                    onClick={() => setToggle(!isToggled)}
+                    onClick={() => clickStar(product_id)}
                     pos={'absolute'}
                     bottom={'16.5rem'}
                     margin={'0.5rem 0rem 0 0'}
@@ -62,13 +89,17 @@ const ProductCard = () => {
                     src="https://cdn.onlinewebfonts.com/svg/img_325911.png" />
                 </StarContainer>
                 <Img
-                  onClick={(e) => console.log(e.target)}
+                  onClick={() => relatedProductClicked(product_id)}
                   id={idx}
                   height={'25rem'}
                   width={'16rem'}
-                  src={url}
+                  src={photoUrl?photoUrl[idx].url:photosArr[idx].url}
                 />
-                <Thumbnails photos={photos} isShown={isShown}/>
+                <Thumbnails
+                  photos={photosArr}
+                  isShown={isShown}
+                  thumbnailClicked={thumbnailClicked}
+                />
               </Image_container>
               <CardText font_size={'1.4rem'} color={'steelblue'}>{category}</CardText>
               <CardText font_size={'1.5rem'}>{name}</CardText>
@@ -80,7 +111,7 @@ const ProductCard = () => {
           ) ;
         }
         )}
-      { isToggled? <Modal /> : null}
+      { isToggled? <Modal productCardId={productCardId}/> : null}
       {count !== 3?
         <Img
           onClick={() => count < 3? setCount(count+=1): setCount(3)}

@@ -19,30 +19,38 @@ const DescriptionContainer = styled.div`
   flex-grow: 5;
   padding: 10px 30px 10px;
   max-width: 700px;
-
+  margin-right: 70px;
   display:flex;
   flex-direction: column;
   align-items: center;
 `;
 
 const Slogan = styled.div`
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 30px;
+
 `;
 
 const Description = styled.article`
+  font-family: 'Josefin Slab', serif;
+  font-size: 18px;
 `;
 
 const Divider = styled.div`
-  height: 150px;
+  height: 175px;
   border-left: 3px solid black;
 `;
 
 const Attributes = styled.article`
+  font-family: 'Josefin Slab', serif;
+  font-size: 16px;
   flex-grow: 1;
-  padding-left: 20px;
+  margin-left: 75px;
   height: 135px;
+  width: 550px;
   display:flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
 `;
 
@@ -63,7 +71,7 @@ const ProductDesc = () => {
       <Attributes>
         {
           currProduct.features.map((attr, i) => (
-            <div key={ i }>{ `${attr.value} ${attr.feature}` }</div>
+            <div key={ i }>{ `> ${attr.value} ${attr.feature}` }</div>
           ))
         }
       </Attributes>

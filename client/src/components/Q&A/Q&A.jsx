@@ -1,119 +1,30 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 // import axios from 'axios';
+=======
+import React, { useState ,useEffect } from 'react';
+import axios from 'axios';
+import ProductContext from '../contexts/ProductContext';
+>>>>>>> origin
 
 import Search from './Search/Search.jsx';
 import QuestionsList from './QuestionsList/QuestionsList.jsx';
-
 import AddQuestion from './AddQuestion/AddQuestion.jsx';
 import AddAnswer from './AddAnswer/AddAnswer.jsx';
 import Modal from './Modal/Modal.jsx';
 
-
-
-var state = {
-  questions: [{
-    'product_id': '5',
-
-    'results': [
-      {
-        'question_id': 37,
-        'question_body': 'Why is this product cheaper here than other sites?',
-        'question_date': '2018-10-18T00:00:00.000Z',
-        'asker_name': 'williamsmith',
-        'question_helpfulness': 4,
-        'reported': false,
-        'answers': {
-          68: {
-            'id': 68,
-            'body': 'We are selling it here without any markup from the middleman!',
-            'date': '2018-08-18T00:00:00.000Z',
-            'answerer_name': 'Seller',
-            'helpfulness': 4,
-            'photos': []
-            // ...
-          }
-        }
-      },
-      // {
-      //   'question_id': 39,
-      //   'question_body': 'Why is this product cheaper here than other sites?',
-      //   'question_date': '2018-10-18T00:00:00.000Z',
-      //   'asker_name': 'williamsmith',
-      //   'question_helpfulness': 4,
-      //   'reported': false,
-      //   'answers': {
-      //     69: {
-      //       'id': 69,
-      //       'body': 'We are selling it here without any markup from the middleman!',
-      //       'date': '2018-08-18T00:00:00.000Z',
-      //       'answerer_name': 'Seller',
-      //       'helpfulness': 4,
-      //       'photos': []
-      //       // ...
-      //     }
-      //   }
-      // }
-    ]
-  }],
-
-  answers: [{
-    'question': '1',
-    'page': 0,
-    'count': 5,
-    'results': [
-      {
-        'answer_id': 5,
-        'body': 'Something pretty durable but I can\'t be sure',
-        'date': '2018-01-04T00:00:00.000Z',
-        'answerer_name': 'metslover',
-        'helpfulness': 5,
-        'photos': [
-          {
-            'id': 1,
-            'url': 'urlplaceholder/answer_5_photo_number_1.jpg'
-          },
-          {
-            'id': 2,
-            'url': 'urlplaceholder/answer_5_photo_number_2.jpg'
-          }
-        ]
-      }
-    ]
-  }]
-
-};
-
-const ContainerQA = styled.div`
-  display: flex;
-  flex-flow: column;
-  margin: 0 auto;
-  background-color: whitesmoke;
-`;
-
-const Button = styled.button`
-  border: 1px solid;
-  padding: 2%;
-  margin: 1% 1% 0 0;
-  font-size: 14px;
-  font-weight: bold;
-  background: transparent;
-`;
-
-const Buttons = styled.div`
-  display: flex;
-  margin: 0 0 2rem 2rem;
-`;
-
-const Ptag = styled.div`
- margin:${props => props.m};
-`;
-
+import { ContainerQA } from './Q&A.js';
 
 const QandA = () => {
-  const [questions, setQues] = useState(state.questions[0]);
-  const [answers, setAns] = useState(state.answers[0]);
+
+  const { product } = React.useContext(ProductContext);
+  const [currProduct] = product;
+
+  const [questions, setQues] = useState([]);
+  const [answers, setAnswers] = useState([]);
+  const [quesId, setQuesId] = useState(0);
 
   const [isOpen, setIsOpen] = useState({open: false, form: {
     addAns: false,
@@ -123,11 +34,10 @@ const QandA = () => {
     const isOpen = {open: true, form: {
       addAns: true,
     }};
-
     setIsOpen(isOpen);
   };
 
-  const openModal = () => {
+  const openQuesModal = () => {
     const isOpen = {open: true, form: {
       addAns: false,
     }};
@@ -138,45 +48,89 @@ const QandA = () => {
     setIsOpen(false);
   };
 
+  const fetchQues = async () => {
+    try {
+      const ques = await axios.get(`/qa/questions/${currProduct.id}/${1}/${11}`);
+      setQues(ques.data.results);
+    } catch(err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchQues();
+  }, [product]);
 
 
-  // const apis = {};
-  // useEffect(() => {
-  //     const fetchQues = async () => {
-  //         const ques = await axios.get('/qa/questions');
-  //         apis.push({ques: ques.data});
-  //     };
-  //     fetchQues();
-  // });
-  // console.log(answers);
+  const getAns = async (question_id) => {
+    try {
+      let ans = await axios.get(`/qa/questions/${question_id}/answers`);
+      return ans.data;
+    } catch(err) {
+      console.error(err);
+    }
+  };
+
+  useEffect( () => {
+    let obj = {};
+    if (questions.length > 0) {
+      let getAnswers = questions.forEach(async (ques) => {
+        let a = await getAns(ques.question_id);
+        obj[ques.question_id] = a.results;
+      });
+    }
+    setAnswers([obj]);
+  }, [questions]);
+
+
+  const helpful = async (id) => {
+    try {
+      let help = await axios.put(`/qa/questions/${id}/helpful`);
+      // fetchQues();
+      console.log(help);
+    } catch(err) {
+      console.error(err);
+    }
+  };
+
+  const report = async (id) => {
+    try {
+      let reporter = await axios.put(`/qa/answers/${id}/report`);
+    } catch(err) {
+      console.error(err);
+    }
+  };
+
 
   return (
-    <div>
-      <h1>Questions & Answers {}</h1>
-      <ContainerQA >
-        <Search />
-        <QuestionsList
-          questions={questions}
-          answers={answers}
-          openModal={openAnsModal}
-        />
-        <Ptag m={'0 0 0 2rem'}>LOAD MORE ANSWERERS</Ptag>
-        <Buttons>
-          <Button>MORE ANSWERED QUESTIONS</Button>
-          <Button onClick={openModal}>ADD A QUESTION  +</Button>
-        </Buttons>
+    <>
+      { questions ?
+        <ContainerQA>
+          <h3>Questions & Answers</h3>
 
-        {isOpen.open &&
-          <Modal closeModal={closeModal}>
-            {isOpen.form.addAns ?  <AddAnswer /> :  <AddQuestion />}
-          </Modal>
-        }
-      </ContainerQA>
-    </div>
+          <Search questions={questions} setQues={setQues} fetchQues={fetchQues}/>
+
+          <QuestionsList
+            questions={questions}
+            answers={answers[0]}
+            openAnsModal={openAnsModal}
+            openQuesModal={openQuesModal}
+            helpful={helpful}
+            setQuesId={setQuesId}
+            reporter={report}
+          />
+
+          {isOpen.open &&
+            <Modal closeModal={closeModal} product={currProduct}>
+              {isOpen.form.addAns ?  <AddAnswer quesId={quesId}  /> :  <AddQuestion productId={currProduct.id} />}
+            </Modal>
+          }
+        </ContainerQA>
+        :
+        null
+      }
+    </>
   );
 };
-
-
-
 
 export default QandA;

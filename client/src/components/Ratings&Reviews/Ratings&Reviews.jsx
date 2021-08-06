@@ -43,10 +43,10 @@ const RatingsAndReviews = () => {
         newFilterSettings.active = true;
       }
     }
-    console.log('Obviously updating filter from', reviewFilter);
+    // console.log('Obviously updating filter from', reviewFilter);
     setReviewFilter(newFilterSettings);
     setFilterSignature(JSON.stringify(reviewFilter));
-    console.log('To', reviewFilter);
+    // console.log('To', reviewFilter);
   };
 
   var clearReviewFilter = () => {

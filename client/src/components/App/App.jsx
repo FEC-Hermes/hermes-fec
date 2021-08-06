@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Overview from '../Overview/Overview.jsx';
-// import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_Comparison.jsx';
+import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_Comparison.jsx';
 // const Related_Items_Comparison = React.lazy(() => import('../Related_Items_Comparison/Related_Items_Comparison.jsx'));
 import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
 import QandA from '../Q&A/Q&A.jsx';

@@ -9,7 +9,7 @@ const Pipe = styled.span`
     margin-right: 1%;
 `;
 
-const Aside = styled.aside`
+const Li = styled.li`
     display: flex;
     flex-flow: column;
     justify-content: space-between;
@@ -25,13 +25,8 @@ const AnwrSection = styled.section`
 const Pd = styled.div`
     display: flex;
     flex: 1;
-<<<<<<< HEAD
     max-width: 30%;
     margin: 1%;
-=======
-    max-width: 30%
-    
->>>>>>> 350031ffebf6d05c6b4c67575ddcd4d7a35f90ce
 `;
 
 const AccordionSection = styled.div`
@@ -39,10 +34,10 @@ const AccordionSection = styled.div`
 
 `;
 
-const QuesSection = styled.section`
+const QuesSection = styled.ul`
 
     display: flex;
     flex-flow: column;
 `;
 
-export { QuesSection, AccordionSection, Pd, AnwrSection, Aside, Pipe, Span };
+export { QuesSection, AccordionSection, Pd, AnwrSection, Li, Pipe, Span };

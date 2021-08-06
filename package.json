@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server/server.js",
     "dev": "webpack --config ./webpack.config.js --mode development -w",
-    "dev-prod": "webpack --config ./webpack.config.js --mode production -w",
+    "dev-prod": "webpack --config ./webpack.config.js --mode production",
     "test": "jest"
   },
   "author": "",
@@ -17,6 +17,7 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.13.2",
+    "compression": "^1.7.4",
     "express": "^4.17.1",
     "jest": "^27.0.6",
     "moment": "^2.29.1",

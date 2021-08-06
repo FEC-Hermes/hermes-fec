@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Overview from '../Overview/Overview.jsx';
-import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_Comparison.jsx';
+// import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_Comparison.jsx';
+// const Related_Items_Comparison = React.lazy(() => import('../Related_Items_Comparison/Related_Items_Comparison.jsx'));
 import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
 import QandA from '../Q&A/Q&A.jsx';
 import ProductContext from '../contexts/ProductContext.js';
@@ -44,7 +45,7 @@ const App = () => {
 
   useEffect(() => {
     if (Object.keys(product).length) {
-      axios.get(`/reviews/${product.id}/relevent/1/1000`)
+      axios.get(`/reviews/${product.id}/relevent/1/50`)
         .then(({ data }) => setReviews(data));
       axios.get(`/reviews/meta/${product.id}`)
         .then(({ data }) => setReviewMeta(data));

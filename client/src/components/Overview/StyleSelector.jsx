@@ -16,15 +16,16 @@ import {
 
 const StyleSelector = () => {
 
-  const { allStyles, currStyle } = React.useContext(StylesContext);
-  const { product } = React.useContext(ProductContext);
-  const [currProduct] = product;
-  const [styles] = allStyles;
-  const [selectedStyle, setCurrStyle] = currStyle;
+  const {
+    allStyles: [styles],
+    currStyle: [selectedStyle, setCurrStyle]
+  } = React.useContext(StylesContext);
+  const {
+    product: [currProduct]
+  } = React.useContext(ProductContext);
 
 
   const onThumbClick = (style, imgIndex) => {
-
     const checkMarks = document.getElementsByClassName('check-marks');
 
     Array.from(checkMarks).forEach(icon => {

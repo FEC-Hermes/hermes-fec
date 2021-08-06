@@ -7,10 +7,11 @@ import StylesContext from '../../contexts/StylesContext.js';
 ////////////////////////////////////////////////////
 const VerticalThumbs = () => {
 
-  const { currStyle, imgIndex, expanded } = React.useContext(StylesContext);
-  const [style] = currStyle;
-  const [imageIndex, setImageIndex] = imgIndex;
-  const [expand] = expanded;
+  const {
+    currStyle: [style],
+    imgIndex:  [imageIndex, setImageIndex],
+    expanded:  [expand]
+  } = React.useContext(StylesContext);
 
   const [lowIndex, setLowIndex] = useState(0);
   const [highIndex, setHighIndex] = useState(6);

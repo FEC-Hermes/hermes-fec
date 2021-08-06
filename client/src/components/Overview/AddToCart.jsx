@@ -60,8 +60,7 @@ const OOS = styled.div`
 
 const AddToCart = () => {
 
-  const { currStyle } = React.useContext(StylesContext);
-  const [style] = currStyle;
+  const { currStyle: [style] } = React.useContext(StylesContext);
 
   const [skuSelected, setSkuSelected] = useState();
   const [qtySelected, setQtySelected] = useState(0);
@@ -142,7 +141,6 @@ const AddToCart = () => {
   const setQty = () => {
     const selectBox = document.getElementById('select-qty');
     const value = selectBox.options[selectBox.selectedIndex].value;
-
     value === 'Select Quantity' ? setQtySelected(undefined) : setQtySelected(value);
   };
 

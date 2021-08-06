@@ -9,17 +9,13 @@ const NavBar = () => {
   const handleInput = text => {
     setSearchQuery(text);
   };
-  
+
 
   return (
     <SearchBarContainer>
       <SearchBarWrapper>
-<<<<<<< HEAD
         <Logo src={hermeslogo} alt="Work"/>
         <InputBar type='text'></InputBar>
-=======
-        <InputBar onChange={({target:{value}}) => handleInput(value)}type='text'></InputBar>
->>>>>>> origin
         <Img src={searchIcon} />
       </SearchBarWrapper>
     </SearchBarContainer>

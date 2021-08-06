@@ -22,13 +22,8 @@ const RatingCount = ({
     updateReviewFilter
   }) => {
   var handleClick = () => {
-<<<<<<< HEAD
     console.log(`Triggered star breakdown for ${count}`)
     updateReviewFilter(count);
-=======
-    // console.log(`Triggered star breakdown for ${props.count}`)
-    props.updateReviewFilter(props.count);
->>>>>>> origin
   };
 
   return (

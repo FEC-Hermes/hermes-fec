@@ -16,7 +16,6 @@ const App = () => {
   const [product, setProduct] = useState({});
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
-<<<<<<< HEAD
   useEffect(() => {
     axios.get('/products/17071')
       .then(({ data }) => {
@@ -31,10 +30,8 @@ const App = () => {
           });
       });
   }, []);
-=======
   const [productId, setProductId] = useState(17071);
 
->>>>>>> origin
   /* REFACTOR INTO CONTEXT FILE ========= */
   const [allStyles, setAllStyles] = useState([]);
   const [currStyle, setCurrStyle] = useState({});

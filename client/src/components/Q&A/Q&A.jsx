@@ -1,13 +1,6 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-
-// import axios from 'axios';
-=======
 import React, { useState ,useEffect } from 'react';
 import axios from 'axios';
 import ProductContext from '../contexts/ProductContext';
->>>>>>> origin
 
 import Search from './Search/Search.jsx';
 import QuestionsList from './QuestionsList/QuestionsList.jsx';

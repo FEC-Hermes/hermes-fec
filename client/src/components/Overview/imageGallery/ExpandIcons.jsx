@@ -16,6 +16,10 @@ const ExpandIcons = () => {
     expand ? images.style.display ='flex' : images.style.display = 'none';
   }, [expand]);
 
+  useEffect(() => {
+    toggleIcon();
+  }, [imageIndex]);
+
 
   const toggleIcon = () => {
     const icons = document.getElementsByClassName('icon-img');
@@ -41,7 +45,6 @@ const ExpandIcons = () => {
               className="icon-img"
               onClick={ () => {
                 setImageIndex(i);
-                toggleIcon();
               }}
             />
           </IconFrame>

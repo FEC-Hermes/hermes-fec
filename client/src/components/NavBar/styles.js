@@ -14,6 +14,7 @@ const InputBar = styled.input`
 `;
 
 const SearchBarContainer = styled.div`
+  width: 1218px;
   padding: 2rem;
   background-color: whitesmoke;
 `;
@@ -31,5 +32,4 @@ const SearchBarWrapper = styled.div`
   align-items: center;
 `;
 
-
-export {InputBar, SearchBarContainer, Img, SearchBarWrapper};
+export { InputBar, SearchBarContainer, Img, SearchBarWrapper };

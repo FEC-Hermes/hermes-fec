@@ -3,8 +3,7 @@ import { MainContainer, ImgContainer, ImgFrame, Img } from './styles.js';
 
 import StylesContext from '../../contexts/StylesContext.js';
 
-////    Component    ///////////////////////////////
-////////////////////////////////////////////////////
+
 const VerticalThumbs = () => {
 
   const {

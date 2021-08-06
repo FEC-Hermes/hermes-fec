@@ -30,10 +30,11 @@ const Image = styled.img`
 ////////////////////////////////////////////////////
 const DisplayImage = () => {
 
-  const { currStyle, imgIndex, expanded } = React.useContext(StylesContext);
-  const [style]  = currStyle;
-  const [currIdx] = imgIndex;
-  const [expand, setExpand] = expanded;
+  const {
+    currStyle: [style],
+    imgIndex:  [currIdx],
+    expanded:  [expand, setExpand]
+  } = React.useContext(StylesContext);
 
   useEffect(() => {
     const container = document.getElementById('display-img-container');

@@ -7,65 +7,8 @@ import  {QuesSection} from './Accordion.js';
 
 const Accordion = ({ questions, openAnsModal,  openQuesModal, setQuesId}) => {
 
-<<<<<<< HEAD
-  const [report, setReported] = useState(false);
-  const [questionsList, setQuestionsList] = useState(questions);
-  const [helped, setHelped] = useState(false);
-  const [clicked, setClicked] = useState(false);
-
-  // console.log('question ', questions)
-  // console.log('answers ', answers)
-
-  const makeQA = () => {
-
-    const qaObj = questions.map(q => {
-      const a = getA(q.question_id);
-
-      return {
-        'q': q,
-        'a': a
-      };
-    });
-
-    return qaObj;
-  };
-
-  const getA = (aID) => {
-    // console.log(aID)
-    return Object.keys(answers).filter(a => a.aID === aID);
-  };
-
-
-  useEffect(() => {
-    makeQA();
-  });
-
-  const handleHelpful = (id) => {
-    if (!helped) {
-      helpful(id);
-      setHelped(true);
-    }
-    else {
-      // console.log('you touched me already');
-    }
-  };
-
-
-  const handleReported = (id) => {
-    if (!report) {
-      reporter(id);
-      setReported(true);
-    }
-    else {
-      // console.log('You reported me already.');
-    }
-  };
-
-  let firstTwo = questions.slice(0, 2);
-=======
   // const [questionsList, setQuestionsList] = useState(questions);
   // const [clicked, setClicked] = useState(false);
->>>>>>> mergerQnA
 
   return (
     <QuesSection>

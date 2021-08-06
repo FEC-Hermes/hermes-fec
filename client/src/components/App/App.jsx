@@ -49,7 +49,6 @@ const App = () => {
 
   return (
     <MainContainer>
-<<<<<<< HEAD
       <NavBar />
       <ProductContext.Provider value={{
         product: [product, setProduct],
@@ -76,37 +75,6 @@ const App = () => {
         {
           Object.keys(reviews).length ?
             <React.Fragment>
-=======
-      {
-        Object.keys(reviewMeta).length > 0
-          ?
-          <div>
-            <NavBar />
-            <ProductContext.Provider value={{
-              product: [product, setProduct],
-              reviews: reviews,
-              setReviews: setReviews,
-              reviewMeta: reviewMeta,
-              setReviewMeta: setReviewMeta
-            }}>
-              {/* NEED TO REFACTOR INTO CONTEXT FILE */}
-              {
-                Object.keys(currStyle).length ?
-                  <StylesContext.Provider value={{
-                    allStyles: [allStyles, setAllStyles],
-                    currStyle: [currStyle, setCurrStyle],
-                    imgIndex:  [currImgIdx, setCurrImgIdx],
-                    expanded:  [expanded, setExpanded]
-                  }}>
-                    {/* <Overview /> */}
-                    {/* <Related_Items_Comparison
-                      relatedProductClicked={relatedProductClicked}
-                    /> */}
-                  </StylesContext.Provider>
-                  : null
-              }
-              {/*                                    */}
->>>>>>> mergerQnA
               <QandA />
               <RatingsAndReviews />
             </React.Fragment>

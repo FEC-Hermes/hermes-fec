@@ -43,7 +43,7 @@ const AddQuestion = ({productId}) => {
     };
 
     postData(formValues);
-    console.log('formValues  ',formValues)
+    // console.log('formValues  ',formValues)
   };
 
   return (

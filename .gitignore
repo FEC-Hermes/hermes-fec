@@ -1,23 +1,6 @@
 node_modules
 config.js
-<<<<<<< HEAD
-<<<<<<< HEAD
 client/dist/bundle.js
 process.md
-=======
-client/dist
-client/dist/bundle.js
-=======
-client/dist
 misc_resources
-client/dist/bundle.js
-=======
-<<<<<<< HEAD
-client/dist/bundle.js
-process.md
-=======
-client/dist
-client/dist/bundle.js
->>>>>>> main
->>>>>>> 9620e0ee69c76b188c7d402362d85bc927e41161
->>>>>>> main
+hermes.pem

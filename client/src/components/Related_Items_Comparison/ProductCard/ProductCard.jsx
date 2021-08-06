@@ -13,6 +13,7 @@ const ProductCard = ({relatedProductClicked}) => {
   const [isToggled, setToggle] = useState(false);
   const [isShown, setIsShown] = useState(false);
   const [photoUrl,setPhotos] = useState(false);
+  const [productCardId,setProductCardId] = useState(false);
   let [count, setCount] = useState(0);
   let {id, category} = product;
   let carouselProducts = relatedProducts.length === 4 ?
@@ -30,6 +31,11 @@ const ProductCard = ({relatedProductClicked}) => {
   const thumbnailClicked = (url,idx) => {
     photosArr[idx].url = url;
     setPhotos(photosArr);
+  };
+
+  const clickStar = id => {
+    setToggle(!isToggled);
+    setProductCardId(id);
   };
 
   useEffect( () => {
@@ -75,7 +81,7 @@ const ProductCard = ({relatedProductClicked}) => {
               <Image_container>
                 <StarContainer>
                   <Stars
-                    onClick={() => setToggle(!isToggled)}
+                    onClick={() => clickStar(product_id)}
                     pos={'absolute'}
                     bottom={'16.5rem'}
                     margin={'0.5rem 0rem 0 0'}
@@ -105,7 +111,7 @@ const ProductCard = ({relatedProductClicked}) => {
           ) ;
         }
         )}
-      { isToggled? <Modal /> : null}
+      { isToggled? <Modal productCardId={productCardId}/> : null}
       {count !== 3?
         <Img
           onClick={() => count < 3? setCount(count+=1): setCount(3)}

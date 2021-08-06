@@ -29,7 +29,7 @@ const OutFitCard = ({count:idx}) => {
 
   useEffect( () => {
     async function fetchData(){
-      const {data} = await axios.get(`/products/${17069}/styles`);
+      const {data} = await axios.get(`/products/${product.id}/styles`);
       setProduct(data.results);
       return data;
     }

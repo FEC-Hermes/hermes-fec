@@ -5,10 +5,11 @@ import { IconContainer, IconFrame, Icon } from './ExpandIcons.js';
 
 const ExpandIcons = () => {
 
-  const { currStyle, imgIndex, expanded } = React.useContext(StylesContext);
-  const [style] = currStyle;
-  const [imageIndex, setImageIndex] = imgIndex;
-  const [expand] = expanded;
+  const {
+    currStyle: [style],
+    imgIndex:  [imageIndex, setImageIndex],
+    expanded:  [expand]
+  } = React.useContext(StylesContext);
 
   useEffect(() => {
     const images = document.getElementById('icon-container');

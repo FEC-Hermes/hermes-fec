@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 import StylesContext from '../../contexts/StylesContext.js';
 
-////    Styles    //////////////////////////////////
-////////////////////////////////////////////////////
 const ImageContainer = styled.div`
   height: 750px;
   width: 850px;
@@ -20,14 +18,12 @@ const ImageContainer = styled.div`
 
 const Image = styled.img`
   height: 100%;
-
     :hover{
       cursor: ${ prop => prop.expand ? 'zoom-out' : 'zoom-in' };
     }
 `;
 
-////    Component    ///////////////////////////////
-////////////////////////////////////////////////////
+
 const DisplayImage = () => {
 
   const {

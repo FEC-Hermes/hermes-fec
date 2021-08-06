@@ -2,7 +2,7 @@ import React from 'react';
 
 import Stars from '../Shared/StarAverageRating.jsx';
 import ProductContext from '../contexts/ProductContext';
-import StylesContext from '../contexts/StylesContext';
+
 import {
   MainContainer,
   StarRating,

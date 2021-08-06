@@ -6,7 +6,7 @@ const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 125px;
-  height: 677px;
+  height: 695px;
   top: 2rem;
   position: absolute;
 `;
@@ -16,6 +16,7 @@ const ImgContainer = styled.div`
   display: inline-block;
   overflow: hidden;
   width: 100px;
+  height:652px;
   margin: 2px auto 2px;
 `;
 

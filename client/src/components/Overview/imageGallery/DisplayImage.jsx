@@ -23,7 +23,6 @@ const Image = styled.img`
     }
 `;
 
-
 const DisplayImage = () => {
 
   const {

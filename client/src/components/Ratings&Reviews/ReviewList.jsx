@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Review from './Review.jsx';
+import styled from 'styled-components';
 
-const ReviewList = ({reviews, reviewFilter, filterSignature, sortType, displayCount}) => {
+const ReviewListContainer = styled.div`
+  overflow: scroll;
+  overflow-x: hidden;
+  max-height: 80vh;
+`;
+
+const ReviewList = ({ reviews, reviewFilter, filterSignature, sortType, displayCount, setReviewImgUrl}) => {
   const [reviewsShown, setReviewsShown] = useState(reviews);
 
   useEffect(() => {
@@ -21,16 +28,17 @@ const ReviewList = ({reviews, reviewFilter, filterSignature, sortType, displayCo
   }, [sortType, displayCount, filterSignature]);
 
   return (
-    <div>
+    <ReviewListContainer>
       {
         reviewsShown.map(review => {
           return <Review
             key={review.review_id}
             review={review}
+            setReviewImgUrl={setReviewImgUrl}
           />;
         })
       }
-    </div>
+    </ReviewListContainer>
   );
 };
 

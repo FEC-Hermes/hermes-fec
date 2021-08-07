@@ -1,5 +1,5 @@
 import React from 'react';
-import NewReviewModal from './NewReviewModal.jsx';
+
 import styled from 'styled-components';
 
 const Button = styled.button`
@@ -14,8 +14,7 @@ const Button_Container = styled.div`
     margin-left:2rem;
  `;
 
-const AddReviewButton = (props) => {
-  const [modalShown, setModalShown] = React.useState(false);
+const AddReviewButton = ({ toggleModalShown}) => {
 
   var handleClick = () => {
     setModalShown(!modalShown);
@@ -23,16 +22,9 @@ const AddReviewButton = (props) => {
 
   return (
     <div>
-      <Button submit="nothing" onClick={() => handleClick()}>
+      <Button submit="nothing" onClick={toggleModalShown}>
         ADD A REVIEW +
       </Button>
-      {
-        modalShown
-          ?
-          <NewReviewModal/>
-          :
-          null
-      }
     </div>
   )
 }

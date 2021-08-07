@@ -4,10 +4,9 @@ import styled from 'styled-components';
 const Descriptors = styled.div`
   display: flex;
   justify-content: space-between;
-
 `;
 const Characteristic_Quarters_Container = styled.div`
-  margin: 1.5rem 0;
+  margin: 0rem 0;
 `;
 
 const Ptags = styled.p`
@@ -24,12 +23,12 @@ const CharacteristicQuarters = (props) => {
       <Ptags size={'1.2rem'} mb={'0.5rem'}>
         {props.characteristic.name}
       </Ptags>
-      <svg id="" width={'100%'} height="15">
+      <svg id="" width={'100%'} height="20">
         <path id="char"
           d={`M
             0 0
-            0 4
-            ${props.width * 1 / 4 - gap} 4
+            0 8
+            ${props.width * 1 / 4 - gap} 8
             ${props.width * 1 / 4 - gap} 0
           `}
           fill="lightgray"
@@ -37,8 +36,8 @@ const CharacteristicQuarters = (props) => {
         <path id="char"
           d={`M
             ${props.width * 1 / 4 + gap} 0
-            ${props.width * 1 / 4 + gap} 4
-            ${props.width * 2 / 4 - gap} 4
+            ${props.width * 1 / 4 + gap} 8
+            ${props.width * 2 / 4 - gap} 8
             ${props.width * 2 / 4 - gap} 0
           `}
           fill="lightgray"
@@ -46,8 +45,8 @@ const CharacteristicQuarters = (props) => {
         <path id="char"
           d={`M
             ${props.width * 2 / 4 + gap} 0
-            ${props.width * 2 / 4 + gap} 4
-            ${props.width * 3 / 4 - gap} 4
+            ${props.width * 2 / 4 + gap} 8
+            ${props.width * 3 / 4 - gap} 8
             ${props.width * 3 / 4 - gap} 0
           `}
           fill="lightgray"
@@ -55,8 +54,8 @@ const CharacteristicQuarters = (props) => {
         <path id="char"
           d={`M
             ${props.width * 3 / 4 + gap} 0
-            ${props.width * 3 / 4 + gap} 4
-            ${props.width * 4 / 4 - gap} 4
+            ${props.width * 3 / 4 + gap} 8
+            ${props.width * 4 / 4 - gap} 8
             ${props.width * 4 / 4 - gap} 0
           `}
           fill="lightgray"
@@ -64,8 +63,8 @@ const CharacteristicQuarters = (props) => {
         <path id="arrow"
           d={`M
             ${position} 15
-            ${position + 10} 0
-            ${position - 10} 0
+            ${position + 7} 0
+            ${position - 7} 0
             ${position} 15
           `}
           fill="green"

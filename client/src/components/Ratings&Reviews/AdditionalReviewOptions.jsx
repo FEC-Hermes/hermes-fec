@@ -8,11 +8,11 @@ const ReviewButton_Container = styled.div`
    justify-content: space-between;
 `;
 
-const AdditionalReviewOptions = ({getNextReviewPage}) => {
+const AdditionalReviewOptions = ({ getNextReviewPage, toggleModalShown}) => {
   return (
     <ReviewButton_Container>
       <MoreReviewsButton getNextReviewPage={getNextReviewPage}/>
-      <AddReviewButton />
+      <AddReviewButton toggleModalShown={toggleModalShown}/>
     </ReviewButton_Container>
   );
 };

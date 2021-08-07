@@ -16,10 +16,10 @@ const Search = ({ questions, setQues, fetchQues }) => {
       let list = questions.filter(ques =>
         ques.question_body.toLowerCase().includes(searchInput.toLowerCase())
       );
+
       setQues(list);
     }
     else if(searchInput.length < 3) {
-      // console.log(prevState);
       // setQues(questions);
       fetchQues();
     }
@@ -35,6 +35,9 @@ const Search = ({ questions, setQues, fetchQues }) => {
         onChange={e => setSearch(e.target.value)}
         type='text'
       />
+      <SearchBtn>
+        <Image src={searchIcon} />
+      </SearchBtn>
     </Form>
   );
 };

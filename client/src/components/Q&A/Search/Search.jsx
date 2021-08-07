@@ -36,7 +36,7 @@ const Search = ({ questions, setQues, fetchQues }) => {
         type='text'
       />
       <SearchBtn>
-        <Image src={searchIcon} />
+        <Image src={searchIcon} alt="search"/>
       </SearchBtn>
     </Form>
   );

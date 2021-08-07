@@ -5,18 +5,16 @@ import {Img, Logo, SearchBarContainer,InputBar, SearchBarWrapper } from './style
 
 
 const NavBar = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const handleInput = text => {
-    setSearchQuery(text);
-  };
-
+  // const [searchQuery, setSearchQuery] = useState('');
+  // const handleInput = text => {
+  //   setSearchQuery(text);
+  // };
 
   return (
     <SearchBarContainer>
       <SearchBarWrapper>
-        <Logo src={hermeslogo} alt="Work"/>
-        <InputBar type='text'></InputBar>
-        <Img src={searchIcon} />
+        <InputBar onChange={({target:{value}}) => handleInput(value)}type='text' aria-label="search bar"></InputBar>
+        <Img src={searchIcon} alt="search"/>
       </SearchBarWrapper>
     </SearchBarContainer>
   );

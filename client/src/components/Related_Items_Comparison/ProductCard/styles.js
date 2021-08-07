@@ -9,12 +9,18 @@ const RelatedProducts = styled.div`
  `;
 
 const Image_container = styled.div`
-  height: 27rem;
+  height: 18rem;
+  width: 16rem;
+  overflow: hidden;
+  deisplay: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Img = styled.img`
   height: ${props => props.height};
-  width: ${props => props.width};
+  ${'' /* width: ${props => props.width}; */}
+  width: auto;
   transition-duration:1s ease;
   transform:scale(1)
 `;
@@ -22,7 +28,6 @@ const Img = styled.img`
 const Card = styled.div`
    margin: 1rem;
    border: 0.25rem solid gray;
-
 `;
 
 const CardText = styled.p`

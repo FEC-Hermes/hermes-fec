@@ -6,7 +6,7 @@ const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 125px;
-  height: 677px;
+  height: 695px;
   top: 2rem;
   position: absolute;
 `;
@@ -16,7 +16,8 @@ const ImgContainer = styled.div`
   display: inline-block;
   overflow: hidden;
   width: 100px;
-  margin: 7px auto;
+  height:652px;
+  margin: 2px auto 2px;
 `;
 
 const ImgFrame = styled.div`
@@ -34,6 +35,7 @@ const ImgFrame = styled.div`
 const Img = styled.img`
   object-fit: cover;
   width: 90px;
+  cursor: pointer;
 `;
 
 export { MainContainer, ImgContainer, ImgFrame, Img };

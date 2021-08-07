@@ -58,5 +58,4 @@ const Ans =  styled.div`
     // overflow: auto;
 `;
 
-
 export { QuesSection, S, Ans, Ques, Pd, AnwrSection, Aside, Li, Pipe, Span };

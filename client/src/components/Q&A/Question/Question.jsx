@@ -53,7 +53,6 @@ const Question = ({ questions, openAnsModal, openQuesModal}) => {
           <Button onClick={openQuesModal}>ADD A QUESTION  +</Button>
         </Buttons>
       </div>
-
     </div>
   );
 };

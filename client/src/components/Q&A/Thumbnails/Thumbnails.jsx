@@ -14,13 +14,9 @@ const Thumbnails = ({ photos = stock }) => {
       <ImgSection>
         {photos.map((photo, id) => {
           return (<ImgDiv key={id}>
-<<<<<<< HEAD
             <Img src={photo.url} />
             <Img src={stock[id]} />
 
-=======
-            <Img src={photo.url} alt="answer image"/>
->>>>>>> 7d3d11bb29983757fac19214ea8430ea28144e03
           </ImgDiv>);
         })}
       </ImgSection>

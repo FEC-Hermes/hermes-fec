@@ -5,12 +5,12 @@ import styled from 'styled-components';
 const Average_display = styled.div`
     display: flex;
     align-items: center;
-    margin-left:2rem;
- `;
-const H1 = styled.h1`
+    `;
+    //margin-left:1rem;
+
+    const H1 = styled.h1`
     font-size:${props => props.font_size};
     font-family:${props => props.font};
-
  `;
 
 const AverageDisplay = ({ratings}) => {

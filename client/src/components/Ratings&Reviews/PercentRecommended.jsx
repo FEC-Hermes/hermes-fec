@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Percent_recommended = styled.h3`
-   margin-left: 2rem;
+const Percent_recommended = styled.h4`
    font-weight: 400;
 `;
 

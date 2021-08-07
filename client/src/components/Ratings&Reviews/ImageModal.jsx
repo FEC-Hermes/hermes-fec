@@ -18,7 +18,7 @@ const ModalContainer = styled.div`
 const ImageModal = ({reviewImgUrl, setReviewImgUrl}) => {
   const handleClick = () => {
     setReviewImgUrl('');
-  }
+  };
 
   return (
     <ProductContext.Consumer>
@@ -28,6 +28,7 @@ const ImageModal = ({reviewImgUrl, setReviewImgUrl}) => {
             <FullImageDisplay reviewMeta={reviewMeta}
               productName={product[0].name}
               reviewImgUrl={reviewImgUrl}
+              setReviewImgUrl={setReviewImgUrl}
             />
           </ModalContainer>
         )

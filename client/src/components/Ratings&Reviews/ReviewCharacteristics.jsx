@@ -8,8 +8,8 @@ const ReviewCharacteristics = ({ characteristics, reviewMeta, changeCharacterist
         characteristics.map((characteristic, i) =>
           reviewMeta.characteristics[characteristic.name]
             ?
-            <ReviewCharacteristic key={i} characteristic={characteristic} changeCharacteristic={changeCharacteristic} />
-              :
+          <ReviewCharacteristic key={i} characteristic={characteristic} changeCharacteristic={changeCharacteristic} />
+            :
           null
         )
       }

@@ -3,7 +3,7 @@ import axios from 'axios';
 import moment from 'moment';
 import Thumbnails from '../Thumbnails/Thumbnails.jsx';
 
-import  { Pipe, Span } from '../Accordion/Accordion.js';
+import  { Pipe, Span, S, Ans } from '../Accordion/Accordion.js';
 
 const Answer = ({ quesId }) => {
   const [helped, setHelped] = useState(false);
@@ -13,7 +13,6 @@ const Answer = ({ quesId }) => {
   const getAns = async (question_id) => {
     try {
       let ans = await axios.get(`/qa/questions/${question_id}/answers`);
-      console.log(ans.data.results);
       setAnswers(ans.data.results);
     } catch(err) {
       console.error(err);
@@ -29,7 +28,6 @@ const Answer = ({ quesId }) => {
       console.log('You reported me already.');
     }
   };
-
 
   const handleHelpful = (id) => {
     if (!helped) {
@@ -64,11 +62,11 @@ const Answer = ({ quesId }) => {
 
   return (
     <div>
-      {answers && answers.slice(0, 3).map(ans => {
+      {answers && answers.slice(0, 2).map(ans => {
         return (
-          <div key={ans.answer_id}>
+          <Ans key={ans.answer_id}>
             <p>
-              A: {ans.body}
+              <S>A:</S> {ans.body}
             </p>
             <p>
               {`by User ${ans.answerer_name}, ${moment().format('MMM Do YY')}`}
@@ -77,9 +75,8 @@ const Answer = ({ quesId }) => {
               <Pipe>|</Pipe>
               <Span onClick={() => handleReported(ans.answer_id)}>Report</Span>
             </p>
-
             <Thumbnails photos={ans.photos} />
-          </div>
+          </Ans>
         );
       })}
     </div>

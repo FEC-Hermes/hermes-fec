@@ -11,10 +11,8 @@ import Modal from './Modal/Modal.jsx';
 import { ContainerQA, H3 } from './Q&A.js';
 
 const QandA = () => {
-
   const { product } = React.useContext(ProductContext);
   const [currProduct] = product;
-
   const [questions, setQues] = useState([]);
   const [quesId, setQuesId] = useState(0);
 
@@ -53,14 +51,16 @@ const QandA = () => {
     fetchQues();
   }, [product]);
 
-
   return (
     <>
       { questions ?
         <ContainerQA>
           <H3>Questions & Answers</H3>
-
-          <Search questions={questions} setQues={setQues} fetchQues={fetchQues}/>
+          <Search
+            questions={questions}
+            setQues={setQues}
+            fetchQues={fetchQues}
+          />
 
           <QuestionsList
             questions={questions}

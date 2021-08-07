@@ -41,9 +41,9 @@ const AddAnswer = ({ quesId }) => {
     //   } catch(err) {
     //     console.error(err);
     //   }
+      console.log('data ',data);
     };
 
-    console.log('data ',data);
 
     postData(formValues);
   };

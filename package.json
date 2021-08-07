@@ -5,8 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "nodemon server/server.js",
-    "dev": "webpack --config ./webpack.config.js --mode development -w",
-    "dev-prod": "webpack --config ./webpack.config.js --mode production -w",
+    "dev": "webpack --config webpack.dev.js -w",
+    "build": "webpack --config webpack.prod.js -w",
     "test": "jest"
   },
   "author": "",
@@ -17,6 +17,7 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.13.2",
+    "compression": "^1.7.4",
     "express": "^4.17.1",
     "jest": "^27.0.6",
     "moment": "^2.29.1",
@@ -37,6 +38,8 @@
     "eslint-plugin-react": "^7.24.0",
     "nodemon": "^2.0.6",
     "webpack": "^4.44.2",
-    "webpack-cli": "^4.3.0"
+    "webpack-cli": "^4.3.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.8.0"
   }
 }

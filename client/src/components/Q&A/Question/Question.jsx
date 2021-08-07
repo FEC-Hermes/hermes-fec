@@ -4,13 +4,16 @@ import { Button, Buttons } from '../Q&A';
 
 import  {
   Pd,
+  S,
   Li,
   Pipe,
-  Span
+  Span,
+  Ques,
+  Aside
 } from '../Accordion/Accordion.js';
 
 const Question = ({ questions, openAnsModal, openQuesModal}) => {
-  const [idx, setIdx] = useState(2);
+  const [idx, setIdx] = useState(4);
 
   const moreQues = () => {
     setIdx(idx => idx+2);
@@ -21,23 +24,23 @@ const Question = ({ questions, openAnsModal, openQuesModal}) => {
       {questions.slice(0, idx).map(ques => {
         return (
           <Li key={ques.question_id}>
-            <div>
-              <Pd>Q: {ques.question_body}</Pd>
-              <span >Helpful?</span>
-              <Span>{`Yes (${ques.question_helpfulness })`}</Span>
-              <Pipe>|</Pipe>
-            </div>
+            <Ques>
+              <Pd> <S>Q:</S>{ques.question_body}</Pd>
+              <Aside>
+                <span >Helpful?</span>
+                <Span>{`Yes (${ques.question_helpfulness })`}</Span>
+                <Pipe>|</Pipe>
+                <p onClick={openAnsModal}>Add Answer</p>
+              </Aside>
+            </Ques>
 
             <div
               onClick={() => {
                 openAnsModal();
-                setQuesId(ques.question_id);
               }}>
             </div>
 
             <Answer quesId={ques.question_id}/>
-
-            <p onClick={openAnsModal}>Add Answer</p>
           </Li>
         );
       })}
@@ -49,7 +52,6 @@ const Question = ({ questions, openAnsModal, openQuesModal}) => {
           <Button onClick={openQuesModal}>ADD A QUESTION  +</Button>
         </Buttons>
       </div>
-
     </div>
   );
 };

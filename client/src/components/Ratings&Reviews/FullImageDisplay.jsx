@@ -15,9 +15,9 @@ const FullImageContainer = styled.main`
   border-radius: 8px;
 `;
 
-const FullImageDisplay = ({ reviewImgUrl}) => {
-  const handleClick = (e) => {
-    e.stopPropagation();
+const FullImageDisplay = ({ reviewImgUrl, setReviewImgUrl}) => {
+  const handleClick = () => {
+    setReviewImgUrl('');
   };
 
   return (

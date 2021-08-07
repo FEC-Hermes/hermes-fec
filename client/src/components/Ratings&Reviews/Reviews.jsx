@@ -16,9 +16,9 @@ const Reviews = ({ reviewFilter, filterSignature, toggleModalShown, setReviewImg
   const [displayCount, setDisplayCount] = useState(2);
   const [filter, setReviewFilter] = useState({});
 
-  useEffect(() => {
-    console.log('Change detected');
-  }, [filter, reviewFilter]);
+  // useEffect(() => {
+  //   console.log('Change detected');
+  // }, [filter, reviewFilter]);
 
   return (
     <ProductContext.Consumer>
@@ -38,11 +38,11 @@ const Reviews = ({ reviewFilter, filterSignature, toggleModalShown, setReviewImg
           updatedReviews.results = [];
 
           axios.get(`/reviews/${reviews.product}/${sortType}/1/${reviewCount}`)
-          .then(({ data }) => {
-            setReviews(data);
-            setSortType(sortType);
-            setDisplayCount(2);
-          });
+            .then(({ data }) => {
+              setReviews(data);
+              setSortType(sortType);
+              setDisplayCount(2);
+            });
         };
 
         return (

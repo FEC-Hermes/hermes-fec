@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+
 import ImageGallery from './imageGallery/ImageGallery.jsx';
 import AddToCart from './AddToCart.jsx';
 import ProductInfo from './ProductInfo.jsx';
@@ -7,8 +8,6 @@ import StyleSelector from './StyleSelector.jsx';
 import ProductDesc from './ProductDesc.jsx';
 import StylesContext from '../contexts/StylesContext';
 
-////    Styles    //////////////////////////////////
-////////////////////////////////////////////////////
 const MainContainer = styled.main`
   box-sizing: border-box;
   padding: 0;
@@ -35,10 +34,10 @@ const OverviewContainer = styled.div`
 
 `;
 
-////    Component    ///////////////////////////////
-////////////////////////////////////////////////////
+
 const Overview = () => {
   const { expanded:[expand] } = React.useContext(StylesContext);
+
   useEffect(() => {
     const container = document.getElementById('info-container');
     if (container) {

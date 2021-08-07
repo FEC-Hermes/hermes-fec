@@ -3,7 +3,6 @@ import RatingCount from './RatingCount.jsx';
 import styled from 'styled-components';
 
 const RatingCountContainer = styled.div`
-   margin: 0 0 0 2rem;
    cursor: pointer;
 `;
 

@@ -6,13 +6,18 @@ import BreakdownFilterDisplay from './BreakdownFilterDisplay.jsx';
 import Characteristics from './Characteristics.jsx';
 
 import ProductContext from '../contexts/ProductContext.js';
+import styled from 'styled-components';
 
 const Ratings = ({reviewFilter, updateReviewFilter, clearReviewFilter}) => {
+  const RatingsContainer = styled.div`
+    padding-right: 32px;
+  `;
+
   return (
     <ProductContext.Consumer>
       {({reviewMeta}) => {
         return (
-          <div id="ratings">
+          <RatingsContainer>
             <AverageDisplay
               ratings={reviewMeta.ratings}
             />
@@ -25,10 +30,10 @@ const Ratings = ({reviewFilter, updateReviewFilter, clearReviewFilter}) => {
             />
             <BreakdownFilterDisplay reviewFilter={reviewFilter}
               clearReviewFilter={clearReviewFilter}
-             />
+            />
             <Characteristics characteristics={reviewMeta.characteristics}/>
-          </div>
-        )
+          </RatingsContainer>
+        );
       }}
     </ProductContext.Consumer>
   );

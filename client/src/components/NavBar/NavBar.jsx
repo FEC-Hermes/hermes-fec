@@ -4,11 +4,11 @@ import {Img, SearchBarContainer,InputBar, SearchBarWrapper } from './styles.js';
 
 
 const NavBar = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const handleInput = text => {
-    setSearchQuery(text);
-  };
-  
+  // const [searchQuery, setSearchQuery] = useState('');
+  // const handleInput = text => {
+  //   setSearchQuery(text);
+  // };
+
 
   return (
     <SearchBarContainer>

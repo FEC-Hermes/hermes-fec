@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import axios from 'axios';
-// import styled from 'styled-components';
 
 import Overview from '../Overview/Overview.jsx';
-import Related_Items_Comparison from '../Related_Items_Comparison/Related_Items_Comparison.jsx';
-import RatingsAndReviews from '../Ratings&Reviews/Ratings&Reviews.jsx';
-import QandA from '../Q&A/Q&A.jsx';
+const Related_Items_Comparison = lazy(() => import('../Related_Items_Comparison/Related_Items_Comparison.jsx'));
+const RatingsAndReviews = lazy(() => import('../Ratings&Reviews/Ratings&Reviews.jsx'));
+const QandA = lazy(() => import('../Q&A/Q&A.jsx'));
 import ProductContext from '../contexts/ProductContext.js';
 import StylesContext from '../contexts/StylesContext';
 import MainContainer from './styles.js';
@@ -34,10 +33,6 @@ const App = () => {
     axios.get(`/products/${productId}`)
       .then(({ data }) => {
         setProduct(data);
-        axios.get(`/reviews/${data.id}/relevent/1/1000`)
-          .then(({ data }) => setReviews(data));
-        axios.get(`/reviews/meta/${data.id}`)
-          .then(({ data }) => setReviewMeta(data));
         axios.get(`/products/${productId}/styles`)
           .then(({ data }) => {
             setAllStyles(data.results);
@@ -46,6 +41,15 @@ const App = () => {
           .catch(err => console.log(err));
       });
   }, [productId]);
+
+  useEffect(() => {
+    if (Object.keys(product).length) {
+      axios.get(`/reviews/${product.id}/relevent/1/50`)
+        .then(({ data }) => setReviews(data));
+      axios.get(`/reviews/meta/${product.id}`)
+        .then(({ data }) => setReviewMeta(data));
+    }
+  }, [product]);
 
   return (
     <MainContainer>
@@ -67,17 +71,21 @@ const App = () => {
             Object.keys(currStyle).length ?
               <React.Fragment>
                 <Overview />
-                <Related_Items_Comparison relatedProductClicked={relatedProductClicked} />
+                <Suspense fallback={ <div>Loading...</div> }>
+                  <Related_Items_Comparison relatedProductClicked={relatedProductClicked} />
+                </Suspense>
               </React.Fragment>
               : null
           }
         </StylesContext.Provider>
         {
           Object.keys(reviews).length ?
-            <React.Fragment>
-              <QandA />
-              <RatingsAndReviews />
-            </React.Fragment>
+            <Suspense fallback={ <div>Loading...</div> }>
+              <React.Fragment>
+                <QandA />
+                <RatingsAndReviews />
+              </React.Fragment>
+            </Suspense>
             : null
         }
       </ProductContext.Provider>

@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 import StylesContext from '../../contexts/StylesContext.js';
 
-////    Styles    //////////////////////////////////
-////////////////////////////////////////////////////
 const ImageContainer = styled.div`
   height: 750px;
   width: 850px;
@@ -20,20 +18,18 @@ const ImageContainer = styled.div`
 
 const Image = styled.img`
   height: 100%;
-
     :hover{
-      cursor: pointer;
+      cursor: ${ prop => prop.expand ? 'zoom-out' : 'zoom-in' };
     }
 `;
 
-////    Component    ///////////////////////////////
-////////////////////////////////////////////////////
 const DisplayImage = () => {
 
-  const { currStyle, imgIndex, expanded } = React.useContext(StylesContext);
-  const [style]  = currStyle;
-  const [currIdx] = imgIndex;
-  const [expand, setExpand] = expanded;
+  const {
+    currStyle: [style],
+    imgIndex:  [currIdx],
+    expanded:  [expand, setExpand]
+  } = React.useContext(StylesContext);
 
   useEffect(() => {
     const container = document.getElementById('display-img-container');
@@ -51,6 +47,7 @@ const DisplayImage = () => {
     <ImageContainer id='display-img-container'>
       <Image
         id='display-img'
+        expand={ expand }
         src={ style.photos[currIdx].url}
         onClick={ () => setExpand(!expand) }
       />

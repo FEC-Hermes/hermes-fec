@@ -3,14 +3,14 @@ import { MainContainer, ImgContainer, ImgFrame, Img } from './styles.js';
 
 import StylesContext from '../../contexts/StylesContext.js';
 
-////    Component    ///////////////////////////////
-////////////////////////////////////////////////////
+
 const VerticalThumbs = () => {
 
-  const { currStyle, imgIndex, expanded } = React.useContext(StylesContext);
-  const [style] = currStyle;
-  const [imageIndex, setImageIndex] = imgIndex;
-  const [expand] = expanded;
+  const {
+    currStyle: [style],
+    imgIndex:  [imageIndex, setImageIndex],
+    expanded:  [expand]
+  } = React.useContext(StylesContext);
 
   const [lowIndex, setLowIndex] = useState(0);
   const [highIndex, setHighIndex] = useState(6);
@@ -66,14 +66,14 @@ const VerticalThumbs = () => {
   const onArrowClick = (arrow) => {
 
     if (arrow === 'up') {
-      setYAxis((yAxis + 91));
+      setYAxis((yAxis + 90));
       setLowIndex((lowIndex - 1));
       setHighIndex(highIndex - 1);
       if (maxIndex === highIndex || imageIndex === highIndex) {
         setImageIndex(imageIndex - 1);
       }
     } else if (arrow === 'down') {
-      setYAxis((yAxis - 91));
+      setYAxis((yAxis - 90));
       setLowIndex(lowIndex + 1);
       setHighIndex(highIndex + 1);
       if (maxIndex === lowIndex || imageIndex === lowIndex) {

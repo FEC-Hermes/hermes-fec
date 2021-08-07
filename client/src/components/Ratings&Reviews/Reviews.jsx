@@ -16,9 +16,9 @@ const Reviews = ({reviewFilter, filterSignature}) => {
   const [displayCount, setDisplayCount] = useState(2);
   const [filter, setReviewFilter] = useState({});
 
-  useEffect(() => {
-    console.log('Change detected');
-  }, [filter, reviewFilter]);
+  // useEffect(() => {
+  //   console.log('Change detected');
+  // }, [filter, reviewFilter]);
 
   return (
     <ProductContext.Consumer>

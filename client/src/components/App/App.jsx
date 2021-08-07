@@ -12,18 +12,15 @@ import NavBar from '../NavBar/NavBar.jsx';
 
 
 const App = () => {
-  const [product, setProduct] = useState({});
-  const [reviews, setReviews] = useState([]);
+  const [product,    setProduct] =    useState({});
+  const [reviews,    setReviews] =    useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
-  const [productId, setProductId] = useState(17071);
+  const [productId,  setProductId] =  useState(17071);
 
-  /* REFACTOR INTO CONTEXT FILE ========= */
-  const [allStyles, setAllStyles] = useState([]);
-  const [currStyle, setCurrStyle] = useState({});
+  const [allStyles,  setAllStyles] =  useState([]);
+  const [currStyle,  setCurrStyle] =  useState({});
   const [currImgIdx, setCurrImgIdx] = useState(0);
-  const [expanded, setExpanded] = useState(false);
-
-  /* REFACTOR INTO CONTEXT FILE ========= */
+  const [expanded,   setExpanded] =   useState(false);
 
   const relatedProductClicked = id => {
     setProductId(id);

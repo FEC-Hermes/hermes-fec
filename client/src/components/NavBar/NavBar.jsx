@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import {Img, Logo, SearchBarContainer,InputBar, SearchBarWrapper } from './styles.js';
+
 const searchIcon = 'https://cdn.onlinewebfonts.com/svg/img_168154.png';
 const hermeslogo = 'https://i.imgur.com/mLJVsNP.png';
-import {Img, Logo, SearchBarContainer,InputBar, SearchBarWrapper } from './styles.js';
 
 
 const NavBar = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const handleInput = text => {
-    setSearchQuery(text);
-  };
+  // const [searchQuery, setSearchQuery] = useState('');
+  // const handleInput = text => {
+  //   setSearchQuery(text);
+  // };
 
 
   return (
@@ -21,5 +22,4 @@ const NavBar = () => {
     </SearchBarContainer>
   );
 };
-
 export default NavBar;

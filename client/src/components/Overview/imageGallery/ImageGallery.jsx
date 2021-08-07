@@ -1,14 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import styled from 'styled-components';
 
-import DisplayImage from './DisplayImage.jsx';
+const DisplayImage = lazy(() => import('./DisplayImage.jsx'));
 import VerticalThumbs from './VerticalThumbs.jsx';
 import ExpandIcons from './ExpandIcons.jsx';
 
 import StylesContext from '../../contexts/StylesContext';
 
-////    Styles    //////////////////////////////////
-////////////////////////////////////////////////////
 const MainContainer = styled.main`
   width: 880px;
   position: relative;
@@ -16,12 +14,9 @@ const MainContainer = styled.main`
   transition: '.3s';
 `;
 
-////    Component    ///////////////////////////////
-////////////////////////////////////////////////////
 const ImageGallery = () => {
 
-  const { expanded } = React.useContext(StylesContext);
-  const [expand] = expanded;
+  const { expanded: [expand] } = React.useContext(StylesContext);
 
   useEffect(() => {
     const container = document.getElementById('image-gal-container');
@@ -37,7 +32,9 @@ const ImageGallery = () => {
 
   return (
     <MainContainer id="image-gal-container" >
-      <DisplayImage />
+      <Suspense fallback={ <div>Loading...</div> }>
+        <DisplayImage />
+      </Suspense>
       <VerticalThumbs />
       <ExpandIcons />
     </MainContainer>

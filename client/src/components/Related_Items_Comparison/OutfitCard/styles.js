@@ -61,7 +61,6 @@ const PlusSign = styled.p`
  display: flex;
  justify-content: center;
  margin-bottom:0.5rem;
-
 `;
 
 const Stars = styled.img`
@@ -93,6 +92,3 @@ const Thumbnail_arrow = styled.div`
 `;
 
 export  {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer, ThumbnailContainer,Thumbnail_Image_Container,Thumbnail_arrow, StarsContainer,ExitContainer, ExitImg, PlusSign};
-
-
-// export  {RelatedProducts, Image_container, Img, Card, CardText, };

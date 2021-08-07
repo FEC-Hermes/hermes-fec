@@ -100,6 +100,7 @@ const VerticalThumbs = () => {
     <MainContainer id="vThumb-container">
       <svg
         id="vThumb-arrow-up"
+        alt="arrow up"
         onClick={ () => onArrowClick('up') }
         width="30"
         height="30"
@@ -115,6 +116,7 @@ const VerticalThumbs = () => {
               <Img
                 src={ photo.thumbnail_url }
                 id={ `vThumb${i}` }
+                alt={ `thumbnail number ${i}` }
                 className="thumbImg"
                 onClick={ () => toggleThumb(i)}
               />
@@ -124,6 +126,7 @@ const VerticalThumbs = () => {
       </ImgContainer>
       <svg
         id="vThumb-arrow-down"
+        alt="arrow down"
         onClick={ () => onArrowClick('down') }
         width="30"
         height="30"

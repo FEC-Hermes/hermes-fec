@@ -42,6 +42,7 @@ const ExpandIcons = () => {
             <Icon
               src={ photo.thumbnail_url }
               id={ `vIcon${i}` }
+              alt={ `icon number ${i}` }
               className="icon-img"
               onClick={ () => {
                 setImageIndex(i);

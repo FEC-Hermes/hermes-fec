@@ -15,7 +15,7 @@ const App = () => {
   const [product, setProduct] = useState({});
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
-  const [productId, setProductId] = useState(17141);
+  const [productId, setProductId] = useState(17071);
 
   /* REFACTOR INTO CONTEXT FILE ========= */
   const [allStyles, setAllStyles] = useState([]);

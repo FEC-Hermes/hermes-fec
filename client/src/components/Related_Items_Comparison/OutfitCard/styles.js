@@ -9,17 +9,25 @@ const RelatedProducts = styled.div`
  `;
 
 const Image_container = styled.div`
-  height: 25rem;
+  height: 18rem;'
+  width: 16rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Img = styled.img`
   height: ${props => props.height};
-  width: ${props => props.width};
+  ${'' /* width: ${props => props.width}; */}
+  width: auto;
 `;
 
 const Card = styled.div`
    margin: 1rem;
+   width: 16rem;
    border: 0.25rem solid gray;
+   overflow: hidden;
 `;
 
 const CardText = styled.p`
@@ -44,7 +52,7 @@ const PlusSign = styled.p`
   justify-content: center;
   align-items: center;
   font-size: 3rem;
-  height: 31rem;
+  height: 21rem;
   width: 16rem;
  `;
 

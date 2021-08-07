@@ -103,7 +103,7 @@ const ProductCard = ({relatedProductClicked}) => {
                   thumbnailClicked={thumbnailClicked}
                 />
               </Image_container>
-              <CardText font_size={'1.4rem'} color={'steelblue'}>{category}</CardText>
+              <CardText font_size={'1.4rem'} color={'black'}>{category}</CardText>
               <CardText font_size={'1.5rem'}>{name}</CardText>
               <CardText font_size={'1rem'} >${original_price}</CardText>
               <StarsContainer>

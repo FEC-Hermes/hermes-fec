@@ -200,7 +200,7 @@ const AddToCart = () => {
         </SelectQty>
 
         <AddButton onClick={ addToCart }>ADD TO BAG</AddButton>
-        <LikeButton>
+        <LikeButton aria-label="like button">
           <svg
             aria-hidden="true"
             focusable="false"

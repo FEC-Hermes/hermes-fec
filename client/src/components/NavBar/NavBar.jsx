@@ -13,7 +13,7 @@ const NavBar = () => {
   return (
     <SearchBarContainer>
       <SearchBarWrapper>
-        <InputBar onChange={({target:{value}}) => handleInput(value)}type='text'></InputBar>
+        <InputBar onChange={({target:{value}}) => handleInput(value)}type='text' aria-label="search bar"></InputBar>
         <Img src={searchIcon} alt="search"/>
       </SearchBarWrapper>
     </SearchBarContainer>

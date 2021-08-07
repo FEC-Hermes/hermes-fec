@@ -71,14 +71,14 @@ const OutFitCard = ({count:idx}) => {
                 <Img
                   onClick={(e) => console.log(e.target)}
                   id={idx}
-                  alt={`outfit item ${idxx}`}
-                  height={'25rem'}
-                  width={'16rem'}
+                  alt={`outfit item ${idx}`}
+                  // height={'25rem'}
+                  // width={'16rem'}
                   src={url}
                 />
                 <Thumbnails photos={photos} isShown={isShown}/>
               </Image_container>
-              <CardText font_size={'1.4rem'} color={'steelblue'}>{category}</CardText>
+              <CardText font_size={'1.4rem'} color={'black'}>{category}</CardText>
               <CardText font_size={'1.5rem'}>{name}</CardText>
               <CardText font_size={'1rem'} >${original_price}</CardText>
               <StarsContainer>

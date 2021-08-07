@@ -69,6 +69,7 @@ const OutFitCard = ({count:idx}) => {
                 <Img
                   onClick={(e) => console.log(e.target)}
                   id={idx}
+                  alt="outfit item"
                   height={'25rem'}
                   width={'16rem'}
                   src={url}

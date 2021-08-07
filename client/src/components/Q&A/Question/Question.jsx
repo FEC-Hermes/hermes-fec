@@ -13,7 +13,7 @@ import  {
 } from '../Accordion/Accordion.js';
 
 const Question = ({ questions, openAnsModal, openQuesModal}) => {
-  const [idx, setIdx] = useState(2);
+  const [idx, setIdx] = useState(4);
 
   const moreQues = () => {
     setIdx(idx => idx+2);

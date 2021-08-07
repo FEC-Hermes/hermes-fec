@@ -81,6 +81,7 @@ const ProductCard = ({relatedProductClicked}) => {
               <Image_container>
                 <StarContainer>
                   <Stars
+                    alt="star"
                     onClick={() => clickStar(product_id)}
                     pos={'absolute'}
                     bottom={'16.5rem'}
@@ -89,6 +90,7 @@ const ProductCard = ({relatedProductClicked}) => {
                     src="https://cdn.onlinewebfonts.com/svg/img_325911.png" />
                 </StarContainer>
                 <Img
+                  alt="product image"
                   onClick={() => relatedProductClicked(product_id)}
                   id={idx}
                   height={'25rem'}
@@ -114,6 +116,7 @@ const ProductCard = ({relatedProductClicked}) => {
       { isToggled? <Modal productCardId={productCardId}/> : null}
       {count !== 3?
         <Img
+          alt="arrow right"
           onClick={() => count < 3? setCount(count+=1): setCount(3)}
           height={'4rem'}
           width={'3rem'}

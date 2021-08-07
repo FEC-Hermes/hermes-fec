@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import StylesContext from '../../contexts/StylesContext.js';
@@ -45,15 +45,13 @@ const DisplayImage = () => {
 
   return (
     <ImageContainer id='display-img-container'>
-      <Suspense fallback={ <div>Loading...</div> }>
-        <Image
-          id='display-img'
-          alt={ style.name }
-          expand={ expand }
-          src={ style.photos[currIdx].url}
-          onClick={ () => setExpand(!expand) }
-        />
-      </Suspense>
+      <Image
+        id='display-img'
+        alt={ style.name }
+        expand={ expand }
+        src={ style.photos[currIdx].url}
+        onClick={ () => setExpand(!expand) }
+      />
     </ImageContainer>
   );
 };

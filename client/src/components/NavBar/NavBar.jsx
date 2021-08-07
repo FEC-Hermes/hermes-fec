@@ -9,7 +9,6 @@ const NavBar = () => {
   //   setSearchQuery(text);
   // };
 
-
   return (
     <SearchBarContainer>
       <SearchBarWrapper>

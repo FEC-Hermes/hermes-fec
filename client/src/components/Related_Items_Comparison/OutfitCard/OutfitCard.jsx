@@ -40,7 +40,6 @@ const OutFitCard = ({count:idx}) => {
     <RelatedProducts id={1}>
       {count !== 0 ?
         <Img
-          alt="arrow left"
           onClick={() => count > 0 ? setCount(count-=1):null}
           height={'4rem'}
           width={'3rem'}
@@ -60,7 +59,6 @@ const OutFitCard = ({count:idx}) => {
               <Image_container>
                 <StarContainer>
                   <Stars
-                    alt="modal star"
                     onClick={(e) => remove(e.target)}
                     pos={'absolute'}
                     bottom={'16.5rem'}
@@ -71,14 +69,13 @@ const OutFitCard = ({count:idx}) => {
                 <Img
                   onClick={(e) => console.log(e.target)}
                   id={idx}
-                  alt={`outfit item ${idx}`}
-                  // height={'25rem'}
-                  // width={'16rem'}
+                  height={'25rem'}
+                  width={'16rem'}
                   src={url}
                 />
                 <Thumbnails photos={photos} isShown={isShown}/>
               </Image_container>
-              <CardText font_size={'1.4rem'} color={'black'}>{category}</CardText>
+              <CardText font_size={'1.4rem'} color={'steelblue'}>{category}</CardText>
               <CardText font_size={'1.5rem'}>{name}</CardText>
               <CardText font_size={'1rem'} >${original_price}</CardText>
               <StarsContainer>
@@ -91,7 +88,6 @@ const OutFitCard = ({count:idx}) => {
       { isToggled? <Modal /> : null}
       {count !== 3?
         <Img
-          alt="arrow right"
           onClick={() => count < 3? setCount(count+=1): setCount(3)}
           height={'4rem'}
           width={'3rem'}

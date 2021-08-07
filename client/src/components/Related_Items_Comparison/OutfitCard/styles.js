@@ -9,25 +9,17 @@ const RelatedProducts = styled.div`
  `;
 
 const Image_container = styled.div`
-  height: 18rem;'
-  width: 16rem;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 25rem;
 `;
 
 const Img = styled.img`
   height: ${props => props.height};
-  ${'' /* width: ${props => props.width}; */}
-  width: auto;
+  width: ${props => props.width};
 `;
 
 const Card = styled.div`
    margin: 1rem;
-   width: 16rem;
    border: 0.25rem solid gray;
-   overflow: hidden;
 `;
 
 const CardText = styled.p`
@@ -52,7 +44,7 @@ const PlusSign = styled.p`
   justify-content: center;
   align-items: center;
   font-size: 3rem;
-  height: 21rem;
+  height: 31rem;
   width: 16rem;
  `;
 
@@ -69,7 +61,6 @@ const PlusSign = styled.p`
  display: flex;
  justify-content: center;
  margin-bottom:0.5rem;
-
 `;
 
 const Stars = styled.img`
@@ -101,6 +92,3 @@ const Thumbnail_arrow = styled.div`
 `;
 
 export  {RelatedProducts, Image_container, Img, Card, CardText, Stars, StarContainer, ThumbnailContainer,Thumbnail_Image_Container,Thumbnail_arrow, StarsContainer,ExitContainer, ExitImg, PlusSign};
-
-
-// export  {RelatedProducts, Image_container, Img, Card, CardText, };

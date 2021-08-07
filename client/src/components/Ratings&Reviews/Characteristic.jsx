@@ -9,8 +9,8 @@ const Characteristic = (props) => {
         <path id="char"
           d={`M
             0 0
-            0 5
-            ${props.width * 1 / 5 - gap} 5
+            0 20
+            ${props.width * 1 / 5 - gap} 20
             ${props.width * 1 / 5 - gap} 0
           `}
           fill="lightgray"
@@ -18,8 +18,8 @@ const Characteristic = (props) => {
         <path id="char"
           d={`M
             ${props.width * 1 / 5 + gap} 0
-            ${props.width * 1 / 5 + gap} 5
-            ${props.width * 2 / 5 - gap} 5
+            ${props.width * 1 / 5 + gap} 20
+            ${props.width * 2 / 5 - gap} 20
             ${props.width * 2 / 5 - gap} 0
           `}
           fill="lightgray"
@@ -27,8 +27,8 @@ const Characteristic = (props) => {
         <path id="char"
           d={`M
             ${props.width * 2 / 5 + gap} 0
-            ${props.width * 2 / 5 + gap} 5
-            ${props.width * 3 / 5 - gap} 5
+            ${props.width * 2 / 5 + gap} 20
+            ${props.width * 3 / 5 - gap} 20
             ${props.width * 3 / 5 - gap} 0
           `}
           fill="lightgray"
@@ -36,8 +36,8 @@ const Characteristic = (props) => {
         <path id="char"
           d={`M
             ${props.width * 3 / 5 + gap} 0
-            ${props.width * 3 / 5 + gap} 5
-            ${props.width * 4 / 5 - gap} 5
+            ${props.width * 3 / 5 + gap} 20
+            ${props.width * 4 / 5 - gap} 20
             ${props.width * 4 / 5 - gap} 0
           `}
           fill="lightgray"
@@ -45,8 +45,8 @@ const Characteristic = (props) => {
         <path id="char"
           d={`M
             ${props.width * 4 / 5 + gap} 0
-            ${props.width * 4 / 5 + gap} 5
-            ${props.width} 5
+            ${props.width * 4 / 5 + gap} 20
+            ${props.width} 20
             ${props.width} 0
           `}
           fill="lightgray"

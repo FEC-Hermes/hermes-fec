@@ -16,17 +16,17 @@ const Hr = styled.hr`
 const Img = styled.img`
   width: 1rem;
   height: 1rem;
-  margin-right:1rem;
+  margin-right: 1rem;
 `;
 
 const Reiview_Recommend = styled.div`
-  display:flex;
+  display: flex;
   align-items: center;
 `;
 
 
 
-const Review = ({review}) => {
+const Review = ({ review, setReviewImgUrl}) => {
   return (
     <Review_Container>
       <ReviewHeader rating={review.rating}
@@ -37,7 +37,9 @@ const Review = ({review}) => {
       <p className="review-summary-primary">{review.summary.slice(0, 60)}</p>
       <p>{review.summary.slice(60)}</p>
       <p>{review.body}</p>
-      <PhotoGallery photos={review.photos} />
+      <PhotoGallery photos={review.photos}
+        setReviewImgUrl={setReviewImgUrl}
+      />
       <div>{review.recommend ? <ProductRecommendedRow/> : null}</div>
       <p>{review.response}</p>
       <Helpfulness helpfulness={review.helpfulness} reviewId={review.review_id}/>

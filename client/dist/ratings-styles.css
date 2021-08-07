@@ -1,0 +1,107 @@
+#ratings-and-reviews-title {
+  width: 1024px;
+}
+
+#ratings-and-reviews-container {
+  display: grid;
+  width: 1024px;
+  grid-auto-columns: 269px 672px;
+  gap: 0px 66px;
+}
+
+#ratings {
+  grid-column: 1;
+}
+
+#average-display {
+  display: grid;
+  grid-template-columns: 75px 1fr;
+}
+
+#rating-display {
+  grid-column: 1;
+  font-weight: bolder;
+  font-size: 48px;
+  font-family: 'Roboto', sans-serif;
+  padding: 4px;
+}
+
+#summary-star-display {
+  grid-column: 2;
+  padding: 14px;
+}
+.percent-recommended {
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.rating-value {
+  display: inline;
+  padding-right: 8px;
+}
+
+.rating-count-bar {
+  color: green;
+}
+
+.rating-count {
+  display: inline;
+  padding: 8px;
+}
+
+#reviews {
+  grid-column: 2;
+}
+
+.descriptors {
+  display: grid;
+  grid-auto-columns: 1fr 1fr 1fr;
+}
+
+.descriptor {
+  font-size: 10px;
+}
+
+.low-descriptor {
+  grid-column: 1;
+  text-align: left;
+}
+
+.balanced-descriptor {
+  grid-column: 2;
+  text-align: center;
+}
+
+.high-descriptor {
+  grid-column: 3;
+  text-align: right;
+}
+
+.review {
+  border-bottom: gray 1px solid;
+}
+
+.review-header {
+  display: grid;
+}
+
+.header-star-display {
+  grid-column: 1;
+}
+
+.review-user-and-timestamp {
+  grid-column: 2;
+  text-align: right;
+}
+
+.helpful-anchor, .report-anchor {
+  text-decoration: underline;
+}
+
+.helpful-anchor:hover, .report-anchor:hover {
+  cursor: pointer;
+}
+
+.review-summary-primary {
+  font-weight: bold;
+}

@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
 import NewReviewStarDisplay from '../Shared/NewReviewStarDisplay.jsx';
+import ReviewCharacteristics from './ReviewCharacteristics.jsx';
+
 
 import axios from 'axios';
 import styled from 'styled-components';
 
-const ReviewForm = styled.div`
+const ReviewForm = styled.main`
   display:grid;
   grid-row-gap: 0.1rem;
   padding: 1rem;
+  position: fixed;
+  z-index: 200;
+  background: #fff;
+  width: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 8px;
 `;
 
 const Recommend_Container = styled.div`
@@ -81,7 +91,62 @@ const NewReviewForm = ({reviewMeta, productName}) => {
     setEmail(e.target.value);
   };
 
-  const handleCharacteristicChange = (value, characteristic) => {
+  var characteristicsOptions = [{
+    keyName: 'size',
+    name: 'Size',
+    lowest: 'A size too small',
+    low: '½ a size too small',
+    mid: 'Perfect',
+    high: '½ a size too big',
+    highest: 'A size too wide'
+  },
+  {
+    keyName: 'width',
+    name: 'Width',
+    lowest: 'Too narrow',
+    low: 'Slightly narrow',
+    mid: 'Perfect',
+    high: 'Slightly wide',
+    highest: 'Too wide'
+  },
+  {
+    keyName: 'comfort',
+    name: 'Comfort',
+    lowest: 'Uncomfortable',
+    low: 'Slightly uncomfortable',
+    mid: 'Ok',
+    high: 'Comfortable',
+    highest: 'Perfect'
+  },
+  {
+    keyName: 'quality',
+    name: 'Quality',
+    lowest: 'Below average',
+    low: '½ a size too small',
+    mid: 'What I expected',
+    high: 'Pretty great',
+    highest: 'Perfect'
+  },
+  {
+    keyName: 'length',
+    name: 'Length',
+    lowest: 'Runs Short',
+    low: 'Runs slightly short',
+    mid: 'Perfect',
+    high: 'Runs slightly long',
+    highest: 'Runs long'
+  },
+  {
+    keyName: 'fit',
+    name: 'Fit',
+    lowest: 'Runs tight',
+    low: 'Runs slightly tight',
+    mid: 'Perfect',
+    high: 'Runs slightly long',
+    highest: 'Runs long'
+  }];
+
+  const changeCharacteristic = (value, characteristic) => {
     var chars = characteristics;
     chars[reviewMeta.characteristics[characteristic].id] = Number(value);
     setCharacteristics(chars);
@@ -120,8 +185,13 @@ const NewReviewForm = ({reviewMeta, productName}) => {
 
   };
 
+  const handleClick = (e) => {
+    e.stopPropagation();
+  };
+
   return (
-    <ReviewForm >
+    <ReviewForm onClick={(e) => {handleClick(e)}}>
+
       <h3>Write Your Review</h3>
       <h4>About the {productName}</h4>
       <NewReviewStarDisplay rating={rating} hoverRating={hoverRating}
@@ -200,222 +270,10 @@ const NewReviewForm = ({reviewMeta, productName}) => {
       <input type="text" onChange={(e) => { handleEmailChange(e) }} />
       <Rate_Characteristics_Container>
         <div>Rate These Characteristics</div>
-        {
-          reviewMeta.characteristics.Size
-            ?
-            <React.Fragment>
-              <label>Size</label>
-              <div>
-                <label>A size too small</label>
-                <input type="radio" id="size-1" value="1" name="size"
-                  onChange={(e) => {
-                    handleCharacteristicChange(e.target.value, 'Size');
-                  }}/>
-                <label>½ a size too small</label>
-                <input type="radio" id="size-2" value="2" name="size"
-                  onChange={(e) => {
-                    handleCharacteristicChange(e.target.value, 'Size');
-                  }}/>
-                <label>Perfect</label>
-                <input type="radio" id="size-3" value="3" name="size"
-                  onChange={(e) => {
-                    handleCharacteristicChange(e.target.value, 'Size');
-                  }}/>
-                <label>½ a size too big</label>
-                <input type="radio" id="size-4" value="4" name="size"
-                  onChange={(e) => {
-                    handleCharacteristicChange(e.target.value, 'Size');
-                  }}/>
-                <label>A size too wide</label>
-                <input type="radio" id="size-5" value="5" name="size"
-                  onChange={(e) => {
-                    handleCharacteristicChange(e.target.value, 'Size');
-                  }}/>
-              </div>
-            </React.Fragment>
-            :
-            null
-        }
-        {
-          reviewMeta.characteristics.Width
-            ?
-            <React.Fragment>
-              <label>Width</label>
-              <div>
-                <label>Too narrow</label>
-                <input type="radio" id="width-1" value="1" name="width"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Width');
-                  }}/>
-                <label>Slightly narrow</label>
-                <input type="radio" id="width-2" value="2" name="width"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Width');
-                  }}/>
-                <label>Perfect</label>
-                <input type="radio" id="width-3" value="3" name="width"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Width');
-                  }}/>
-                <label>Slightly wide</label>
-                <input type="radio" id="width-4" value="4" name="width"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Width');
-                  }}/>
-                <label>Too wide</label>
-                <input type="radio" id="width-5" value="5" name="width"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Width');
-                  }}/>
-              </div>
-            </React.Fragment>
-            :
-            null
-        }
-        {
-          reviewMeta.characteristics.Comfort
-            ?
-            <React.Fragment>
-              <label>Comfort</label>
-              <div>
-                <label>Poor</label>
-                <input type="radio" id="comfort-1" value="1" name="comfort"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Comfort');
-                  }}/>
-                <label>Slightly uncomfortable</label>
-                <input type="radio" id="comfort-2" value="2" name="comfort"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Comfort');
-                  }}/>
-                <label>Ok</label>
-                <input type="radio" id="comfort-3" value="3" name="comfort"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Comfort');
-                  }}/>
-                <label>Comfortable</label>
-                <input type="radio" id="comfort-4" value="4" name="comfort"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Comfort');
-                  }}/>
-                <label>Perfect</label>
-                <input type="radio" id="comfort-5" value="5" name="comfort"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Comfort');
-                  }}/>
-              </div>
-            </React.Fragment>
-            :
-            null
-        }
-        {
-          reviewMeta.characteristics.Quality
-            ?
-            <React.Fragment>
-              <label>Quality</label>
-              <div>
-                <label>Poor</label>
-                <input type="radio" id="quality-1" value="1" name="quality"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Quality');
-                  }}/>
-                <label>Below average</label>
-                <input type="radio" id="quality-2" value="2" name="quality"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Quality');
-                  }}/>
-                <label>What I expected</label>
-                <input type="radio" id="quality-3" value="3" name="quality"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Quality');
-                  }}/>
-                <label>Pretty great</label>
-                <input type="radio" id="quality-4" value="4" name="quality"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Quality');
-                  }}/>
-                <label>Perfect</label>
-                <input type="radio" id="quality-5" value="5" name="quality"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Quality');
-                  }}/>
-              </div>
-            </React.Fragment>
-            :
-            null
-        }
-        {
-          reviewMeta.characteristics.Length
-            ?
-            <React.Fragment>
-              <label>Length</label>
-              <div>
-                <label>Runs Short</label>
-                <input type="radio" id="length-1" value="1" name="length"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Length');
-                  }}/>
-                <label>Runs slightly short</label>
-                <input type="radio" id="length-2" value="2" name="length"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Length');
-                  }}/>
-                <label>Perfect</label>
-                <input type="radio" id="length-3" value="3" name="length"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Length');
-                  }}/>
-                <label>Runs slightly long</label>
-                <input type="radio" id="length-4" value="4" name="length"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Length');
-                  }}/>
-                <label>Runs long</label>
-                <input type="radio" id="length-5" value="5" name="length"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Length');
-                  }}/>
-              </div>
-            </React.Fragment>
-            :
-            null
-        }
-        {
-          reviewMeta.characteristics.Fit
-            ?
-            <React.Fragment>
-              <label>Fit</label>
-              <div>
-                <label>Runs tight</label>
-                <input type="radio" id="fit-1" value="1" name="fit"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Fit');
-                  }}/>
-                <label>Runs slightly tight</label>
-                <input type="radio" id="fit-2" value="2" name="fit"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Fit');
-                  }}/>
-                <label>Perfect</label>
-                <input type="radio" id="fit-3" value="3" name="fit"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Fit');
-                  }}/>
-                <label>Runs slightly long</label>
-                <input type="radio" id="fit-4" value="4" name="fit"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Fit');
-                  }}/>
-                <label>Runs long</label>
-                <input type="radio" id="fit-5" value="5" name="fit"
-                  onChange={(e) =>  {
-                    handleCharacteristicChange(e.target.value, 'Fit');
-                  }}/>
-              </div>
-            </React.Fragment>
-            :
-            null
-        }
+        <ReviewCharacteristics characteristics={characteristicsOptions}
+          changeCharacteristic={changeCharacteristic}
+          reviewMeta={reviewMeta}
+        />
       </Rate_Characteristics_Container>
       <Button type="button" onClick={() => {
         submitNewReview();

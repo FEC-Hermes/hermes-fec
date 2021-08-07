@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import {Img, Logo, SearchBarContainer,InputBar, SearchBarWrapper } from './styles.js';
+
 const searchIcon = 'https://cdn.onlinewebfonts.com/svg/img_168154.png';
 const hermeslogo = 'https://i.imgur.com/mLJVsNP.png';
-import {Img, Logo, SearchBarContainer,InputBar, SearchBarWrapper } from './styles.js';
 
 
 const NavBar = () => {
@@ -10,14 +11,15 @@ const NavBar = () => {
   //   setSearchQuery(text);
   // };
 
+
   return (
     <SearchBarContainer>
       <SearchBarWrapper>
-        <InputBar onChange={({target:{value}}) => handleInput(value)}type='text' aria-label="search bar"></InputBar>
-        <Img src={searchIcon} alt="search"/>
+        <Logo src={hermeslogo} alt="Work"/>
+        <InputBar type='text'></InputBar>
+        <Img src={searchIcon} />
       </SearchBarWrapper>
     </SearchBarContainer>
   );
 };
-
 export default NavBar;

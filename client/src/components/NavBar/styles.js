@@ -38,4 +38,4 @@ const SearchBarWrapper = styled.div`
   align-items: center;
 `;
 
-export { InputBar, SearchBarContainer, Img, SearchBarWrapper };
+export { InputBar, SearchBarContainer, Img, SearchBarWrapper, Logo };

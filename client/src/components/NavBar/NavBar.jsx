@@ -17,7 +17,7 @@ const NavBar = () => {
       <SearchBarWrapper>
         <Logo src={hermeslogo} alt="Work"/>
         <InputBar type='text'></InputBar>
-        <Img src={searchIcon} />
+        <Img src={searchIcon} alt="search"/>
       </SearchBarWrapper>
     </SearchBarContainer>
   );

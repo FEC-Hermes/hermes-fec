@@ -9,7 +9,7 @@ const Modal = ({ children, closeModal, product }) => {
 
         <ModalBox className='content'>
           <header>
-            <ProduntName>"{product.name}"</ProduntName>
+            <ProduntName>{`"${product.name}"`}</ProduntName>
           </header>
           {children}
           <Close onClick={closeModal}>X</Close>

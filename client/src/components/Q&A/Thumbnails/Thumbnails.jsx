@@ -14,8 +14,8 @@ const Thumbnails = ({ photos = stock }) => {
       <ImgSection>
         {photos.map((photo, id) => {
           return (<ImgDiv key={id}>
-            <Img src={photo.url} />
-            <Img src={stock[id]} />
+            <Img src={photo.url} alt="photo"/>
+            <Img src={stock[id]} alt="photo"/>
 
           </ImgDiv>);
         })}

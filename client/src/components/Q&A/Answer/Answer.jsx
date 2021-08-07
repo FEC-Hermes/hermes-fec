@@ -75,7 +75,7 @@ const Answer = ({ quesId }) => {
               <Pipe>|</Pipe>
               <Span onClick={() => handleReported(ans.answer_id)}>Report</Span>
             </p>
-            <Thumbnails photos={ans.photos} />
+            <Thumbnails photos={ans.photos} alt="thumbnails"/>
           </Ans>
         );
       })}

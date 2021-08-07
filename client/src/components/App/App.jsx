@@ -84,4 +84,5 @@ const App = () => {
     </MainContainer>
   );
 };
+
 export default App;

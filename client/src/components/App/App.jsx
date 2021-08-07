@@ -16,20 +16,6 @@ const App = () => {
   const [product, setProduct] = useState({});
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
-  useEffect(() => {
-    axios.get('/products/17071')
-      .then(({ data }) => {
-        setProduct(data);
-        axios.get(`/reviews/${data.id}/relevant/1/1000`)
-          .then(({ data }) => {
-            setReviews(data);
-          });
-        axios.get(`/reviews/meta/${data.id}`)
-          .then(({ data }) => {
-            setReviewMeta(data);
-          });
-      });
-  }, []);
   const [productId, setProductId] = useState(17071);
 
   /* REFACTOR INTO CONTEXT FILE ========= */

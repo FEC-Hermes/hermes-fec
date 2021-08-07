@@ -3,8 +3,11 @@ import styled from 'styled-components';
 const ContainerQA = styled.div`
     display: flex;
     flex-flow: column;
-    width: 70%;
-    margin: 0 auto;
+    padding: 4%;
+    width: 80%;
+    margin: 3% auto;
+    background: whitesmoke;
+
 `;
 
 const Button = styled.button`
@@ -20,4 +23,8 @@ const Buttons = styled.div`
     display: flex;
 `;
 
-export { Button, Buttons, ContainerQA };
+const H3 = styled.h3`
+    text-align: center;
+`;
+
+export { Button, Buttons, ContainerQA, H3 };

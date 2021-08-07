@@ -7,14 +7,14 @@ const stock = [
   'https://www.fedex.com/content/dam/fedex/us-united-states/FedEx-Office/images/2021/q4/Custom-Promotional-Products-727x463.jpg'
 ];
 
-const Thumbnails = ({photos}) => {
+const Thumbnails = ({ photos = stock }) => {
   return (
     <div>
       <h2>Yes, as you can see in these photos.</h2>
       <ImgSection>
-        {stock.map((photo, id) => {
+        {photos.map((photo, id) => {
           return (<ImgDiv key={id}>
-            <Img src={photo} />
+            <Img src={photo.url} />
           </ImgDiv>);
         })}
       </ImgSection>

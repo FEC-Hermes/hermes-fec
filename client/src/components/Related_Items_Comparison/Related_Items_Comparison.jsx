@@ -5,15 +5,18 @@ import styled from 'styled-components';
 const H1 = styled.h1`
    margin: 2rem 0 1rem 1rem;
 `;
+const RPContainer = styled.div`
+  width: 1280px;
+`;
 
 const Related_Items_Comparison = ({relatedProductClicked}) => {
   return (
-    <div className="Related_Products">
+    <RPContainer className="Related_Products">
       <H1>Related Products</H1>
       <ProductCard relatedProductClicked={relatedProductClicked}/>
       <H1>Your Outfit</H1>
       <OutFitContainer />
-    </div>
+    </RPContainer>
   );
 };
 

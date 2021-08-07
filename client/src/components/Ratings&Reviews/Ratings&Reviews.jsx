@@ -15,6 +15,10 @@ const Ratings_and_reviews_container = styled.div`
   padding: 0 2rem;
  `;
 
+const RatingsReviewsSC = styled.div`
+  width: 1280px;
+`;
+
 const RatingsAndReviews = () => {
   const [modalShown, setModalShown] = React.useState(false);
   const toggleModalShown = () => {
@@ -68,7 +72,7 @@ const RatingsAndReviews = () => {
   const [reviewImgUrl, setReviewImgUrl] = useState('');
 
   return (
-    <div id="rating-review">
+    <RatingsReviewsSC id="rating-review">
       <h1 id="ratings-and-reviews-title">Ratings & Reviews</h1>
       <Ratings_and_reviews_container>
         <Ratings  reviewFilter={reviewFilter} updateReviewFilter={updateReviewFilter}
@@ -81,21 +85,21 @@ const RatingsAndReviews = () => {
         {
           modalShown
             ?
-          <NewReviewModal toggleModalShown={toggleModalShown}/>
+            <NewReviewModal toggleModalShown={toggleModalShown}/>
             :
-          null
+            null
         }
         {
           reviewImgUrl.length > 0
             ?
-          <ImageModal reviewImgUrl={reviewImgUrl}
-            setReviewImgUrl={setReviewImgUrl}
-          />
+            <ImageModal reviewImgUrl={reviewImgUrl}
+              setReviewImgUrl={setReviewImgUrl}
+            />
             :
-          null
+            null
         }
       </Ratings_and_reviews_container>
-    </div>
+    </RatingsReviewsSC>
   );
 };
 

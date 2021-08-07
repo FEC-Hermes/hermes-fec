@@ -3,8 +3,8 @@ import styled from 'styled-components';
 const ContainerQA = styled.div`
     display: flex;
     flex-flow: column;
-    padding: 4%;
-    width: 80%;
+    ${'' /* padding: 4%; */}
+    width: 1280px;
     margin: 3% auto;
     background: whitesmoke;
 

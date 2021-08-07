@@ -12,7 +12,7 @@ const Photo = ({ photoUrl, setReviewImgUrl}) => {
   };
 
   return (
-    <img src={photoUrl} width="125" height="125" alt="review photo"/>
+    <ReviewImg src={photoUrl} width="125" height="125" alt="review photo" onClick={() => handleClick()}/>
   );
 };
 

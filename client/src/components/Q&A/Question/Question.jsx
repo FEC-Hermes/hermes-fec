@@ -37,7 +37,6 @@ const Question = ({ questions, openAnsModal, openQuesModal}) => {
             <div
               onClick={() => {
                 openAnsModal();
-                // setQuesId(ques.question_id);
               }}>
             </div>
 

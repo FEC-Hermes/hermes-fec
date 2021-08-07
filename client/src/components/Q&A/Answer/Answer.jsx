@@ -62,7 +62,7 @@ const Answer = ({ quesId }) => {
 
   return (
     <div>
-      {answers && answers.slice(0, 3).map(ans => {
+      {answers && answers.slice(0, 2).map(ans => {
         return (
           <Ans key={ans.answer_id}>
             <p>
